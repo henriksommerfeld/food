@@ -1,0 +1,56 @@
+localhost_development:
+  backend:
+    name: file-system
+    api_root: /api
+
+backend:
+  name: git-gateway
+  branch: master
+
+media_folder: static/uploads
+public_folder: /uploads
+display_url: https://recept.netlify.com
+
+slug:
+  encoding: 'ascii'
+  clean_accents: true
+  sanitize_replacement: '_'
+
+collections:
+  - name: 'recept'
+    label: 'Recept'
+    folder: 'src/pages/recept'
+    create: true
+    slug: '{{slug}}'
+    fields:
+      - {
+          label: 'Template Key',
+          name: 'templateKey',
+          widget: 'hidden',
+          default: 'recept',
+        }
+      - { label: 'URL', name: 'url', widget: 'hidden', default: '' }
+      - { label: 'Titel', name: 'title', widget: 'string' }
+      - {
+          label: 'Beskrivning',
+          name: description,
+          widget: string,
+          hint: '1-2 meningar som beskriver sidan för sökmotorer och visas när man delar en länk till sidan.',
+          default: '',
+          required: false,
+        }
+      - {
+          label: 'Dold',
+          name: 'hidden',
+          widget: 'boolean',
+          default: false,
+          hint: 'Om du vill spara utan att publicera kan du göra artikeln dold här.',
+        }
+      - { label: 'Huvudinnehåll', name: 'body', widget: 'markdown' }
+      - {
+          label: 'Taggar',
+          label_singular: 'Tagg',
+          name: 'tags',
+          widget: 'list',
+          required: false,
+        }

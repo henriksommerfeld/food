@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:sketch="http://www.bohemiancoding.com/sketch/ns"
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="27.974443"
+   height="26.994581"
+   viewBox="0 0 27.974443 26.994581"
+   version="1.1"
+   id="svg11"
+   sodipodi:docname="tag-filled.svg"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)">
+  <metadata
+     id="metadata15">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="640"
+     inkscape:window-height="480"
+     id="namedview13"
+     showgrid="false"
+     inkscape:zoom="7.375"
+     inkscape:cx="14"
+     inkscape:cy="13.994581"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="0"
+     inkscape:current-layer="svg11" />
+  <!-- Generator: Sketch 3.0.3 (7891) - http://www.bohemiancoding.com/sketch -->
+  <title
+     id="title2">icon 145 tag cord</title>
+  <desc
+     id="desc4">Created with Sketch.</desc>
+  <defs
+     id="defs6" />
+  <g
+     id="Page-1"
+     sketch:type="MSPage"
+     style="fill:none;fill-rule:evenodd;stroke:none;stroke-width:1"
+     transform="translate(-2,-3)">
+    <g
+       id="icon-145-tag-cord"
+       sketch:type="MSArtboardGroup"
+       style="fill:#000000">
+      <path
+         d="m 10.764917,6.0240956 h 5.238826 L 29.384645,19.404998 c 0.783148,0.783148 0.787114,2.051056 0.0075,2.830632 l -7.176907,7.176907 c -0.778416,0.778415 -2.046893,0.7762 -2.830632,-0.0075 L 6.0037425,16.024096 V 8.0237106 c 0,-0.9500856 0.6533144,-1.7361611 1.5321972,-1.9451143 0.1969752,0.3184346 0.3521728,0.7095568 0.4448494,1.1766404 0.8094903,4.0797733 1.6176705,5.5466763 3.4455609,5.7742913 0.0058,7.27e-4 0.01183,-0.0015 0.01793,-0.0066 0.01972,7.69e-4 0.03955,0.0012 0.05946,0.0012 0.828427,0 1.5,-0.671573 1.5,-1.5 0,-0.685371 -0.459659,-1.263383 -1.087514,-1.442572 1.59e-4,-0.0074 -5.4e-5,-0.01161 -6.58e-4,-0.01248 C 11.644564,9.6751966 11.308822,8.6137474 10.923424,6.6713722 10.879009,6.4475213 10.82596,6.2317658 10.764917,6.0240956 Z M 9.9425459,6.8659937 C 9.0759337,2.4983302 4.3873358,1.8835132 2.5804299,4.7580008 1.131536,7.0629505 2.5651194,11.024096 5.0037425,11.024096 l 10e-8,-1 c -1.5518893,0 -2.6482189,-3.029277 -1.5766875,-4.7339057 1.3426064,-2.135864 4.8508218,-1.6758309 5.5346124,1.7704249 0.8089096,4.0768468 1.4190105,4.9634808 3.0420755,4.9634798 l -10e-7,-1 c -0.993157,10e-7 -1.334626,-0.496243 -2.0611961,-4.1581013 z"
+         id="tag-cord"
+         sketch:type="MSShapeGroup"
+         inkscape:connector-curvature="0" />
+    </g>
+  </g>
+</svg>
