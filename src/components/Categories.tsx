@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { spacing, navLinks, colors, breakpoints } from '../constants';
+import { spacing, colors, breakpoints } from '../constants';
 import { tailwindColors } from '../tailwind-colors';
 import { Link, graphql, useStaticQuery } from 'gatsby';
 import LazyImage, { FancyImage } from './LazyImage';
@@ -8,7 +8,6 @@ import { transparentizeHex } from '../color-convertions';
 
 export default function Categories() {
   const data = useStaticQuery(breakfastImageQuery);
-  const breakfastImage = getImageFrom(data);
 
   return (
     <CategoriesStyled>
@@ -17,7 +16,7 @@ export default function Categories() {
           <Category key={category.title}>
             <CategoryLink to={category.url}>
               <LazyImage
-                image={breakfastImage}
+                image={getImageFrom(data, category.thumbnail)}
                 imgStyle={{ transition: 'all 150ms ease' }}
               />
               <LinkTitle className="link-title">{category.title}</LinkTitle>
@@ -29,21 +28,46 @@ export default function Categories() {
   );
 }
 
-function getImageFrom(data: any): FancyImage {
-  return data?.fileName || null;
+interface NavLink {
+  url: string;
+  title: string;
+  thumbnail: string;
+}
+
+const navLinks: NavLink[] = [
+  { url: '/frukost', title: 'Frukost', thumbnail: 'breakfast_1x1' },
+  { url: '/forratter', title: 'Förrätter', thumbnail: 'starter_1x1' },
+  { url: '/huvudratter', title: 'Huvudrätter', thumbnail: 'breakfast_1x1' },
+  { url: '/sallader', title: 'Sallader', thumbnail: 'breakfast_1x1' },
+  { url: '/efterratter', title: 'Efterrätter', thumbnail: 'breakfast_1x1' },
+  { url: '/bakning', title: 'Bakning', thumbnail: 'breakfast_1x1' },
+];
+
+function getImageFrom(data: any, name: string): FancyImage {
+  return data.allFile.edges.find(x => x.node.name === name).node;
 }
 
 const breakfastImageQuery = graphql`
   query {
-    fileName: file(relativePath: { eq: "hidden/breakfast_1x1.jpg" }) {
-      name
-      childImageSharp {
-        fluid(maxWidth: 600) {
-          src
-          srcSet
-          aspectRatio
-          sizes
-          base64
+    allFile(
+      filter: {
+        relativePath: {
+          in: ["hidden/breakfast_1x1.jpg", "hidden/starter_1x1.jpg"]
+        }
+      }
+    ) {
+      edges {
+        node {
+          name
+          childImageSharp {
+            fluid(maxWidth: 600) {
+              src
+              srcSet
+              aspectRatio
+              sizes
+              base64
+            }
+          }
         }
       }
     }
@@ -78,7 +102,7 @@ const CategoryLink = styled(Link)`
       transform: scale(1.05);
     }
     .link-title {
-      font-size: 1.05em;
+      font-size: 1.1em;
     }
   }
 `;

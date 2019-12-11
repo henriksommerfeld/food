@@ -31,8 +31,6 @@ export const urls = {
   twitterBaseUrl: 'https://twitter.com',
 };
 
-//export const emailAddress = 'isabel@sommerfeld.nu';
-
 export const breakpoints = {
   xs: '550px',
   small: '768px',
@@ -70,15 +68,6 @@ export const fonts = {
   headingFamily: `'Domine', 'serif'`,
   bodyFamily: `'Open Sans', 'sans-serif'`,
 };
-
-export const navLinks: NavLink[] = [
-  { url: '/frukost', title: 'Frukost' },
-  { url: '/forratter', title: 'Förrätter' },
-  { url: '/huvudratter', title: 'Huvudrätter' },
-  { url: '/sallader', title: 'Sallader' },
-  { url: '/efterratter', title: 'Efterrätter' },
-  { url: '/bakning', title: 'Bakning' },
-];
 
 export const links = {
   linkedin: {
@@ -127,8 +116,3 @@ export const buttonStyles = css`
     color: ${colors.white};
   }
 `;
-
-interface NavLink {
-  url: string;
-  title: string;
-}
