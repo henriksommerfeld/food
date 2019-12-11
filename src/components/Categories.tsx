@@ -4,7 +4,6 @@ import { spacing, navLinks, colors, breakpoints } from '../constants';
 import { tailwindColors } from '../tailwind-colors';
 import { Link, graphql, useStaticQuery } from 'gatsby';
 import LazyImage, { FancyImage } from './LazyImage';
-import { getResized, getFluid } from '../images';
 import { transparentizeHex } from '../color-convertions';
 
 export default function Categories() {
@@ -17,8 +16,11 @@ export default function Categories() {
         {navLinks.map(category => (
           <Category key={category.title}>
             <CategoryLink to={category.url}>
-              <LazyImage image={breakfastImage} />
-              <LinkTitle>{category.title}</LinkTitle>
+              <LazyImage
+                image={breakfastImage}
+                imgStyle={{ transition: 'all 150ms ease' }}
+              />
+              <LinkTitle className="link-title">{category.title}</LinkTitle>
             </CategoryLink>
           </Category>
         ))}
@@ -62,6 +64,23 @@ const CategoryLink = styled(Link)`
   display: block;
   width: 100%;
   position: relative;
+  transition: filter 150ms ease;
+
+  .link-title {
+    transition: font-size 100ms ease;
+  }
+
+  &:hover,
+  &:focus {
+    filter: brightness(1.1);
+
+    picture img {
+      transform: scale(1.05);
+    }
+    .link-title {
+      font-size: 1.05em;
+    }
+  }
 `;
 
 const Category = styled('li')`
