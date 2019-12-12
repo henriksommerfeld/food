@@ -19,7 +19,9 @@ export default function Categories() {
                 image={getImageFrom(data, category.thumbnail)}
                 imgStyle={{ transition: 'all 150ms ease' }}
               />
-              <LinkTitle className="link-title">{category.title}</LinkTitle>
+              <LinkTitle className="link-title" theme={category.thumbTheme}>
+                {category.title}
+              </LinkTitle>
             </CategoryLink>
           </Category>
         ))}
@@ -28,19 +30,55 @@ export default function Categories() {
   );
 }
 
+enum Theme {
+  light = 1,
+  dark = 2,
+}
+
 interface NavLink {
   url: string;
   title: string;
   thumbnail: string;
+  thumbTheme: Theme;
 }
 
 const navLinks: NavLink[] = [
-  { url: '/frukost', title: 'Frukost', thumbnail: 'breakfast_1x1' },
-  { url: '/forratter', title: 'Förrätter', thumbnail: 'starter_1x1' },
-  { url: '/huvudratter', title: 'Huvudrätter', thumbnail: 'breakfast_1x1' },
-  { url: '/sallader', title: 'Sallader', thumbnail: 'breakfast_1x1' },
-  { url: '/efterratter', title: 'Efterrätter', thumbnail: 'breakfast_1x1' },
-  { url: '/bakning', title: 'Bakning', thumbnail: 'breakfast_1x1' },
+  {
+    url: '/frukost',
+    title: 'Frukost',
+    thumbnail: 'breakfast_1x1',
+    thumbTheme: Theme.dark,
+  },
+  {
+    url: '/forratter',
+    title: 'Förrätter',
+    thumbnail: 'starter_1x1',
+    thumbTheme: Theme.light,
+  },
+  {
+    url: '/huvudratter',
+    title: 'Huvudrätter',
+    thumbnail: 'breakfast_1x1',
+    thumbTheme: Theme.dark,
+  },
+  {
+    url: '/sallader',
+    title: 'Sallader',
+    thumbnail: 'breakfast_1x1',
+    thumbTheme: Theme.dark,
+  },
+  {
+    url: '/efterratter',
+    title: 'Efterrätter',
+    thumbnail: 'breakfast_1x1',
+    thumbTheme: Theme.dark,
+  },
+  {
+    url: '/bakning',
+    title: 'Bakning',
+    thumbnail: 'breakfast_1x1',
+    thumbTheme: Theme.dark,
+  },
 ];
 
 function getImageFrom(data: any, name: string): FancyImage {
@@ -75,13 +113,25 @@ const breakfastImageQuery = graphql`
 `;
 
 const LinkTitle = styled('div')`
-  background-color: ${transparentizeHex(colors.white, 0.7)};
-  backdrop-filter: blur(5px);
-  color: ${colors.black};
   transform: translateY(-100%);
   position: absolute;
   width: 100%;
   padding: ${spacing.default};
+  color: ${({ theme }) =>
+    theme === Theme.light ? colors.white : colors.black};
+  background-color: ${({ theme }) =>
+    transparentizeHex(
+      theme === Theme.light ? colors.black : colors.white,
+      0.7
+    )};
+
+  @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+    -webkit-backdrop-filter: blur(5px);
+    backdrop-filter: blur(5px);
+    background-color: transparent;
+    color: ${({ theme }) =>
+      theme === Theme.light ? colors.black : colors.white};
+  }
 `;
 
 const CategoryLink = styled(Link)`
