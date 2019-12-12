@@ -108,6 +108,7 @@ const categoryImagesQuery = graphql`
             fluid(maxWidth: 600) {
               src
               srcSet
+              aspectRatio
               sizes
               base64
             }
