@@ -16,7 +16,7 @@ interface SharedIntroBannerProps {
 
 export function SharedIntroBanner({
   backgroundImage,
-  overlayOpacity = 0.6,
+  overlayOpacity = 0.3,
   location,
   children,
 }: SharedIntroBannerProps) {

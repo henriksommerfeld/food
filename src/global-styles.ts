@@ -66,9 +66,9 @@ export const GlobalStyles = createGlobalStyle`
     transition: color, text-shadow, background 150ms ease-out, outline 60ms;
     background: linear-gradient(
     to right,
-    ${tailwindColors.red700} 0%,
-    ${tailwindColors.red400} 50%,
-    ${tailwindColors.red700} 100%
+    ${tailwindColors.pink700} 0%,
+    ${tailwindColors.pink400} 50%,
+    ${tailwindColors.pink700} 100%
     );
     background-position-x: left;
     background-position-y: 97%;

@@ -44,24 +44,18 @@ export const colors = {
   white: tailwindColors.white,
   black: tailwindColors.black,
   pageBackground: tailwindColors.gray100,
-  headerBackground: tailwindColors.gray800,
+  headerBackground: tailwindColors.pink700,
   footerBackground: tailwindColors.gray900,
-  mobileMenuIconOpen: tailwindColors.gray400,
-  mobileMenuBackgroundHover: tailwindColors.gray200,
-  mobileMenuTextHover: tailwindColors.red700,
-  link: tailwindColors.red600,
-  linkVisited: tailwindColors.red600,
-  linkFocus: tailwindColors.red700,
+  link: tailwindColors.pink600,
+  linkVisited: tailwindColors.pink600,
+  linkFocus: tailwindColors.pink700,
   postDate: tailwindColors.gray500,
   postDateRoll: tailwindColors.gray700,
   buttonBackground: tailwindColors.red600,
   buttonHover: tailwindColors.red700,
   buttonActive: tailwindColors.red800,
   lighterTextForWhiteBackground: tailwindColors.gray700,
-  selectionBackground: tailwindColors.red700,
-  facebook: '#3C5A99',
-  linkedIn: '#0077B5',
-  twitter: '#1DA1F2',
+  selectionBackground: tailwindColors.pink700,
 };
 
 export const fonts = {
@@ -88,6 +82,7 @@ export enum Theme {
 export interface NavLink {
   url: string;
   title: string;
+  imagePath: string;
   thumbnail: string;
   thumbTheme: Theme;
 }
@@ -96,36 +91,42 @@ export const categoryLinks: NavLink[] = [
   {
     url: '/frukost',
     title: 'Frukost',
+    imagePath: 'hidden/breakfast.jpg',
     thumbnail: 'breakfast_1x1',
     thumbTheme: Theme.dark,
   },
   {
-    url: '/forratter',
-    title: 'Förrätter',
+    url: '/forratt',
+    title: 'Förrätt',
+    imagePath: 'hidden/starter.jpg',
     thumbnail: 'starter_1x1',
     thumbTheme: Theme.light,
   },
   {
-    url: '/huvudratter',
-    title: 'Huvudrätter',
+    url: '/huvudratt',
+    title: 'Huvudrätt',
+    imagePath: 'hidden/main.jpg',
     thumbnail: 'main_1x1',
     thumbTheme: Theme.dark,
   },
   {
-    url: '/sallader',
-    title: 'Sallader',
+    url: '/sallad',
+    title: 'Sallad',
+    imagePath: 'hidden/salad.jpg',
     thumbnail: 'salad_1x1',
     thumbTheme: Theme.dark,
   },
   {
-    url: '/efterratter',
-    title: 'Efterrätter',
+    url: '/efterratt',
+    title: 'Efterrätt',
+    imagePath: 'hidden/dessert.jpg',
     thumbnail: 'dessert_1x1',
     thumbTheme: Theme.dark,
   },
   {
     url: '/bakning',
     title: 'Bakning',
+    imagePath: 'hidden/baking.jpg',
     thumbnail: 'baking_1x1',
     thumbTheme: Theme.light,
   },

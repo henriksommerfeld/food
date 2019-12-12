@@ -78,6 +78,7 @@ exports.createPages = ({ actions, graphql }) => {
         component: path.resolve(`src/templates/category.tsx`),
         context: {
           category: category.title,
+          imagePath: category.imagePath,
         },
       });
     });

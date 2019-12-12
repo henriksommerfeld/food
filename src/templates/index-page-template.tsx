@@ -13,7 +13,6 @@ interface IndexPageTemplateProps {
   heading: string;
   subheading: string;
   description: string;
-  isPreview?: boolean;
   location: WindowLocation;
 }
 
@@ -21,7 +20,6 @@ export const IndexPageTemplate = ({
   headerImageFile,
   heading,
   subheading,
-  isPreview = false,
   location,
 }: IndexPageTemplateProps) => (
   <PageStyled>

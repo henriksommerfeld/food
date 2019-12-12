@@ -15,7 +15,6 @@ export default function IndexPage({ location }: LocationProp) {
   return (
     <Layout
       location={location}
-      editLink={editPageUrl('index')}
       pageTitle={metadata.title}
       pageDescription={metadata.description}
     >
@@ -37,7 +36,7 @@ const pageQuery = graphql`
       frontmatter {
         image {
           childImageSharp {
-            fluid(maxWidth: 3000) {
+            fluid(maxWidth: 5000) {
               src
               srcSet
               aspectRatio
