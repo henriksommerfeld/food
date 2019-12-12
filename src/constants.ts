@@ -80,6 +80,57 @@ export const links = {
   },
 };
 
+export enum Theme {
+  light = 1,
+  dark = 2,
+}
+
+export interface NavLink {
+  url: string;
+  title: string;
+  thumbnail: string;
+  thumbTheme: Theme;
+}
+
+export const categoryLinks: NavLink[] = [
+  {
+    url: '/frukost',
+    title: 'Frukost',
+    thumbnail: 'breakfast_1x1',
+    thumbTheme: Theme.dark,
+  },
+  {
+    url: '/forratter',
+    title: 'Förrätter',
+    thumbnail: 'starter_1x1',
+    thumbTheme: Theme.light,
+  },
+  {
+    url: '/huvudratter',
+    title: 'Huvudrätter',
+    thumbnail: 'main_1x1',
+    thumbTheme: Theme.dark,
+  },
+  {
+    url: '/sallader',
+    title: 'Sallader',
+    thumbnail: 'salad_1x1',
+    thumbTheme: Theme.dark,
+  },
+  {
+    url: '/efterratter',
+    title: 'Efterrätter',
+    thumbnail: 'dessert_1x1',
+    thumbTheme: Theme.dark,
+  },
+  {
+    url: '/bakning',
+    title: 'Bakning',
+    thumbnail: 'baking_1x1',
+    thumbTheme: Theme.light,
+  },
+];
+
 export const imageBorderStyle = {
   margin: 0,
   padding: '4px',

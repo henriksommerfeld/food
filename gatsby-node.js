@@ -8,6 +8,7 @@ const { createFilePath } = require('gatsby-source-filesystem');
 const { fmImagesToRelative } = require('gatsby-remark-relative-images');
 const { getUniqueTags, getTagRouteUrl } = require('./src/tags-parser');
 const { removeBlogFromUrl } = require('./src/url-replacer');
+const { categoryLinks } = require('./src/constants');
 
 function getFileFrom(templateKey) {
   return templateKey + '.tsx';
@@ -67,6 +68,16 @@ exports.createPages = ({ actions, graphql }) => {
         component: path.resolve(`src/templates/taggar.tsx`),
         context: {
           tag,
+        },
+      });
+    });
+
+    categoryLinks.forEach(category => {
+      createPage({
+        path: category.url,
+        component: path.resolve(`src/templates/category.tsx`),
+        context: {
+          category: category.title,
         },
       });
     });

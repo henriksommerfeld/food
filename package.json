@@ -1,6 +1,6 @@
 {
-  "name": "isabel-blog",
-  "description": "Blog of Isabel Sommerfeld built with GatsbyJS and Netlify CMS",
+  "name": "Recept",
+  "description": "Isabels och Henriks receptsamling",
   "version": "1.0.0",
   "author": "Henrik Sommerfeld",
   "keywords": [

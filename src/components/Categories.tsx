@@ -1,6 +1,12 @@
 import React from 'react';
 import styled from 'styled-components';
-import { spacing, colors, breakpoints } from '../constants';
+import {
+  spacing,
+  colors,
+  breakpoints,
+  categoryLinks,
+  Theme,
+} from '../constants';
 import { tailwindColors } from '../tailwind-colors';
 import { Link, graphql, useStaticQuery } from 'gatsby';
 import LazyImage, { FancyImage } from './LazyImage';
@@ -29,57 +35,6 @@ export default function Categories() {
     </CategoriesStyled>
   );
 }
-
-enum Theme {
-  light = 1,
-  dark = 2,
-}
-
-interface NavLink {
-  url: string;
-  title: string;
-  thumbnail: string;
-  thumbTheme: Theme;
-}
-
-export const categoryLinks: NavLink[] = [
-  {
-    url: '/frukost',
-    title: 'Frukost',
-    thumbnail: 'breakfast_1x1',
-    thumbTheme: Theme.dark,
-  },
-  {
-    url: '/forratter',
-    title: 'Förrätter',
-    thumbnail: 'starter_1x1',
-    thumbTheme: Theme.light,
-  },
-  {
-    url: '/huvudratter',
-    title: 'Huvudrätter',
-    thumbnail: 'main_1x1',
-    thumbTheme: Theme.dark,
-  },
-  {
-    url: '/sallader',
-    title: 'Sallader',
-    thumbnail: 'salad_1x1',
-    thumbTheme: Theme.dark,
-  },
-  {
-    url: '/efterratter',
-    title: 'Efterrätter',
-    thumbnail: 'dessert_1x1',
-    thumbTheme: Theme.dark,
-  },
-  {
-    url: '/bakning',
-    title: 'Bakning',
-    thumbnail: 'baking_1x1',
-    thumbTheme: Theme.light,
-  },
-];
 
 function getImageFrom(data: any, name: string): FancyImage {
   return data.allFile.edges.find(x => x.node.name === name).node;
