@@ -7,7 +7,7 @@ import LazyImage, { FancyImage } from './LazyImage';
 import { transparentizeHex } from '../color-convertions';
 
 export default function Categories() {
-  const data = useStaticQuery(breakfastImageQuery);
+  const data = useStaticQuery(categoryImagesQuery);
 
   return (
     <CategoriesStyled>
@@ -58,26 +58,26 @@ const navLinks: NavLink[] = [
   {
     url: '/huvudratter',
     title: 'Huvudrätter',
-    thumbnail: 'breakfast_1x1',
+    thumbnail: 'main_1x1',
     thumbTheme: Theme.dark,
   },
   {
     url: '/sallader',
     title: 'Sallader',
-    thumbnail: 'breakfast_1x1',
+    thumbnail: 'salad_1x1',
     thumbTheme: Theme.dark,
   },
   {
     url: '/efterratter',
     title: 'Efterrätter',
-    thumbnail: 'breakfast_1x1',
+    thumbnail: 'dessert_1x1',
     thumbTheme: Theme.dark,
   },
   {
     url: '/bakning',
     title: 'Bakning',
-    thumbnail: 'breakfast_1x1',
-    thumbTheme: Theme.dark,
+    thumbnail: 'baking_1x1',
+    thumbTheme: Theme.light,
   },
 ];
 
@@ -85,12 +85,19 @@ function getImageFrom(data: any, name: string): FancyImage {
   return data.allFile.edges.find(x => x.node.name === name).node;
 }
 
-const breakfastImageQuery = graphql`
+const categoryImagesQuery = graphql`
   query {
     allFile(
       filter: {
         relativePath: {
-          in: ["hidden/breakfast_1x1.jpg", "hidden/starter_1x1.jpg"]
+          in: [
+            "hidden/breakfast_1x1.jpg"
+            "hidden/starter_1x1.jpg"
+            "hidden/dessert_1x1.jpg"
+            "hidden/main_1x1.jpg"
+            "hidden/baking_1x1.jpg"
+            "hidden/salad_1x1.jpg"
+          ]
         }
       }
     ) {
@@ -138,7 +145,8 @@ const CategoryLink = styled(Link)`
   display: block;
   width: 100%;
   position: relative;
-  transition: filter 150ms ease;
+  transition: filter 150ms ease, box-shadow 150ms ease, font-size 150ms ease;
+  box-shadow: 0 0 5px ${transparentizeHex(colors.black, 0.5)};
 
   .link-title {
     transition: font-size 100ms ease;
@@ -147,6 +155,7 @@ const CategoryLink = styled(Link)`
   &:hover,
   &:focus {
     filter: brightness(1.1);
+    box-shadow: 0 0 10px ${transparentizeHex(colors.black, 0.4)};
 
     picture img {
       transform: scale(1.05);
@@ -155,12 +164,15 @@ const CategoryLink = styled(Link)`
       font-size: 1.1em;
     }
   }
+
+  &:active {
+    box-shadow: 0 0 3px ${transparentizeHex(colors.black, 0.6)};
+  }
 `;
 
 const Category = styled('li')`
   margin: 0;
   text-align: center;
-  border: 2px dashed green;
 `;
 
 const CategoriesList = styled('ol')`
@@ -169,7 +181,6 @@ const CategoriesList = styled('ol')`
   width: 100%;
   list-style: none;
   margin: 0;
-  border: 2px dashed blue;
 
   @media (min-width: ${breakpoints.xs}) {
     grid-template-columns: repeat(2, auto);
