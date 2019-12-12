@@ -110,7 +110,7 @@ const CategoryLink = styled(Link)`
   &:hover,
   &:focus {
     filter: brightness(1.1);
-    box-shadow: 0 0 10px ${transparentizeHex(colors.black, 0.4)};
+    box-shadow: 0 4px 10px ${transparentizeHex(colors.black, 0.4)};
 
     picture img {
       transform: scale(1.05);
