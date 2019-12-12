@@ -12,7 +12,7 @@ export default function Categories() {
   return (
     <CategoriesStyled>
       <CategoriesList>
-        {navLinks.map(category => (
+        {categoryLinks.map(category => (
           <Category key={category.title}>
             <CategoryLink to={category.url}>
               <LazyImage
@@ -42,7 +42,7 @@ interface NavLink {
   thumbTheme: Theme;
 }
 
-const navLinks: NavLink[] = [
+export const categoryLinks: NavLink[] = [
   {
     url: '/frukost',
     title: 'Frukost',
@@ -108,7 +108,6 @@ const categoryImagesQuery = graphql`
             fluid(maxWidth: 600) {
               src
               srcSet
-              aspectRatio
               sizes
               base64
             }
@@ -186,9 +185,12 @@ const CategoriesList = styled('ol')`
     grid-template-columns: repeat(2, auto);
   }
 
+  @media (min-width: ${breakpoints.small}) {
+    grid-gap: ${spacing.double};
+  }
+
   @media (min-width: ${breakpoints.medium}) {
     grid-template-columns: repeat(3, auto);
-    grid-gap: ${spacing.double};
   }
 
   @media (min-width: ${breakpoints.xl}) {
@@ -201,9 +203,9 @@ const CategoriesStyled = styled('section')`
   display: flex;
   justify-content: center;
   padding: ${spacing.default};
-  background-color: ${tailwindColors.green200};
+  background-color: ${tailwindColors.pink100};
 
-  @media (min-width: ${breakpoints.medium}) {
+  @media (min-width: ${breakpoints.small}) {
     padding: ${spacing.double};
   }
 
