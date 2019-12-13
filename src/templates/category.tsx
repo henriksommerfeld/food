@@ -4,6 +4,15 @@ import { WindowLocation } from '@reach/router';
 import Layout from '../components/Layout';
 import { CategoryTemplate } from './category-template';
 import LazyImage, { FancyImage } from '../components/LazyImage';
+import {
+  GridContainerStyled,
+  GridItemsList,
+  Item,
+  ItemLinkStyled,
+  LinkTitle,
+  imageTransition,
+} from '../components/ImageLinkGrid';
+import { Theme } from 'constants';
 
 interface CategoryRouteProps {
   data: CategoryPageQueryData;
@@ -32,13 +41,27 @@ export default function CategoryRoute({
         heading={category}
         subheading={categoryHeader}
       >
-        {data.allMarkdownRemark.edges.map(edge => (
-          <Link to={edge.node.fields.slug}>
-            {edge.node.frontmatter.title}
-            {edge.node.frontmatter.description}
-            <LazyImage image={edge.node.frontmatter.featuredimage} />
-          </Link>
-        ))}
+        <GridContainerStyled>
+          <GridItemsList>
+            {data.allMarkdownRemark.edges.map(edge => (
+              <Item key={edge.node.frontmatter.title}>
+                <ItemLinkStyled to={edge.node.fields.slug}>
+                  <LazyImage
+                    image={edge.node.frontmatter.featuredimage}
+                    imgStyle={imageTransition}
+                    // aspectRatio={1}
+                  />
+                  <LinkTitle
+                    className="link-title"
+                    theme={edge.node.frontmatter.featuredimagetheme}
+                  >
+                    {edge.node.frontmatter.title}
+                  </LinkTitle>
+                </ItemLinkStyled>
+              </Item>
+            ))}
+          </GridItemsList>
+        </GridContainerStyled>
       </CategoryTemplate>
     </Layout>
   );
@@ -58,8 +81,8 @@ interface CategoryPageQueryData {
         };
         frontmatter: {
           title: string;
-          description: string;
           featuredimage: FancyImage;
+          featuredimagetheme: number;
         };
       };
     }[];
@@ -82,7 +105,7 @@ export const categoryPageQuery = graphql`
           }
           frontmatter {
             title
-            description
+            featuredimagetheme
             featuredimage {
               childImageSharp {
                 fluid(maxWidth: 600) {
