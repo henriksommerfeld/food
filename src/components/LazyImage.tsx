@@ -13,6 +13,7 @@ export interface LazyImageProps {
   style?: any;
   imgStyle?: any;
   altText?: string;
+  aspectRatio?: number;
 }
 
 export default function LazyImage({
@@ -20,6 +21,7 @@ export default function LazyImage({
   style = null,
   imgStyle = null,
   altText = '',
+  aspectRatio = null,
 }: LazyImageProps) {
   if (isImageUrl(image)) {
     const imageUrl = (image as unknown) as string;
@@ -28,9 +30,12 @@ export default function LazyImage({
 
   const fluidImage = getFluid(image);
   if (fluidImage) {
+    const fluidObject = aspectRatio
+      ? { ...fluidImage, aspectRatio }
+      : fluidImage;
     return (
       <Image
-        fluid={fluidImage}
+        fluid={fluidObject}
         alt={altText}
         style={style}
         imgStyle={imgStyle}

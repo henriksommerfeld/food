@@ -24,6 +24,7 @@ export default function Categories() {
               <LazyImage
                 image={getImageFrom(data, category.thumbnail)}
                 imgStyle={{ transition: 'all 150ms ease' }}
+                // aspectRatio={1}
               />
               <LinkTitle className="link-title" theme={category.thumbTheme}>
                 {category.title}

@@ -1,9 +1,9 @@
 import React from 'react';
-import { graphql } from 'gatsby';
+import { graphql, Link } from 'gatsby';
 import { WindowLocation } from '@reach/router';
 import Layout from '../components/Layout';
 import { CategoryTemplate } from './category-template';
-import { FancyImage } from 'components/LazyImage';
+import LazyImage, { FancyImage } from '../components/LazyImage';
 
 interface CategoryRouteProps {
   data: CategoryPageQueryData;
@@ -25,14 +25,20 @@ export default function CategoryRoute({
   const headerImage = data.fileName;
 
   return (
-    <Layout location={location} editLink="" pageTitle={category}>
+    <Layout location={location} pageTitle={category}>
       <CategoryTemplate
         headerImageFile={headerImage}
         location={location}
         heading={category}
         subheading={categoryHeader}
       >
-        Hejsan
+        {data.allMarkdownRemark.edges.map(edge => (
+          <Link to={edge.node.fields.slug}>
+            {edge.node.frontmatter.title}
+            {edge.node.frontmatter.description}
+            <LazyImage image={edge.node.frontmatter.featuredimage} />
+          </Link>
+        ))}
       </CategoryTemplate>
     </Layout>
   );
@@ -52,6 +58,8 @@ interface CategoryPageQueryData {
         };
         frontmatter: {
           title: string;
+          description: string;
+          featuredimage: FancyImage;
         };
       };
     }[];
@@ -74,6 +82,18 @@ export const categoryPageQuery = graphql`
           }
           frontmatter {
             title
+            description
+            featuredimage {
+              childImageSharp {
+                fluid(maxWidth: 600) {
+                  src
+                  srcSet
+                  aspectRatio
+                  sizes
+                  base64
+                }
+              }
+            }
           }
         }
       }

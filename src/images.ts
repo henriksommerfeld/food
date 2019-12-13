@@ -1,6 +1,5 @@
 import { FluidObject } from 'gatsby-image';
 import { BlogImage } from 'components/LazyImage';
-import { TwitterImage } from 'components/Tweets';
 
 export function getFluid(image: any): FluidObject | null {
   return image?.childImageSharp?.fluid || null;
@@ -24,13 +23,6 @@ export interface OriginalImage {
   width: number;
   height: number;
   name: string;
-}
-
-export function getSharpImageOrDefault(
-  image: TwitterImage,
-  defaultValue: string
-): BlogImage {
-  return image && image.childImageSharp ? image : defaultValue;
 }
 
 export function getImageNameFromUrl(url: string): string {
