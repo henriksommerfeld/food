@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Link } from 'gatsby';
+import { Link, graphql, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
 import { colors, layout, spacing, breakpoints } from '../constants';
 import { transparentizeHex } from '../color-convertions';
@@ -15,8 +15,22 @@ import BlogPostSvg from '../../static/img/blog-post-grey500.svg';
 import { useEscKey } from '../useEscKey';
 import { useTransition, animated, config } from 'react-spring';
 import { LocationProp } from 'interfaces/LocationProp';
+import {
+  bannerMinHeightMedium,
+  bannerMinHeight,
+} from '../templates/shared-intro-banner';
+import {
+  GridContainerStyled,
+  GridItemsList,
+  Item,
+  ItemLinkStyled,
+  imageTransition,
+  LinkTitle,
+} from './ImageLinkGrid';
+import LazyImage, { FancyImage } from './LazyImage';
 
 export default function SearchResult({ location }: LocationProp) {
+  const imagesData = useStaticQuery<ImagesQueryData>(imagesQuery);
   const [results, setResults] = useGlobal<SearchResults>('searchResults');
   const [route, setRoute] = useGlobal<SearchRoute>('searchRoute');
   const [query, setQuery] = useGlobal<SearchQuery>('searchQuery');
@@ -40,6 +54,15 @@ export default function SearchResult({ location }: LocationProp) {
     setResults([]);
   };
 
+  const getImage = (id: string): FancyImage | null => {
+    if (!(imagesData?.allMarkdownRemark?.edges?.length > 0)) return null;
+
+    const edge = imagesData.allMarkdownRemark.edges.find(x => x.node.id === id);
+    if (!edge) return null;
+
+    return edge.node.frontmatter.featuredimage;
+  };
+
   useEscKey(closeSearch);
 
   const container = containerTransitions.map(
@@ -58,24 +81,31 @@ export default function SearchResult({ location }: LocationProp) {
               <CloseIcon src={CloseSvg} />
             </CloseButtonStyled>
             <HitsHeading>
-              {results.length ? results.length : 'Inga'} träffar för{' '}
+              {results.length ? results.length : 'Inga'} recept för sökningen{' '}
               <em>{query}</em>
             </HitsHeading>
             <LinksContainer>
-              {results.map((page, index) => (
-                <LinkContainer key={page.id}>
-                  <LinkIconSvg src={BlogPostSvg} alt="" />
-                  <div>
-                    <Link
-                      to={page.path}
-                      ref={index === 0 ? searchResultsRef : null}
-                    >
-                      {page.title}
-                    </Link>
-                    <Excerpt>{page.excerpt}</Excerpt>
-                  </div>
-                </LinkContainer>
-              ))}
+              <GridContainerStyled>
+                <GridItemsList>
+                  {results.map((page, index) => (
+                    <Item key={page.id}>
+                      <ItemLinkStyled
+                        to={page.path}
+                        ref={index === 0 ? searchResultsRef : null}
+                      >
+                        <LazyImage
+                          image={getImage(page.id)}
+                          imgStyle={imageTransition}
+                          // aspectRatio={1}
+                        />
+                        <LinkTitle className="link-title" theme={page.theme}>
+                          {page.title}
+                        </LinkTitle>
+                      </ItemLinkStyled>
+                    </Item>
+                  ))}
+                </GridItemsList>
+              </GridContainerStyled>
             </LinksContainer>
           </SearchResultsStyled>
         </SearchResultsContainer>
@@ -102,34 +132,22 @@ function shouldShowResults(
   return true;
 }
 
-const Excerpt = styled('div')``;
-
-const LinkIconSvg = styled('img')`
-  margin: 0 0.5em 0 0;
-  min-width: 1rem;
-  vertical-align: text-top;
-`;
-
-const LinkContainer = styled('li')`
-  display: flex;
-  align-items: flex-start;
-  list-style: none;
-  margin-bottom: ${spacing.default};
-`;
-
 const LinksContainer = styled('ul')`
-  margin: 0;
+  margin: ${spacing.default} 0 0 0;
+  width: 100%;
 `;
 
 const HitsHeading = styled('h2')`
-  padding-right: 3rem;
+  padding-left: 1rem;
+  padding-right: 4rem;
+  margin: 0;
 `;
 
 const CloseButtonStyled = styled('button')`
   background: ${colors.white};
   border: none;
   position: absolute;
-  top: ${spacing.default};
+  top: ${spacing.half};
   right: ${spacing.default};
   margin: 0;
   padding: 5px;
@@ -141,7 +159,7 @@ const CloseButtonStyled = styled('button')`
   box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.6);
   transition: transform 400ms ease, box-shadow 200ms ease;
 
-  @media (min-width: ${breakpoints.small}) {
+  @media (min-width: ${breakpoints.medium}) {
     top: -${spacing.default};
     right: -${spacing.default};
   }
@@ -163,16 +181,22 @@ const SearchResultsContainer = styled(animated.div)`
   position: absolute;
   height: auto;
   min-height: 100%;
-  top: ${156}px;
+  top: ${bannerMinHeight};
   left: 0;
   right: 0;
+  padding: 0;
   box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.5);
   background-color: ${colors.white};
 
-  @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
-    background-color: ${transparentizeHex(colors.white, 0.8)};
+  @media (min-width: ${breakpoints.medium}) {
+    top: ${bannerMinHeightMedium};
+    padding: ${spacing.double};
+
+    @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+      -webkit-backdrop-filter: blur(10px);
+      backdrop-filter: blur(10px);
+      background-color: ${transparentizeHex(colors.white, 0.8)};
+    }
   }
 `;
 
@@ -181,18 +205,62 @@ const SearchResultsStyled = styled('div')`
   flex-direction: column;
   align-items: center;
   position: relative;
-  background-color: ${transparentizeHex(colors.white, 0.9)};
   border-radius: ${layout.borderRadius};
-  padding: ${spacing.double} ${spacing.default};
+  padding-top: ${spacing.default};
   width: 100%;
 
-  @media (min-width: ${breakpoints.small}) {
-    margin: ${spacing.double};
-    padding: ${spacing.double};
-    width: auto;
-  }
+  @media (min-width: ${breakpoints.medium}) {
+    background-color: ${transparentizeHex(colors.white, 0.9)};
 
-  @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+    @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
+      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2);
+    }
+  }
+`;
+
+interface ImagesQueryData {
+  allMarkdownRemark: {
+    edges: {
+      node: {
+        id: string;
+        frontmatter: {
+          featuredimage: FancyImage;
+        };
+      };
+    }[];
+  };
+}
+
+const imagesQuery = graphql`
+  query {
+    allMarkdownRemark(
+      filter: {
+        frontmatter: { templateKey: { eq: "recept" }, hidden: { ne: true } }
+      }
+    ) {
+      edges {
+        node {
+          id
+          fields {
+            slug
+          }
+          frontmatter {
+            title
+            featuredimagetheme
+            featuredimage {
+              childImageSharp {
+                fluid(maxWidth: 600) {
+                  src
+                  srcSet
+                  aspectRatio
+                  sizes
+                  base64
+                }
+              }
+            }
+          }
+        }
+      }
+    }
   }
 `;

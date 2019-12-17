@@ -95,7 +95,7 @@ export const GridContainerStyled = styled('section')`
   display: flex;
   justify-content: center;
   padding: ${spacing.default};
-  background-color: ${tailwindColors.pink100};
+  /* background-color: ${tailwindColors.pink100}; */
 
   @media (min-width: ${breakpoints.small}) {
     padding: ${spacing.double};

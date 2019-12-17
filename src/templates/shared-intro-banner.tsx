@@ -70,8 +70,8 @@ const IntroBannerDarkOverlay = styled('div')`
   height: 100%;
 `;
 
-const bannerMinHeight = '14rem';
-const bannerMinHeightMedium = '18rem';
+export const bannerMinHeight = '14rem';
+export const bannerMinHeightMedium = '18rem';
 const IntroBannerWithFluidImage = styled(BackgroundImage)`
   display: flex;
   flex-direction: column;

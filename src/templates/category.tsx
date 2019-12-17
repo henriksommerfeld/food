@@ -12,7 +12,6 @@ import {
   LinkTitle,
   imageTransition,
 } from '../components/ImageLinkGrid';
-import { Theme } from 'constants';
 
 interface CategoryRouteProps {
   data: CategoryPageQueryData;

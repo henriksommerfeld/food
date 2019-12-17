@@ -90,31 +90,32 @@ const plugins = [
   {
     resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
     options: {
-      fields: [`title`, `date`, `tags`, `body`, `excerpt`],
+      fields: [
+        `title`,
+        `date`,
+        `category`,
+        `tags`,
+        `body`,
+        `featuredimagetheme`,
+      ],
       resolvers: {
         MarkdownRemark: {
           title: node => node.frontmatter.title,
           date: node => node.frontmatter.date,
           tags: node => node.frontmatter.tags,
+          category: node => node.frontmatter.category,
+          theme: node => node.frontmatter.featuredimagetheme,
           path: node => node.fields.slug,
           body: node =>
             remark()
               .use(stripMarkdown)
               .processSync(node.rawMarkdownBody).contents,
-          excerpt: node => {
-            const text = remark()
-              .use(stripMarkdown)
-              .processSync(node.rawMarkdownBody).contents;
-
-            const excerptLength = 140;
-            return String(text).substring(0, excerptLength) + '...';
-          },
         },
       },
       // Optional filter to limit indexed nodes
       filter: node =>
         node.frontmatter.hidden !== true &&
-        node.frontmatter.title !== 'Startsidan',
+        node.frontmatter.templateKey === 'recept',
     },
   },
   'gatsby-plugin-styled-components',
