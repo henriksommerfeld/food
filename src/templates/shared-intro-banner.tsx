@@ -6,16 +6,17 @@ import { getFluid } from '../images';
 import Searchbox from '../components/Searchbox';
 import { WindowLocation } from '@reach/router';
 import { BlogImage } from '../components/LazyImage';
+import StartPageLink from '../components/StartPageLink';
 
 interface SharedIntroBannerProps {
-  backgroundImage: BlogImage;
+  backgroundImage?: BlogImage;
   overlayOpacity?: number;
   location: WindowLocation;
   children: ReactNode;
 }
 
 export function SharedIntroBanner({
-  backgroundImage,
+  backgroundImage = null,
   overlayOpacity = 0.3,
   location,
   children,
@@ -37,7 +38,12 @@ function IntroBanner({ backgroundImage, overlayOpacity, children }) {
   const fluidImage = getFluid(backgroundImage);
 
   if (!fluidImage) {
-    return <IntroBannerSolidBackground>{children}</IntroBannerSolidBackground>;
+    return (
+      <IntroBannerSolidBackground>
+        <StartPageLink />
+        {children}
+      </IntroBannerSolidBackground>
+    );
   }
 
   return (
@@ -45,6 +51,7 @@ function IntroBanner({ backgroundImage, overlayOpacity, children }) {
       fluid={fluidImage}
       backgroundColor={colors.black}
     >
+      <StartPageLink />
       <IntroBannerDarkOverlay opacity={overlayOpacity}>
         {children}
       </IntroBannerDarkOverlay>

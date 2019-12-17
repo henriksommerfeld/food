@@ -119,7 +119,7 @@ const SearchBoxInput = styled('input')`
   z-index: ${zIndexes.searchBox};
   background-color: transparent;
   border: none;
-  caret-color: ${tailwindColors.pink700};
+  caret-color: ${tailwindColors.teal700};
   color: ${colors.black};
 `;
 

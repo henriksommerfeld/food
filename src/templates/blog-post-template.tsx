@@ -1,13 +1,13 @@
 import React from 'react';
 import Content from '../components/Content';
 import styled from 'styled-components';
-import { colors, spacing, breakpoints, layout } from '../constants';
+import { colors, spacing, breakpoints } from '../constants';
 import BlogPostTags from './blog-post-tags';
-import Searchbox from '../components/Searchbox';
 import { WindowLocation } from '@reach/router';
 import { PageStyled } from '../components/PageStyled';
 import { PostContainer } from '../components/PostContainer';
 import { PostStyled } from '../components/PostStyled';
+import { SharedIntroBanner } from './shared-intro-banner';
 
 interface BlogPostTemplateProps {
   content: string;
@@ -26,7 +26,6 @@ export default function BlogPostTemplate({
   tags,
   title,
   location,
-  isPreview = false,
 }: BlogPostTemplateProps) {
   const PostContent = contentComponent || Content;
   const dateString = date ? `Publicerat ${date}` : '';
@@ -34,13 +33,12 @@ export default function BlogPostTemplate({
   return (
     <>
       <PageStyled>
-        <IntroBanner>
-          {!isPreview && <Searchbox location={location} />}
-          <IntroBannerWidthConstrainer>
-            <Heading>{title}</Heading>
+        <SharedIntroBanner location={location}>
+          <IntroText>
+            <h1>{title}</h1>
             <PostDate>{dateString}</PostDate>
-          </IntroBannerWidthConstrainer>
-        </IntroBanner>
+          </IntroText>
+        </SharedIntroBanner>
         <PostContainer>
           <PostStyled>
             <PostContent content={content} />
@@ -60,31 +58,13 @@ const PostDate = styled('div')`
   }
 `;
 
-const IntroBannerWidthConstrainer = styled('div')`
-  max-width: ${layout.contentMaxWidth}px;
-  text-align: center;
-  padding: ${spacing.double} ${spacing.default};
-
-  @media (min-width: ${breakpoints.medium}) {
-    padding: ${spacing.introBannerExtra} ${spacing.double}
-      ${spacing.postBannerExtra} ${spacing.double};
-  }
-`;
-
-const IntroBanner = styled('div')`
-  background: ${colors.headerBackground};
+const IntroText = styled('div')`
+  color: ${colors.white};
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
-`;
-
-const Heading = styled.h1`
-  color: ${colors.white};
-  line-height: 1.4em;
-  word-break: break-word;
-
-  @media (min-width: ${breakpoints.medium}) {
-    transform: translateY(${spacing.postHeadingOffset});
-  }
+  padding-left: ${spacing.default};
+  padding-right: ${spacing.default};
+  text-align: center;
 `;

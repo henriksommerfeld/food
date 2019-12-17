@@ -75,13 +75,13 @@ const Page = styled('div')`
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position-x: center;
-  background-position-y: center;
+  background-position-y: 75%;
   background-size: 90%;
 
   @media (min-width: ${breakpoints.small}) {
     background-color: ${colors.pageBackground};
     background-position-x: 20%;
-    background-position-y: 40%;
+    background-position-y: 60%;
     background-size: 40%;
   }
 `;
