@@ -180,7 +180,7 @@ const SearchResultsContainer = styled(animated.div)`
   align-items: center;
   position: absolute;
   height: auto;
-  min-height: 100%;
+  min-height: ${`calc(100% + ${bannerMinHeight})`};
   top: ${bannerMinHeight};
   left: 0;
   right: 0;
