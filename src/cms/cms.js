@@ -1,6 +1,5 @@
 import CMS from 'netlify-cms-app';
 import BlogPostPreview from './preview-templates/BlogPostPreview';
-import IndexPagePreview from './preview-templates/IndexPagePreview';
 import previewStyles from './previewStyles';
 import withStyledComponents from './withStyledComponentsRendered';
 
@@ -13,7 +12,6 @@ if (isDevelopment) {
 }
 
 CMS.registerPreviewStyle(previewStyles, { raw: true });
-CMS.registerPreviewTemplate('index', withStyledComponents(IndexPagePreview));
-CMS.registerPreviewTemplate('blog', withStyledComponents(BlogPostPreview));
+//CMS.registerPreviewTemplate('recept', withStyledComponents(BlogPostPreview));
 
 CMS.init();

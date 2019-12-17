@@ -35,7 +35,7 @@ collections:
           label: 'Beskrivning',
           name: description,
           widget: string,
-          hint: '1-2 meningar som beskriver sidan för sökmotorer och visas när man delar en länk till sidan.',
+          hint: '1-2 meningar som visas när man delar en länk till sidan.',
           default: '',
           required: false,
         }
@@ -44,8 +44,85 @@ collections:
           name: 'hidden',
           widget: 'boolean',
           default: false,
-          hint: 'Om du vill spara utan att publicera kan du göra artikeln dold här.',
+          hint: 'Om du vill spara utan att publicera kan du göra receptet dolt här.',
         }
+      - {
+          label: 'Kategori',
+          name: 'category',
+          widget: 'select',
+          multiple: false,
+          options:
+            [
+              'Frukost',
+              'Förrätt',
+              'Huvudrätt',
+              'Sallad',
+              'Efterrätt',
+              'Bakning',
+            ],
+          default: ['Huvudrätt'],
+        }
+      - {
+          label: 'Ingredienser',
+          name: 'ingredients',
+          widget: 'list',
+          fields:
+            [
+              {
+                label: 'Delmoment, ex. "Sås"',
+                name: 'part-ingredients',
+                widget: 'object',
+                fields:
+                  [
+                    {
+                      label: 'Rubrik',
+                      name: 'part-ingredients-name',
+                      widget: 'string',
+                      required: false,
+                      hint: 'Underrubrik för ett delmoment, ex. "Aioli". Visas inte om det inte finns flera delmoment.',
+                    },
+                    {
+                      label: 'Ingredienslista, delmoment',
+                      name: 'part-ingredients-list',
+                      widget: 'list',
+                      fields:
+                        [
+                          {
+                            label: 'Ingrediens',
+                            name: 'ingredient',
+                            widget: 'object',
+                            fields:
+                              [
+                                {
+                                  label: 'Namn',
+                                  name: 'ingredient-name',
+                                  widget: 'string',
+                                },
+                                {
+                                  label: 'Mängd',
+                                  name: 'ingredient-amount',
+                                  widget: 'number',
+                                },
+                                {
+                                  label: 'Måttenhet',
+                                  name: 'unit',
+                                  widget: select,
+                                  options:
+                                    [
+                                      'Styck (st)',
+                                      'Deciliter (dl)',
+                                      'Centiliter (cl)',
+                                    ],
+                                },
+                              ],
+                          },
+                        ],
+                    },
+                  ],
+              },
+            ],
+        }
+
       - { label: 'Huvudinnehåll', name: 'body', widget: 'markdown' }
       - {
           label: 'Taggar',
@@ -53,4 +130,5 @@ collections:
           name: 'tags',
           widget: 'list',
           required: false,
+          hint: 'Taggarna är till för att kunna hitta andra recept taggade med samma sak, så ange inte få många.',
         }
