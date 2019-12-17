@@ -1,12 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {
-  spacing,
-  colors,
-  breakpoints,
-  links,
-  emailAddress,
-} from '../constants';
+import { spacing, colors, breakpoints, links } from '../constants';
 import { tailwindColors } from '../tailwind-colors';
 import EditSvg from '../../static/img/edit-filled.svg';
 import { Link } from 'gatsby';

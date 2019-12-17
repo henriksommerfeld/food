@@ -2,10 +2,10 @@ import React, { ReactNode } from 'react';
 import styled from 'styled-components';
 import { colors, breakpoints, spacing, layout } from '../constants';
 import tagBackground from '../../static/img/tag-bg.svg';
-import Searchbox from '../components/Searchbox';
 import { WindowLocation } from '@reach/router';
 import { transparentizeHex } from '../color-convertions';
 import { tailwindColors } from '../tailwind-colors';
+import DefaultBanner from '../components/DefaultBanner';
 
 interface TagsTemplateProps {
   children: ReactNode;
@@ -15,9 +15,7 @@ interface TagsTemplateProps {
 export function TagsTemplate({ children, location }: TagsTemplateProps) {
   return (
     <Page>
-      <Banner>
-        <Searchbox location={location} />
-      </Banner>
+      <DefaultBanner location={location} />
       <Text>
         <ContentBox>{children}</ContentBox>
       </Text>
@@ -45,12 +43,6 @@ const ContentBox = styled('div')`
       text-align: center;
     }
   }
-`;
-
-const Banner = styled('div')`
-  display: flex;
-  justify-content: center;
-  background-color: ${colors.headerBackground};
 `;
 
 const Text = styled('div')`

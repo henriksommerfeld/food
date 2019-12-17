@@ -1,11 +1,11 @@
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
-import { colors, breakpoints, spacing, layout } from '../constants';
+import { colors, breakpoints, layout } from '../constants';
 import BackgroundImage from 'gatsby-background-image';
 import { getFluid } from '../images';
 import Searchbox from '../components/Searchbox';
 import { WindowLocation } from '@reach/router';
-import { BlogImage } from 'components/LazyImage';
+import { BlogImage } from '../components/LazyImage';
 
 interface SharedIntroBannerProps {
   backgroundImage: BlogImage;

@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from 'react';
-import { Link, graphql, useStaticQuery } from 'gatsby';
+import { graphql, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
 import { colors, layout, spacing, breakpoints } from '../constants';
 import { transparentizeHex } from '../color-convertions';
@@ -11,7 +11,6 @@ import {
   SearchFocus,
 } from './Searchbox';
 import CloseSvg from '../../static/img/close.svg';
-import BlogPostSvg from '../../static/img/blog-post-grey500.svg';
 import { useEscKey } from '../useEscKey';
 import { useTransition, animated, config } from 'react-spring';
 import { LocationProp } from 'interfaces/LocationProp';

@@ -34,7 +34,7 @@ export default function TagRoute({
   const tagHeader = getHeader(tag, totalCount);
 
   return (
-    <Layout location={location} editLink="" pageTitle={tag}>
+    <Layout location={location} pageTitle={tag}>
       <TagsTemplate location={location}>
         <h1>{tag}</h1>
         <p>{tagHeader}</p>
@@ -52,7 +52,7 @@ export default function TagRoute({
 function getHeader(tag: string, count: number) {
   return (
     <>
-      {count} inlägg tagg{count === 1 ? 'at' : 'de'} med <q>{tag}</q>
+      {count} recept tagg{count === 1 ? 'at' : 'de'} med <q>{tag}</q>
     </>
   );
 }
