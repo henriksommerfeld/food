@@ -63,7 +63,26 @@ collections:
           default: ['Huvudrätt'],
         }
       - {
-          label: 'Ingredienser',
+          label: 'Bild',
+          name: 'featuredimage',
+          widget: 'image',
+          hint: 'Det behövs en bild, men du kan välja en standardbild i biblioteket.',
+        }
+      - {
+          label: 'Tema för bildtext',
+          name: 'featuredimagetheme',
+          widget: 'select',
+          options: [{ label: 'Ljus', value: 1 }, { label: 'Mörk', value: 2 }],
+          hint: 'Ange om den valda bilden är mörk eller ljus i nederkant.',
+        }
+      - {
+          label: 'Portioner/antal',
+          name: 'servings',
+          widget: number,
+          hint: 'Ange hur många portioner receptet är tänkt för. Är det mer lämpligt att ange antal, ex. 20 bullar, ange då 20 och skriv något om detta i beskrivningen ovan.',
+        }
+      - {
+          label: 'Delmoment med ingredienser',
           name: 'ingredients',
           widget: 'list',
           fields:
@@ -94,14 +113,10 @@ collections:
                             fields:
                               [
                                 {
-                                  label: 'Namn',
-                                  name: 'ingredient-name',
-                                  widget: 'string',
-                                },
-                                {
                                   label: 'Mängd',
                                   name: 'ingredient-amount',
                                   widget: 'number',
+                                  valueType: 'float',
                                 },
                                 {
                                   label: 'Måttenhet',
@@ -113,6 +128,11 @@ collections:
                                       'Deciliter (dl)',
                                       'Centiliter (cl)',
                                     ],
+                                },
+                                {
+                                  label: 'Namn',
+                                  name: 'ingredient-name',
+                                  widget: 'string',
                                 },
                               ],
                           },
