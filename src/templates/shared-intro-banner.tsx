@@ -10,6 +10,7 @@ import StartPageLink from '../components/StartPageLink';
 
 interface SharedIntroBannerProps {
   backgroundImage?: BlogImage;
+  backgroundColor?: string;
   overlayOpacity?: number;
   location: WindowLocation;
   children: ReactNode;
@@ -17,6 +18,7 @@ interface SharedIntroBannerProps {
 
 export function SharedIntroBanner({
   backgroundImage = null,
+  backgroundColor = null,
   overlayOpacity = 0.3,
   location,
   children,
@@ -24,6 +26,7 @@ export function SharedIntroBanner({
   return (
     <IntroBanner
       backgroundImage={backgroundImage}
+      backgroundColor={backgroundColor}
       overlayOpacity={overlayOpacity}
     >
       <IntroBannerWidthConstrainer>
@@ -34,12 +37,17 @@ export function SharedIntroBanner({
   );
 }
 
-function IntroBanner({ backgroundImage, overlayOpacity, children }) {
+function IntroBanner({
+  backgroundImage,
+  backgroundColor,
+  overlayOpacity,
+  children,
+}) {
   const fluidImage = getFluid(backgroundImage);
 
   if (!fluidImage) {
     return (
-      <IntroBannerSolidBackground>
+      <IntroBannerSolidBackground backgroundColor={backgroundColor}>
         <StartPageLink />
         {children}
       </IntroBannerSolidBackground>
@@ -60,7 +68,8 @@ function IntroBanner({ backgroundImage, overlayOpacity, children }) {
 }
 
 const IntroBannerSolidBackground = styled('div')`
-  background-color: ${colors.headerBackground};
+  background-color: ${({ backgroundColor }) =>
+    backgroundColor ? backgroundColor : colors.headerBackground};
   display: flex;
   flex-direction: column;
   justify-content: center;

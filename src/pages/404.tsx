@@ -7,6 +7,7 @@ import { graphql, useStaticQuery } from 'gatsby';
 import { getFluid } from '../images';
 import Searchbox from '../components/Searchbox';
 import { LocationProp } from '../interfaces/LocationProp';
+import { SharedIntroBanner } from '../templates/shared-intro-banner';
 
 export default function NotFoundPage({ location }: LocationProp) {
   const data = useStaticQuery(backgroundImageQuery);
@@ -21,14 +22,16 @@ export default function NotFoundPage({ location }: LocationProp) {
         className="lost-background"
       >
         <PageContent>
-          <Banner>
-            <Searchbox location={location} />
-          </Banner>
+          <SharedIntroBanner location={location} backgroundColor="transparent">
+            <Text>
+              <h1>Gått vilse?</h1>
+            </Text>
+          </SharedIntroBanner>
           <Text>
-            <h1>Gått vilse?</h1>
             <Description>
-              Det finns inget på den här adressen, men använd menyn så hittar du
-              säkert rätt.
+              Det finns inget på den här adressen, men använd sökfunktionen
+              eller länken till startsidan (🏠) i övre vänstra hörnet så hittar
+              du nog rätt.
             </Description>
           </Text>
         </PageContent>
@@ -65,12 +68,6 @@ const backgroundImageQuery = graphql`
   }
 `;
 
-const Banner = styled('div')`
-  display: flex;
-  justify-content: center;
-  width: 100%;
-`;
-
 const Description = styled('p')`
   font-size: 1.2rem;
   padding-top: 2rem;
@@ -82,31 +79,32 @@ const Text = styled('div')`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding: ${spacing.double} ${spacing.default};
+
+  p {
+    padding: ${spacing.double} ${spacing.default};
+  }
 
   @media (min-width: ${breakpoints.small}) {
-    padding: ${spacing.double};
-
     h1 {
       font-size: 2rem;
       text-shadow: 0 0 2px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 255, 255, 0.7);
     }
 
     p {
+      padding: ${spacing.double};
       font-size: 1.5rem;
       text-shadow: 0 0 2px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 255, 255, 0.7);
     }
   }
 
   @media (min-width: ${breakpoints.medium}) {
-    padding: ${spacing.notFoundBannerExtra};
-
     h1 {
       font-size: 2.5rem;
       text-shadow: 0 0 2px rgba(0, 0, 0, 0.5), 0 0 30px rgba(255, 255, 255, 0.7);
     }
 
     p {
+      padding: ${spacing.notFoundBannerExtra};
       font-size: 2rem;
       text-shadow: 0 0 2px rgba(0, 0, 0, 0.5), 0 0 20px rgba(255, 255, 255, 0.7);
     }
