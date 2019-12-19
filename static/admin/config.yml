@@ -29,6 +29,14 @@ collections:
           widget: 'hidden',
           default: 'recept',
         }
+      - {
+          label: 'Datum',
+          name: 'date',
+          widget: 'hidden',
+          dateFormat: 'YYYY-MM-DD',
+          timeFormat: 'HH:mm',
+          default: null,
+        }
       - { label: 'URL', name: 'url', widget: 'hidden', default: '' }
       - { label: 'Titel', name: 'title', widget: 'string' }
       - {
@@ -60,7 +68,8 @@ collections:
               'Efterrätt',
               'Bakning',
             ],
-          default: ['Huvudrätt'],
+          default: 'Huvudrätt',
+          hint: 'Kategorin blir Huvudrätt om inget anges. Välj detta om inget annat passar in.',
         }
       - {
           label: 'Bild',
@@ -72,6 +81,7 @@ collections:
           label: 'Tema för bildtext',
           name: 'featuredimagetheme',
           widget: 'select',
+          default: { label: 'Ljus', value: 1 },
           options: [{ label: 'Ljus', value: 1 }, { label: 'Mörk', value: 2 }],
           hint: 'Ange om den valda bilden är mörk eller ljus i nederkant.',
         }
@@ -79,30 +89,38 @@ collections:
           label: 'Portioner/antal',
           name: 'servings',
           widget: number,
+          min: 0,
           hint: 'Ange hur många portioner receptet är tänkt för. Är det mer lämpligt att ange antal, ex. 20 bullar, ange då 20 och skriv något om detta i beskrivningen ovan.',
         }
       - {
-          label: 'Delmoment med ingredienser',
+          label: 'Portioner eller annat',
+          name: 'servingslabel',
+          widget: 'string',
+          default: 'portioner',
+          hint: '"portioner" används om inget anges. Ex. "bullar", "liter"',
+        }
+      - {
+          label: 'Grupper av ingredienser',
           name: 'ingredients',
           widget: 'list',
           fields:
             [
               {
                 label: 'Delmoment, ex. "Sås"',
-                name: 'part-ingredients',
+                name: 'partingredients',
                 widget: 'object',
                 fields:
                   [
                     {
                       label: 'Rubrik',
-                      name: 'part-ingredients-name',
+                      name: 'partingredientsname',
                       widget: 'string',
                       required: false,
                       hint: 'Underrubrik för ett delmoment, ex. "Aioli". Visas inte om det inte finns flera delmoment.',
                     },
                     {
                       label: 'Ingredienslista, delmoment',
-                      name: 'part-ingredients-list',
+                      name: 'partingredientslist',
                       widget: 'list',
                       fields:
                         [
@@ -131,7 +149,7 @@ collections:
                                 },
                                 {
                                   label: 'Namn',
-                                  name: 'ingredient-name',
+                                  name: 'ingredientname',
                                   widget: 'string',
                                 },
                               ],
@@ -144,6 +162,57 @@ collections:
         }
 
       - { label: 'Huvudinnehåll', name: 'body', widget: 'markdown' }
+      - {
+          label: 'Väntetid',
+          name: 'timepassive',
+          widget: 'object',
+          fields:
+            [
+              {
+                label: 'Dagar',
+                name: 'dayspassive',
+                widget: number,
+                default: 0,
+                min: 0,
+              },
+              {
+                label: 'Timmar',
+                name: 'hourspassive',
+                widget: number,
+                default: 0,
+                min: 0,
+              },
+              {
+                label: 'Minuter',
+                name: 'minutespassive',
+                widget: number,
+                default: 0,
+                min: 0,
+              },
+            ],
+        }
+      - {
+          label: 'Aktiv tillagningstid',
+          name: 'timeactive',
+          widget: 'object',
+          fields:
+            [
+              {
+                label: 'Timmar',
+                name: 'hoursactive',
+                widget: number,
+                default: 0,
+                min: 0,
+              },
+              {
+                label: 'Minuter',
+                name: 'minutesactive',
+                widget: number,
+                default: 0,
+                min: 0,
+              },
+            ],
+        }
       - {
           label: 'Taggar',
           label_singular: 'Tagg',

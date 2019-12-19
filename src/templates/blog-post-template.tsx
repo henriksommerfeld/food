@@ -36,7 +36,6 @@ export default function BlogPostTemplate({
         <SharedIntroBanner location={location}>
           <IntroText>
             <h1>{title}</h1>
-            <PostDate>{dateString}</PostDate>
           </IntroText>
         </SharedIntroBanner>
         <PostContainer>
