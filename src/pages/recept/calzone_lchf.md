@@ -1,7 +1,7 @@
 ---
 templateKey: recept
 url: ''
-date: 2017-05-19T06:33:48.535Z
+date: 2019-12-19T06:33:48.535Z
 title: Calzone (LCHF)
 description: God och enkel Calzone som görs i stekpanna.
 hidden: false

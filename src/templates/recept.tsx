@@ -23,6 +23,7 @@ export default function Recept({ data, ...props }) {
         date={frontmatter.date}
         tags={tags}
         title={frontmatter.title}
+        category={frontmatter.category}
         location={props.location}
       />
     </Layout>
@@ -40,6 +41,7 @@ export const pageQuery = graphql`
         title
         tags
         description
+        category
       }
     }
   }

@@ -79,6 +79,34 @@ export enum Theme {
   dark = 2,
 }
 
+export interface CategoryBanner {
+  title: string;
+  imageName: string;
+}
+
+export const categoryBanners: CategoryBanner[] = [
+  {
+    title: 'Frukost',
+    imageName: 'breakfast-hero',
+  },
+  {
+    title: 'Förrätt',
+    imageName: 'dessert-hero',
+  },
+  {
+    title: 'Huvudrätt',
+    imageName: 'main-hero',
+  },
+  {
+    title: 'Efterrätt',
+    imageName: 'dessert-hero',
+  },
+  {
+    title: 'Bakning',
+    imageName: 'baking-hero',
+  },
+];
+
 export interface NavLink {
   url: string;
   title: string;

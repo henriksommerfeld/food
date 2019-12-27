@@ -17,6 +17,7 @@ import { LocationProp } from 'interfaces/LocationProp';
 import {
   bannerMinHeightMedium,
   bannerMinHeight,
+  bannerMinHeightXs,
 } from '../templates/shared-intro-banner';
 import {
   GridContainerStyled,
@@ -180,12 +181,16 @@ const SearchResultsContainer = styled(animated.div)`
   position: absolute;
   height: auto;
   min-height: ${`calc(100% + ${bannerMinHeight})`};
-  top: ${bannerMinHeight};
+  top: ${`calc(3rem + ${bannerMinHeight})`};
   left: 0;
   right: 0;
   padding: 0;
   box-shadow: 0px 20px 40px rgba(0, 0, 0, 0.5);
   background-color: ${colors.white};
+
+  @media (min-width: ${breakpoints.xs}) {
+    top: ${bannerMinHeight};
+  }
 
   @media (min-width: ${breakpoints.medium}) {
     top: ${bannerMinHeightMedium};

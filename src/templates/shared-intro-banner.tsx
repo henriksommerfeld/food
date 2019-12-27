@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
-import { colors, breakpoints, layout } from '../constants';
+import { colors, breakpoints, layout, spacing } from '../constants';
 import BackgroundImage from 'gatsby-background-image';
 import { getFluid } from '../images';
 import Searchbox from '../components/Searchbox';
@@ -74,6 +74,11 @@ const IntroBannerSolidBackground = styled('div')`
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding-top: 3rem;
+
+  @media (min-width: ${breakpoints.xs}) {
+    padding-top: initial;
+  }
 `;
 
 const IntroBannerDarkOverlay = styled('div')`
