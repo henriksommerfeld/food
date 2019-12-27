@@ -104,6 +104,7 @@ const Metadata = styled('section')`
   display: grid;
   grid-gap: ${spacing.half};
   grid-template-columns: auto;
+  margin-bottom: ${spacing.default};
 
   @media (min-width: ${breakpoints.small}) {
     grid-template-columns: auto auto auto;

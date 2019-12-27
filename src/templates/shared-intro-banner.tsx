@@ -89,6 +89,11 @@ const IntroBannerDarkOverlay = styled('div')`
   background-color: rgba(0, 0, 0, ${({ opacity }) => opacity});
   width: 100%;
   height: 100%;
+  padding-top: 3rem;
+
+  @media (min-width: ${breakpoints.xs}) {
+    padding-top: initial;
+  }
 `;
 
 export const bannerMinHeight = '14rem';

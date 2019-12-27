@@ -23,7 +23,7 @@ export default function RecipeBanner({
   return (
     <SharedIntroBanner
       backgroundImage={backgroundImage}
-      overlayOpacity={0.4}
+      overlayOpacity={0.6}
       location={location}
     >
       {children}
