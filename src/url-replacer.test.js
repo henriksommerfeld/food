@@ -1,6 +1,6 @@
 const {
   removeBlogFromUrl,
-  editBlogUrlFromAbsolutePath,
+  editRecipeUrlFromAbsolutePath: editBlogUrlFromAbsolutePath,
 } = require('./url-replacer');
 
 describe('removeBlogFromUrl', () => {

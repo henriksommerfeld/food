@@ -132,9 +132,10 @@ collections:
                               [
                                 {
                                   label: 'Mängd',
-                                  name: 'ingredient-amount',
+                                  name: 'ingredientamount',
                                   widget: 'number',
                                   valueType: 'float',
+                                  min: 0,
                                 },
                                 {
                                   label: 'Måttenhet',
@@ -142,9 +143,16 @@ collections:
                                   widget: select,
                                   options:
                                     [
-                                      'Styck (st)',
-                                      'Deciliter (dl)',
-                                      'Centiliter (cl)',
+                                      { label: 'Styck (st)', value: 'st' },
+                                      { label: 'Liter (l)', value: 'l' },
+                                      { label: 'Deciliter (dl)', value: 'dl' },
+                                      { label: 'Centiliter (cl)', value: 'cl' },
+                                      { label: 'Milliliter (ml)', value: 'ml' },
+                                      { label: 'Matsked (msk)', value: 'msk' },
+                                      { label: 'Tesked (tsk)', value: 'tsk' },
+                                      { label: 'Gram (g)', value: 'g' },
+                                      { label: 'Hekto (hg)', value: 'hg' },
+                                      { label: 'Kilo (kg)', value: 'kg' },
                                     ],
                                 },
                                 {
@@ -160,8 +168,49 @@ collections:
               },
             ],
         }
-
-      - { label: 'Huvudinnehåll', name: 'body', widget: 'markdown' }
+      - {
+          label: 'Grupper av instruktioner',
+          name: 'instructions',
+          widget: 'list',
+          fields:
+            [
+              {
+                label: 'Grupp av instruktioner',
+                name: 'partinstructions',
+                widget: 'object',
+                fields:
+                  [
+                    {
+                      label: 'Rubrik',
+                      name: partinstructionsname,
+                      widget: string,
+                      required: false,
+                      hint: 'Ex. "Sås". Kan lämnas tom om det bara finns ett moment.',
+                    },
+                    {
+                      label: 'Instruktioner för delmoment',
+                      name: 'partinstructionslist',
+                      widget: 'list',
+                      fields:
+                        [
+                          {
+                            label: 'Instruktion',
+                            name: instruction,
+                            widget: 'string',
+                            buttons: ['bold', 'italic', 'link'],
+                          },
+                        ],
+                    },
+                  ],
+              },
+            ],
+        }
+      - {
+          label: 'Avslutande ord',
+          name: 'body',
+          widget: 'markdown',
+          buttons: ['bold', 'italic', 'link'],
+        }
       - {
           label: 'Väntetid',
           name: 'timepassive',

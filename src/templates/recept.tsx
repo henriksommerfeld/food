@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import { HTMLContent } from '../components/Content';
 import BlogPostTemplate from './blog-post-template';
-import { editBlogUrlFromAbsolutePath } from '../url-replacer';
+import { editRecipeUrlFromAbsolutePath } from '../url-replacer';
 
 export default function Recept({ data, ...props }) {
   const { markdownRemark: post } = data;
@@ -15,7 +15,7 @@ export default function Recept({ data, ...props }) {
       location={props.location}
       pageTitle={frontmatter.title}
       pageDescription={frontmatter.description}
-      editLink={editBlogUrlFromAbsolutePath(post.fileAbsolutePath)}
+      editLink={editRecipeUrlFromAbsolutePath(post.fileAbsolutePath)}
     >
       <BlogPostTemplate
         content={post.html}

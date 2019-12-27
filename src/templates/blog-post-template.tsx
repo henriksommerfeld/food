@@ -36,10 +36,20 @@ export default function BlogPostTemplate({
         <SharedIntroBanner location={location}>
           <IntroText>
             <h1>{title}</h1>
+            {/* TODO: Minska textstorleken i mobil */}
           </IntroText>
         </SharedIntroBanner>
         <PostContainer>
           <PostStyled>
+            <ol>
+              <li>Description</li>
+              <li>Image (if not default image)</li>
+              <li>Cooking time</li>
+              <li>Portions</li>
+              <li>Ingredients</li>
+              <li>Instructions</li>
+              <li>Final text in markdown and possible embedded images</li>
+            </ol>
             <PostContent content={content} />
             <BlogPostTags tags={tags} />
           </PostStyled>
