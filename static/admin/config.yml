@@ -197,7 +197,6 @@ collections:
                             label: 'Instruktion',
                             name: instruction,
                             widget: 'string',
-                            buttons: ['bold', 'italic', 'link'],
                           },
                         ],
                     },

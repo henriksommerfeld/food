@@ -11,34 +11,28 @@ import ClockSvg from '../../static/img/clock.svg';
 import ClockWaitSvg from '../../static/img/clock-wait.svg';
 import ServingsSvg from '../../static/img/servings.svg';
 import RecipeBanner from '../components/RecipeBanner';
+import { Recipe } from '../interfaces/Recipe';
+import Error from '../components/Error';
 
 interface RecipeTemplateProps {
-  content: string;
+  recipie: Recipe;
   contentComponent: any;
-  date: string;
-  tags: string[] | undefined;
-  title: string;
-  category: string;
   location: WindowLocation;
-  isPreview?: boolean;
 }
 
 export default function RecipeTemplate({
-  content,
+  recipie,
   contentComponent,
-  date,
-  tags,
-  title,
-  category,
   location,
 }: RecipeTemplateProps) {
   const PostContent = contentComponent || Content;
-  const dateString = date ? `Publicerat ${date}` : '';
+
+  if (!recipie) return <Error />;
 
   return (
     <>
       <PageStyled>
-        <RecipeBanner location={location} category={category}>
+        <RecipeBanner location={location} category={recipie.category}>
           <IntroText>
             <h1>Annas saftiga lussebullar med kesella</h1>
             {/* <h1>{title}</h1> */}
@@ -47,10 +41,19 @@ export default function RecipeTemplate({
         </RecipeBanner>
         <PostContainer>
           <PostStyled>
+            <Description>
+              Vårt mest populära recept på lussebullar med kesella i degen. Ger
+              saftiga och hållbara lussebullar!
+            </Description>
+
             <Metadata>
               <MetadataItem>
                 <TimeIcon src={ClockSvg} alt="" />
-                Tillagning: 30 min
+                Tillagning:{' '}
+                {recipie.cookingTime.active.hours > 0
+                  ? `${recipie.cookingTime.active.hours} tim`
+                  : ''}{' '}
+                {recipie.cookingTime.active.minutes} min
               </MetadataItem>
               <MetadataItem>
                 <TimeIcon
@@ -65,11 +68,8 @@ export default function RecipeTemplate({
                 30 bullar 🥯
               </MetadataItem>
             </Metadata>
-            <Description>
-              Vårt mest populära recept på lussebullar med kesella i degen. Ger
-              saftiga och hållbara lussebullar!
-            </Description>
-            <section>
+
+            <Ingredients>
               <h2>Du behöver:</h2>
               <h3>Annas saftiga lussebullar</h3>
               <ul>
@@ -88,7 +88,7 @@ export default function RecipeTemplate({
                 <li>1 ägg</li>
                 <li>1 msk mjölk</li>
               </ul>
-            </section>
+            </Ingredients>
             <section>
               <h2>Gör så här:</h2>
               <ol>
@@ -147,8 +147,8 @@ export default function RecipeTemplate({
               <li>Instructions</li>
               <li>Final text in markdown and possible embedded images</li>
             </ol> */}
-            <PostContent content={content} />
-            <RecipeTags tags={tags} />
+            <PostContent content={recipie.body} />
+            <RecipeTags tags={recipie.tags} />
           </PostStyled>
         </PostContainer>
       </PageStyled>
@@ -183,14 +183,8 @@ const Metadata = styled('section')`
   }
 `;
 
-const Description = styled('div')``;
-
-const PostDate = styled('div')`
-  color: ${colors.postDate};
-
-  @media (min-width: ${breakpoints.medium}) {
-    transform: translateY(${spacing.postHeadingOffset});
-  }
+const Description = styled('div')`
+  margin-bottom: ${spacing.default};
 `;
 
 const IntroText = styled('div')`
