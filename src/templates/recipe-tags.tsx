@@ -5,11 +5,11 @@ import { spacing } from '../constants';
 import TagSvg from '../../static/img/tag-grey500.svg';
 import { getTagRouteUrl } from '../tags-parser';
 
-interface BlogPostTags {
+interface RecipeTags {
   tags: string[];
 }
 
-export default function BlogPostTags({ tags = [] }: BlogPostTags) {
+export default function RecipeTags({ tags = [] }: RecipeTags) {
   const numberOfTags = tags.length;
   if (numberOfTags < 1) return null;
 

@@ -2,14 +2,14 @@ import React from 'react';
 import Content from '../components/Content';
 import styled from 'styled-components';
 import { colors, spacing, breakpoints } from '../constants';
-import BlogPostTags from './blog-post-tags';
+import RecipeTags from './recipe-tags';
 import { WindowLocation } from '@reach/router';
 import { PageStyled } from '../components/PageStyled';
 import { PostContainer } from '../components/PostContainer';
 import { PostStyled } from '../components/PostStyled';
 import { SharedIntroBanner } from './shared-intro-banner';
 
-interface BlogPostTemplateProps {
+interface RecipeTemplateProps {
   content: string;
   contentComponent: any;
   date: string;
@@ -19,14 +19,14 @@ interface BlogPostTemplateProps {
   isPreview?: boolean;
 }
 
-export default function BlogPostTemplate({
+export default function RecipeTemplate({
   content,
   contentComponent,
   date,
   tags,
   title,
   location,
-}: BlogPostTemplateProps) {
+}: RecipeTemplateProps) {
   const PostContent = contentComponent || Content;
   const dateString = date ? `Publicerat ${date}` : '';
 
@@ -51,7 +51,7 @@ export default function BlogPostTemplate({
               <li>Final text in markdown and possible embedded images</li>
             </ol>
             <PostContent content={content} />
-            <BlogPostTags tags={tags} />
+            <RecipeTags tags={tags} />
           </PostStyled>
         </PostContainer>
       </PageStyled>

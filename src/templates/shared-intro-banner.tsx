@@ -5,11 +5,11 @@ import BackgroundImage from 'gatsby-background-image';
 import { getFluid } from '../images';
 import Searchbox from '../components/Searchbox';
 import { WindowLocation } from '@reach/router';
-import { BlogImage } from '../components/LazyImage';
+import { RecipeImage } from '../components/LazyImage';
 import StartPageLink from '../components/StartPageLink';
 
 interface SharedIntroBannerProps {
-  backgroundImage?: BlogImage;
+  backgroundImage?: RecipeImage;
   backgroundColor?: string;
   overlayOpacity?: number;
   location: WindowLocation;

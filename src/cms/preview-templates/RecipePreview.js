@@ -1,7 +1,7 @@
 import React from 'react';
-import BlogPostTemplate from '../../templates/blog-post-template';
+import RecipeTemplate from '../../templates/recipe-template';
 
-const BlogPostPreview = ({ entry, widgetFor }) => {
+const RecipePreview = ({ entry, widgetFor }) => {
   const date = entry.getIn(['data', 'date']) || new Date();
   const tagsRaw = entry.getIn(['data', 'tags']);
 
@@ -10,7 +10,7 @@ const BlogPostPreview = ({ entry, widgetFor }) => {
   const formattedDate = date.toLocaleDateString('sv', options);
 
   return (
-    <BlogPostTemplate
+    <RecipeTemplate
       content={widgetFor('body')}
       date={formattedDate}
       tags={tags}
@@ -20,4 +20,4 @@ const BlogPostPreview = ({ entry, widgetFor }) => {
   );
 };
 
-export default BlogPostPreview;
+export default RecipePreview;

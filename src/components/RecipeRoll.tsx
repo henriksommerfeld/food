@@ -5,19 +5,19 @@ import {
   MarkdownRemarkConnection,
   MarkdownRemarkEdge,
 } from '../../auto-generated/graphql';
-import BlogRollItem from './BlogRollItem';
+import RecipeRollItem from './RecipeRollItem';
 import { colors, spacing, breakpoints, layout } from '../constants';
 import MorePostsButton from './MorePostsButton';
 
-interface BlogRoll {
+interface RecipeRoll {
   allMarkdownRemark: MarkdownRemarkConnection;
 }
 
-export default function BlogRoll(): ReactElement {
-  const sesstionStorageKey = 'blogroll';
+export default function RecipeRoll(): ReactElement {
+  const sesstionStorageKey = 'reciperoll';
   const postsPerPage = 5;
 
-  const data = useStaticQuery<BlogRoll>(blogRollQuery);
+  const data = useStaticQuery<RecipeRoll>(recipeRollQuery);
   const { edges: posts } = data && data.allMarkdownRemark;
   const postsToShowCount = getPostsToShowCount(posts);
   const [postsShown, setPostsShown] = useState(postsToShowCount);
@@ -25,13 +25,13 @@ export default function BlogRoll(): ReactElement {
   if (!posts) return null;
 
   return (
-    <BlogRollStyled className="blog-roll">
-      {getPostsToShow().map(({ node: post }) => BlogRollItem(post))}
+    <RecipeRollStyled className="recipe-roll">
+      {getPostsToShow().map(({ node: post }) => RecipeRollItem(post))}
 
       {posts.length > postsShown ? (
         <MorePostsButton clickedHandler={loadMorePostsClicked} />
       ) : null}
-    </BlogRollStyled>
+    </RecipeRollStyled>
   );
 
   function getPostsToShow(): MarkdownRemarkEdge[] {
@@ -64,7 +64,7 @@ export default function BlogRoll(): ReactElement {
   }
 }
 
-const BlogRollStyled = styled('div')`
+const RecipeRollStyled = styled('div')`
   background-color: ${colors.white};
 
   @media (min-width: ${breakpoints.medium}) {
@@ -75,8 +75,8 @@ const BlogRollStyled = styled('div')`
   }
 `;
 
-const blogRollQuery = graphql`
-  query BlogRollQuery {
+const recipeRollQuery = graphql`
+  query RecipeRollQuery {
     allMarkdownRemark(
       sort: { order: DESC, fields: [frontmatter___date] }
       filter: {

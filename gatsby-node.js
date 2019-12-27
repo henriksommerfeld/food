@@ -7,7 +7,6 @@ const path = require('path');
 const { createFilePath } = require('gatsby-source-filesystem');
 const { fmImagesToRelative } = require('gatsby-remark-relative-images');
 const { getUniqueTags, getTagRouteUrl } = require('./src/tags-parser');
-const { removeBlogFromUrl } = require('./src/url-replacer');
 const { categoryLinks } = require('./src/constants');
 
 function getFileFrom(templateKey) {
@@ -118,11 +117,10 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
   if (node.internal.type === `MarkdownRemark`) {
     const filePath = node.frontmatter.url || createFilePath({ node, getNode });
-    const route = removeBlogFromUrl(filePath);
     createNodeField({
       name: `slug`,
       node,
-      value: route,
+      value: filePath,
     });
   }
 };

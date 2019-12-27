@@ -6,10 +6,10 @@ export interface FancyImage {
   childImageSharp: GatsbyImageProps;
 }
 
-export type BlogImage = FancyImage | string;
+export type RecipeImage = FancyImage | string;
 
 export interface LazyImageProps {
-  image: BlogImage;
+  image: RecipeImage;
   style?: any;
   imgStyle?: any;
   altText?: string;

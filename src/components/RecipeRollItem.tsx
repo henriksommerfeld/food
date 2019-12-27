@@ -5,7 +5,7 @@ import { MarkdownRemark } from '../../auto-generated/graphql';
 import styled from 'styled-components';
 import { fonts, colors, spacing } from '../constants';
 
-export default function BlogRollItem(post: MarkdownRemark) {
+export default function RecipeRollItem(post: MarkdownRemark) {
   if (!post || !post.frontmatter) return null;
 
   const frontmatter = post.frontmatter;

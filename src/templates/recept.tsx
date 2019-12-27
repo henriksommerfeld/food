@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import { HTMLContent } from '../components/Content';
-import BlogPostTemplate from './blog-post-template';
+import RecipeTemplate from './recipe-template';
 import { editRecipeUrlFromAbsolutePath } from '../url-replacer';
 
 export default function Recept({ data, ...props }) {
@@ -17,7 +17,7 @@ export default function Recept({ data, ...props }) {
       pageDescription={frontmatter.description}
       editLink={editRecipeUrlFromAbsolutePath(post.fileAbsolutePath)}
     >
-      <BlogPostTemplate
+      <RecipeTemplate
         content={post.html}
         contentComponent={HTMLContent}
         date={frontmatter.date}
@@ -30,7 +30,7 @@ export default function Recept({ data, ...props }) {
 }
 
 export const pageQuery = graphql`
-  query BlogPostByID($id: String!) {
+  query RecipeByID($id: String!) {
     markdownRemark(id: { eq: $id }) {
       id
       html
