@@ -7,7 +7,6 @@ import { WindowLocation } from '@reach/router';
 import { PageStyled } from '../components/PageStyled';
 import { PostContainer } from '../components/PostContainer';
 import { PostStyled } from '../components/PostStyled';
-import { SharedIntroBanner } from './shared-intro-banner';
 import ClockSvg from '../../static/img/clock.svg';
 import ClockWaitSvg from '../../static/img/clock-wait.svg';
 import ServingsSvg from '../../static/img/servings.svg';
@@ -70,6 +69,29 @@ export default function RecipeTemplate({
               Vårt mest populära recept på lussebullar med kesella i degen. Ger
               saftiga och hållbara lussebullar!
             </Description>
+            <section>
+              <h2>Du behöver:</h2>
+              <h3>Annas saftiga lussebullar</h3>
+              <ul>
+                <li>50 g jäst</li>
+                <li>5 dl standardmjölk</li>
+                <li>150 g smör</li>
+                <li>250 g kvarg</li>
+                <li>2 dl strösocker</li>
+                <li>1 g saffran [2 förp]</li>
+                <li>1 tsk salt</li>
+                <li>16 dl vetemjöl, ev lite mer</li>
+                <li>russin</li>
+              </ul>
+              <h3>Pensling</h3>
+              <ul>
+                <li>1 ägg</li>
+                <li>1 msk mjölk</li>
+              </ul>
+            </section>
+            <section>
+              <h2>Gör så här:</h2>
+            </section>
             {/* <ol>
               <li>Description</li>
               <li>Image (if not default image)</li>
