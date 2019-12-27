@@ -62,7 +62,7 @@ export default function RecipeTemplate({
               </MetadataItem>
               <MetadataItem>
                 <TimeIcon src={ServingsSvg} alt="" />
-                30 bullar
+                30 bullar 🥯
               </MetadataItem>
             </Metadata>
             <Description>
@@ -91,6 +91,52 @@ export default function RecipeTemplate({
             </section>
             <section>
               <h2>Gör så här:</h2>
+              <ol>
+                <li>
+                  Värm smör och mjölk i en kastrull till 37 grader
+                  (fingervarmt).
+                </li>
+                <li>
+                  Smula ner jästen i en rymlig bunke. Häll lite av den ljumma
+                  mjölkblandningen i bunken och blanda tills all jästen löst
+                  sig. Blanda i resten av vätskan.
+                </li>
+                <li>Blanda ner kesella, saffran, socker och salt.</li>
+                <li>
+                  Tillsätt nästan allt mjölet, gärna lite i taget och arbeta
+                  degen smidig. Tillsätt mer mjöl om det behövs.
+                </li>
+                <li>
+                  Täck över degen med en duk och låt jäsa i rumstemperatur cirka
+                  60 minuter.
+                </li>
+                <li>
+                  Lyft upp degen på ett mjölat bakbord och knåda den några
+                  minuter.
+                </li>
+                <li>
+                  Dela degen i cirka 30 bitar. Rulla sen bitarna till längder,
+                  cirka 2 centimeter i diameter.
+                </li>
+                <li>
+                  Snurra ändarna åt varsitt in mot mitten och lägg dem på en
+                  plåt som är smord eller klädd med bakplåtspapper.
+                </li>
+                <li>
+                  Tryck ner russin i snurrornas mitt och låt sen jäsa
+                  ytterligare 45 minuter till dubbel storlek.
+                </li>
+                <li>Sätt ugnen på 225 grader.</li>
+                <li>
+                  Vispa upp ägget med 1 matsked mjölk och pensla bullarna med
+                  blandningen.
+                </li>
+                <li>
+                  Grädda mitt i ugnen cirka 5-8 minuter tills de blivit
+                  gyllenbruna.
+                </li>
+                <li>Ta ut bullarna och låt dem svalna på ett galler.</li>
+              </ol>
             </section>
             {/* <ol>
               <li>Description</li>
