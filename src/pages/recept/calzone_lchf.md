@@ -1,7 +1,7 @@
 ---
 templateKey: recept
-url: ''
 date: 2019-12-19T06:33:48.535Z
+url: ''
 title: Calzone (LCHF)
 description: God och enkel Calzone som görs i stekpanna.
 hidden: false
@@ -45,6 +45,7 @@ ingredients:
             ingredientamount: 0
             ingredientname: pizzakrydda
             unit: st
+      partingredientsname: Calzone
 instructions:
   - partinstructions:
       partinstructionslist:
@@ -76,4 +77,4 @@ tags:
   - LCHF
 ---
 
-sd
+Hoppas det smakar!

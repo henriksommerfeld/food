@@ -4,7 +4,7 @@ export interface Recipe {
   id: string;
   title: string;
   description: string;
-  category: string;
+  category: category;
   featuredImage: RecipeImage;
   cookingTime: {
     active: {
@@ -19,21 +19,33 @@ export interface Recipe {
   };
   servings: number;
   servingsUnit: string;
-  ingredients: {
-    partIngredients: {
-      name?: string;
-      ingredients: {
-        name: string;
-        quantity: number;
-        unit: QuantityUnit;
-      }[];
-    };
-  }[];
+  ingredients: Ingredients;
   body: string;
   tags: string[] | undefined;
 }
 
-enum QuantityUnit {
+export type category =
+  | 'Frukost'
+  | 'Förrätt'
+  | 'Huvudrätt'
+  | 'Sallad'
+  | 'Efterrätt'
+  | 'Bakning';
+
+export interface Ingredients {
+  partIngredients: {
+    name?: string;
+    ingredients: Ingredient[];
+  }[];
+}
+
+export interface Ingredient {
+  name: string;
+  quantity: number;
+  unit: QuantityUnit;
+}
+
+export enum QuantityUnit {
   pieces = 'st',
   liter = 'l',
   deciliter = 'dl',
@@ -46,7 +58,7 @@ enum QuantityUnit {
   kilo = 'kg',
 }
 
-export interface RecipeData {
+export interface RecipeQueryData {
   markdownRemark: {
     id: string;
     html: string;
@@ -56,7 +68,7 @@ export interface RecipeData {
       title: string;
       tags: string[];
       description: string;
-      category: string;
+      category: category;
       servings: number;
       servingslabel: string;
       timeactive: {
@@ -69,6 +81,30 @@ export interface RecipeData {
         minutespassive: number;
       };
       featuredimage: FancyImage;
+      ingredients: IngredientsQueryData[];
+      instructions: {
+        partinstructions: {
+          partinstructionsname: string;
+          partinstructionslist: {
+            instruction: string;
+          };
+        }[];
+      };
     };
   };
+}
+
+export interface IngredientsQueryData {
+  partingredients: {
+    partingredientsname: string;
+    partingredientslist: {
+      ingredient: IngredientQueryData;
+    }[];
+  };
+}
+
+export interface IngredientQueryData {
+  ingredientamount: number;
+  unit: string;
+  ingredientname: string;
 }

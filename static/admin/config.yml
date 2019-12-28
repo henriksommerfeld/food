@@ -44,8 +44,6 @@ collections:
           name: description,
           widget: string,
           hint: '1-2 meningar som visas när man delar en länk till sidan.',
-          default: '',
-          required: false,
         }
       - {
           label: 'Dold',
@@ -115,7 +113,6 @@ collections:
                       label: 'Rubrik',
                       name: 'partingredientsname',
                       widget: 'string',
-                      required: false,
                       hint: 'Underrubrik för ett delmoment, ex. "Aioli". Visas inte om det inte finns flera delmoment.',
                     },
                     {
@@ -184,7 +181,6 @@ collections:
                       label: 'Rubrik',
                       name: partinstructionsname,
                       widget: string,
-                      required: false,
                       hint: 'Ex. "Sås". Kan lämnas tom om det bara finns ett moment.',
                     },
                     {

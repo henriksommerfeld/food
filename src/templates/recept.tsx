@@ -4,27 +4,30 @@ import Layout from '../components/Layout';
 import { HTMLContent } from '../components/Content';
 import RecipeTemplate from './recipe-template';
 import { editRecipeUrlFromAbsolutePath } from '../url-replacer';
-import { Recipe, RecipeData } from '../interfaces/Recipe';
+import {
+  Recipe,
+  RecipeQueryData,
+  IngredientsQueryData,
+  Ingredients,
+  Ingredient,
+  QuantityUnit,
+} from '../interfaces/Recipe';
 import { WindowLocation } from '@reach/router';
 
 interface ReceptProps {
-  data: RecipeData;
+  data: RecipeQueryData;
   location: WindowLocation;
 }
 
 export default function Recept({ data, ...props }: ReceptProps) {
   const { markdownRemark: post } = data;
-  const frontmatter = post.frontmatter;
-  const tags: string[] = (frontmatter.tags || []) as string[];
-  // Gör ett komplext objekt av "receptet" istället för att skicka enskilda properties
-  // Gör en datamappningsfunktion som översätter typad GQL till Recipie
-  const recipe: Recipe = convert(data);
+  const recipe: Recipe = toRecipe(data);
 
   return (
     <Layout
       location={props.location}
-      pageTitle={frontmatter.title}
-      pageDescription={frontmatter.description}
+      pageTitle={recipe.title}
+      pageDescription={recipe.description}
       editLink={editRecipeUrlFromAbsolutePath(post.fileAbsolutePath)}
     >
       <RecipeTemplate
@@ -36,12 +39,59 @@ export default function Recept({ data, ...props }: ReceptProps) {
   );
 }
 
-function convert(data: RecipeData): Recipe {
+function toIngredients(data: IngredientsQueryData[]): Ingredients {
+  let ingredients: Ingredients = { partIngredients: [] };
+  if (!(data?.length > 0)) return ingredients;
+
+  data.forEach(x => {
+    const ingredientList: Ingredient[] = [];
+
+    x.partingredients.partingredientslist.forEach(y => {
+      ingredientList.push({
+        name: y.ingredient.ingredientname,
+        quantity: y.ingredient.ingredientamount,
+        unit: y.ingredient.unit as QuantityUnit,
+      });
+    });
+
+    ingredients.partIngredients.push({
+      name: x.partingredients.partingredientsname,
+      ingredients: ingredientList,
+    });
+  });
+
+  return ingredients;
+}
+
+function toRecipe(data: RecipeQueryData): Recipe {
   const { markdownRemark: post } = data;
   const frontmatter = post.frontmatter;
   const tags: string[] = (frontmatter.tags || []) as string[];
+  const ingredients = toIngredients(frontmatter.ingredients);
 
-  return null;
+  return {
+    title: frontmatter.title,
+    tags: tags,
+    servings: frontmatter.servings,
+    servingsUnit: frontmatter.servingslabel,
+    id: post.id,
+    body: post.html,
+    category: frontmatter.category,
+    description: frontmatter.description,
+    cookingTime: {
+      active: {
+        hours: frontmatter.timeactive.hoursactive,
+        minutes: frontmatter.timeactive.minutesactive,
+      },
+      waiting: {
+        days: frontmatter.timepassive.dayspassive,
+        hours: frontmatter.timepassive.hourspassive,
+        minutes: frontmatter.timepassive.minutespassive,
+      },
+    },
+    featuredImage: frontmatter.featuredimage,
+    ingredients: ingredients,
+  };
 }
 
 export const pageQuery = graphql`
@@ -66,6 +116,26 @@ export const pageQuery = graphql`
           dayspassive
           hourspassive
           minutespassive
+        }
+        ingredients {
+          partingredients {
+            partingredientsname
+            partingredientslist {
+              ingredient {
+                ingredientamount
+                unit
+                ingredientname
+              }
+            }
+          }
+        }
+        instructions {
+          partinstructions {
+            partinstructionsname
+            partinstructionslist {
+              instruction
+            }
+          }
         }
         featuredimage {
           childImageSharp {
