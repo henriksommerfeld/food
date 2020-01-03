@@ -1,3 +1,11 @@
+exports.removeRecipeFromUrl = url => {
+  const recipeFragment = '/recept/';
+  if (!url || !url.includes(recipeFragment)) return url;
+
+  const urlParts = url.split(recipeFragment);
+  return urlParts.length < 2 ? url : `/${urlParts[1]}`;
+};
+
 exports.editRecipeUrlFromAbsolutePath = absolutePath => {
   if (!absolutePath) return '';
 

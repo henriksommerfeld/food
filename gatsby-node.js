@@ -8,6 +8,7 @@ const { createFilePath } = require('gatsby-source-filesystem');
 const { fmImagesToRelative } = require('gatsby-remark-relative-images');
 const { getUniqueTags, getTagRouteUrl } = require('./src/tags-parser');
 const { categoryLinks } = require('./src/constants');
+const { removeRecipeFromUrl } = require('./src/url-replacer');
 
 function getFileFrom(templateKey) {
   return templateKey + '.tsx';
@@ -117,6 +118,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
 
   if (node.internal.type === `MarkdownRemark`) {
     const filePath = node.frontmatter.url || createFilePath({ node, getNode });
+    const route = removeRecipeFromUrl(filePath);
     createNodeField({
       name: `slug`,
       node,
