@@ -20,6 +20,7 @@ export interface Recipe {
   servings: number;
   servingsUnit: string;
   ingredients: Ingredients;
+  instructions: Instructions;
   body: string;
   tags: string[] | undefined;
 }
@@ -32,11 +33,22 @@ export type category =
   | 'Efterrätt'
   | 'Bakning';
 
+export interface Instructions {
+  instructionsGroup: InstructionsGroup[];
+}
+
+export interface InstructionsGroup {
+  name?: string;
+  instructions: string[];
+}
+
 export interface Ingredients {
-  partIngredients: {
-    name?: string;
-    ingredients: Ingredient[];
-  }[];
+  ingredientsGroup: IngredientsGroup[];
+}
+
+export interface IngredientsGroup {
+  name?: string;
+  ingredients: Ingredient[];
 }
 
 export interface Ingredient {
@@ -82,15 +94,17 @@ export interface RecipeQueryData {
       };
       featuredimage: FancyImage;
       ingredients: IngredientsQueryData[];
-      instructions: {
-        partinstructions: {
-          partinstructionsname: string;
-          partinstructionslist: {
-            instruction: string;
-          };
-        }[];
-      };
+      instructions: InstructionsQueryData[];
     };
+  };
+}
+
+export interface InstructionsQueryData {
+  partinstructions: {
+    partinstructionsname: string;
+    partinstructionslist: {
+      instruction: string;
+    }[];
   };
 }
 

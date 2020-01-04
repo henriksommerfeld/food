@@ -3,7 +3,7 @@ import { spacing, colors, breakpoints } from '../constants';
 
 export const PostStyled = styled.div`
   padding: ${spacing.default};
-  background-color: ${colors.white};
+  /* background-color: ${colors.white}; */
 /* 
   @media (min-width: ${breakpoints.small}) {
     padding: ${spacing.double};

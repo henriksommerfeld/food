@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { graphql } from 'gatsby';
 import Layout from '../components/Layout';
 import { HTMLContent } from '../components/Content';
@@ -11,6 +11,8 @@ import {
   Ingredients,
   Ingredient,
   QuantityUnit,
+  InstructionsQueryData,
+  Instructions,
 } from '../interfaces/Recipe';
 import { WindowLocation } from '@reach/router';
 
@@ -39,14 +41,34 @@ export default function Recept({ data, ...props }: ReceptProps) {
   );
 }
 
+function toInstructions(data: InstructionsQueryData[]): Instructions {
+  let instructions: Instructions = { instructionsGroup: [] };
+  if (!(data?.length > 0)) return instructions;
+
+  data.forEach(x => {
+    const instructionsList: string[] = [];
+
+    x.partinstructions?.partinstructionslist?.forEach(y => {
+      instructionsList.push(y.instruction);
+    });
+
+    instructions.instructionsGroup.push({
+      name: x.partinstructions.partinstructionsname,
+      instructions: instructionsList,
+    });
+  });
+
+  return instructions;
+}
+
 function toIngredients(data: IngredientsQueryData[]): Ingredients {
-  let ingredients: Ingredients = { partIngredients: [] };
+  let ingredients: Ingredients = { ingredientsGroup: [] };
   if (!(data?.length > 0)) return ingredients;
 
   data.forEach(x => {
     const ingredientList: Ingredient[] = [];
 
-    x.partingredients.partingredientslist.forEach(y => {
+    x.partingredients?.partingredientslist?.forEach(y => {
       ingredientList.push({
         name: y.ingredient.ingredientname,
         quantity: y.ingredient.ingredientamount,
@@ -54,7 +76,7 @@ function toIngredients(data: IngredientsQueryData[]): Ingredients {
       });
     });
 
-    ingredients.partIngredients.push({
+    ingredients.ingredientsGroup.push({
       name: x.partingredients.partingredientsname,
       ingredients: ingredientList,
     });
@@ -68,6 +90,7 @@ function toRecipe(data: RecipeQueryData): Recipe {
   const frontmatter = post.frontmatter;
   const tags: string[] = (frontmatter.tags || []) as string[];
   const ingredients = toIngredients(frontmatter.ingredients);
+  const instructions = toInstructions(frontmatter.instructions);
 
   return {
     title: frontmatter.title,
@@ -91,6 +114,7 @@ function toRecipe(data: RecipeQueryData): Recipe {
     },
     featuredImage: frontmatter.featuredimage,
     ingredients: ingredients,
+    instructions: instructions,
   };
 }
 

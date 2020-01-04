@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { ReactElement } from 'react';
 import Content from '../components/Content';
 import styled from 'styled-components';
 import { colors, spacing, breakpoints } from '../constants';
@@ -11,8 +11,16 @@ import ClockSvg from '../../static/img/clock.svg';
 import ClockWaitSvg from '../../static/img/clock-wait.svg';
 import ServingsSvg from '../../static/img/servings.svg';
 import RecipeBanner from '../components/RecipeBanner';
-import { Recipe } from '../interfaces/Recipe';
+import {
+  Recipe,
+  Ingredient,
+  IngredientsGroup,
+  Ingredients,
+  Instructions,
+  InstructionsGroup,
+} from '../interfaces/Recipe';
 import Error from '../components/Error';
+import LazyImage from '../components/LazyImage';
 
 interface RecipeTemplateProps {
   recipie: Recipe;
@@ -29,23 +37,25 @@ export default function RecipeTemplate({
 
   if (!recipie) return <Error />;
 
+  const showIngredientsHeading = shouldShowIngredientsHeading(
+    recipie.ingredients
+  );
+  const showInstructionsHeading = shouldShowInstructionsHeading(
+    recipie.instructions
+  );
+
   return (
     <>
       <PageStyled>
         <RecipeBanner location={location} category={recipie.category}>
           <IntroText>
-            <h1>Annas saftiga lussebullar med kesella</h1>
-            {/* <h1>{title}</h1> */}
+            <h1>{recipie.title}</h1>
             {/* TODO: Minska textstorleken i mobil */}
           </IntroText>
         </RecipeBanner>
         <PostContainer>
           <PostStyled>
-            <Description>
-              Vårt mest populära recept på lussebullar med kesella i degen. Ger
-              saftiga och hållbara lussebullar!
-            </Description>
-
+            <Description>{recipie.description}</Description>
             <Metadata>
               <MetadataItem>
                 <TimeIcon src={ClockSvg} alt="" />
@@ -68,85 +78,26 @@ export default function RecipeTemplate({
                 30 bullar 🥯
               </MetadataItem>
             </Metadata>
-
-            <Ingredients>
+            <FeaturedImage image={recipie.featuredImage} />
+            <IngredientsStyled>
               <h2>Du behöver:</h2>
-              <h3>Annas saftiga lussebullar</h3>
-              <ul>
-                <li>50 g jäst</li>
-                <li>5 dl standardmjölk</li>
-                <li>150 g smör</li>
-                <li>250 g kvarg</li>
-                <li>2 dl strösocker</li>
-                <li>1 g saffran [2 förp]</li>
-                <li>1 tsk salt</li>
-                <li>16 dl vetemjöl, ev lite mer</li>
-                <li>russin</li>
-              </ul>
-              <h3>Pensling</h3>
-              <ul>
-                <li>1 ägg</li>
-                <li>1 msk mjölk</li>
-              </ul>
-            </Ingredients>
-            <section>
+              {recipie.ingredients.ingredientsGroup.map(group => (
+                <IngredientsGroupComponent
+                  group={group}
+                  shouldShowHeading={showIngredientsHeading}
+                />
+              ))}
+            </IngredientsStyled>
+            <InstructionsStyled>
               <h2>Gör så här:</h2>
-              <ol>
-                <li>
-                  Värm smör och mjölk i en kastrull till 37 grader
-                  (fingervarmt).
-                </li>
-                <li>
-                  Smula ner jästen i en rymlig bunke. Häll lite av den ljumma
-                  mjölkblandningen i bunken och blanda tills all jästen löst
-                  sig. Blanda i resten av vätskan.
-                </li>
-                <li>Blanda ner kesella, saffran, socker och salt.</li>
-                <li>
-                  Tillsätt nästan allt mjölet, gärna lite i taget och arbeta
-                  degen smidig. Tillsätt mer mjöl om det behövs.
-                </li>
-                <li>
-                  Täck över degen med en duk och låt jäsa i rumstemperatur cirka
-                  60 minuter.
-                </li>
-                <li>
-                  Lyft upp degen på ett mjölat bakbord och knåda den några
-                  minuter.
-                </li>
-                <li>
-                  Dela degen i cirka 30 bitar. Rulla sen bitarna till längder,
-                  cirka 2 centimeter i diameter.
-                </li>
-                <li>
-                  Snurra ändarna åt varsitt in mot mitten och lägg dem på en
-                  plåt som är smord eller klädd med bakplåtspapper.
-                </li>
-                <li>
-                  Tryck ner russin i snurrornas mitt och låt sen jäsa
-                  ytterligare 45 minuter till dubbel storlek.
-                </li>
-                <li>Sätt ugnen på 225 grader.</li>
-                <li>
-                  Vispa upp ägget med 1 matsked mjölk och pensla bullarna med
-                  blandningen.
-                </li>
-                <li>
-                  Grädda mitt i ugnen cirka 5-8 minuter tills de blivit
-                  gyllenbruna.
-                </li>
-                <li>Ta ut bullarna och låt dem svalna på ett galler.</li>
-              </ol>
-            </section>
-            {/* <ol>
-              <li>Description</li>
-              <li>Image (if not default image)</li>
-              <li>Cooking time</li>
-              <li>Portions</li>
-              <li>Ingredients</li>
-              <li>Instructions</li>
-              <li>Final text in markdown and possible embedded images</li>
-            </ol> */}
+              {recipie.instructions.instructionsGroup.map(group => (
+                <InstructionsGroupComponent
+                  group={group}
+                  shouldShowHeading={showInstructionsHeading}
+                />
+              ))}
+            </InstructionsStyled>
+
             <PostContent content={recipie.body} />
             <RecipeTags tags={recipie.tags} />
           </PostStyled>
@@ -156,12 +107,95 @@ export default function RecipeTemplate({
   );
 }
 
+function shouldShowInstructionsHeading(instructions: Instructions): boolean {
+  return instructions?.instructionsGroup?.length > 1;
+}
+
+function shouldShowIngredientsHeading(ingredients: Ingredients): boolean {
+  return ingredients?.ingredientsGroup?.length > 1;
+}
+
+interface InstructionsGroupProps {
+  group: InstructionsGroup;
+  shouldShowHeading: boolean;
+}
+
+function InstructionsGroupComponent({
+  group,
+  shouldShowHeading = false,
+}: InstructionsGroupProps) {
+  if (!(group.instructions.length > 0)) return null;
+
+  return (
+    <>
+      {shouldShowHeading && <h3>{group.name}</h3>}
+      <ol>
+        {group.instructions.map(instruction => (
+          <li>{instruction}</li>
+        ))}
+      </ol>
+    </>
+  );
+}
+
+interface IngredientsGroupProps {
+  group: IngredientsGroup;
+  shouldShowHeading: boolean;
+}
+
+function IngredientsGroupComponent({
+  group,
+  shouldShowHeading = false,
+}: IngredientsGroupProps) {
+  if (!(group.ingredients.length > 0)) return null;
+
+  return (
+    <>
+      {shouldShowHeading && <h3>{group.name}</h3>}
+      <ul>
+        {group.ingredients.map(ingredient => (
+          <IngredientComponent ingredient={ingredient} />
+        ))}
+      </ul>
+    </>
+  );
+}
+
+interface IngredientProps {
+  ingredient: Ingredient;
+}
+
+function IngredientComponent({ ingredient }: IngredientProps) {
+  if (ingredient.quantity < 1) return <li>{ingredient.name}</li>;
+
+  return (
+    <li>
+      {ingredient.quantity} {ingredient.unit} {ingredient.name}
+    </li>
+  );
+}
+
+function FeaturedImage({ image, title = null }) {
+  if (!image) return null;
+
+  const altText = title ? `Bild till receptet ${title}` : '';
+  const marginBottom = { marginBottom: spacing.default };
+
+  return (
+    <div className="featured-thumbnail" style={marginBottom}>
+      <LazyImage image={image} altText={altText} />
+    </div>
+  );
+}
+
 const TimeIcon = styled('img')`
   height: 1.5em;
   margin-right: ${spacing.half};
 `;
 
-const Ingredients = styled('section')``;
+const IngredientsStyled = styled('section')``;
+
+const InstructionsStyled = styled('section')``;
 
 const MetadataItem = styled('div')`
   display: flex;
