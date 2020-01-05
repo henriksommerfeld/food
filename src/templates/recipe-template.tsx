@@ -18,9 +18,11 @@ import {
   Ingredients,
   Instructions,
   InstructionsGroup,
+  QuantityUnit,
 } from '../interfaces/Recipe';
 import Error from '../components/Error';
 import LazyImage from '../components/LazyImage';
+import { formatDuration } from '../time';
 
 interface RecipeTemplateProps {
   recipie: Recipe;
@@ -60,10 +62,11 @@ export default function RecipeTemplate({
               <MetadataItem>
                 <TimeIcon src={ClockSvg} alt="" />
                 Tillagning:{' '}
-                {recipie.cookingTime.active.hours > 0
-                  ? `${recipie.cookingTime.active.hours} tim`
-                  : ''}{' '}
-                {recipie.cookingTime.active.minutes} min
+                {formatDuration(
+                  0,
+                  recipie.cookingTime.active.hours,
+                  recipie.cookingTime.active.minutes
+                )}
               </MetadataItem>
               <MetadataItem>
                 <TimeIcon
@@ -71,11 +74,16 @@ export default function RecipeTemplate({
                   alt=""
                   style={{ height: '1.4em' }}
                 />
-                Väntetid: 1 timme
+                Väntetid:{' '}
+                {formatDuration(
+                  recipie.cookingTime.waiting.days,
+                  recipie.cookingTime.waiting.hours,
+                  recipie.cookingTime.waiting.minutes
+                )}
               </MetadataItem>
               <MetadataItem>
                 <TimeIcon src={ServingsSvg} alt="" />
-                30 bullar 🥯
+                {recipie.servings} {recipie.servingsUnit}
               </MetadataItem>
             </Metadata>
             <FeaturedImage image={recipie.featuredImage} />
@@ -167,6 +175,13 @@ interface IngredientProps {
 
 function IngredientComponent({ ingredient }: IngredientProps) {
   if (ingredient.quantity < 1) return <li>{ingredient.name}</li>;
+
+  if (ingredient.unit === QuantityUnit.pieces)
+    return (
+      <li>
+        {ingredient.quantity} {ingredient.name}
+      </li>
+    );
 
   return (
     <li>
