@@ -52,7 +52,6 @@ export default function RecipeTemplate({
         <RecipeBanner location={location} category={recipie.category}>
           <IntroText>
             <h1>{recipie.title}</h1>
-            {/* TODO: Minska textstorleken i mobil */}
           </IntroText>
         </RecipeBanner>
         <PostContainer>
@@ -86,17 +85,21 @@ export default function RecipeTemplate({
                 {recipie.servings} {recipie.servingsUnit}
               </MetadataItem>
             </Metadata>
-            <FeaturedImage image={recipie.featuredImage} />
-            <IngredientsStyled>
-              <h2>Du behöver:</h2>
-              {recipie.ingredients.ingredientsGroup.map((group, index) => (
-                <IngredientsGroupComponent
-                  key={index}
-                  group={group}
-                  shouldShowHeading={showIngredientsHeading}
-                />
-              ))}
-            </IngredientsStyled>
+            <Columns>
+              <IngredientsStyled>
+                <h2>Du behöver:</h2>
+                {recipie.ingredients.ingredientsGroup.map((group, index) => (
+                  <IngredientsGroupComponent
+                    key={index}
+                    group={group}
+                    shouldShowHeading={showIngredientsHeading}
+                  />
+                ))}
+              </IngredientsStyled>
+              <div>
+                <FeaturedImage image={recipie.featuredImage} />
+              </div>
+            </Columns>
             <InstructionsStyled>
               <h2>Gör så här:</h2>
               {recipie.instructions.instructionsGroup.map((group, index) => (
@@ -196,7 +199,7 @@ function FeaturedImage({ image, title = null }) {
   if (!image) return null;
 
   const altText = title ? `Bild till receptet ${title}` : '';
-  const marginBottom = { marginBottom: spacing.default };
+  const marginBottom = { marginBottom: spacing.section };
 
   return (
     <div className="featured-thumbnail" style={marginBottom}>
@@ -205,14 +208,29 @@ function FeaturedImage({ image, title = null }) {
   );
 }
 
+const Columns = styled('div')`
+  display: flex;
+  flex-direction: column-reverse;
+
+  @media (min-width: ${breakpoints.small}) {
+    display: grid;
+    grid-gap: ${spacing.default};
+    grid-template-columns: 1fr minmax(0, 1fr);
+  }
+`;
+
 const TimeIcon = styled('img')`
   height: 1.5em;
   margin-right: ${spacing.half};
 `;
 
-const IngredientsStyled = styled('section')``;
+const IngredientsStyled = styled('section')`
+  margin-bottom: ${spacing.section};
+`;
 
-const InstructionsStyled = styled('section')``;
+const InstructionsStyled = styled('section')`
+  margin-bottom: ${spacing.section};
+`;
 
 const MetadataItem = styled('div')`
   display: flex;
@@ -223,7 +241,7 @@ const Metadata = styled('section')`
   display: grid;
   grid-gap: ${spacing.half};
   grid-template-columns: auto;
-  margin-bottom: ${spacing.default};
+  margin-bottom: ${spacing.section};
 
   @media (min-width: ${breakpoints.small}) {
     grid-template-columns: auto auto auto;
@@ -235,7 +253,7 @@ const Metadata = styled('section')`
 `;
 
 const Description = styled('div')`
-  margin-bottom: ${spacing.default};
+  margin-bottom: ${spacing.section};
 `;
 
 const IntroText = styled('div')`
