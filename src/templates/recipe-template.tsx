@@ -23,6 +23,7 @@ import {
 import Error from '../components/Error';
 import LazyImage from '../components/LazyImage';
 import { formatDuration } from '../time';
+import { toFraction } from '../ingredients-calculations';
 
 interface RecipeTemplateProps {
   recipie: Recipe;
@@ -184,16 +185,23 @@ function IngredientComponent({ ingredient }: IngredientProps) {
   if (ingredient.unit === QuantityUnit.pieces)
     return (
       <li>
-        {ingredient.quantity} {ingredient.name}
+        <QuantityStyled>{ingredient.quantity}</QuantityStyled> {ingredient.name}
       </li>
     );
 
   return (
     <li>
-      {ingredient.quantity} {ingredient.unit} {ingredient.name}
+      <QuantityStyled>{toFraction(1.33)}</QuantityStyled> {ingredient.unit}{' '}
+      {ingredient.name}
     </li>
   );
 }
+
+const QuantityStyled = styled('span')`
+  font-family: 'Source Sans Pro';
+  font-variant-numeric: diagonal-fractions;
+  /* https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-numeric#numeric-fraction-values */
+`;
 
 function FeaturedImage({ image, title = null }) {
   if (!image) return null;

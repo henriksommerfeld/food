@@ -1,27 +1,25 @@
 const {
-  removeBlogFromUrl,
-  editRecipeUrlFromAbsolutePath: editBlogUrlFromAbsolutePath,
+  removeRecipeFromUrl,
+  editRecipeUrlFromAbsolutePath,
 } = require('./url-replacer');
 
-describe('removeBlogFromUrl', () => {
-  it('should remove /blog from url', () => {
-    const input = '/blog/2019-08-21-youtube-test/';
-    const expected = '/2019-08-21-youtube-test/';
-    expect(removeBlogFromUrl(input)).toEqual(expected);
+describe('removeRecipeFromUrl', () => {
+  it('should remove /recept from url', () => {
+    const input = '/recept/apple-pie/';
+    const expected = '/apple-pie/';
+    expect(removeRecipeFromUrl(input)).toEqual(expected);
   });
 
   it('should return / for /', () => {
-    expect(removeBlogFromUrl('/')).toEqual('/');
+    expect(removeRecipeFromUrl('/')).toEqual('/');
   });
 });
 
-it('editBlogUrlFromAbsolutePath should return url', () => {
-  const input =
-    'C:/git/isabel-blog/src/pages/blog/2011-03-31-svartlistade_i_belarus_kevin_spacey_amp_jude_law.md';
-  const expected =
-    '/admin/#/collections/blog/entries/2011-03-31-svartlistade_i_belarus_kevin_spacey_amp_jude_law';
+it('editRecipeUrlFromAbsolutePath should return url', () => {
+  const input = 'C:/git/food/src/pages/recept/pancakes.md';
+  const expected = '/admin/#/collections/recept/entries/pancakes';
 
-  const result = editBlogUrlFromAbsolutePath(input);
+  const result = editRecipeUrlFromAbsolutePath(input);
 
   expect(result).toEqual(expected);
 });
