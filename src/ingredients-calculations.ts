@@ -10,16 +10,11 @@ export function getQuantity(
 
   if (changeFactor === 0) return ingredient;
 
-  // Pieces
-  if (ingredient.unit === QuantityUnit.pieces) {
-    const changedQuantity = twoDecimals(ingredient.quantity * changeFactor);
+  const changedQuantity = twoDecimals(ingredient.quantity * changeFactor);
 
-    return {
-      name: ingredient.name,
-      quantity: changedQuantity,
-      unit: ingredient.unit,
-    };
-  }
+  // Pieces
+  if (ingredient.unit === QuantityUnit.pieces)
+    return quantityForPieces(ingredient, changedQuantity);
 
   // Weight
 
@@ -33,6 +28,17 @@ export function toFraction(quantity: number): string {
     .simplify(0.01)
     .toFraction(true);
   return formattedQuantity;
+}
+
+function quantityForPieces(
+  ingredient: Ingredient,
+  changedQuantity: number
+): Ingredient {
+  return {
+    name: ingredient.name,
+    quantity: changedQuantity,
+    unit: ingredient.unit,
+  };
 }
 
 function twoDecimals(value: number): number {
