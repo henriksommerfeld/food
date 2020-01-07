@@ -5,7 +5,6 @@ import Layout from '../components/Layout';
 import { colors, breakpoints, spacing } from '../constants';
 import { graphql, useStaticQuery } from 'gatsby';
 import { getFluid } from '../images';
-import Searchbox from '../components/Searchbox';
 import { LocationProp } from '../interfaces/LocationProp';
 import { SharedIntroBanner } from '../templates/shared-intro-banner';
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { graphql, Link } from 'gatsby';
+import { graphql } from 'gatsby';
 import { WindowLocation } from '@reach/router';
 import Layout from '../components/Layout';
 import { CategoryTemplate } from './category-template';

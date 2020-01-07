@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'gatsby';
 import HomeSvg from '../../static/img/home-icon.svg';

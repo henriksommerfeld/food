@@ -1,4 +1,4 @@
-import React, { ReactElement } from 'react';
+import React from 'react';
 import Content from '../components/Content';
 import styled from 'styled-components';
 import { colors, spacing, breakpoints } from '../constants';
@@ -89,8 +89,9 @@ export default function RecipeTemplate({
             <FeaturedImage image={recipie.featuredImage} />
             <IngredientsStyled>
               <h2>Du behöver:</h2>
-              {recipie.ingredients.ingredientsGroup.map(group => (
+              {recipie.ingredients.ingredientsGroup.map((group, index) => (
                 <IngredientsGroupComponent
+                  key={index}
                   group={group}
                   shouldShowHeading={showIngredientsHeading}
                 />
@@ -98,8 +99,9 @@ export default function RecipeTemplate({
             </IngredientsStyled>
             <InstructionsStyled>
               <h2>Gör så här:</h2>
-              {recipie.instructions.instructionsGroup.map(group => (
+              {recipie.instructions.instructionsGroup.map((group, index) => (
                 <InstructionsGroupComponent
+                  key={index}
                   group={group}
                   shouldShowHeading={showInstructionsHeading}
                 />
@@ -138,8 +140,8 @@ function InstructionsGroupComponent({
     <>
       {shouldShowHeading && <h3>{group.name}</h3>}
       <ol>
-        {group.instructions.map(instruction => (
-          <li>{instruction}</li>
+        {group.instructions.map((instruction, index) => (
+          <li key={index}>{instruction}</li>
         ))}
       </ol>
     </>
@@ -161,8 +163,8 @@ function IngredientsGroupComponent({
     <>
       {shouldShowHeading && <h3>{group.name}</h3>}
       <ul>
-        {group.ingredients.map(ingredient => (
-          <IngredientComponent ingredient={ingredient} />
+        {group.ingredients.map((ingredient, index) => (
+          <IngredientComponent ingredient={ingredient} key={index} />
         ))}
       </ul>
     </>

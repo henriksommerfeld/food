@@ -1,5 +1,4 @@
 import { FluidObject } from 'gatsby-image';
-import { RecipeImage } from 'components/LazyImage';
 
 export function getFluid(image: any): FluidObject | null {
   return image?.childImageSharp?.fluid || null;

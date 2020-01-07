@@ -17,7 +17,6 @@ import { LocationProp } from 'interfaces/LocationProp';
 import {
   bannerMinHeightMedium,
   bannerMinHeight,
-  bannerMinHeightXs,
 } from '../templates/shared-intro-banner';
 import {
   GridContainerStyled,

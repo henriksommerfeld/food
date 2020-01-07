@@ -42,7 +42,7 @@ export default function Recept({ data, ...props }: ReceptProps) {
 }
 
 function toInstructions(data: InstructionsQueryData[]): Instructions {
-  let instructions: Instructions = { instructionsGroup: [] };
+  const instructions: Instructions = { instructionsGroup: [] };
   if (!(data?.length > 0)) return instructions;
 
   data.forEach(x => {
@@ -62,7 +62,7 @@ function toInstructions(data: InstructionsQueryData[]): Instructions {
 }
 
 function toIngredients(data: IngredientsQueryData[]): Ingredients {
-  let ingredients: Ingredients = { ingredientsGroup: [] };
+  const ingredients: Ingredients = { ingredientsGroup: [] };
   if (!(data?.length > 0)) return ingredients;
 
   data.forEach(x => {

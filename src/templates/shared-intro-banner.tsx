@@ -1,6 +1,6 @@
 import React, { ReactNode } from 'react';
 import styled from 'styled-components';
-import { colors, breakpoints, layout, spacing } from '../constants';
+import { colors, breakpoints, layout } from '../constants';
 import BackgroundImage from 'gatsby-background-image';
 import { getFluid } from '../images';
 import Searchbox from '../components/Searchbox';
