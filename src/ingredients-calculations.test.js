@@ -39,6 +39,66 @@ describe('getQuantity', () => {
       expect(getQuantity(ingredient, 27, 9)).toEqual(expected);
     });
   });
+
+  describe('weight', () => {
+    it('should use kilos', () => {
+      const ingredient = {
+        name: 'flower',
+        quantity: 5,
+        unit: 'hg',
+      };
+      const expected = {
+        name: 'flower',
+        quantity: 1.5,
+        unit: 'kg',
+      };
+      expect(getQuantity(ingredient, 4, 12)).toEqual(expected);
+    });
+
+    it('should use hekto', () => {
+      const ingredient = {
+        name: 'flower',
+        quantity: 1,
+        unit: 'kg',
+      };
+      const expected = {
+        name: 'flower',
+        quantity: 8,
+        unit: 'hg',
+      };
+      expect(getQuantity(ingredient, 10, 8)).toEqual(expected);
+    });
+  });
+
+  describe('volume', () => {
+    it('msk => tsk', () => {
+      const ingredient = {
+        name: 'water',
+        quantity: 1,
+        unit: 'msk',
+      };
+      const expected = {
+        name: 'water',
+        quantity: 2,
+        unit: 'tsk',
+      };
+      expect(getQuantity(ingredient, 3, 2)).toEqual(expected);
+    });
+
+    it('msk => dl', () => {
+      const ingredient = {
+        name: 'water',
+        quantity: 2,
+        unit: 'msk',
+      };
+      const expected = {
+        name: 'water',
+        quantity: 1.2,
+        unit: 'dl',
+      };
+      expect(getQuantity(ingredient, 2, 8)).toEqual(expected);
+    });
+  });
 });
 
 describe('toFraction', () => {
