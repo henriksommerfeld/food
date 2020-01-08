@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Content from '../components/Content';
 import styled from 'styled-components';
 import { colors, spacing, breakpoints } from '../constants';
@@ -23,7 +23,7 @@ import {
 import Error from '../components/Error';
 import LazyImage from '../components/LazyImage';
 import { formatDuration } from '../time';
-import { toFraction } from '../ingredients-calculations';
+import { toFraction, getQuantity } from '../ingredients-calculations';
 
 interface RecipeTemplateProps {
   recipie: Recipe;
@@ -37,6 +37,7 @@ export default function RecipeTemplate({
   location,
 }: RecipeTemplateProps) {
   const PostContent = contentComponent || Content;
+  const [servings, setServings] = useState(recipie.servings);
 
   if (!recipie) return <Error />;
 
@@ -93,6 +94,8 @@ export default function RecipeTemplate({
                   <IngredientsGroupComponent
                     key={index}
                     group={group}
+                    defaultServings={recipie.servings}
+                    servings={servings}
                     shouldShowHeading={showIngredientsHeading}
                   />
                 ))}
@@ -154,11 +157,15 @@ function InstructionsGroupComponent({
 
 interface IngredientsGroupProps {
   group: IngredientsGroup;
+  servings: number;
+  defaultServings: number;
   shouldShowHeading: boolean;
 }
 
 function IngredientsGroupComponent({
   group,
+  servings,
+  defaultServings,
   shouldShowHeading = false,
 }: IngredientsGroupProps) {
   if (!(group.ingredients.length > 0)) return null;
@@ -168,7 +175,12 @@ function IngredientsGroupComponent({
       {shouldShowHeading && <h3>{group.name}</h3>}
       <ul>
         {group.ingredients.map((ingredient, index) => (
-          <IngredientComponent ingredient={ingredient} key={index} />
+          <IngredientComponent
+            ingredient={ingredient}
+            servings={servings}
+            defaultServings={defaultServings}
+            key={index}
+          />
         ))}
       </ul>
     </>
@@ -177,29 +189,47 @@ function IngredientsGroupComponent({
 
 interface IngredientProps {
   ingredient: Ingredient;
+  servings: number;
+  defaultServings: number;
 }
 
-function IngredientComponent({ ingredient }: IngredientProps) {
-  if (ingredient.quantity < 1) return <li>{ingredient.name}</li>;
+function IngredientComponent({
+  ingredient,
+  servings,
+  defaultServings,
+}: IngredientProps) {
+  const calculatedIngredient = getQuantity(
+    ingredient,
+    defaultServings,
+    servings
+  );
 
-  if (ingredient.unit === QuantityUnit.pieces)
+  console.log('TCL: calculatedIngredient', calculatedIngredient);
+
+  if (calculatedIngredient.quantity < 1)
+    return <li>{calculatedIngredient.name}</li>;
+
+  if (calculatedIngredient.unit === QuantityUnit.pieces)
     return (
       <li>
-        <QuantityStyled>{ingredient.quantity}</QuantityStyled> {ingredient.name}
+        <QuantityStyled>{calculatedIngredient.quantity}</QuantityStyled>{' '}
+        {calculatedIngredient.name}
       </li>
     );
 
   return (
     <li>
-      <QuantityStyled>{toFraction(1.33)}</QuantityStyled> {ingredient.unit}{' '}
-      {ingredient.name}
+      <QuantityStyled>
+        {toFraction(calculatedIngredient.quantity)}
+      </QuantityStyled>{' '}
+      {calculatedIngredient.unit} {calculatedIngredient.name}
     </li>
   );
 }
 
 const QuantityStyled = styled('span')`
-  font-family: 'Source Sans Pro';
-  font-variant-numeric: diagonal-fractions;
+  /* font-family: 'Source Sans Pro';
+  font-variant-numeric: diagonal-fractions; */
   /* https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-numeric#numeric-fraction-values */
 `;
 
