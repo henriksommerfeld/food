@@ -219,9 +219,7 @@ function IngredientComponent({
 
   return (
     <li>
-      <QuantityStyled>
-        {toFraction(calculatedIngredient.quantity)}
-      </QuantityStyled>{' '}
+      <QuantityStyled>{calculatedIngredient.quantity}</QuantityStyled>{' '}
       {calculatedIngredient.unit} {calculatedIngredient.name}
     </li>
   );
@@ -229,6 +227,7 @@ function IngredientComponent({
 
 const QuantityStyled = styled('span')`
   /* font-family: 'Source Sans Pro';
+  /* Need a font where one can see the difference between l and I */
   font-variant-numeric: diagonal-fractions; */
   /* https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-numeric#numeric-fraction-values */
 `;

@@ -79,13 +79,6 @@ function weightInBestUnit(ingredient: Ingredient): Ingredient {
       name: ingredient.name,
     };
 
-  if (ingredient.quantity >= 100)
-    return {
-      quantity: ingredient.quantity / 100,
-      unit: QuantityUnit.hekto,
-      name: ingredient.name,
-    };
-
   return ingredient;
 }
 

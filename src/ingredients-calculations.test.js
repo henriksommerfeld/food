@@ -63,8 +63,8 @@ describe('getQuantity', () => {
       };
       const expected = {
         name: 'flower',
-        quantity: 8,
-        unit: 'hg',
+        quantity: 800,
+        unit: 'g',
       };
       expect(getQuantity(ingredient, 10, 8)).toEqual(expected);
     });
