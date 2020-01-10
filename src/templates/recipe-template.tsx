@@ -216,10 +216,7 @@ function IngredientComponent({
   );
   return (
     <li>
-      <QuantityStyled>
-        {calculatedIngredient.quantity} <br />
-        {formattedQuantity(calculatedIngredient)}
-      </QuantityStyled>
+      <QuantityStyled>{formattedQuantity(calculatedIngredient)}</QuantityStyled>
     </li>
   );
 }
