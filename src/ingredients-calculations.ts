@@ -1,5 +1,4 @@
 import { Ingredient, QuantityUnit } from './interfaces/Recipe';
-import Fraction from 'fraction.js';
 
 export function getQuantity(
   ingredient: Ingredient,
@@ -22,18 +21,49 @@ export function getQuantity(
   return null;
 }
 
-export function toFraction(quantity: number): string {
-  const formattedQuantity = new Fraction(quantity)
-    .simplify(0.01)
-    .toFraction(true);
-  return formattedQuantity;
+export function formattedQuantity(ingredient: Ingredient): string {
+  if (ingredient.quantity === 0) return `${ingredient.name}`;
+  if (ingredient.unit === QuantityUnit.gram)
+    return `${Math.round(ingredient.quantity)} ${ingredient.unit} ${
+      ingredient.name
+    }`;
+  if (ingredient.unit === QuantityUnit.milliliter)
+    return `${Math.round(ingredient.quantity)} krm ${ingredient.name}`;
+
+  if (ingredient.unit === QuantityUnit.pieces)
+    return `${toFraction(ingredient)} ${ingredient.name}`;
+
+  return `${toFraction(ingredient)} ${ingredient.unit} ${ingredient.name}`;
+}
+
+export function toFraction(ingredient: Ingredient): string {
+  const quantity = ingredient.quantity;
+  const int = Math.floor(quantity);
+  const decimal = quantity - int;
+  const num = int === 0 ? '' : `${int} `;
+
+  if (
+    ingredient.unit === QuantityUnit.liter ||
+    ingredient.unit === QuantityUnit.kilo
+  ) {
+    if (decimal > 0.24 && decimal < 0.26) return num + `¼`;
+
+    if (decimal > 0.74 && decimal < 0.76) return num + `¾`;
+  } else {
+    if (decimal > 0.2 && decimal < 0.3) return num + `¼`;
+
+    if (decimal > 0.7 && decimal < 0.8) return num + `¾`;
+  }
+
+  if (decimal > 0.44 && decimal < 0.55) return num + `½`;
+  return `${oneDecimal(quantity)}`.replace('.', ',');
 }
 
 function quantityForPieces(
   ingredient: Ingredient,
   changeFactor: number
 ): Ingredient {
-  const changedQuantity = twoDecimals(ingredient.quantity * changeFactor);
+  const changedQuantity = ingredient.quantity * changeFactor;
   return {
     name: ingredient.name,
     quantity: changedQuantity,
@@ -157,4 +187,8 @@ function isVolume(unit: QuantityUnit): boolean {
 
 function twoDecimals(value: number): number {
   return Math.round(value * 100) / 100;
+}
+
+function oneDecimal(value: number): number {
+  return Math.round(value * 10) / 10;
 }

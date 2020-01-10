@@ -1,4 +1,40 @@
-const { getQuantity, toFraction } = require('./ingredients-calculations');
+const {
+  formattedQuantity,
+  getQuantity,
+  toFraction,
+} = require('./ingredients-calculations');
+
+describe('formattedQuantity', () => {
+  it('pieces decimal should be fraction formatted', () => {
+    const ingredient = {
+      name: 'lemon',
+      quantity: 0.5,
+      unit: 'st',
+    };
+    const result = formattedQuantity(ingredient);
+    expect(result).toEqual('½ lemon');
+  });
+
+  it('grams should not have decimals', () => {
+    const ingredient = {
+      name: 'butter',
+      quantity: 140.333333,
+      unit: 'g',
+    };
+    const result = formattedQuantity(ingredient);
+    expect(result).toEqual('140 g butter');
+  });
+
+  it('ml should not have decimals and be krm', () => {
+    const ingredient = {
+      name: 'nutmeg',
+      quantity: 1.71,
+      unit: 'ml',
+    };
+    const result = formattedQuantity(ingredient);
+    expect(result).toEqual('2 krm nutmeg');
+  });
+});
 
 describe('getQuantity', () => {
   describe('pieces', () => {
@@ -23,20 +59,6 @@ describe('getQuantity', () => {
         unit: 'st',
       };
       expect(getQuantity(ingredient, 4, 8)).toEqual(expected);
-    });
-
-    it('should use 2 decimals', () => {
-      const ingredient = {
-        name: 'egg(s)',
-        quantity: 10,
-        unit: 'st',
-      };
-      const expected = {
-        name: 'egg(s)',
-        quantity: 3.33,
-        unit: 'st',
-      };
-      expect(getQuantity(ingredient, 27, 9)).toEqual(expected);
     });
   });
 
@@ -102,19 +124,51 @@ describe('getQuantity', () => {
 });
 
 describe('toFraction', () => {
-  it('1.33 = 1 1/3', () => {
-    expect(toFraction(1.33)).toBe('1 1/3');
+  it('1.33 = 1,3', () => {
+    const ingredient = {
+      quantity: 1.33,
+      unit: 'msk',
+    };
+    expect(toFraction(ingredient)).toBe('1,3');
   });
 
   it('1.5 = 1 1/2', () => {
-    expect(toFraction(1.5)).toBe('1 1/2');
+    const ingredient = {
+      quantity: 1.5,
+      unit: 'msk',
+    };
+    expect(toFraction(ingredient)).toBe('1 ½');
   });
 
-  it('1.25 = 1 1/4', () => {
-    expect(toFraction(1.25)).toBe('1 1/4');
+  it('1.75 = 1 3/4', () => {
+    const ingredient = {
+      quantity: 1.75,
+      unit: 'tsk',
+    };
+    expect(toFraction(ingredient)).toBe('1 ¾');
   });
 
   it('0.25 = 1/4', () => {
-    expect(toFraction(0.25)).toBe('1/4');
+    const ingredient = {
+      quantity: 0.21,
+      unit: 'dl',
+    };
+    expect(toFraction(ingredient)).toBe('¼');
+  });
+
+  it('0.25 liter != 1/4', () => {
+    const ingredient = {
+      quantity: 0.21,
+      unit: 'l',
+    };
+    expect(toFraction(ingredient)).toBe('0,2');
+  });
+
+  it('0.25 kilo != 1/4', () => {
+    const ingredient = {
+      quantity: 0.21,
+      unit: 'kg',
+    };
+    expect(toFraction(ingredient)).toBe('0,2');
   });
 });

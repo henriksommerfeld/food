@@ -23,7 +23,11 @@ import {
 import Error from '../components/Error';
 import LazyImage from '../components/LazyImage';
 import { formatDuration } from '../time';
-import { toFraction, getQuantity } from '../ingredients-calculations';
+import {
+  toFraction,
+  getQuantity,
+  formattedQuantity,
+} from '../ingredients-calculations';
 
 interface RecipeTemplateProps {
   recipie: Recipe;
@@ -84,12 +88,19 @@ export default function RecipeTemplate({
               </MetadataItem>
               <MetadataItem>
                 <TimeIcon src={ServingsSvg} alt="" />
-                {recipie.servings} {recipie.servingsUnit}
+                <input
+                  type="number"
+                  min="1"
+                  defaultValue={recipie.servings}
+                  onChange={e => setServings(e.target.value)}
+                  style={{ width: '3em' }}
+                />{' '}
+                {recipie.servingsUnit}
               </MetadataItem>
             </Metadata>
             <Columns>
               <IngredientsStyled>
-                <h2>Du behöver:</h2>
+                <h2>Ingredienser</h2>
                 {recipie.ingredients.ingredientsGroup.map((group, index) => (
                   <IngredientsGroupComponent
                     key={index}
@@ -203,24 +214,12 @@ function IngredientComponent({
     defaultServings,
     servings
   );
-
-  console.log('TCL: calculatedIngredient', calculatedIngredient);
-
-  if (calculatedIngredient.quantity < 1)
-    return <li>{calculatedIngredient.name}</li>;
-
-  if (calculatedIngredient.unit === QuantityUnit.pieces)
-    return (
-      <li>
-        <QuantityStyled>{calculatedIngredient.quantity}</QuantityStyled>{' '}
-        {calculatedIngredient.name}
-      </li>
-    );
-
   return (
     <li>
-      <QuantityStyled>{calculatedIngredient.quantity}</QuantityStyled>{' '}
-      {calculatedIngredient.unit} {calculatedIngredient.name}
+      <QuantityStyled>
+        {calculatedIngredient.quantity} <br />
+        {formattedQuantity(calculatedIngredient)}
+      </QuantityStyled>
     </li>
   );
 }
@@ -228,7 +227,7 @@ function IngredientComponent({
 const QuantityStyled = styled('span')`
   /* font-family: 'Source Sans Pro';
   /* Need a font where one can see the difference between l and I */
-  font-variant-numeric: diagonal-fractions; */
+  /* font-variant-numeric: diagonal-fractions; */
   /* https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-numeric#numeric-fraction-values */
 `;
 
