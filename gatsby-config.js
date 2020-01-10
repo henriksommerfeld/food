@@ -128,7 +128,7 @@ const plugins = [
       background_color: `#2D3748`,
       theme_color: `#2D3748`,
       display: `standalone`,
-      icon: `static/img/favimage.jpg`,
+      icon: `static/img/favimage.png`,
     },
   },
   'gatsby-plugin-netlify-cache',
