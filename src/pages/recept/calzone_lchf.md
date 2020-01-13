@@ -3,7 +3,7 @@ templateKey: recept
 date: 2019-12-19T06:33:48.535Z
 url: ''
 title: Calzone (LCHF)
-description: God och enkel Calzone som görs i stekpanna.
+description: 'God och enkel Calzone som görs i stekpanna. '
 hidden: false
 category: Huvudrätt
 featuredimage: /uploads/Calzone.jpg
@@ -45,13 +45,24 @@ ingredients:
             ingredientamount: 0
             ingredientname: pizzakrydda
             unit: st
-      partingredientsname: Calzone
+      partingredientsname: Smet
+  - partingredients:
+      partingredientslist:
+        - ingredient:
+            ingredientamount: 0
+            ingredientname: ost (pålägg som skivas med osthyvel)
+            unit: st
+        - ingredient:
+            ingredientamount: 0
+            ingredientname: skinka (pålägg)
+            unit: st
+      partingredientsname: Innehåll
 instructions:
   - partinstructions:
       partinstructionslist:
-        - instruction: Blanda alla ingredienser i en bunke
+        - instruction: Blanda alla smetens ingredienser i en bunke
         - instruction: Låt svälla 5 min
-      partinstructionsname: Smeten
+      partinstructionsname: Smet
   - partinstructions:
       partinstructionslist:
         - instruction: Lägg lite smör i en stekpanna på medelvärme
