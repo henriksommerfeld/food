@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import Content from '../components/Content';
 import styled from 'styled-components';
-import { colors, spacing, breakpoints } from '../constants';
+import { colors, spacing, breakpoints, layout } from '../constants';
 import RecipeTags from './recipe-tags';
 import { WindowLocation } from '@reach/router';
 import { PageStyled } from '../components/PageStyled';
@@ -11,6 +11,9 @@ import ClockSvg from '../../static/img/clock.svg';
 import ClockWaitSvg from '../../static/img/clock-wait.svg';
 import ServingsSvg from '../../static/img/servings.svg';
 import RecipeBanner from '../components/RecipeBanner';
+import AddSvg from '../../static/img/add.svg';
+import SubSvg from '../../static/img/subtract.svg';
+
 import {
   Recipe,
   Ingredient,
@@ -28,6 +31,8 @@ import {
   getQuantity,
   formattedQuantity,
 } from '../ingredients-calculations';
+import { tailwindColors } from '../tailwind-colors';
+import Recept from './recept';
 
 interface RecipeTemplateProps {
   recipie: Recipe;
@@ -51,6 +56,15 @@ export default function RecipeTemplate({
   const showInstructionsHeading = shouldShowInstructionsHeading(
     recipie.instructions
   );
+
+  function decreaseServings() {
+    if (servings < 2) return;
+    setServings(x => --x);
+  }
+
+  function increaseServings() {
+    setServings(x => ++x);
+  }
 
   return (
     <>
@@ -88,19 +102,34 @@ export default function RecipeTemplate({
               </MetadataItem>
               <MetadataItem>
                 <TimeIcon src={ServingsSvg} alt="" />
-                <input
-                  type="number"
-                  min="1"
-                  defaultValue={recipie.servings}
-                  onChange={e => setServings(e.target.value)}
-                  style={{ width: '3em' }}
-                />{' '}
-                {recipie.servingsUnit}
+                {recipie.servings} {recipie.servingsUnit}
               </MetadataItem>
             </Metadata>
             <Columns>
               <IngredientsStyled>
                 <h2>Ingredienser</h2>
+                <ServingsAdjuster>
+                  <ServingsAdjusterButton onClick={decreaseServings}>
+                    <img
+                      src={SubSvg}
+                      alt={`Minska antalet ${recipie.servingsUnit} förberäkning av ingredienser`}
+                    />
+                  </ServingsAdjusterButton>
+                  {servings} {recipie.servingsUnit}
+                  <ServingsAdjusterButton onClick={increaseServings}>
+                    <img
+                      src={AddSvg}
+                      alt={`Öka antalet ${recipie.servingsUnit} förberäkning av ingredienser`}
+                    />
+                  </ServingsAdjusterButton>
+                </ServingsAdjuster>
+                {servings !== recipie.servings && (
+                  <ServingsAdjusterInfo>
+                    Justeringen av antal påverkar bara mängden ingredienser som
+                    visas i receptet. Tillagningstid och <em>Gör så här</em> är
+                    skrivna utifrån den ursprungliga mängden.
+                  </ServingsAdjusterInfo>
+                )}
                 {recipie.ingredients.ingredientsGroup.map((group, index) => (
                   <IngredientsGroupComponent
                     key={index}
@@ -116,7 +145,7 @@ export default function RecipeTemplate({
               </div>
             </Columns>
             <InstructionsStyled>
-              <h2>Gör så här:</h2>
+              <h2>Gör så här</h2>
               {recipie.instructions.instructionsGroup.map((group, index) => (
                 <InstructionsGroupComponent
                   key={index}
@@ -241,13 +270,38 @@ function FeaturedImage({ image, title = null }) {
   );
 }
 
+const ServingsAdjuster = styled('div')`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: ${spacing.default};
+  border: 1px solid ${tailwindColors.teal500};
+  background-color: ${tailwindColors.teal100};
+  border-radius: 25px;
+  padding: ${spacing.half};
+`;
+
+const ServingsAdjusterButton = styled('button')`
+  background: none;
+  border: none;
+  padding: 0;
+  display: flex;
+`;
+
+const ServingsAdjusterInfo = styled('div')`
+  padding: ${spacing.default};
+  margin-bottom: ${spacing.default};
+  background-color: ${tailwindColors.teal100};
+  border: 1px solid ${tailwindColors.teal500};
+  border-radius: ${layout.borderRadius};
+`;
+
 const Columns = styled('div')`
   display: flex;
   flex-direction: column-reverse;
 
   @media (min-width: ${breakpoints.small}) {
     display: grid;
-    grid-gap: ${spacing.default};
+    grid-gap: ${spacing.x3};
     grid-template-columns: 1fr minmax(0, 1fr);
   }
 `;

@@ -3,8 +3,8 @@ import { spacing, colors, breakpoints } from '../constants';
 
 export const PostStyled = styled.div`
   padding: ${spacing.default};
-  /* background-color: ${colors.white}; */
-/* 
+  background-color: ${colors.white};
+
   @media (min-width: ${breakpoints.small}) {
     padding: ${spacing.double};
   }
@@ -14,5 +14,5 @@ export const PostStyled = styled.div`
     border-radius: 4px;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);
     padding: ${spacing.x3};
-  } */
+  }
 `;
