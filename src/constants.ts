@@ -65,10 +65,6 @@ export const fonts = {
 };
 
 export const links = {
-  linkedin: {
-    url: 'https://www.linkedin.com/in/isabelsommerfeld',
-    title: 'LinkedIn',
-  },
   tags: {
     url: '/taggar',
     title: 'Se alla taggar',
