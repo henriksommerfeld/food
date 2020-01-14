@@ -192,7 +192,6 @@ const SearchResultsContainer = styled(animated.div)`
   }
 
   @media (min-width: ${breakpoints.medium}) {
-    /* top: ${bannerMinHeightMedium}; */
     padding: ${spacing.double};
 
     @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
