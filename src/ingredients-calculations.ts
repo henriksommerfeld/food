@@ -185,10 +185,6 @@ function isVolume(unit: QuantityUnit): boolean {
   );
 }
 
-function twoDecimals(value: number): number {
-  return Math.round(value * 100) / 100;
-}
-
 function oneDecimal(value: number): number {
   return Math.round(value * 10) / 10;
 }

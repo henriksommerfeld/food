@@ -34,7 +34,7 @@ export default function Recept({ data, ...props }: ReceptProps) {
     >
       <RecipeTemplate
         contentComponent={HTMLContent}
-        recipie={recipe}
+        recipe={recipe}
         location={props.location}
       />
     </Layout>

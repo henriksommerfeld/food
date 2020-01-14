@@ -1,261 +1,61 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Content from '../components/Content';
 import styled from 'styled-components';
-import { colors, spacing, breakpoints, layout } from '../constants';
+import { colors, spacing, breakpoints } from '../constants';
 import RecipeTags from './recipe-tags';
 import { WindowLocation } from '@reach/router';
 import { PageStyled } from '../components/PageStyled';
 import { PostContainer } from '../components/PostContainer';
 import { PostStyled } from '../components/PostStyled';
-import ClockSvg from '../../static/img/clock.svg';
-import ClockWaitSvg from '../../static/img/clock-wait.svg';
-import ServingsSvg from '../../static/img/servings.svg';
 import RecipeBanner from '../components/RecipeBanner';
-import AddSvg from '../../static/img/add.svg';
-import SubSvg from '../../static/img/subtract.svg';
-
-import {
-  Recipe,
-  Ingredient,
-  IngredientsGroup,
-  Ingredients,
-  Instructions,
-  InstructionsGroup,
-  QuantityUnit,
-} from '../interfaces/Recipe';
+import { Recipe } from '../interfaces/Recipe';
 import Error from '../components/Error';
 import LazyImage from '../components/LazyImage';
-import { formatDuration } from '../time';
-import {
-  toFraction,
-  getQuantity,
-  formattedQuantity,
-} from '../ingredients-calculations';
-import { tailwindColors } from '../tailwind-colors';
-import Recept from './recept';
+import CookingTimeAndServings from '../components/CookingTimeAndServings';
+import IngredientsComponent from '../components/IngredientsComponent';
+import InstructionsComponent from '../components/InstructionsComponent';
 
 interface RecipeTemplateProps {
-  recipie: Recipe;
+  recipe: Recipe;
   contentComponent: any;
   location: WindowLocation;
 }
 
 export default function RecipeTemplate({
-  recipie,
+  recipe,
   contentComponent,
   location,
 }: RecipeTemplateProps) {
   const PostContent = contentComponent || Content;
-  const [servings, setServings] = useState(recipie.servings);
 
-  if (!recipie) return <Error />;
-
-  const showIngredientsHeading = shouldShowIngredientsHeading(
-    recipie.ingredients
-  );
-  const showInstructionsHeading = shouldShowInstructionsHeading(
-    recipie.instructions
-  );
-
-  function decreaseServings() {
-    if (servings < 2) return;
-    setServings(x => --x);
-  }
-
-  function increaseServings() {
-    setServings(x => ++x);
-  }
+  if (!recipe) return <Error />;
 
   return (
-    <>
-      <PageStyled>
-        <RecipeBanner location={location} category={recipie.category}>
-          <IntroText>
-            <h1>{recipie.title}</h1>
-          </IntroText>
-        </RecipeBanner>
-        <PostContainer>
-          <PostStyled>
-            <Description>{recipie.description}</Description>
-            <Metadata>
-              <MetadataItem>
-                <TimeIcon src={ClockSvg} alt="" />
-                Tillagning:{' '}
-                {formatDuration(
-                  0,
-                  recipie.cookingTime.active.hours,
-                  recipie.cookingTime.active.minutes
-                )}
-              </MetadataItem>
-              <MetadataItem>
-                <TimeIcon
-                  src={ClockWaitSvg}
-                  alt=""
-                  style={{ height: '1.4em' }}
-                />
-                Väntetid:{' '}
-                {formatDuration(
-                  recipie.cookingTime.waiting.days,
-                  recipie.cookingTime.waiting.hours,
-                  recipie.cookingTime.waiting.minutes
-                )}
-              </MetadataItem>
-              <MetadataItem>
-                <TimeIcon src={ServingsSvg} alt="" />
-                {recipie.servings} {recipie.servingsUnit}
-              </MetadataItem>
-            </Metadata>
-            <Columns>
-              <IngredientsStyled>
-                <h2>Ingredienser</h2>
-                <ServingsAdjuster>
-                  <ServingsAdjusterButton onClick={decreaseServings}>
-                    <img
-                      src={SubSvg}
-                      alt={`Minska antalet ${recipie.servingsUnit} förberäkning av ingredienser`}
-                    />
-                  </ServingsAdjusterButton>
-                  {servings} {recipie.servingsUnit}
-                  <ServingsAdjusterButton onClick={increaseServings}>
-                    <img
-                      src={AddSvg}
-                      alt={`Öka antalet ${recipie.servingsUnit} förberäkning av ingredienser`}
-                    />
-                  </ServingsAdjusterButton>
-                </ServingsAdjuster>
-                {servings !== recipie.servings && (
-                  <ServingsAdjusterInfo>
-                    Justeringen av antal påverkar bara mängden ingredienser som
-                    visas i receptet. Tillagningstid och <em>Gör så här</em> är
-                    skrivna utifrån den ursprungliga mängden.
-                  </ServingsAdjusterInfo>
-                )}
-                {recipie.ingredients.ingredientsGroup.map((group, index) => (
-                  <IngredientsGroupComponent
-                    key={index}
-                    group={group}
-                    defaultServings={recipie.servings}
-                    servings={servings}
-                    shouldShowHeading={showIngredientsHeading}
-                  />
-                ))}
-              </IngredientsStyled>
-              <div>
-                <FeaturedImage image={recipie.featuredImage} />
-              </div>
-            </Columns>
-            <InstructionsStyled>
-              <h2>Gör så här</h2>
-              {recipie.instructions.instructionsGroup.map((group, index) => (
-                <InstructionsGroupComponent
-                  key={index}
-                  group={group}
-                  shouldShowHeading={showInstructionsHeading}
-                />
-              ))}
-            </InstructionsStyled>
+    <PageStyled>
+      <RecipeBanner location={location} category={recipe.category}>
+        <IntroText>
+          <h1>{recipe.title}</h1>
+        </IntroText>
+      </RecipeBanner>
+      <PostContainer>
+        <PostStyled>
+          <Description>{recipe.description}</Description>
+          <CookingTimeAndServings recipe={recipe} />
+          <Columns>
+            <IngredientsComponent recipe={recipe} />
+            <div>
+              <FeaturedImage image={recipe.featuredImage} />
+            </div>
+          </Columns>
+          <InstructionsComponent recipe={recipe} />
 
-            <PostContent content={recipie.body} />
-            <RecipeTags tags={recipie.tags} />
-          </PostStyled>
-        </PostContainer>
-      </PageStyled>
-    </>
+          <PostContent content={recipe.body} />
+          <RecipeTags tags={recipe.tags} />
+        </PostStyled>
+      </PostContainer>
+    </PageStyled>
   );
 }
-
-function shouldShowInstructionsHeading(instructions: Instructions): boolean {
-  return instructions?.instructionsGroup?.length > 1;
-}
-
-function shouldShowIngredientsHeading(ingredients: Ingredients): boolean {
-  return ingredients?.ingredientsGroup?.length > 1;
-}
-
-interface InstructionsGroupProps {
-  group: InstructionsGroup;
-  shouldShowHeading: boolean;
-}
-
-function InstructionsGroupComponent({
-  group,
-  shouldShowHeading = false,
-}: InstructionsGroupProps) {
-  if (!(group.instructions.length > 0)) return null;
-
-  return (
-    <>
-      {shouldShowHeading && <h3>{group.name}</h3>}
-      <ol>
-        {group.instructions.map((instruction, index) => (
-          <li key={index}>{instruction}</li>
-        ))}
-      </ol>
-    </>
-  );
-}
-
-interface IngredientsGroupProps {
-  group: IngredientsGroup;
-  servings: number;
-  defaultServings: number;
-  shouldShowHeading: boolean;
-}
-
-function IngredientsGroupComponent({
-  group,
-  servings,
-  defaultServings,
-  shouldShowHeading = false,
-}: IngredientsGroupProps) {
-  if (!(group.ingredients.length > 0)) return null;
-
-  return (
-    <>
-      {shouldShowHeading && <h3>{group.name}</h3>}
-      <ul>
-        {group.ingredients.map((ingredient, index) => (
-          <IngredientComponent
-            ingredient={ingredient}
-            servings={servings}
-            defaultServings={defaultServings}
-            key={index}
-          />
-        ))}
-      </ul>
-    </>
-  );
-}
-
-interface IngredientProps {
-  ingredient: Ingredient;
-  servings: number;
-  defaultServings: number;
-}
-
-function IngredientComponent({
-  ingredient,
-  servings,
-  defaultServings,
-}: IngredientProps) {
-  const calculatedIngredient = getQuantity(
-    ingredient,
-    defaultServings,
-    servings
-  );
-  return (
-    <li>
-      <QuantityStyled>{formattedQuantity(calculatedIngredient)}</QuantityStyled>
-    </li>
-  );
-}
-
-const QuantityStyled = styled('span')`
-  /* font-family: 'Source Sans Pro';
-  /* Need a font where one can see the difference between l and I */
-  /* font-variant-numeric: diagonal-fractions; */
-  /* https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-numeric#numeric-fraction-values */
-`;
 
 function FeaturedImage({ image, title = null }) {
   if (!image) return null;
@@ -270,31 +70,6 @@ function FeaturedImage({ image, title = null }) {
   );
 }
 
-const ServingsAdjuster = styled('div')`
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: ${spacing.default};
-  border: 1px solid ${tailwindColors.teal500};
-  background-color: ${tailwindColors.teal100};
-  border-radius: 25px;
-  padding: ${spacing.half};
-`;
-
-const ServingsAdjusterButton = styled('button')`
-  background: none;
-  border: none;
-  padding: 0;
-  display: flex;
-`;
-
-const ServingsAdjusterInfo = styled('div')`
-  padding: ${spacing.default};
-  margin-bottom: ${spacing.default};
-  background-color: ${tailwindColors.teal100};
-  border: 1px solid ${tailwindColors.teal500};
-  border-radius: ${layout.borderRadius};
-`;
-
 const Columns = styled('div')`
   display: flex;
   flex-direction: column-reverse;
@@ -303,39 +78,6 @@ const Columns = styled('div')`
     display: grid;
     grid-gap: ${spacing.x3};
     grid-template-columns: 1fr minmax(0, 1fr);
-  }
-`;
-
-const TimeIcon = styled('img')`
-  height: 1.5em;
-  margin-right: ${spacing.half};
-`;
-
-const IngredientsStyled = styled('section')`
-  margin-bottom: ${spacing.section};
-`;
-
-const InstructionsStyled = styled('section')`
-  margin-bottom: ${spacing.section};
-`;
-
-const MetadataItem = styled('div')`
-  display: flex;
-  justify-content: flex-start;
-`;
-
-const Metadata = styled('section')`
-  display: grid;
-  grid-gap: ${spacing.half};
-  grid-template-columns: auto;
-  margin-bottom: ${spacing.section};
-
-  @media (min-width: ${breakpoints.small}) {
-    grid-template-columns: auto auto auto;
-  }
-
-  img:not(:first-child) {
-    margin-left: ${spacing.default};
   }
 `;
 

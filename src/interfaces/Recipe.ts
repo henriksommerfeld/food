@@ -1,5 +1,9 @@
 import { RecipeImage, FancyImage } from '../components/LazyImage';
 
+export interface RecipeProps {
+  recipe: Recipe;
+}
+
 export interface Recipe {
   id: string;
   title: string;

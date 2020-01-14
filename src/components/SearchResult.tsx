@@ -14,10 +14,7 @@ import CloseSvg from '../../static/img/close.svg';
 import { useEscKey } from '../useEscKey';
 import { useTransition, animated, config } from 'react-spring';
 import { LocationProp } from 'interfaces/LocationProp';
-import {
-  bannerMinHeightMedium,
-  bannerMinHeight,
-} from '../templates/shared-intro-banner';
+import { bannerMinHeight } from '../templates/shared-intro-banner';
 import {
   GridContainerStyled,
   GridItemsList,
