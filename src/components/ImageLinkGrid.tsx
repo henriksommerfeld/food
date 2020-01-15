@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { spacing, colors, breakpoints, Theme } from '../constants';
+import { spacing, colors, breakpoints, Theme, layout } from '../constants';
 import { tailwindColors } from '../tailwind-colors';
 import { Link } from 'gatsby';
 import { transparentizeHex } from '../color-convertions';

@@ -9,7 +9,7 @@ export const PostStyled = styled.div`
     padding: ${spacing.double};
   }
 
-  @media (min-width: ${breakpoints.medium}) {
+  @media (min-width: ${breakpoints.large}) {
     transform: translateY(${spacing.contentOffset});
     border-radius: 4px;
     box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.5);

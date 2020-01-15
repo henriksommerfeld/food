@@ -23,7 +23,7 @@ export const zIndexes = {
 };
 
 export const layout = {
-  contentMaxWidth: 1000,
+  contentMaxWidth: 1400,
   borderRadius: '0.25rem',
 };
 

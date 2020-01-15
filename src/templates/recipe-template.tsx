@@ -32,7 +32,11 @@ export default function RecipeTemplate({
 
   return (
     <PageStyled>
-      <RecipeBanner location={location} category={recipe.category}>
+      <RecipeBanner
+        location={location}
+        category={recipe.category}
+        image={recipe.featuredImage}
+      >
         <IntroText>
           <h1>{recipe.title}</h1>
         </IntroText>
@@ -44,12 +48,12 @@ export default function RecipeTemplate({
           <Columns>
             <IngredientsComponent recipe={recipe} />
             <div>
+              <InstructionsComponent recipe={recipe} />
               <FeaturedImage image={recipe.featuredImage} />
+              <PostContent content={recipe.body} />
             </div>
           </Columns>
-          <InstructionsComponent recipe={recipe} />
 
-          <PostContent content={recipe.body} />
           <RecipeTags tags={recipe.tags} />
         </PostStyled>
       </PostContainer>
@@ -71,13 +75,11 @@ function FeaturedImage({ image, title = null }) {
 }
 
 const Columns = styled('div')`
-  display: flex;
-  flex-direction: column-reverse;
+  display: grid;
 
   @media (min-width: ${breakpoints.small}) {
-    display: grid;
+    grid-template-columns: 1fr minmax(0, 2fr);
     grid-gap: ${spacing.x3};
-    grid-template-columns: 1fr minmax(0, 1fr);
   }
 `;
 

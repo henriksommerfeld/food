@@ -2,18 +2,20 @@ import React, { ReactNode } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import { WindowLocation } from '@reach/router';
 import { SharedIntroBanner } from '../templates/shared-intro-banner';
-import { FancyImage } from './LazyImage';
+import { FancyImage, RecipeImage } from './LazyImage';
 import { categoryBanners } from '../constants';
 
 interface RecipeBannerProps {
   location: WindowLocation;
   category: string;
+  image?: RecipeImage;
   children: ReactNode;
 }
 
 export default function RecipeBanner({
   location,
   category,
+  image,
   children,
 }: RecipeBannerProps) {
   const data = useStaticQuery(bannerImagesQuery);
@@ -22,7 +24,7 @@ export default function RecipeBanner({
 
   return (
     <SharedIntroBanner
-      backgroundImage={backgroundImage}
+      backgroundImage={image || backgroundImage}
       overlayOpacity={0.6}
       location={location}
     >
