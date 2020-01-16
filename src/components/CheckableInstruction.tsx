@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
-import { InstructionsGroup } from '../interfaces/Recipe';
 import { tailwindColors } from '../tailwind-colors';
 import { spacing, colors } from '../constants';
 import { transparentizeHex } from '../color-convertions';
@@ -39,7 +38,16 @@ const ListItemStyled = styled('li')`
 `;
 
 const HiddenInput = styled('input')`
-  display: none;
+  position: absolute;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+  clip: rect(1px, 1px, 1px, 1px);
+
+  &:focus + span {
+    box-shadow: 0 0 3px 1px ${transparentizeHex(tailwindColors.teal400, 0.5)};
+    border-color: ${tailwindColors.teal500};
+  }
 `;
 
 const Checkbox = styled('span')`
@@ -58,7 +66,7 @@ const Checkbox = styled('span')`
   border-style: solid;
   border-color: ${({ checked }) =>
     checked ? tailwindColors.teal500 : tailwindColors.gray500};
-  transition: all 400ms ease-in-out;
+  transition: background-color 300ms ease-in-out;
   background-color: ${({ checked }) =>
     checked ? tailwindColors.teal100 : colors.white};
   box-shadow: 0 2px 2px var(--boxShadowColor);
@@ -78,5 +86,10 @@ const Checkbox = styled('span')`
     border-top: 0;
     transform: rotate(-50deg);
     transition: border-color 200ms ease-in-out;
+  }
+
+  &:hover {
+    box-shadow: 0 0 3px 1px ${transparentizeHex(tailwindColors.teal400, 0.5)};
+    border-color: ${tailwindColors.teal500};
   }
 `;
