@@ -1,4 +1,5 @@
 import React from 'react';
+import styled from 'styled-components';
 import { IngredientsGroup } from '../interfaces/Recipe';
 import IngredientComponent from './IngredientComponent';
 
@@ -20,7 +21,7 @@ export default function IngredientsGroupComponent({
   return (
     <>
       {shouldShowHeading && <h3>{group.name}</h3>}
-      <ul>
+      <IngredientsListStyled>
         {group.ingredients.map((ingredient, index) => (
           <IngredientComponent
             ingredient={ingredient}
@@ -29,7 +30,11 @@ export default function IngredientsGroupComponent({
             key={index}
           />
         ))}
-      </ul>
+      </IngredientsListStyled>
     </>
   );
 }
+
+const IngredientsListStyled = styled('ul')`
+  margin-left: 0;
+`;

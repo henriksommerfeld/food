@@ -1,5 +1,9 @@
 import React from 'react';
+import styled from 'styled-components';
 import { InstructionsGroup } from '../interfaces/Recipe';
+import { tailwindColors } from '../tailwind-colors';
+import { spacing } from '../constants';
+import CheckableInstruction from './CheckableInstruction';
 
 interface InstructionsGroupProps {
   group: InstructionsGroup;
@@ -15,11 +19,15 @@ export default function InstructionsGroupComponent({
   return (
     <>
       {shouldShowHeading && <h3>{group.name}</h3>}
-      <ol>
+      <ListStyled>
         {group.instructions.map((instruction, index) => (
-          <li key={index}>{instruction}</li>
+          <CheckableInstruction key={index} instruction={instruction} />
         ))}
-      </ol>
+      </ListStyled>
     </>
   );
 }
+
+const ListStyled = styled('ol')`
+  margin-left: 0;
+`;

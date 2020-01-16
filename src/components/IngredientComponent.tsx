@@ -20,11 +20,13 @@ export default function IngredientComponent({
     servings
   );
   return (
-    <li>
+    <ListItemStyled>
       <QuantityStyled>{formattedQuantity(calculatedIngredient)}</QuantityStyled>
-    </li>
+    </ListItemStyled>
   );
 }
+
+const ListItemStyled = styled('li')``;
 
 const QuantityStyled = styled('span')`
   /* font-family: 'Source Sans Pro';
