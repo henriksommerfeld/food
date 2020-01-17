@@ -12,6 +12,7 @@ import {
   LinkTitle,
   imageTransition,
 } from '../components/ImageLinkGrid';
+import { useSearchIndex } from '../useSearchIndex';
 
 interface CategoryRouteProps {
   data: CategoryPageQueryData;
@@ -27,6 +28,7 @@ export default function CategoryRoute({
   pageContext,
   location,
 }: CategoryRouteProps) {
+  const searchIndex = useSearchIndex();
   const category = pageContext.category;
   const totalCount = data.allMarkdownRemark.totalCount;
   const categoryHeader = getHeader(totalCount);
@@ -39,6 +41,7 @@ export default function CategoryRoute({
         location={location}
         heading={category}
         subheading={categoryHeader}
+        searchIndex={searchIndex}
       >
         <GridContainerStyled>
           <GridItemsList>

@@ -4,17 +4,10 @@ import Layout from '../components/Layout';
 import { HTMLContent } from '../components/Content';
 import RecipeTemplate from './recipe-template';
 import { editRecipeUrlFromAbsolutePath } from '../url-replacer';
-import {
-  Recipe,
-  RecipeQueryData,
-  IngredientsQueryData,
-  Ingredients,
-  Ingredient,
-  QuantityUnit,
-  InstructionsQueryData,
-  Instructions,
-} from '../interfaces/Recipe';
+import { Recipe, RecipeQueryData } from '../interfaces/Recipe';
 import { WindowLocation } from '@reach/router';
+import { useSearchIndex } from '../useSearchIndex';
+import { toIngredients, toInstructions } from '../recipe-mappers';
 
 interface ReceptProps {
   data: RecipeQueryData;
@@ -22,6 +15,7 @@ interface ReceptProps {
 }
 
 export default function Recept({ data, ...props }: ReceptProps) {
+  const searchIndex = useSearchIndex();
   const { markdownRemark: post } = data;
   const recipe: Recipe = toRecipe(data);
 
@@ -36,53 +30,10 @@ export default function Recept({ data, ...props }: ReceptProps) {
         contentComponent={HTMLContent}
         recipe={recipe}
         location={props.location}
+        searchIndex={searchIndex}
       />
     </Layout>
   );
-}
-
-function toInstructions(data: InstructionsQueryData[]): Instructions {
-  const instructions: Instructions = { instructionsGroup: [] };
-  if (!(data?.length > 0)) return instructions;
-
-  data.forEach(x => {
-    const instructionsList: string[] = [];
-
-    x.partinstructions?.partinstructionslist?.forEach(y => {
-      instructionsList.push(y.instruction);
-    });
-
-    instructions.instructionsGroup.push({
-      name: x.partinstructions.partinstructionsname,
-      instructions: instructionsList,
-    });
-  });
-
-  return instructions;
-}
-
-function toIngredients(data: IngredientsQueryData[]): Ingredients {
-  const ingredients: Ingredients = { ingredientsGroup: [] };
-  if (!(data?.length > 0)) return ingredients;
-
-  data.forEach(x => {
-    const ingredientList: Ingredient[] = [];
-
-    x.partingredients?.partingredientslist?.forEach(y => {
-      ingredientList.push({
-        name: y.ingredient.ingredientname,
-        quantity: y.ingredient.ingredientamount,
-        unit: y.ingredient.unit as QuantityUnit,
-      });
-    });
-
-    ingredients.ingredientsGroup.push({
-      name: x.partingredients.partingredientsname,
-      ingredients: ingredientList,
-    });
-  });
-
-  return ingredients;
 }
 
 function toRecipe(data: RecipeQueryData): Recipe {

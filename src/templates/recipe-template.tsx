@@ -19,12 +19,14 @@ interface RecipeTemplateProps {
   recipe: Recipe;
   contentComponent: any;
   location: WindowLocation;
+  searchIndex: any;
 }
 
 export default function RecipeTemplate({
   recipe,
   contentComponent,
   location,
+  searchIndex,
 }: RecipeTemplateProps) {
   const PostContent = contentComponent || Content;
 
@@ -36,6 +38,7 @@ export default function RecipeTemplate({
         location={location}
         category={recipe.category}
         image={recipe.featuredImage}
+        searchIndex={searchIndex}
       >
         <IntroText>
           <h1>{recipe.title}</h1>

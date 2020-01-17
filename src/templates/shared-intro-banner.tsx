@@ -12,6 +12,7 @@ interface SharedIntroBannerProps {
   backgroundImage?: RecipeImage;
   backgroundColor?: string;
   overlayOpacity?: number;
+  searchIndex: any;
   location: WindowLocation;
   children: ReactNode;
 }
@@ -21,6 +22,7 @@ export function SharedIntroBanner({
   backgroundColor = null,
   overlayOpacity = 0.3,
   location,
+  searchIndex,
   children,
 }: SharedIntroBannerProps) {
   return (
@@ -31,7 +33,7 @@ export function SharedIntroBanner({
     >
       <IntroBannerWidthConstrainer>
         {children}
-        <Searchbox location={location} />
+        <Searchbox location={location} searchIndex={searchIndex} />
       </IntroBannerWidthConstrainer>
     </IntroBanner>
   );

@@ -11,6 +11,7 @@ interface CategoryTemplateProps {
   subheading: ReactNode;
   children: ReactNode;
   location: WindowLocation;
+  searchIndex: any;
 }
 
 export function CategoryTemplate({
@@ -19,10 +20,15 @@ export function CategoryTemplate({
   subheading,
   children,
   location,
+  searchIndex,
 }: CategoryTemplateProps) {
   return (
     <Page>
-      <SharedIntroBanner backgroundImage={headerImageFile} location={location}>
+      <SharedIntroBanner
+        backgroundImage={headerImageFile}
+        location={location}
+        searchIndex={searchIndex}
+      >
         <IntroText>
           <h1>{heading}</h1>
           <h2>{subheading}</h2>

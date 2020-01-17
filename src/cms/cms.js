@@ -12,6 +12,6 @@ if (isDevelopment) {
 }
 
 CMS.registerPreviewStyle(previewStyles, { raw: true });
-//CMS.registerPreviewTemplate('recept', withStyledComponents(RecipePreview));
+CMS.registerPreviewTemplate('recept', withStyledComponents(RecipePreview));
 
 CMS.init();

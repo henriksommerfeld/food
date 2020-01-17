@@ -1,19 +1,20 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { graphql, useStaticQuery } from 'gatsby';
-import { Index } from 'elasticlunr';
 import styled from 'styled-components';
 import { useGlobal } from 'reactn';
+import { WindowLocation } from '@reach/router';
 import { colors, layout, zIndexes } from '../constants';
 import { tailwindColors } from '../tailwind-colors';
 import { transparentizeHex } from '../color-convertions';
 import SearchWhiteSvg from '../../static/img/search-white.svg';
 import SearchGreySvg from '../../static/img/search-grey100.svg';
-import { LocationProp } from 'interfaces/LocationProp';
 import { useKeys } from '../useKeys';
 
-export default function Searchbox({ location }: LocationProp) {
-  const data = useStaticQuery(searchIndexQuery);
-  const index = Index.load(data.siteSearchIndex.index);
+interface SearchboxProps {
+  location: WindowLocation;
+  searchIndex: any;
+}
+
+export default function Searchbox({ location, searchIndex }: SearchboxProps) {
   const [results, setResults] = useGlobal<SearchResults>('searchResults');
   const [route, setRoute] = useGlobal<SearchRoute>('searchRoute');
   const [query, setQuery] = useGlobal<SearchQuery>('searchQuery');
@@ -41,15 +42,17 @@ export default function Searchbox({ location }: LocationProp) {
     const newQuery = evt.target.value.trim();
     if (newQuery.length > 2) {
       setQuery(newQuery);
-      setRoute(location.pathname);
+      setRoute(location?.pathname);
       search(newQuery);
     }
   };
 
   const search = (enteredQuery: string) => {
-    const response = index
+    if (!searchIndex) return;
+
+    const response = searchIndex
       .search(enteredQuery, { expand: true, bool: 'AND' })
-      .map(({ ref }) => index.documentStore.getDoc(ref));
+      .map(({ ref }) => searchIndex.documentStore.getDoc(ref));
 
     setResults(response || []);
   };
@@ -69,7 +72,7 @@ export default function Searchbox({ location }: LocationProp) {
             role="search"
             aria-label="Ange dina sökord här..."
             placeholder="Ange dina sökord här..."
-            defaultValue={getPreviousQuery(location.pathname)}
+            defaultValue={getPreviousQuery(location?.pathname)}
             onChange={queryInputChanged}
             onFocus={() => setHasFocus(true)}
             onBlur={onBlur}
@@ -141,11 +144,3 @@ export interface SearchResults {
 export interface SearchFocus {
   searchResultsFocus: boolean;
 }
-
-const searchIndexQuery = graphql`
-  query SearchIndexQuery {
-    siteSearchIndex {
-      index
-    }
-  }
-`;

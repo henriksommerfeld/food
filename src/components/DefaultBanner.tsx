@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { WindowLocation } from '@reach/router';
 import { SharedIntroBanner } from '../templates/shared-intro-banner';
 import { colors, spacing } from '../constants';
+import { useSearchIndex } from '../useSearchIndex';
 
 interface DefaultBannerProps {
   location: WindowLocation;
@@ -12,12 +13,14 @@ interface DefaultBannerProps {
 export default function DefaultBanner({ location }: DefaultBannerProps) {
   const data = useStaticQuery(pageQuery);
   const { frontmatter } = data.markdownRemark;
+  const searchIndex = useSearchIndex();
 
   return (
     <SharedIntroBanner
       backgroundImage={frontmatter.image}
       overlayOpacity={0.4}
       location={location}
+      searchIndex={searchIndex}
     >
       <IntroText>
         <h1>{frontmatter.heading}</h1>

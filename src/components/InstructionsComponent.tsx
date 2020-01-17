@@ -5,7 +5,10 @@ import { RecipeProps } from '../interfaces/Recipe';
 import InstructionsGroupComponent from './InstructionsGroupComponent';
 
 export default function InstructionsComponent({ recipe }: RecipeProps) {
-  const showHeading = recipe.instructions?.instructionsGroup?.length > 1;
+  const instructionsCount = recipe.instructions?.instructionsGroup?.length || 0;
+  const showHeading = instructionsCount > 1;
+
+  if (instructionsCount < 1) return null;
 
   return (
     <InstructionsStyled>

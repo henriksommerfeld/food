@@ -7,9 +7,11 @@ import { graphql, useStaticQuery } from 'gatsby';
 import { getFluid } from '../images';
 import { LocationProp } from '../interfaces/LocationProp';
 import { SharedIntroBanner } from '../templates/shared-intro-banner';
+import { useSearchIndex } from '../useSearchIndex';
 
 export default function NotFoundPage({ location }: LocationProp) {
   const data = useStaticQuery(backgroundImageQuery);
+  const searchIndex = useSearchIndex();
   const fluidImage = getImageFrom(data);
 
   return (
@@ -21,7 +23,11 @@ export default function NotFoundPage({ location }: LocationProp) {
         className="lost-background"
       >
         <PageContent>
-          <SharedIntroBanner location={location} backgroundColor="transparent">
+          <SharedIntroBanner
+            location={location}
+            backgroundColor="transparent"
+            searchIndex={searchIndex}
+          >
             <Text>
               <h1>Gått vilse?</h1>
             </Text>
