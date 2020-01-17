@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
 import { InstructionsGroup } from '../interfaces/Recipe';
-import { tailwindColors } from '../tailwind-colors';
-import { spacing } from '../constants';
 import CheckableInstruction from './CheckableInstruction';
 
 interface InstructionsGroupProps {

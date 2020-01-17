@@ -5,7 +5,6 @@ import { toIngredients, toInstructions } from '../../recipe-mappers';
 const RecipePreview = ({ entry, widgetFor }) => {
   const dataRaw = entry.getIn(['data']);
   const data = (dataRaw && dataRaw.toJS()) || {};
-  console.log('TCL: RecipePreview -> data', data);
 
   const recipe = {
     title: data.title,

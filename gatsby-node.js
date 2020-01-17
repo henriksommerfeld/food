@@ -122,7 +122,7 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
     createNodeField({
       name: `slug`,
       node,
-      value: filePath,
+      value: route,
     });
   }
 };

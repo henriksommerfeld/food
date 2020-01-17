@@ -7,13 +7,13 @@ import { WindowLocation } from '@reach/router';
 import { PageStyled } from '../components/PageStyled';
 import { PostContainer } from '../components/PostContainer';
 import { PostStyled } from '../components/PostStyled';
-import RecipeBanner from '../components/RecipeBanner';
 import { Recipe } from '../interfaces/Recipe';
 import Error from '../components/Error';
 import LazyImage from '../components/LazyImage';
 import CookingTimeAndServings from '../components/CookingTimeAndServings';
 import IngredientsComponent from '../components/IngredientsComponent';
 import InstructionsComponent from '../components/InstructionsComponent';
+import { SharedIntroBanner } from './shared-intro-banner';
 
 interface RecipeTemplateProps {
   recipe: Recipe;
@@ -34,16 +34,15 @@ export default function RecipeTemplate({
 
   return (
     <PageStyled>
-      <RecipeBanner
+      <SharedIntroBanner
         location={location}
-        category={recipe.category}
-        image={recipe.featuredImage}
+        backgroundImage={recipe.featuredImage}
         searchIndex={searchIndex}
       >
         <IntroText>
           <h1>{recipe.title}</h1>
         </IntroText>
-      </RecipeBanner>
+      </SharedIntroBanner>
       <PostContainer>
         <PostStyled>
           <Description>{recipe.description}</Description>

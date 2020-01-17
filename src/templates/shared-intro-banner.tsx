@@ -47,6 +47,15 @@ function IntroBanner({
 }) {
   const fluidImage = getFluid(backgroundImage);
 
+  if (backgroundImage && !fluidImage) {
+    return (
+      <IntroBannerBackgroundImagePreview backgroundImage={backgroundImage}>
+        <StartPageLink />
+        {children}
+      </IntroBannerBackgroundImagePreview>
+    );
+  }
+
   if (!fluidImage) {
     return (
       <IntroBannerSolidBackground backgroundColor={backgroundColor}>
@@ -72,6 +81,21 @@ function IntroBanner({
 const IntroBannerSolidBackground = styled('div')`
   background-color: ${({ backgroundColor }) =>
     backgroundColor ? backgroundColor : colors.headerBackground};
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 3rem;
+
+  @media (min-width: ${breakpoints.xs}) {
+    padding-top: initial;
+  }
+`;
+
+const IntroBannerBackgroundImagePreview = styled('div')`
+  background-image: url(${({ backgroundImage }) => backgroundImage});
+  background-size: cover;
+  background-position: center;
   display: flex;
   flex-direction: column;
   justify-content: center;

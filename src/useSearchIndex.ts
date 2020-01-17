@@ -1,4 +1,3 @@
-import React, { Dispatch } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import { Index } from 'elasticlunr';
 
