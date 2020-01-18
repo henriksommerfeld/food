@@ -14,6 +14,7 @@ import CookingTimeAndServings from '../components/CookingTimeAndServings';
 import IngredientsComponent from '../components/IngredientsComponent';
 import InstructionsComponent from '../components/InstructionsComponent';
 import { SharedIntroBanner } from './shared-intro-banner';
+import ToolsSvg from '../../static/img/tools.svg';
 
 interface RecipeTemplateProps {
   recipe: Recipe;
@@ -45,7 +46,18 @@ export default function RecipeTemplate({
       </SharedIntroBanner>
       <PostContainer>
         <PostStyled>
-          <Description>{recipe.description}</Description>
+          <TopColumns>
+            <Description>{recipe.description}</Description>
+            {recipe.tools && (
+              <Tools>
+                <h2>
+                  <ToolsIcon src={ToolsSvg} alt="" />
+                  Redskap
+                </h2>
+                <p>{recipe.tools}</p>
+              </Tools>
+            )}
+          </TopColumns>
           <CookingTimeAndServings recipe={recipe} />
           <Columns>
             <IngredientsComponent recipe={recipe} />
@@ -85,8 +97,33 @@ const Columns = styled('div')`
   }
 `;
 
-const Description = styled('div')`
+const TopColumns = styled('div')`
+  display: grid;
+
+  @media (min-width: ${breakpoints.small}) {
+    grid-template-columns: 1fr 1fr;
+    grid-gap: ${spacing.x3};
+  }
+`;
+
+const Description = styled('p')`
   margin-bottom: ${spacing.section};
+`;
+
+const Tools = styled('section')`
+  margin-bottom: ${spacing.section};
+
+  h2 {
+    font-size: 1.1rem;
+    display: flex;
+    align-items: center;
+    margin-bottom: ${spacing.half};
+  }
+`;
+
+const ToolsIcon = styled('img')`
+  height: 1.2em;
+  margin-right: ${spacing.half};
 `;
 
 const IntroText = styled('div')`

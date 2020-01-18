@@ -9,6 +9,7 @@ const RecipePreview = ({ entry, widgetFor }) => {
   const recipe = {
     title: data.title,
     description: data.description,
+    tools: data.tools,
     featuredImage: data.featuredimage,
     servings: data.servings,
     servingsUnit: data.servingslabel,

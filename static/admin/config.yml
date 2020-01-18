@@ -39,12 +39,8 @@ collections:
         }
       - { label: 'URL', name: 'url', widget: 'hidden', default: '' }
       - { label: 'Titel', name: 'title', widget: 'string' }
-      - {
-          label: 'Beskrivning',
-          name: description,
-          widget: string,
-          hint: '1-2 meningar som visas när man delar en länk till sidan.',
-        }
+      - { label: 'Beskrivning', name: description, widget: string }
+      - { label: 'Redskap', name: tools, widget: string, hint: '' }
       - {
           label: 'Dold',
           name: 'hidden',

@@ -52,6 +52,7 @@ function toRecipe(data: RecipeQueryData): Recipe {
     body: post.html,
     category: frontmatter.category,
     description: frontmatter.description,
+    tools: frontmatter.tools,
     cookingTime: {
       active: {
         hours: frontmatter.timeactive.hoursactive,
@@ -80,6 +81,7 @@ export const pageQuery = graphql`
         title
         tags
         description
+        tools
         category
         servings
         servingslabel

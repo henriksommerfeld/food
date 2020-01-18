@@ -8,6 +8,7 @@ export interface Recipe {
   id: string;
   title: string;
   description: string;
+  tools: string;
   category: category;
   featuredImage: RecipeImage;
   cookingTime: {
@@ -84,6 +85,7 @@ export interface RecipeQueryData {
       title: string;
       tags: string[];
       description: string;
+      tools: string;
       category: category;
       servings: number;
       servingslabel: string;

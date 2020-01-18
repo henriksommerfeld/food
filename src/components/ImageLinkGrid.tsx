@@ -1,6 +1,5 @@
 import styled from 'styled-components';
 import { spacing, colors, breakpoints, Theme } from '../constants';
-import { tailwindColors } from '../tailwind-colors';
 import { Link } from 'gatsby';
 import { transparentizeHex } from '../color-convertions';
 
@@ -95,7 +94,6 @@ export const GridContainerStyled = styled('section')`
   display: flex;
   justify-content: center;
   padding: ${spacing.default};
-  /* background-color: ${tailwindColors.pink100}; */
 
   @media (min-width: ${breakpoints.small}) {
     padding: ${spacing.double};
