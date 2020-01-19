@@ -108,6 +108,7 @@ const TopColumns = styled('div')`
 
 const Description = styled('p')`
   margin-bottom: ${spacing.section};
+  font-style: italic;
 `;
 
 const Tools = styled('section')`

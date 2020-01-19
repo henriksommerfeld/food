@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import { spacing, colors, breakpoints, links } from '../constants';
 import { tailwindColors } from '../tailwind-colors';
 import EditSvg from '../../static/img/edit-filled.svg';
-import { Link } from 'gatsby';
 
 interface Footer {
   editLink?: string;
@@ -13,16 +12,15 @@ export default function Footer({ editLink = '/admin' }: Footer) {
   return (
     <FooterWrapper>
       <InnerFooter>
-        <EditContainer>
-          <AnchorWithIcon
-            href={editLink || '/admin'}
-            target="_blank"
-            rel="noopener noreferrer"
-            title="Redigera sidan"
-          >
-            <Svg src={EditSvg} alt="Redigera sidan" />
-          </AnchorWithIcon>
-        </EditContainer>
+        <AnchorWithIcon
+          href={editLink || '/admin'}
+          target="_blank"
+          rel="noopener noreferrer"
+          title="Redigera sidan"
+        >
+          <Svg src={EditSvg} alt="Redigera sidan" />
+          Redigera
+        </AnchorWithIcon>
       </InnerFooter>
     </FooterWrapper>
   );
@@ -40,36 +38,25 @@ const InnerFooter = styled('footer')`
   color: ${tailwindColors.blue100};
 
   @media (min-width: ${breakpoints.small}) {
-    grid-template-columns: 1fr 1fr auto;
     padding: ${spacing.double};
   }
 `;
 
-const EditContainer = styled('div')`
-  display: none;
-
-  @media (min-width: ${breakpoints.small}) {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: flex-end;
-  }
-`;
-
-const Heading = styled('h3')`
-  margin-bottom: ${spacing.half};
-`;
-
-const LinkStyled = styled(Link)``;
-
 const AnchorWithIcon = styled('a')`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   :hover,
   :focus,
-  :active {
+  :active,
+  :visited {
     background: none;
+    color: ${colors.white};
   }
 `;
 
 const Svg = styled('img')`
   height: 1.3rem;
+  margin-right: ${spacing.half};
 `;

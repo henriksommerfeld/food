@@ -7,7 +7,6 @@ export default function IndexPageTemplate({ children }) {
     <PageStyled>
       {children}
       <Categories />
-      {/* <BlogRollContainer>{isPreview ? null : <BlogRoll />}</BlogRollContainer> */}
     </PageStyled>
   );
 }
