@@ -34,6 +34,7 @@ export function toIngredients(data: IngredientsQueryData[]): Ingredients {
 export function toInstructions(data: InstructionsQueryData[]): Instructions {
   const instructions: Instructions = { instructionsGroup: [] };
   if (!(data?.length > 0)) return instructions;
+  if (!data[0].partinstructions) return instructions;
 
   data.forEach(x => {
     const instructionsList: string[] = [];

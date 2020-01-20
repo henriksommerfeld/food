@@ -46,6 +46,7 @@ const AnchorWithIcon = styled('a')`
   display: flex;
   align-items: center;
   justify-content: center;
+  color: ${colors.white};
 
   :hover,
   :focus,

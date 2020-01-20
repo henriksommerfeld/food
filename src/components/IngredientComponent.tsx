@@ -2,6 +2,8 @@ import React from 'react';
 import styled from 'styled-components';
 import { Ingredient } from '../interfaces/Recipe';
 import { getQuantity, formattedQuantity } from '../ingredients-calculations';
+import { spacing } from '../constants';
+import { tailwindColors } from '../tailwind-colors';
 
 interface IngredientProps {
   ingredient: Ingredient;
@@ -20,17 +22,20 @@ export default function IngredientComponent({
     servings
   );
   return (
-    <ListItemStyled>
-      <QuantityStyled>{formattedQuantity(calculatedIngredient)}</QuantityStyled>
-    </ListItemStyled>
+    <ListItemStyled>{formattedQuantity(calculatedIngredient)}</ListItemStyled>
   );
 }
 
-const ListItemStyled = styled('li')``;
+const ListItemStyled = styled('li')`
+  align-items: baseline;
 
-const QuantityStyled = styled('span')`
-  /* font-family: 'Source Sans Pro';
-  /* TODO: Need a font where one can see the difference between l and I */
-  /* font-variant-numeric: diagonal-fractions; */
-  /* https://developer.mozilla.org/en-US/docs/Web/CSS/font-variant-numeric#numeric-fraction-values */
+  &::before {
+    content: '';
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    background-color: ${tailwindColors.teal400};
+    border-radius: 100%;
+    margin-right: ${spacing.half};
+  }
 `;
