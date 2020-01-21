@@ -138,7 +138,7 @@ const plugins = [
       modulePath: `${__dirname}/src/cms/cms.js`,
       manualInit: true,
       enableIdentityWidget: true,
-      htmlTitle: 'Redaktörsläge - Isabels sajt',
+      htmlTitle: 'Redaktörsläge - Isabels och Henriks receptsamling',
       htmlFavicon: `${__dirname}/static/img/edit-filled.ico`,
     },
   },

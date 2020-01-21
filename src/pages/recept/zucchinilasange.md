@@ -79,11 +79,11 @@ instructions:
         - instruction: 'Finhacka vitlöken, stek snabbt i rikligt med smör'
         - instruction: Bryn köttfärsen i samma stekpanna. Smula sedan över buljongtärningen
         - instruction: Tillsätt krossade tomater och sambal oelek
+        - instruction: Ställ in ugnen på 225 grader
         - instruction: Tillsätt Philadelphia vitlök & örter + crème fraiche. Rör om.
         - instruction: >-
             Smaka av med chilipulver, salt och peppar och eventuella andra
             kryddor
-        - instruction: Ställ in ugnen på 225 grader
         - instruction: Låt det puttra i ca. 10 minuter.
         - instruction: >-
             Skölj zucchinin och hyvla sedan skivor på längden, med hjälp av en
@@ -99,7 +99,7 @@ instructions:
 timepassive:
   dayspassive: 0
   hourspassive: 0
-  minutespassive: 10
+  minutespassive: 20
 timeactive:
   hoursactive: 0
   minutesactive: 50
