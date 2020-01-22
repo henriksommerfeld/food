@@ -1,10 +1,12 @@
 {
-  "name": "Recept",
+  "name": "recept",
   "description": "Isabels och Henriks receptsamling",
   "version": "1.0.0",
   "author": "Henrik Sommerfeld",
   "keywords": [
-    "gatsby"
+    "gatsby",
+    "food",
+    "recipe"
   ],
   "license": "MIT",
   "main": "n/a",

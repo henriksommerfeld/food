@@ -40,7 +40,13 @@ collections:
       - { label: 'URL', name: 'url', widget: 'hidden', default: '' }
       - { label: 'Titel', name: 'title', widget: 'string' }
       - { label: 'Beskrivning', name: description, widget: string }
-      - { label: 'Redskap', name: tools, widget: string, hint: '' }
+      - {
+          label: 'Redskap',
+          name: tools,
+          widget: string,
+          hint: '',
+          required: false,
+        }
       - {
           label: 'Dold',
           name: 'hidden',
@@ -129,6 +135,7 @@ collections:
                                   widget: 'number',
                                   valueType: 'float',
                                   min: 0,
+                                  hint: 'Ange 0 om du inte vill visa någon mängd, ex. "salt"',
                                 },
                                 {
                                   label: 'Måttenhet',
@@ -201,6 +208,7 @@ collections:
           name: 'body',
           widget: 'markdown',
           buttons: ['bold', 'italic', 'link'],
+          required: false,
         }
       - {
           label: 'Väntetid',
