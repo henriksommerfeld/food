@@ -10,7 +10,7 @@ tools: ''
 hidden: false
 category: Huvudrätt
 featuredimage: /uploads/zucchinilasange.jpg
-featuredimagetheme: 1
+featuredimagetheme: 2
 servings: 6
 servingslabel: portioner
 ingredients:

@@ -95,7 +95,7 @@ const plugins = [
         `date`,
         `category`,
         `tags`,
-        `body`,
+        `description`,
         `featuredimagetheme`,
       ],
       resolvers: {
@@ -104,12 +104,9 @@ const plugins = [
           date: node => node.frontmatter.date,
           tags: node => node.frontmatter.tags,
           category: node => node.frontmatter.category,
+          description: node => node.frontmatter.description,
           theme: node => node.frontmatter.featuredimagetheme,
           path: node => node.fields.slug,
-          body: node =>
-            remark()
-              .use(stripMarkdown)
-              .processSync(node.rawMarkdownBody).contents,
         },
       },
       // Optional filter to limit indexed nodes

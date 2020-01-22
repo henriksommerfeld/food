@@ -7,7 +7,7 @@ description: 'God och enkel Calzone som görs i stekpanna. '
 tools: '2 stekspadar, en bunke, visp och en stekpanna.'
 hidden: false
 category: Huvudrätt
-featuredimage: /uploads/Calzone.jpg
+featuredimage: /uploads/calzone-tallrik.jpg
 featuredimagetheme: 2
 servings: 2
 servingslabel: portioner
@@ -84,9 +84,10 @@ timepassive:
   minutespassive: 5
 timeactive:
   hoursactive: 0
-  minutesactive: 14
+  minutesactive: 20
 tags:
   - LCHF
 ---
+Innan pizzan viks ihop:
 
-Hoppas det smakar!
+![](/uploads/calzone-stekpanna.jpg)
