@@ -1,4 +1,8 @@
 {
   "title": "Bara ben",
-  "body": "Bakom brödbutiken bodde Baskerbosses båda bröder..."
+  "description": "Bakom brödbutiken bodde Baskerbosses båda bröder...",
+  "ingredientsTitle": "Grejer",
+  "ingredientName": "🧂",
+  "ingredientAmount": 2,
+  "ingredientUnit": "tsk"
 }
