@@ -44,7 +44,7 @@ export default function CategoryRoute({
         searchIndex={searchIndex}
       >
         <GridContainerStyled>
-          <GridItemsList>
+          <GridItemsList data-testid="category-recepies">
             {data.allMarkdownRemark.edges.map(edge => (
               <Item key={edge.node.frontmatter.title}>
                 <ItemLinkStyled to={edge.node.fields.slug}>

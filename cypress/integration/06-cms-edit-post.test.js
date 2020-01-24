@@ -1,14 +1,13 @@
 /// <reference types="Cypress" />
 
 const samplePost = {
-  title: 'Isabel deltar i kvällens Uppdrag Granskning',
-  url: '/2012/04/18/isabel-sommerfeld-deltar-i-kvallens-uppdrag-granskning',
+  title: 'Calzone (LCHF)',
+  url: '/calzone-lchf',
 };
 
 context('CMS Blog Post Edit', () => {
   before(() => {
     cy.visit(samplePost.url);
-    window.localStorage.setItem('cookies-accepted', true);
   });
 
   beforeEach(() => {
@@ -26,25 +25,25 @@ context('CMS Blog Post Edit', () => {
   it('Should login to CMS', () => {
     cy.findByText('Login to File System')
       .click()
-      .get('#title-field-1')
+      .findByLabelText('Titel')
       .should('have.value', samplePost.title);
   });
 
   it('Should edit post', () => {
-    cy.get('#title-field-1')
+    cy.findByLabelText('Titel')
       .should('have.value', samplePost.title)
-      .type('🎈')
+      .type('🍕')
       .findByText('Publish')
       .click()
       .findByText('Publish now')
       .click()
       .findByText('Changes saved')
       .click()
-      .findByText('New Bloggpost')
+      .findByText('New Recept')
       .should('be.visible');
 
     cy.visit(samplePost.url).then(() => {
-      cy.findByText(samplePost.title + '🎈').should('be.visible');
+      cy.findByText(samplePost.title + '🍕').should('be.visible');
     });
   });
 });

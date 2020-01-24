@@ -1,0 +1,24 @@
+name: Recipe tests
+
+on:
+  pull_request:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Install plugin
+        run: |
+          npm run build:plugin
+      - name: Install
+        run: |
+          yarn install
+      - name: Unit tests
+        run: |
+          npm run test:unit
+      - name: Integration tests
+        run: |
+          npm run test:cypress:ci
