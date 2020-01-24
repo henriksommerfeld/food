@@ -12,7 +12,7 @@ context('Search', () => {
   const keyword = 'calzone';
   const expectedPost = {
     title: 'Calzone (LCHF)',
-    url: '/calzone-lchf/',
+    url: '/calzone-lchf',
   };
 
   it('Should open search results', () => {
