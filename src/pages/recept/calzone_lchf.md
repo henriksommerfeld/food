@@ -32,7 +32,7 @@ ingredients:
             unit: msk
         - ingredient:
             ingredientamount: 25
-            ingredientname: smör
+            ingredientname: smält smör
             unit: g
         - ingredient:
             ingredientamount: 1
