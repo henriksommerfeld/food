@@ -34,7 +34,7 @@ export type category =
   | 'Frukost'
   | 'Förrätt'
   | 'Huvudrätt'
-  | 'Sallad'
+  | 'Tillbehör'
   | 'Efterrätt'
   | 'Bakning';
 
