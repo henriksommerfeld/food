@@ -2,14 +2,14 @@
 templateKey: recept
 url: ''
 title: Katrinplommonpuré
-description: Plommonpuré för barn att tillsätt till exempelvis gröt
-tools: Mixer och små glasburkar att förvara i
-hidden: true
+description: Plommonpuré för barn att tillsätta i exempelvis gröt
+tools: Mixer och burkar att förvara i.
+hidden: false
 category: Sallad
-featuredimage: /uploads/granola.jpg
+featuredimage: /uploads/katrinplommonpure.jpg
 featuredimagetheme: 2
-servings: 0
-servingslabel: portioner
+servings: 750
+servingslabel: gram
 ingredients:
   - partingredients:
       partingredientslist:
