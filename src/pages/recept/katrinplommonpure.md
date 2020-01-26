@@ -5,7 +5,7 @@ title: Katrinplommonpuré
 description: Plommonpuré för barn att tillsätta i exempelvis gröt
 tools: Mixer och burkar att förvara i.
 hidden: false
-category: Sallad
+category: Tillbehör
 featuredimage: /uploads/katrinplommonpure.jpg
 featuredimagetheme: 2
 servings: 750

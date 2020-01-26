@@ -135,8 +135,8 @@ export const categoryLinks: NavLink[] = [
     thumbTheme: Theme.dark,
   },
   {
-    url: '/sallad',
-    title: 'Sallad',
+    url: '/tillbehor',
+    title: 'Tillbehör',
     imagePath: 'hidden/salad.jpg',
     thumbnail: 'salad_1x1',
     thumbTheme: Theme.dark,
