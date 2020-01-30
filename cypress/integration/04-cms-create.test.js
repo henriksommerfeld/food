@@ -9,73 +9,73 @@ context('CMS create/delete blog post', () => {
 
   it('Should create post', () => {
     cy.fixture('bara-ben').then(article => {
-      cy.visit('/admin')
-        .findByText('Login to File System')
-        .click()
-        .findByText('New Recept')
+      cy.visit('/admin');
+      cy.findByText('Login to File System').click();
+
+      cy.findByText('New Recept')
         .click()
         .get('#title-field-1')
         .type(article.title)
         .get('#description-field-2')
         .clear()
-        .type(article.description)
-        .findByText('Choose an image')
-        .click()
-        .findByText('Calzone.jpg')
-        .click()
-        .findByText('Choose selected')
-        .click()
-        .findByLabelText('Tema för bildtext')
+        .type(article.description);
+
+      cy.findByText('Choose an image').click();
+
+      cy.findByText('Calzone.jpg').click();
+
+      cy.findByText('Choose selected').click();
+
+      cy.findByLabelText('Tema för bildtext')
         .click()
         .type('{enter}')
         .trigger('input')
         .get('#servings-field-8')
-        .type('4')
-        .findByText('Add grupper av ingredienser')
-        .click()
-        .get('#partingredientsname-field-22')
-        .type(article.ingredientsTitle)
-        .findByText('Add ingredienslista, delmoment')
-        .click()
-        .get('#ingredientamount-field-25')
-        .type(article.ingredientAmount)
-        .get('#unit-field-26')
+        .type('4');
+
+      cy.findByText('Add grupper av ingredienser').click();
+
+      cy.get('#partingredientsname-field-22').type(article.ingredientsTitle);
+
+      cy.findByText('Add ingredienslista, delmoment').click();
+
+      cy.get('#ingredientamount-field-25').type(article.ingredientAmount);
+
+      cy.get('#unit-field-26')
         .click()
         .type('tesked')
         .type('{enter}')
-        .trigger('input')
-        .get('#ingredientname-field-27')
-        .type(article.ingredientName)
+        .trigger('input');
 
-        .findByText('Publish')
-        .click()
-        .findByText('Publish now')
-        .click()
-        .findByText('Changes saved')
-        .click()
-        .findByText('New Recept')
-        .should('be.visible');
+      cy.get('#ingredientname-field-27').type(article.ingredientName);
+
+      cy.findByText('Publish').click();
+
+      cy.findByText('Publish now').click();
+
+      cy.findByText('Changes saved').click();
+
+      cy.findByText('New Recept').should('be.visible');
     });
   });
 
   it('Should see created post', () => {
     cy.fixture('bara-ben').then(article => {
-      cy.visit('/huvudratt')
-        .findByText(article.title)
-        .click()
-        .findByText(article.title);
+      cy.visit('/huvudratt');
+      cy.findByText(article.title).click();
+
+      cy.findByText(article.title);
     });
   });
 
   it('Should delete created post', () => {
     cy.fixture('bara-ben').then(article => {
-      cy.visit('/admin')
-        .findByText('Login to File System')
-        .click()
-        .findByText(article.title)
-        .click()
-        .findByText('Delete entry')
-        .click();
+      cy.visit('/admin');
+      cy.findByText('Login to File System').click();
+
+      cy.findByText(article.title).click();
+
+      cy.findByText('Delete entry').click();
     });
   });
 });
