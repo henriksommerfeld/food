@@ -11,8 +11,10 @@ context('Content check', () => {
       .get('h1')
       .should('have.text', 'Calzone (LCHF)')
       .get('h2:first')
-      .should('have.text', 'Redskap')
-      .findByText('Blanda alla smetens ingredienser i en bunke')
-      .should('be.visible');
+      .should('have.text', 'Redskap');
+
+    cy.findByText('Blanda alla smetens ingredienser i en bunke').should(
+      'be.visible'
+    );
   });
 });

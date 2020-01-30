@@ -18,8 +18,9 @@ context('Desktop', () => {
       .get('h1')
       .should('have.text', pageName)
       .title()
-      .should('equal', `${pageName} | Recept`)
-      .findByTestId('category-recepies')
+      .should('equal', `${pageName} | Recept`);
+
+    cy.findByTestId('category-recepies')
       .its('length')
       .should('be.gt', 0);
   });

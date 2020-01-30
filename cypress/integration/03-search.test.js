@@ -16,9 +16,9 @@ context('Search', () => {
   };
 
   it('Should open search results', () => {
-    cy.findByLabelText('Ange dina sökord här...')
-      .type(keyword)
-      .findByTestId('search-results')
+    cy.findByLabelText('Ange dina sökord här...').type(keyword);
+
+    cy.findByTestId('search-results')
       .contains(`recept för sökningen ${keyword}`)
       .should('be.visible');
   });
@@ -27,9 +27,9 @@ context('Search', () => {
     cy.findByText(expectedPost.title)
       .click({ force: true })
       .url()
-      .should('equal', Cypress.config().baseUrl + expectedPost.url)
-      .findByTestId('search-results')
-      .should('not.exist');
+      .should('equal', Cypress.config().baseUrl + expectedPost.url);
+
+    cy.findByTestId('search-results').should('not.exist');
   });
 
   it('Should have expected tag', () => {
@@ -37,22 +37,22 @@ context('Search', () => {
     const tagsUrl = `${Cypress.config().baseUrl}/taggar/${encodeURI(
       tag.toLowerCase()
     )}`;
-    cy.url()
-      .should('equal', Cypress.config().baseUrl + expectedPost.url)
-      .findByTestId('tags')
-      .findByText(tag)
+    cy.url().should('equal', Cypress.config().baseUrl + expectedPost.url);
+
+    cy.findByText(tag)
       .click({ force: true })
       .url()
-      .should('equal', tagsUrl)
-      .findByText('Se alla taggar')
-      .should('be.visible');
+      .should('equal', tagsUrl);
+
+    cy.findByText('Se alla taggar').should('be.visible');
   });
 
   it('Should show previous search when navigating back', () => {
     cy.go('back')
       .url()
-      .should('equal', Cypress.config().baseUrl + expectedPost.url)
-      .findByTestId('search-results')
+      .should('equal', Cypress.config().baseUrl + expectedPost.url);
+
+    cy.findByTestId('search-results')
       .should('not.exist')
       .go('back')
       .url()
@@ -60,10 +60,9 @@ context('Search', () => {
   });
 
   it('Should close search on close button click', () => {
-    cy.findByLabelText('Stäng sökresultatet')
-      .click()
-      .findByTestId('search-results')
-      .should('not.exist');
+    cy.findByLabelText('Stäng sökresultatet').click();
+
+    cy.findByTestId('search-results').should('not.exist');
   });
 
   it('Searchbox should be cleared', () => {

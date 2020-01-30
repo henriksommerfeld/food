@@ -28,8 +28,7 @@ export const layout = {
 };
 
 export const urls = {
-  siteBaseUrl: 'https://recept.netlify.com.com',
-  twitterBaseUrl: 'https://twitter.com',
+  siteBaseUrl: 'https://recept.netlify.com',
 };
 
 export const breakpoints = {
