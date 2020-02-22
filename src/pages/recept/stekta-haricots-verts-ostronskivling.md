@@ -2,10 +2,10 @@
 templateKey: recept
 url: ''
 title: Stekta haricots verts & ostronskivling
-description: ' '
-hidden: true
+description: Goda stekta grönsaker
+hidden: false
 category: Tillbehör
-featuredimage: /uploads/dessert-hero.jpg
+featuredimage: /uploads/haricotvers-och-ostronskivling.jpg
 featuredimagetheme: 2
 servings: 6
 servingslabel: portioner
@@ -20,7 +20,32 @@ ingredients:
             ingredientamount: 300
             ingredientname: ostronskivling
             unit: g
+        - ingredient:
+            ingredientamount: 0
+            ingredientname: olja
+            unit: ml
+        - ingredient:
+            ingredientamount: 0
+            ingredientname: soya
+            unit: ml
+        - ingredient:
+            ingredientamount: 1
+            ingredientname: vitlöksklyfta
+            unit: st
       partingredientsname: haricots verts
+instructions:
+  - partinstructions:
+      partinstructionslist:
+        - instruction: Skölj och dra isär svamparna
+        - instruction: Stek svamparna i olja till de får lite färg
+        - instruction: Ta av svamparna från stekpannan
+        - instruction: >-
+            Stek haricots verts i stekpannan med soya & vitlök tills de blir
+            mjuka
+        - instruction: >-
+            Lägg tillbaka svamparna i stekpanna och stek allt tillsammans i
+            några minuter
+      partinstructionsname: Grönsakerna
 timepassive:
   dayspassive: 0
   hourspassive: 0
