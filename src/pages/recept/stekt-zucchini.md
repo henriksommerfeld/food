@@ -52,5 +52,6 @@ timepassive:
 timeactive:
   hoursactive: 0
   minutesactive: 10
+tags:
+  - Grönsaker
 ---
-

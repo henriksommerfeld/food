@@ -21,17 +21,17 @@ ingredients:
             ingredientname: ostronskivling
             unit: g
         - ingredient:
-            ingredientamount: 0
-            ingredientname: olja
-            unit: ml
+            ingredientamount: 1
+            ingredientname: vitlöksklyfta
+            unit: st
         - ingredient:
             ingredientamount: 0
             ingredientname: soya
             unit: ml
         - ingredient:
-            ingredientamount: 1
-            ingredientname: vitlöksklyfta
-            unit: st
+            ingredientamount: 0
+            ingredientname: olja (raps- eller oliv-)
+            unit: ml
       partingredientsname: haricots verts
 instructions:
   - partinstructions:

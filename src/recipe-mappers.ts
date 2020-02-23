@@ -10,6 +10,7 @@ import {
 export function toIngredients(data: IngredientsQueryData[]): Ingredients {
   const ingredients: Ingredients = { ingredientsGroup: [] };
   if (!(data?.length > 0)) return ingredients;
+  if (!data[0].partingredients) return ingredients;
 
   data.forEach(x => {
     const ingredientList: Ingredient[] = [];
