@@ -6,6 +6,7 @@ import AddSvg from '../../static/img/add.svg';
 import SubSvg from '../../static/img/subtract.svg';
 import IngredientsGroupComponent from './IngredientsGroupComponent';
 import { Recipe } from '../interfaces/Recipe';
+import { servingsUnitFormatted } from '../recipe-mappers';
 
 interface IngredientsProps {
   recipe: Recipe;
@@ -36,7 +37,7 @@ export default function IngredientsComponent({ recipe }: IngredientsProps) {
             alt={`Minska antalet ${recipe.servingsUnit} för beräkning av ingredienser`}
           />
         </ServingsAdjusterButton>
-        {servings} {recipe.servingsUnit}
+        {servings} {servingsUnitFormatted(servings, recipe.servingsUnit)}
         <ServingsAdjusterButton onClick={increaseServings}>
           <img
             src={AddSvg}

@@ -16,11 +16,13 @@ export function toIngredients(data: IngredientsQueryData[]): Ingredients {
     const ingredientList: Ingredient[] = [];
 
     x.partingredients?.partingredientslist?.forEach(y => {
-      ingredientList.push({
-        name: y.ingredient.ingredientname,
-        quantity: y.ingredient.ingredientamount,
-        unit: y.ingredient.unit as QuantityUnit,
-      });
+      if (y.ingredient) {
+        ingredientList.push({
+          name: y.ingredient.ingredientname,
+          quantity: y.ingredient.ingredientamount,
+          unit: y.ingredient.unit as QuantityUnit,
+        });
+      }
     });
 
     ingredients.ingredientsGroup.push({
@@ -51,4 +53,13 @@ export function toInstructions(data: InstructionsQueryData[]): Instructions {
   });
 
   return instructions;
+}
+
+export function servingsUnitFormatted(
+  servings: number,
+  servingsUnit: string
+): string {
+  if (servings === 1 && servingsUnit === 'portioner') return 'portion';
+
+  return servingsUnit;
 }

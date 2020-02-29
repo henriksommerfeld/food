@@ -6,6 +6,7 @@ import { formatDuration } from '../time';
 import ClockSvg from '../../static/img/clock.svg';
 import ClockWaitSvg from '../../static/img/clock-wait.svg';
 import ServingsSvg from '../../static/img/servings.svg';
+import { servingsUnitFormatted } from '../recipe-mappers';
 
 interface CookingTimeAndServingsProps {
   recipe: Recipe;
@@ -36,7 +37,8 @@ export default function CookingTimeAndServings({
       </MetadataItem>
       <MetadataItem>
         <TimeIcon src={ServingsSvg} alt="" />
-        {recipe.servings} {recipe.servingsUnit}
+        {recipe.servings}{' '}
+        {servingsUnitFormatted(recipe.servings, recipe.servingsUnit)}
       </MetadataItem>
     </Metadata>
   );
