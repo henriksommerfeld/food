@@ -51,5 +51,7 @@ timepassive:
 timeactive:
   hoursactive: 0
   minutesactive: 15
+tags:
+  - Våfflor
 ---
 Servera med sylt, bär, grädde eller glass
