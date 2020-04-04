@@ -23,7 +23,7 @@ export default function TagRoute({
   location,
 }: TagRouteProps) {
   const posts = data.allMarkdownRemark.edges;
-  const postLinks = posts.map(post => (
+  const postLinks = posts.map((post) => (
     <LinkContainer key={post.node.fields.slug}>
       <LinkIconSvg src={BlogPostSvg} alt="" />
       <Link to={post.node.fields.slug}>{post.node.frontmatter.title}</Link>

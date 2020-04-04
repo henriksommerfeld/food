@@ -2,7 +2,7 @@ import { useEffect, useCallback } from 'react';
 
 export const useKeys = (keys: string[], action) => {
   const keyDownHandler = useCallback(
-    keyboardEvent => {
+    (keyboardEvent) => {
       if (isKeys(keyboardEvent, keys) && isFunction(action))
         action(keyboardEvent);
     },

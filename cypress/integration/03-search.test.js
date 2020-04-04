@@ -39,10 +39,7 @@ context('Search', () => {
     )}`;
     cy.url().should('equal', Cypress.config().baseUrl + expectedPost.url);
 
-    cy.findByText(tag)
-      .click({ force: true })
-      .url()
-      .should('equal', tagsUrl);
+    cy.findByText(tag).click({ force: true }).url().should('equal', tagsUrl);
 
     cy.findByText('Se alla taggar').should('be.visible');
   });
@@ -66,7 +63,7 @@ context('Search', () => {
   });
 
   it('Searchbox should be cleared', () => {
-    cy.findByLabelText('Ange dina sökord här...').then(element => {
+    cy.findByLabelText('Ange dina sökord här...').then((element) => {
       expect(element.text()).to.equal('');
     });
   });

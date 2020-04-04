@@ -1,6 +1,6 @@
 /// <reference types="Cypress" />
 
-context('CMS create/delete blog post', () => {
+context('CMS create/delete recipe', () => {
   beforeEach(() => {
     cy.viewport('macbook-13');
     cy.clearCookies();
@@ -8,7 +8,7 @@ context('CMS create/delete blog post', () => {
   });
 
   it('Should create post', () => {
-    cy.fixture('bara-ben').then(article => {
+    cy.fixture('bara-ben').then((article) => {
       cy.visit('/admin');
       cy.findByText('Login to File System').click();
 
@@ -60,16 +60,16 @@ context('CMS create/delete blog post', () => {
   });
 
   it('Should see created post', () => {
-    cy.fixture('bara-ben').then(article => {
+    cy.fixture('bara-ben').then((article) => {
       cy.visit('/huvudratt');
-      cy.findByText(article.title).click();
+      cy.findByText(article.title).click({ force: true });
 
       cy.findByText(article.title);
     });
   });
 
   it('Should delete created post', () => {
-    cy.fixture('bara-ben').then(article => {
+    cy.fixture('bara-ben').then((article) => {
       cy.visit('/admin');
       cy.findByText('Login to File System').click();
 

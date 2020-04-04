@@ -12,10 +12,10 @@ export function toIngredients(data: IngredientsQueryData[]): Ingredients {
   if (!(data?.length > 0)) return ingredients;
   if (!data[0].partingredients) return ingredients;
 
-  data.forEach(x => {
+  data.forEach((x) => {
     const ingredientList: Ingredient[] = [];
 
-    x.partingredients?.partingredientslist?.forEach(y => {
+    x.partingredients?.partingredientslist?.forEach((y) => {
       if (y.ingredient) {
         ingredientList.push({
           name: y.ingredient.ingredientname,
@@ -26,7 +26,7 @@ export function toIngredients(data: IngredientsQueryData[]): Ingredients {
     });
 
     ingredients.ingredientsGroup.push({
-      name: x.partingredients.partingredientsname,
+      name: x?.partingredients?.partingredientsname,
       ingredients: ingredientList,
     });
   });
@@ -39,15 +39,15 @@ export function toInstructions(data: InstructionsQueryData[]): Instructions {
   if (!(data?.length > 0)) return instructions;
   if (!data[0].partinstructions) return instructions;
 
-  data.forEach(x => {
+  data.forEach((x) => {
     const instructionsList: string[] = [];
 
-    x.partinstructions?.partinstructionslist?.forEach(y => {
+    x.partinstructions?.partinstructionslist?.forEach((y) => {
       instructionsList.push(y.instruction);
     });
 
     instructions.instructionsGroup.push({
-      name: x.partinstructions.partinstructionsname,
+      name: x?.partinstructions?.partinstructionsname,
       instructions: instructionsList,
     });
   });

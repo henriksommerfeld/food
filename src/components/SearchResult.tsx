@@ -53,7 +53,9 @@ export default function SearchResult({ location }: LocationProp) {
   const getImage = (id: string): FancyImage | null => {
     if (!(imagesData?.allMarkdownRemark?.edges?.length > 0)) return null;
 
-    const edge = imagesData.allMarkdownRemark.edges.find(x => x.node.id === id);
+    const edge = imagesData.allMarkdownRemark.edges.find(
+      (x) => x.node.id === id
+    );
     if (!edge) return null;
 
     return edge.node.frontmatter.featuredimage;

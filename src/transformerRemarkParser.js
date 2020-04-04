@@ -1,6 +1,6 @@
 const yaml = require('js-yaml');
 
-module.exports.transformerRemarkParser = str => {
+module.exports.transformerRemarkParser = (str) => {
   const result = yaml.safeLoad(str);
 
   let toReturn = removeFeaturedImage(result);
@@ -31,6 +31,6 @@ function removeEmptyTags(fields) {
   const hasProperty = Object.prototype.hasOwnProperty.call(fields, 'tags');
   if (!hasProperty) return fields;
   const { tags, ...otherFields } = fields;
-  const nonEmptyTags = tags.filter(t => t);
+  const nonEmptyTags = tags.filter((t) => t);
   return { ...otherFields, tags: nonEmptyTags };
 }

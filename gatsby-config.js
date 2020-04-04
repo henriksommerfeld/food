@@ -100,17 +100,17 @@ const plugins = [
       ],
       resolvers: {
         MarkdownRemark: {
-          title: node => node.frontmatter.title,
-          date: node => node.frontmatter.date,
-          tags: node => node.frontmatter.tags,
-          category: node => node.frontmatter.category,
-          description: node => node.frontmatter.description,
-          theme: node => node.frontmatter.featuredimagetheme,
-          path: node => node.fields.slug,
+          title: (node) => node.frontmatter.title,
+          date: (node) => node.frontmatter.date,
+          tags: (node) => node.frontmatter.tags,
+          category: (node) => node.frontmatter.category,
+          description: (node) => node.frontmatter.description,
+          theme: (node) => node.frontmatter.featuredimagetheme,
+          path: (node) => node.fields.slug,
         },
       },
       // Optional filter to limit indexed nodes
-      filter: node =>
+      filter: (node) =>
         node.frontmatter.hidden !== true &&
         node.frontmatter.templateKey === 'recept',
     },

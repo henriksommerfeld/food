@@ -38,7 +38,7 @@ export default function Searchbox({ location, searchIndex }: SearchboxProps) {
 
   useKeys(['Tab', 'ArrowDown', 'Enter'], focusResults);
 
-  const queryInputChanged = evt => {
+  const queryInputChanged = (evt) => {
     const newQuery = evt.target.value.trim();
     if (newQuery.length > 2) {
       setQuery(newQuery);

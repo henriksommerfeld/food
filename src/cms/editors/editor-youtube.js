@@ -13,7 +13,7 @@ export default {
     },
   ],
   pattern: /^`\s?youtube: (\S+)\s?`/,
-  fromBlock: match => {
+  fromBlock: (match) => {
     if (!match || !match.length || match.length < 2) return '';
 
     const url = match[1];
@@ -25,8 +25,8 @@ export default {
       id: urlParts[1],
     };
   },
-  toBlock: obj => `\`${shortcode} ${urlPrefix}${obj.id}\``,
-  toPreview: obj => {
+  toBlock: (obj) => `\`${shortcode} ${urlPrefix}${obj.id}\``,
+  toPreview: (obj) => {
     const shouldRenderEmptyPreview = !obj || !obj.id || !obj.id.length;
     if (shouldRenderEmptyPreview) return '<div></div>';
 

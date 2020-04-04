@@ -19,7 +19,7 @@ export default function CheckableInstruction({
         <HiddenInput
           type="checkbox"
           checked={isChecked}
-          onChange={() => setIsChecked(x => !x)}
+          onChange={() => setIsChecked((x) => !x)}
         />
         <Checkbox checked={isChecked}></Checkbox>
       </label>

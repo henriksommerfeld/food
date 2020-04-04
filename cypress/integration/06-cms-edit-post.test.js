@@ -5,7 +5,7 @@ const samplePost = {
   url: '/calzone-lchf',
 };
 
-context('CMS Blog Post Edit', () => {
+context('CMS Recipe Edit', () => {
   before(() => {
     cy.visit(samplePost.url);
   });
@@ -17,7 +17,7 @@ context('CMS Blog Post Edit', () => {
   it('Should be possible to enter edit mode', () => {
     cy.findByTitle('Redigera sidan')
       .invoke('attr', 'href')
-      .then(href => {
+      .then((href) => {
         cy.visit(href);
       });
   });

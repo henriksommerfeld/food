@@ -17,7 +17,7 @@ export default function Categories() {
   return (
     <GridContainerStyled>
       <GridItemsList>
-        {categoryLinks.map(category => (
+        {categoryLinks.map((category) => (
           <Item key={category.title}>
             <ItemLinkStyled to={category.url}>
               <LazyImage
@@ -37,7 +37,7 @@ export default function Categories() {
 }
 
 function getImageFrom(data: any, name: string): FancyImage {
-  return data.allFile.edges.find(x => x.node.name === name).node;
+  return data.allFile.edges.find((x) => x.node.name === name).node;
 }
 
 const categoryImagesQuery = graphql`
