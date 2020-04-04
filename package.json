@@ -45,6 +45,9 @@
     "type": "git",
     "url": "https://github.com/henriksommerfeld/food.git"
   },
+  "resolutions": {
+    "cypress": "4.3.0"
+  },
   "dependencies": {
     "@gatsby-contrib/gatsby-plugin-elasticlunr-search": "^2.3.0",
     "@raae/gatsby-remark-oembed": "^0.1.1",
