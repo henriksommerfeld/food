@@ -5,7 +5,7 @@ const samplePost = {
   url: '/calzone-lchf',
 };
 
-context('CMS Blog Post Edit', () => {
+context('CMS Recipe Edit', () => {
   before(() => {
     cy.visit(samplePost.url);
   });
