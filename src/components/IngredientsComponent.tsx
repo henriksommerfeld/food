@@ -20,11 +20,11 @@ export default function IngredientsComponent({ recipe }: IngredientsProps) {
 
   function decreaseServings() {
     if (servings < 2) return;
-    setServings(x => --x);
+    setServings((x) => --x);
   }
 
   function increaseServings() {
-    setServings(x => ++x);
+    setServings((x) => ++x);
   }
 
   return (

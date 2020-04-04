@@ -8,7 +8,7 @@ context('CMS create/delete recipe', () => {
   });
 
   it('Should create post', () => {
-    cy.fixture('bara-ben').then(article => {
+    cy.fixture('bara-ben').then((article) => {
       cy.visit('/admin');
       cy.findByText('Login to File System').click();
 
@@ -60,7 +60,7 @@ context('CMS create/delete recipe', () => {
   });
 
   it('Should see created post', () => {
-    cy.fixture('bara-ben').then(article => {
+    cy.fixture('bara-ben').then((article) => {
       cy.visit('/huvudratt');
       cy.findByText(article.title).click();
 
@@ -69,7 +69,7 @@ context('CMS create/delete recipe', () => {
   });
 
   it('Should delete created post', () => {
-    cy.fixture('bara-ben').then(article => {
+    cy.fixture('bara-ben').then((article) => {
       cy.visit('/admin');
       cy.findByText('Login to File System').click();
 

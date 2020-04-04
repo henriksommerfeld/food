@@ -17,7 +17,7 @@ context('CMS Recipe Edit', () => {
   it('Should be possible to enter edit mode', () => {
     cy.findByTitle('Redigera sidan')
       .invoke('attr', 'href')
-      .then(href => {
+      .then((href) => {
         cy.visit(href);
       });
   });

@@ -7,7 +7,7 @@ function StyleInjector({ children }) {
 
   useEffect(() => {
     const iframes = document.getElementsByTagName('iframe');
-    const previewIframe = Array.from(iframes).find(x => {
+    const previewIframe = Array.from(iframes).find((x) => {
       return x.className.includes('PreviewPaneFrame');
     });
     const iframeHeadElem = previewIframe.contentDocument.head;
@@ -22,7 +22,7 @@ function StyleInjector({ children }) {
 }
 
 export default function withStyledComponents(Comp) {
-  const renderWithStyle = props => (
+  const renderWithStyle = (props) => (
     <StyleInjector>
       <>
         <GlobalStyles />

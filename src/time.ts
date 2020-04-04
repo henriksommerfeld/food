@@ -7,7 +7,7 @@ export function formatDuration(
     formatDays(days),
     formatHours(hours),
     formatMinutes(minutes),
-  ].filter(x => x);
+  ].filter((x) => x);
 
   return timeParts.join(', ');
 }

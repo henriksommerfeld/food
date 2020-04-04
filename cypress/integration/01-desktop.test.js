@@ -20,8 +20,6 @@ context('Desktop', () => {
       .title()
       .should('equal', `${pageName} | Recept`);
 
-    cy.findByTestId('category-recepies')
-      .its('length')
-      .should('be.gt', 0);
+    cy.findByTestId('category-recepies').its('length').should('be.gt', 0);
   });
 });

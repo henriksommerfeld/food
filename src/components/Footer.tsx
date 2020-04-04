@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { spacing, colors, breakpoints, links } from '../constants';
+import { spacing, colors, breakpoints } from '../constants';
 import { tailwindColors } from '../tailwind-colors';
 import EditSvg from '../../static/img/edit-filled.svg';
 

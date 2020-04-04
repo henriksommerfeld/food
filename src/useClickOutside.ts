@@ -17,7 +17,7 @@ const isInIgnoredElement = (element, ignoredClass) => {
 };
 
 export default (ref, handler, ignoredClass = 'ignore-onClickOutside') =>
-  useOnClickOutside(ref, event => {
+  useOnClickOutside(ref, (event) => {
     if (isInIgnoredElement(event.target, ignoredClass)) {
       return;
     }

@@ -1,4 +1,4 @@
-exports.removeRecipeFromUrl = url => {
+exports.removeRecipeFromUrl = (url) => {
   const recipeFragment = '/recept/';
   if (!url || !url.includes(recipeFragment)) return url;
 
@@ -6,7 +6,7 @@ exports.removeRecipeFromUrl = url => {
   return urlParts.length < 2 ? url : `/${urlParts[1]}`;
 };
 
-exports.editRecipeUrlFromAbsolutePath = absolutePath => {
+exports.editRecipeUrlFromAbsolutePath = (absolutePath) => {
   if (!absolutePath) return '';
 
   const pathParts = absolutePath.split('/');
@@ -18,7 +18,7 @@ exports.editRecipeUrlFromAbsolutePath = absolutePath => {
   return `${recipeEditBasePath}/${path}`;
 };
 
-exports.editPageUrl = slug => {
+exports.editPageUrl = (slug) => {
   if (!slug) return '';
 
   const baseUrl = '/admin/#/collections/pages/entries';

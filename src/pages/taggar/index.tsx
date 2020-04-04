@@ -16,7 +16,7 @@ export default function TagsPage({ location }: LocationProp) {
       <TagsTemplate location={location}>
         <h1>Taggar</h1>
         <ul className="taglist">
-          {group.map(tag => (
+          {group.map((tag) => (
             <LinkContainer key={tag.fieldValue}>
               <LinkIconSvg src={tagSvg} alt="" />
               <Link to={getTagRouteUrl(tag.fieldValue)}>

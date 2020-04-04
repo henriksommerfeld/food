@@ -7,7 +7,6 @@ import {
 } from '../../auto-generated/graphql';
 import RecipeRollItem from './RecipeRollItem';
 import { colors, spacing, breakpoints, layout } from '../constants';
-import MorePostsButton from './MorePostsButton';
 
 interface RecipeRoll {
   allMarkdownRemark: MarkdownRemarkConnection;
@@ -20,30 +19,18 @@ export default function RecipeRoll(): ReactElement {
   const data = useStaticQuery<RecipeRoll>(recipeRollQuery);
   const { edges: posts } = data && data.allMarkdownRemark;
   const postsToShowCount = getPostsToShowCount(posts);
-  const [postsShown, setPostsShown] = useState(postsToShowCount);
+  const [postsShown] = useState(postsToShowCount);
 
   if (!posts) return null;
 
   return (
     <RecipeRollStyled className="recipe-roll">
       {getPostsToShow().map(({ node: post }) => RecipeRollItem(post))}
-
-      {posts.length > postsShown ? (
-        <MorePostsButton clickedHandler={loadMorePostsClicked} />
-      ) : null}
     </RecipeRollStyled>
   );
 
   function getPostsToShow(): MarkdownRemarkEdge[] {
     return posts.slice(0, postsShown);
-  }
-
-  function loadMorePostsClicked(): void {
-    setTimeout(() => {
-      const newPostCount = postsShown + postsPerPage;
-      setPostsShown(newPostCount);
-      sessionStorage.setItem(sesstionStorageKey, `${newPostCount}`);
-    }, 150);
   }
 
   function getPreviousCount(): number {
