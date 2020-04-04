@@ -62,7 +62,7 @@ context('CMS create/delete recipe', () => {
   it('Should see created post', () => {
     cy.fixture('bara-ben').then((article) => {
       cy.visit('/huvudratt');
-      cy.findByText(article.title).click();
+      cy.findByText(article.title).click({ force: true });
 
       cy.findByText(article.title);
     });
