@@ -26,7 +26,7 @@ export function toIngredients(data: IngredientsQueryData[]): Ingredients {
     });
 
     ingredients.ingredientsGroup.push({
-      name: x.partingredients.partingredientsname,
+      name: x?.partingredients?.partingredientsname,
       ingredients: ingredientList,
     });
   });
@@ -47,7 +47,7 @@ export function toInstructions(data: InstructionsQueryData[]): Instructions {
     });
 
     instructions.instructionsGroup.push({
-      name: x.partinstructions.partinstructionsname,
+      name: x?.partinstructions?.partinstructionsname,
       instructions: instructionsList,
     });
   });
