@@ -37,16 +37,16 @@ ingredients:
   - partingredients:
       partingredientslist:
         - ingredient:
-            ingredientamount: 2
-            ingredientname: 'vetemjöl, + 2 msk'
+            ingredientamount: 4
+            ingredientname: vetemjöl
             unit: msk
         - ingredient:
-            ingredientamount: 2
-            ingredientname: 'vatten, + 2 msk'
+            ingredientamount: 4
+            ingredientname: vatten
             unit: msk
         - ingredient:
-            ingredientamount: 2
-            ingredientname: 'grundsurdeg (se recept ovan), + 2 msk'
+            ingredientamount: 4
+            ingredientname: grundsurdeg
             unit: msk
       partingredientsname: 'Ljust surdegsbröd, fördeg'
   - partingredients:
@@ -110,9 +110,9 @@ instructions:
       partinstructionslist:
         - instruction: Blanda fördegen med vatten i en degbunke.
         - instruction: >-
-            Tillsätt mjöl lite i taget, spara 1 1/2–2 dl till utbakningen.
-            Arbeta degen hela tiden, antingen för hand eller i maskin, så att
-            den blir slät och lite seg. Degen ska vara lös.
+            Tillsätt mjöl lite i taget, spara 1 ½–2 dl till utbakningen. Arbeta
+            degen hela tiden, antingen för hand eller i maskin, så att den blir
+            slät och lite seg. Degen ska vara lös.
         - instruction: >-
             Täck med plast eller bakduk och jäs degen i rumstemperatur ca 3
             timmar.
