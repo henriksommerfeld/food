@@ -41,16 +41,16 @@ ingredients:
             ingredientname: svampbuljongtärningar
             unit: st
         - ingredient:
+            ingredientamount: 8
+            ingredientname: portioner spagetti
+            unit: st
+        - ingredient:
             ingredientamount: 0
             ingredientname: salt
             unit: st
         - ingredient:
             ingredientamount: 0
             ingredientname: peppar
-            unit: st
-        - ingredient:
-            ingredientamount: 8
-            ingredientname: portioner spagetti
             unit: st
       partingredientsname: Pastan
 instructions:
