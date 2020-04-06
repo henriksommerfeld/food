@@ -30,7 +30,7 @@ ingredients:
             unit: dl
         - ingredient:
             ingredientamount: 3
-            ingredientname: creme fraiche
+            ingredientname: crème fraîche
             unit: dl
         - ingredient:
             ingredientamount: 200
@@ -67,7 +67,7 @@ instructions:
             Låt allt steka på medelvärme i rikligt med smör tills svampen fått
             lite lätt färg, utan att bli torr
         - instruction: Smula över buljongtärningarna över svampen och rör runt
-        - instruction: 'I med creme fraiche, grädde och philadelphia och rör runt'
+        - instruction: 'I med crème fraîche, grädde och philadelphia och rör runt'
         - instruction: Krydda med salt och peppar. Smaka av.
         - instruction: Koka pastan medan svampsåsen puttrar
         - instruction: >-
