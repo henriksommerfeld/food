@@ -25,7 +25,7 @@ ingredients:
             ingredientname: mjölk (eller hellre iKaffe)
             unit: dl
         - ingredient:
-            ingredientamount: 2
+            ingredientamount: 4
             ingredientname: salt
             unit: ml
       partingredientsname: Gröt
@@ -35,8 +35,8 @@ instructions:
         - instruction: Blanda alla ingredienser i en kastrull
         - instruction: Koka upp
         - instruction: >-
-            Sjud ca 8 min och rör om några gånger under tiden så att det inte
-            fastnar
+            Sjud ca 15 min och rör om några gånger under tiden så att det inte
+            fastnar. Gröten är klar när den har en bra konsistens.
       partinstructionsname: Gröt
 timepassive:
   dayspassive: 0
@@ -44,7 +44,7 @@ timepassive:
   minutespassive: 0
 timeactive:
   hoursactive: 0
-  minutesactive: 15
+  minutesactive: 20
 tags:
   - Gröt
 ---
