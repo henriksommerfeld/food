@@ -120,6 +120,20 @@ describe('getQuantity', () => {
       };
       expect(getQuantity(ingredient, 2, 8)).toEqual(expected);
     });
+
+    it('dl => dl', () => {
+      const ingredient = {
+        name: 'olives',
+        quantity: 0.5,
+        unit: 'dl',
+      };
+      const expected = {
+        name: 'olives',
+        quantity: 0.5,
+        unit: 'dl',
+      };
+      expect(getQuantity(ingredient, 4, 4)).toEqual(expected);
+    });
   });
 });
 

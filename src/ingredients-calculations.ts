@@ -121,7 +121,7 @@ function volumeInBestUnit(ingredient: Ingredient): Ingredient {
       name: ingredient.name,
     };
 
-  if (ingredient.quantity >= 100)
+  if (ingredient.quantity >= 100 || ingredient.quantity === 50)
     return {
       quantity: ingredient.quantity / 100,
       unit: QuantityUnit.deciliter,
