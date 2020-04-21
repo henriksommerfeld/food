@@ -1,7 +1,7 @@
 ---
 templateKey: recept
 url: ''
-title: "Banana Bread \U0001F34C"
+title: Banana Bread
 description: Bröd som liknar banankaka
 hidden: false
 category: Bakning
