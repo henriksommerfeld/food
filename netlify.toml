@@ -3,5 +3,8 @@
   command = "npm run build"
   functions = ""
 [build.environment]
-  YARN_VERSION = "1.21.1"
+  YARN_VERSION = "1.22.4"
   YARN_FLAGS = "--no-ignore-optional"
+
+[[plugins]]
+  package = "netlify-plugin-gatsby-cache"
