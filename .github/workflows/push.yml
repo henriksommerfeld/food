@@ -55,7 +55,7 @@ jobs:
       - name: Unit tests
         run: |
           npm run test:unit
-      
+
       - name: Integration tests
         run: |
           npm run test:cypress:ci
@@ -72,15 +72,13 @@ jobs:
           GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES: true
           NODE_ENV: production
           ENVIRONMENT: ${{ contains(github.ref, 'master') && 'production' || 'staging'}}
-  
-        - name: Deploy to Netlify
-          uses: nwtgck/actions-netlify@v1.0
-          with:
-            publish-dir: './public'
-            production-branch: master
-            deploy-message: 'Deploy from GitHub Actions'
-          env:
-            NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-            NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
 
-
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@v1.0
+        with:
+          publish-dir: './public'
+          production-branch: master
+          deploy-message: 'Deploy from GitHub Actions'
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
