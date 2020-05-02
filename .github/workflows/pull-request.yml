@@ -9,13 +9,15 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v1
-      - name: Install
-        run: |
-          yarn install
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v1
+        with:
+          node-version: 12
+      - uses: bahmutov/npm-install@HEAD
+
       - name: Run ESLint
         run: |
-          yarn lint
+          npm run lint
       - name: Unit tests
         run: |
           npm run test:unit
