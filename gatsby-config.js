@@ -1,8 +1,6 @@
 require('dotenv').config();
 
 const { transformerRemarkParser } = require('./src/transformerRemarkParser');
-const remark = require('remark');
-const stripMarkdown = require('strip-markdown');
 
 const plugins = [
   {

@@ -12,7 +12,7 @@
   "main": "n/a",
   "scripts": {
     "clean": "gatsby clean",
-    "start": "npm run clean && nodemon --exec \"gatsby develop --host=0.0.0.0\"",
+    "start": "GATSBY_SCREENSHOT_PLACEHOLDER=true nodemon --exec \"gatsby develop --host=0.0.0.0\"",
     "build": "gatsby build",
     "rebuild": "gatsby clean && gatsby build",
     "develop": "gatsby develop",
@@ -20,7 +20,7 @@
     "serve": "gatsby serve --host=0.0.0.0",
     "format": "prettier --trailing-comma es5 --semi --single-quote --write \"{gatsby-*.js,src/**/*.js}\"",
     "test:unit": "jest",
-    "test:unit:watch": "jest --watchAll",
+    "test:unit:watch": "jest --watchAll --verbose",
     "test:cypress": "cypress run",
     "test:cypress:open": "cypress open",
     "test:cypress:ci": "start-server-and-test develop http://localhost:8000 test:cypress",
