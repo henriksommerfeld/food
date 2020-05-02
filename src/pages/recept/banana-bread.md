@@ -53,7 +53,7 @@ instructions:
   - partinstructions:
       partinstructionslist:
         - instruction: Sätt ugnen på 200 °C.
-        - instruction: 'Smöra och mjöla en brödform, ca 1 ½ liter (för 10-12 skivor).'
+        - instruction: 'Smöra och mjöla en brödform, ca 1 ½ liter (för 10-12 skivor). '
         - instruction: >-
             Skala och mosa fyra av bananerna. Vispa smör och socker poröst med
             elvisp. Vispa först ner äggen och sen de mosade bananerna.
@@ -72,4 +72,3 @@ timeactive:
   hoursactive: 0
   minutesactive: 30
 ---
-
