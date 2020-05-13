@@ -4,4 +4,8 @@
   functions = ""
 [build.environment]
   YARN_VERSION = "1.22.4"
-  YARN_FLAGS = "--no-ignore-optional"
+  YARN_FLAGS = "--production"
+  NODE_ENV = "production"
+
+[[plugins]]
+package = "netlify-plugin-gatsby-cache"

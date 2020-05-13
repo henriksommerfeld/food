@@ -15,6 +15,8 @@ jobs:
         with:
           node-version: 12
       - uses: bahmutov/npm-install@HEAD
+        env:
+          NODE_ENV: production
 
       - name: Gatsby Cache Folder
         uses: actions/cache@v1
@@ -33,22 +35,6 @@ jobs:
           key: ${{ runner.os }}-public-gatsby
           restore-keys: |
             ${{ runner.os }}-public-gatsby
-
-      - name: Run ESLint
-        run: |
-          npm run lint
-
-      - name: Unit tests
-        run: |
-          npm run test:unit
-
-      - name: Integration tests
-        run: |
-          npm run test:cypress:ci
-
-      - name: Restore content change from integration tests
-        run: |
-          git restore src/pages/*
 
       - run: yarn build --log-pages
         name: Build
