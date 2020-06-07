@@ -45,7 +45,7 @@ ingredients:
             unit: dl
         - ingredient:
             ingredientamount: 1
-            ingredientname: liten burk jordärtskockspuré
+            ingredientname: liten burk kronärtskockspuré
             unit: st
         - ingredient:
             ingredientamount: 4
@@ -91,7 +91,7 @@ instructions:
       partinstructionslist:
         - instruction: Sätt ugnen på 225° grader.
         - instruction: >-
-            Blanda ihop crème fraîche med jordärtskockspuré. Använd detta
+            Blanda ihop crème fraîche med kronärtskockspuré. Använd detta
             istället för tomatsås på pizzadegen. 
         - instruction: Skär tunna skivor av ett päron och lägg ut skivor på pizzorna.
         - instruction: 'Skiva champinjonerna och fördela jämnt på pizzorna. '
