@@ -1,9 +1,12 @@
 {
   "compilerOptions": {
     "module": "commonjs",
-    "target": "esnext",
+    "target": "es2017",
     "jsx": "preserve",
-    "lib": ["dom", "esnext"],
+    "lib": [
+      "dom",
+      "esnext"
+    ],
     "baseUrl": "./src",
     "noEmit": true,
     "isolatedModules": true,
@@ -23,5 +26,10 @@
     "**/cypress/**/*.js",
     "*.js"
   ],
-  "exclude": ["node_modules", "public", ".cache", "auto-generated"]
+  "exclude": [
+    "node_modules",
+    "public",
+    ".cache",
+    "auto-generated"
+  ]
 }
