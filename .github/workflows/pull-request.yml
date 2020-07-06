@@ -15,9 +15,6 @@ jobs:
           node-version: 12
       - uses: bahmutov/npm-install@HEAD
 
-      - name: Run ESLint
-        run: |
-          npm run lint
       - name: Unit tests
         run: |
           npm run test:unit
