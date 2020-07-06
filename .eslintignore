@@ -1,6 +1,0 @@
-**/*.d.ts
-**/auto-generated/*
-.gitignore
-node_modules
-public
-dummy-tweet.js
