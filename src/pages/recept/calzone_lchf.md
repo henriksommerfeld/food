@@ -1,7 +1,7 @@
 ---
 templateKey: recept
 date: 2019-12-19T06:33:48.535Z
-url: calzone-lchf
+url: /calzone-lchf
 title: Calzone (LCHF)
 description: 'God och enkel Calzone som görs i stekpanna. '
 tools: '2 stekspadar, en bunke, visp och en stekpanna.'

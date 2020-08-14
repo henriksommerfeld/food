@@ -2,7 +2,7 @@
 templateKey: recept
 url: ''
 title: Tamago Kake Gohan
-description: 'Ris med ägg, japansk stil'
+description: Ris med ägg, japansk stil
 hidden: true
 category: Huvudrätt
 featuredimage: /uploads/tamago_1x1.jpeg
@@ -41,12 +41,14 @@ instructions:
         - instruction: 'Strö över en nypa salt, en gnutta MSG, miri och en nypa Hondashi.'
       partinstructionsname: Äggriset
 timepassive:
-  dayspassive: 0
-  hourspassive: 0
-  minutespassive: 0
+  dayspassive: 1
+  hourspassive: 1
+  minutespassive: 1
 timeactive:
-  hoursactive: 0
-  minutesactive: 0
+  hoursactive: 1
+  minutesactive: 1
 ---
+
+Serverat och klart 😋
 
 ![](/uploads/tamago.jpeg)
