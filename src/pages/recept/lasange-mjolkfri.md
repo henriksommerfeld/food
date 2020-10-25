@@ -60,11 +60,11 @@ ingredients:
   - partingredients:
       partingredientslist:
         - ingredient:
-            ingredientamount: 7
+            ingredientamount: 8
             ingredientname: majsstärkelse
             unit: msk
         - ingredient:
-            ingredientamount: 12
+            ingredientamount: 13
             ingredientname: havredryck
             unit: dl
         - ingredient:
