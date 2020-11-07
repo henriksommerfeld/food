@@ -25,7 +25,7 @@ ingredients:
             ingredientname: mjölk (eller hellre iKaffe)
             unit: dl
         - ingredient:
-            ingredientamount: 4
+            ingredientamount: 2
             ingredientname: salt
             unit: ml
       partingredientsname: Gröt
