@@ -70,20 +70,14 @@ const plugins = [
     },
   },
   {
-    resolve: `gatsby-plugin-prefetch-google-fonts`,
+    resolve: 'gatsby-plugin-google-fonts',
     options: {
       fonts: [
-        {
-          family: `Domine`,
-          subsets: [`latin`],
-          variants: [`700`],
-        },
-        {
-          family: `Open Sans`,
-          variants: ['400', '400i', '700', '700i'],
-        },
+        `Domine`,
+        `Open Sans\:400,400i,700,700i`
       ],
-    },
+      display: 'swap'
+    }
   },
   {
     resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,
