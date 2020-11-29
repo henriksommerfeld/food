@@ -92,6 +92,7 @@ instructions:
       partinstructionslist:
         - instruction: Finhacka löken
         - instruction: Fräs löken i olja i en stekpanna
+        - instruction: Tillsätt färsen och låt den stekas tills den är genomstekt
         - instruction: 'Tillsätt tomatkrossen, pressad vitlök och kryddorna'
       partinstructionsname: Köttfärsen
   - partinstructions:
