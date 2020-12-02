@@ -92,7 +92,5 @@ timeactive:
   minutesactive: 20
 tags:
   - bröd
-  - frukost
-  - mellanmål
 ---
 En av de två brödlimporna kan med fördel skivas och frysas ned. Gott att ta upp från frysen och rosta!
