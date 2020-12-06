@@ -2,18 +2,18 @@
 
 ## Installation
 
-`yarn install`
+`npm ci`
 
 ## Run
 
-`yarn start`
+`npm start`
 
 ## Unit tests
 
-`yarn test:unit`
+`npm run test:unit`
 
 ## Integration tests
 
-`yarn test:cypress:ci`
+`npm run test:cypress:ci`
 
 [1]: https://www.gatsbyjs.org/
