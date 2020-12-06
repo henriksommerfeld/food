@@ -2,7 +2,7 @@
 templateKey: recept
 url: ''
 title: Katrinplommonpuré
-description: Plommonpuré för barn att tillsätta i exempelvis gröt
+description: 'Plommonpuré för barn, att tillsätta i exempelvis gröt'
 tools: Mixer och burkar att förvara i.
 hidden: false
 category: Tillbehör
