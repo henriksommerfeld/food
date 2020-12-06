@@ -6,7 +6,7 @@ description: Underbart bröd som passar både till frukost och som tillbehör ti
 tools: Två avlånga brödformer
 hidden: false
 category: Bakning
-featuredimage: /uploads/img_9282.jpg
+featuredimage: /uploads/jolas-bread.jpg
 featuredimagetheme: 2
 servings: 2
 servingslabel: limpor
