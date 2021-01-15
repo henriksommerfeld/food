@@ -20,9 +20,6 @@ const plugins = [
   },
   {
     resolve: 'gatsby-plugin-sharp',
-    options: {
-      toFormat: 'WEBP',
-    },
   },
   'gatsby-transformer-sharp',
   {
@@ -33,9 +30,10 @@ const plugins = [
       },
       plugins: [
         {
-          resolve: 'gatsby-remark-relative-images',
+          resolve: 'gatsby-remark-relative-images-v2',
           options: {
             name: 'uploads',
+            path: `${__dirname}/static/uploads`,
           },
         },
         {
@@ -72,12 +70,9 @@ const plugins = [
   {
     resolve: 'gatsby-plugin-google-fonts',
     options: {
-      fonts: [
-        `Domine`,
-        `Open Sans\:400,400i,700,700i`
-      ],
-      display: 'swap'
-    }
+      fonts: [`Domine`, `Open Sans\:400,400i,700,700i`],
+      display: 'swap',
+    },
   },
   {
     resolve: `@gatsby-contrib/gatsby-plugin-elasticlunr-search`,

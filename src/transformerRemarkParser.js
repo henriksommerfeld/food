@@ -1,7 +1,7 @@
 const yaml = require('js-yaml');
 
 module.exports.transformerRemarkParser = (str) => {
-  const result = yaml.safeLoad(str);
+  const result = yaml.load(str);
 
   let toReturn = removeFeaturedImage(result);
   toReturn = removeImage(toReturn);

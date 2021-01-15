@@ -1,7 +1,8 @@
-localhost_development:
-  backend:
-    name: file-system
-    api_root: /api
+# localhost_development:
+#   backend:
+#     name: file-system
+#     api_root: /api
+local_backend: true
 
 backend:
   name: git-gateway
