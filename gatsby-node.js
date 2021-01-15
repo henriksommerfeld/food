@@ -5,7 +5,7 @@ require('ts-node').register();
 const _ = require('lodash');
 const path = require('path');
 const { createFilePath } = require('gatsby-source-filesystem');
-const { fmImagesToRelative } = require('gatsby-remark-relative-images');
+const { fmImagesToRelative } = require('gatsby-remark-relative-images-v2');
 const { getUniqueTags, getTagRouteUrl } = require('./src/tags-parser');
 const { categoryLinks } = require('./src/constants');
 const { removeRecipeFromUrl } = require('./src/url-replacer');
@@ -13,11 +13,6 @@ const { removeRecipeFromUrl } = require('./src/url-replacer');
 function getFileFrom(templateKey) {
   return templateKey + '.tsx';
 }
-
-exports.onCreateDevServer = ({ app }) => {
-  const fsMiddlewareAPI = require('netlify-cms-backend-fs/dist/fs');
-  fsMiddlewareAPI(app);
-};
 
 exports.createPages = ({ actions, graphql }) => {
   const { createPage } = actions;
