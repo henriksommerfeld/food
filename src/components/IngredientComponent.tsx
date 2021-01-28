@@ -21,9 +21,11 @@ export default function IngredientComponent({
     defaultServings,
     servings
   );
-  return (
-    <ListItemStyled>{formattedQuantity(calculatedIngredient)}</ListItemStyled>
-  );
+  const formattedIngredient = formattedQuantity(calculatedIngredient);
+
+  if (!formattedIngredient) return null;
+
+  return <ListItemStyled>{formattedIngredient}</ListItemStyled>;
 }
 
 const ListItemStyled = styled('li')`

@@ -34,6 +34,16 @@ describe('formattedQuantity', () => {
     const result = formattedQuantity(ingredient);
     expect(result).toEqual('2 krm nutmeg');
   });
+
+  it('empty name should render null', () => {
+    const ingredient = {
+      name: undefined,
+      quantity: 1.71,
+      unit: 'ml',
+    };
+    const result = formattedQuantity(ingredient);
+    expect(result).toEqual(null);
+  });
 });
 
 describe('getQuantity', () => {
