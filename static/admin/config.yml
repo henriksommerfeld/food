@@ -36,7 +36,12 @@ collections:
         }
       - { label: 'URL', name: 'url', widget: 'hidden', default: '' }
       - { label: 'Titel', name: 'title', widget: 'string' }
-      - { label: 'Beskrivning', name: description, widget: string }
+      - {
+          label: 'Beskrivning',
+          name: description,
+          widget: string,
+          required: false,
+        }
       - {
           label: 'Redskap',
           name: tools,
