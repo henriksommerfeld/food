@@ -11,3 +11,6 @@ tweets*.json
 cypress/screenshots
 cypress/videos
 static/uploads/twitter
+
+# Local Netlify folder
+.netlify
