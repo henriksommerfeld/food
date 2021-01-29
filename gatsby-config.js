@@ -91,7 +91,7 @@ const plugins = [
           date: (node) => node.frontmatter.date,
           tags: (node) => node.frontmatter.tags,
           category: (node) => node.frontmatter.category,
-          description: (node) => node.frontmatter.description,
+          description: (node) => node.frontmatter.description ?? '',
           theme: (node) => node.frontmatter.featuredimagetheme,
           path: (node) => node.fields.slug,
         },

@@ -1,7 +1,13 @@
 import React, { useEffect, useRef } from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import styled from 'styled-components';
-import { colors, layout, spacing, breakpoints } from '../constants';
+import {
+  colors,
+  layout,
+  spacing,
+  breakpoints,
+  masonryBreakpoints,
+} from '../constants';
 import { transparentizeHex } from '../color-convertions';
 import { useGlobal } from 'reactn';
 import {
@@ -15,15 +21,9 @@ import { useEscKey } from '../useEscKey';
 import { useTransition, animated, config } from 'react-spring';
 import { LocationProp } from 'interfaces/LocationProp';
 import { bannerMinHeight } from '../templates/shared-intro-banner';
-import {
-  GridContainerStyled,
-  GridItemsList,
-  Item,
-  ItemLinkStyled,
-  imageTransition,
-  LinkTitle,
-} from './ImageLinkGrid';
+import { ItemLinkStyled, imageTransition, LinkTitle } from './ImageLinkGrid';
 import LazyImage, { FancyImage } from './LazyImage';
+import { MasonryItem, MasonryStyled } from './Masonry';
 
 export default function SearchResult({ location }: LocationProp) {
   const imagesData = useStaticQuery<ImagesQueryData>(imagesQuery);
@@ -83,27 +83,27 @@ export default function SearchResult({ location }: LocationProp) {
               <em>{query}</em>
             </HitsHeading>
             <LinksContainer>
-              <GridContainerStyled>
-                <GridItemsList>
-                  {results.map((page, index) => (
-                    <Item key={page.id}>
-                      <ItemLinkStyled
-                        to={page.path}
-                        ref={index === 0 ? searchResultsRef : null}
-                      >
-                        <LazyImage
-                          image={getImage(page.id)}
-                          imgStyle={imageTransition}
-                          // aspectRatio={1}
-                        />
-                        <LinkTitle className="link-title" theme={page.theme}>
-                          {page.title}
-                        </LinkTitle>
-                      </ItemLinkStyled>
-                    </Item>
-                  ))}
-                </GridItemsList>
-              </GridContainerStyled>
+              <MasonryStyled
+                breakpointCols={masonryBreakpoints}
+                columnClassName="masonry-grid-column"
+              >
+                {results.map((page, index) => (
+                  <MasonryItem key={page.id}>
+                    <ItemLinkStyled
+                      to={page.path}
+                      ref={index === 0 ? searchResultsRef : null}
+                    >
+                      <LazyImage
+                        image={getImage(page.id)}
+                        imgStyle={imageTransition}
+                      />
+                      <LinkTitle className="link-title" theme={page.theme}>
+                        {page.title}
+                      </LinkTitle>
+                    </ItemLinkStyled>
+                  </MasonryItem>
+                ))}
+              </MasonryStyled>
             </LinksContainer>
           </SearchResultsStyled>
         </SearchResultsContainer>
