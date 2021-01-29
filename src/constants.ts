@@ -40,6 +40,14 @@ export const breakpoints = {
   xl: '2048px',
 };
 
+export const masonryBreakpoints = {
+  default: 6,
+  2400: 4,
+  1600: 3,
+  1024: 2,
+  768: 1,
+};
+
 export const colors = {
   white: tailwindColors.white,
   black: tailwindColors.black,

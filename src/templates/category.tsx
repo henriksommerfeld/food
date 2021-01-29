@@ -5,14 +5,12 @@ import Layout from '../components/Layout';
 import { CategoryTemplate } from './category-template';
 import LazyImage, { FancyImage } from '../components/LazyImage';
 import {
-  GridContainerStyled,
-  GridItemsList,
-  Item,
   ItemLinkStyled,
   LinkTitle,
   imageTransition,
 } from '../components/ImageLinkGrid';
 import { useSearchIndex } from '../useSearchIndex';
+import { MasonryStyled, MasonryItem } from '../components/Masonry';
 
 interface CategoryRouteProps {
   data: CategoryPageQueryData;
@@ -43,27 +41,34 @@ export default function CategoryRoute({
         subheading={categoryHeader}
         searchIndex={searchIndex}
       >
-        <GridContainerStyled>
-          <GridItemsList data-testid="category-recepies">
-            {data.allMarkdownRemark.edges.map((edge) => (
-              <Item key={edge.node.frontmatter.title}>
-                <ItemLinkStyled to={edge.node.fields.slug}>
-                  <LazyImage
-                    image={edge.node.frontmatter.featuredimage}
-                    imgStyle={imageTransition}
-                    // aspectRatio={1}
-                  />
-                  <LinkTitle
-                    className="link-title"
-                    theme={edge.node.frontmatter.featuredimagetheme}
-                  >
-                    {edge.node.frontmatter.title}
-                  </LinkTitle>
-                </ItemLinkStyled>
-              </Item>
-            ))}
-          </GridItemsList>
-        </GridContainerStyled>
+        <MasonryStyled
+          breakpointCols={{
+            default: 6,
+            2400: 4,
+            1600: 3,
+            1024: 2,
+            768: 1,
+          }}
+          columnClassName="masonry-grid-column"
+          data-testid="category-recepies"
+        >
+          {data.allMarkdownRemark.edges.map((edge) => (
+            <MasonryItem key={edge.node.frontmatter.title}>
+              <ItemLinkStyled to={edge.node.fields.slug}>
+                <LazyImage
+                  image={edge.node.frontmatter.featuredimage}
+                  imgStyle={imageTransition}
+                />
+                <LinkTitle
+                  className="link-title"
+                  theme={edge.node.frontmatter.featuredimagetheme}
+                >
+                  {edge.node.frontmatter.title}
+                </LinkTitle>
+              </ItemLinkStyled>
+            </MasonryItem>
+          ))}
+        </MasonryStyled>
       </CategoryTemplate>
     </Layout>
   );
