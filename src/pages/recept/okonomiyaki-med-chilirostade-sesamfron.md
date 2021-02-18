@@ -29,7 +29,7 @@ ingredients:
             ingredientamount: 1
             ingredientname: strösocker
             unit: msk
-      partingredientsname: Okonomyiakisås
+      partingredientsname: Okonomiyakisås
   - partingredients:
       partingredientslist:
         - ingredient:
