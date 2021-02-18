@@ -6,7 +6,7 @@ description: Japansk snabbmat!
 tools: En liten eller mellanstor stekpanna
 hidden: false
 category: Huvudrätt
-featuredimage: /uploads/img_0804.jpg
+featuredimage: /uploads/img_0802.jpg
 featuredimagetheme: 1
 servings: 4
 servingslabel: portioner
