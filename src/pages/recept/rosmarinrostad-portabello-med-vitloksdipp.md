@@ -6,7 +6,7 @@ description: Vegansk klassiker!
 hidden: false
 category: Huvudrätt
 featuredimage: /uploads/rosmarinrostad_portabello_med_vitloksdipp.jpg
-featuredimagetheme: 1
+featuredimagetheme: 2
 servings: 4
 servingslabel: portioner
 ingredients:
