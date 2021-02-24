@@ -64,5 +64,8 @@ timepassive:
 timeactive:
   hoursactive: 1
   minutesactive: 0
+tags:
+  - bröd
+  - judiskt
 ---
 
