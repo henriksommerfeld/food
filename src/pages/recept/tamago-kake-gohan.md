@@ -2,7 +2,7 @@
 templateKey: recept
 url: ''
 title: Tamago Kake Gohan
-description: Ris med ägg, japansk stil
+description: 'Ris med ägg, japansk stil'
 hidden: true
 category: Huvudrätt
 featuredimage: /uploads/tamago_1x1.jpeg
@@ -47,6 +47,10 @@ timepassive:
 timeactive:
   hoursactive: 1
   minutesactive: 1
+tags:
+  - japanskt
+  - ägg
+  - ris
 ---
 
 Serverat och klart 😋
