@@ -88,6 +88,8 @@ timeactive:
   hoursactive: 0
   minutesactive: 30
 tags:
-  - '#japanskt #ägg #pannkaka #snabbmat'
+  - japanskt
+  - ägg
+  - pannkaka
 ---
 
