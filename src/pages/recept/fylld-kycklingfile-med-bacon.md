@@ -76,6 +76,7 @@ timeactive:
   hoursactive: 0
   minutesactive: 15
 tags:
-  - '#Kyckling #kött'
+  - Kyckling
+  - kött
 ---
 
