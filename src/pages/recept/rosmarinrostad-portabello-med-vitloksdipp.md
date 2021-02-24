@@ -101,6 +101,8 @@ timeactive:
   hoursactive: 0
   minutesactive: 15
 tags:
-  - '#veganskt #vegan #vegetariskt #svamp'
+  - veganskt
+  - vegetariskt
+  - svamp
 ---
 
