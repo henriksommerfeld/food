@@ -117,5 +117,11 @@ timepassive:
 timeactive:
   hoursactive: 1
   minutesactive: 0
+tags:
+  - asiatiskt
+  - thai
+  - grönsaker
+  - wook
+  - gryta
 ---
 Servera med ris.
