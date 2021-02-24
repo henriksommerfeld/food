@@ -55,5 +55,6 @@ timeactive:
   minutesactive: 20
 tags:
   - Grönsaker
+  - svamp
 ---
 
