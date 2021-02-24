@@ -88,6 +88,6 @@ timeactive:
   hoursactive: 0
   minutesactive: 30
 tags:
-  - '#japanskt #Japan #lunch #middag #ägg #pannkaka #snabbmat'
+  - '#japanskt #ägg #pannkaka #snabbmat'
 ---
 
