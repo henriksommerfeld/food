@@ -99,5 +99,6 @@ tags:
   - friterat
   - chanukka
   - judiskt
+  - sött
 ---
 
