@@ -149,6 +149,7 @@ timeactive:
   minutesactive: 30
 tags:
   - Bröd
+  - surdeg
 ---
 Räkna med två dygn för att få till ett fint surdegsbröd. De långa jästiderna gör att brödet utvecklar sin smak och får fin luftighet vid gräddning.
 
