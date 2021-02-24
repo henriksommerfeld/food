@@ -89,6 +89,8 @@ timeactive:
   hoursactive: 0
   minutesactive: 15
 tags:
-  - '#polskt #Polen #gryta'
+  - polskt
+  - Polen
+  - gryta
 ---
 
