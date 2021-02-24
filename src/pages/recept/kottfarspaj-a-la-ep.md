@@ -158,5 +158,6 @@ timeactive:
   minutesactive: 35
 tags:
   - Paj
+  - kött
 ---
 Servera med sallad, eller lösa grönsaker om man är lat, som på bilden.
