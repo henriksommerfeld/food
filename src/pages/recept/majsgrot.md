@@ -75,5 +75,8 @@ timepassive:
 timeactive:
   hoursactive: 0
   minutesactive: 20
+tags:
+  - majs
+  - gröt
 ---
 
