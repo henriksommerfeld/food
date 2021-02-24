@@ -51,5 +51,9 @@ timepassive:
 timeactive:
   hoursactive: 0
   minutesactive: 40
+tags:
+  - grönsaker
+  - brysselkål
+  - bacon
 ---
 
