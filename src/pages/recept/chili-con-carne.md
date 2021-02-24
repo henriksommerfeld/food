@@ -79,5 +79,8 @@ timepassive:
 timeactive:
   hoursactive: 0
   minutesactive: 45
+tags:
+  - kött
+  - chili
 ---
 
