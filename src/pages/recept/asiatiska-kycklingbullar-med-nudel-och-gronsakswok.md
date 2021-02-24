@@ -144,5 +144,9 @@ timepassive:
 timeactive:
   hoursactive: 0
   minutesactive: 15
+tags:
+  - asiatiskt
+  - kyckling
+  - wook
 ---
 
