@@ -38,5 +38,6 @@ timeactive:
   minutesactive: 15
 tags:
   - Barnmat
+  - katrinplommon
 ---
 Mängden i relation till "portioner" går inte att lita på i det här receptet, men det spelar heller ingen roll.
