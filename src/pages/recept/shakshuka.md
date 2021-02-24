@@ -103,6 +103,11 @@ timeactive:
   hoursactive: 0
   minutesactive: 20
 tags:
-  - '#shakshuka #frukost #lunch #middag #Mellanöstern #frunch #tomat #vegetariskt'
+  - shakshuka
+  - ägg
+  - vegetariskt
+  - Mellanöstern
+  - israeliskt
+  - tomat
 ---
 
