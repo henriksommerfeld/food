@@ -53,5 +53,6 @@ timeactive:
   minutesactive: 15
 tags:
   - Våfflor
+  - vegetariskt
 ---
 Servera med sylt, bär, grädde eller glass
