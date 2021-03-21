@@ -81,5 +81,6 @@ tags:
   - kött
   - korv
   - sötpotatis
+  - vegetariskt
 ---
-
+TIPS: För vegetarisk version, byt ut korven mot svamp!
