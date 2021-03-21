@@ -15,7 +15,7 @@ ingredients:
             ingredientamount: 400
             ingredientname: lövbiff
             unit: g
-      partingredientsname: Köttet
+      partingredientsname: Kött
   - partingredients:
       partingredientslist:
         - ingredient:
