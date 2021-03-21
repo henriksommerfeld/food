@@ -80,5 +80,6 @@ tags:
   - soppa
   - mjölkfritt
   - räkor
+  - vegetariskt
 ---
 
