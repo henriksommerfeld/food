@@ -4,7 +4,7 @@ url: ''
 title: Liten rulltårta
 description: Rulltårta med chokladkräm
 hidden: false
-category: Bakning
+category: Efterrätt
 featuredimage: /uploads/rulltarta.jpg
 featuredimagetheme: 2
 servings: 1

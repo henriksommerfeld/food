@@ -78,5 +78,6 @@ timeactive:
 tags:
   - majs
   - gröt
+  - vegetariskt
 ---
 
