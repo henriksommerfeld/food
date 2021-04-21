@@ -49,4 +49,6 @@ timepassive:
 timeactive:
   hoursactive: 0
   minutesactive: 15
+tags:
+  - fisk
 ---
