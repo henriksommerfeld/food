@@ -123,11 +123,10 @@ timepassive:
   hourspassive: 3
   minutespassive: 0
 timeactive:
-  hoursactive: 0
+  hoursactive: 1
   minutesactive: 20
 tags:
   - kött
   - gryta
   - chili
 ---
-
