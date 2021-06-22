@@ -39,5 +39,6 @@ export const MasonryStyled = styled(Masonry)`
     justify-content: flex-start;
     align-content: stretch;
     flex-grow: 1;
+    max-width: 50rem;
   }
 `;
