@@ -62,14 +62,13 @@ instructions:
 timepassive:
   dayspassive: 0
   hourspassive: 0
-  minutespassive: 30
+  minutespassive: 45
 timeactive:
   hoursactive: 0
-  minutesactive: 10
+  minutesactive: 15
 tags:
   - kyckling
   - kött
   - enkelt
   - snabblagat
 ---
-
