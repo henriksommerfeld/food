@@ -124,6 +124,7 @@ const SearchBoxInput = styled('input')`
   border: none;
   caret-color: ${tailwindColors.teal700};
   color: ${colors.black};
+  -webkit-appearance: none;
 `;
 
 const SearchIcon = styled('img')`
