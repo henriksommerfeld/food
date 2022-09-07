@@ -2,7 +2,7 @@
 
 ## Installation
 
-`npm ci`
+`npm ci --legacy-peer-deps`
 
 ## Run
 
