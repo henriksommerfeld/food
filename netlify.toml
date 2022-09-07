@@ -4,6 +4,7 @@
   functions = ""
 [build.environment]
   NODE_ENV = "production"
+  NPM_FLAGS = "--legacy-peer-deps"
 
 [[plugins]]
 package = "netlify-plugin-gatsby-cache"
