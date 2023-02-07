@@ -116,7 +116,6 @@ const plugins = [
     },
   },
   'gatsby-plugin-offline',
-  'gatsby-plugin-netlify-cache',
   {
     resolve: 'gatsby-plugin-netlify-cms',
     options: {
