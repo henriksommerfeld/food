@@ -1,6 +1,6 @@
 ---
 templateKey: recept
-url: ''
+url: ""
 title: Okonomiyaki med chilirostade sesamfrön
 description: Japansk snabbmat!
 tools: En liten eller mellanstor stekpanna
@@ -53,7 +53,7 @@ ingredients:
             ingredientname: ägg
             unit: st
         - ingredient:
-            ingredientamount: 1
+            ingredientamount: 0.5
             ingredientname: spetskål eller vitkål (tunt skivad)
             unit: st
         - ingredient:
@@ -83,26 +83,20 @@ ingredients:
 instructions:
   - partinstructions:
       partinstructionslist:
-        - instruction: >-
-            Börja med att blanda ihop alla ingredienser till okonomyakisåsen.
+        - instruction: Börja med att blanda ihop alla ingredienser till okonomyakisåsen.
             Ställ åt sidan.
-        - instruction: >-
-            Blanda mjöl med bakpulver och salt. I med vätskan och vispa till
+        - instruction: Blanda mjöl med bakpulver och salt. I med vätskan och vispa till
             klumpritt.
-        - instruction: >-
-            Tillsätt äggen och blanda. Lägg i vitkål och rör om. Smeten ska
+        - instruction: Tillsätt äggen och blanda. Lägg i vitkål och rör om. Smeten ska
             täcka grönsakernas yta.
-        - instruction: >-
-            Stek hälften av smeten till en ca 2 cm tjock pannkaka på medelvärme
+        - instruction: Stek hälften av smeten till en ca 2 cm tjock pannkaka på medelvärme
             i generöst med olja. Stek i ca 4 min till gyllene.
-        - instruction: >-
-            Lägg på salami på den ostekta sidan och vänd sedan pannkakan. Låt
+        - instruction: Lägg på salami på den ostekta sidan och vänd sedan pannkakan. Låt
             steka ytterligare ca 3-4 minuter och lägg sedan upp på en tallrik
             med salamin överst.
         - instruction: Upprepa med resterande smet.
-        - instruction: >-
-            Pensla på okonomyiakisåsen, ringla på majonnäs, strö över chili- och
-            sesamkrydda samt eventuellt salladslök. Servera genast!
+        - instruction: Pensla på okonomyiakisåsen, ringla på majonnäs, strö över chili-
+            och sesamkrydda samt eventuellt salladslök. Servera genast!
       partinstructionsname: Okonomiyaki
 timepassive:
   dayspassive: 0
@@ -116,4 +110,3 @@ tags:
   - ägg
   - pannkaka
 ---
-
