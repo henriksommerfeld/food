@@ -33,15 +33,15 @@ ingredients:
   - partingredients:
       partingredientslist:
         - ingredient:
-            ingredientamount: 2.5
+            ingredientamount: 5
             ingredientname: vetemjöl eller glutenfritt mjöl
             unit: dl
         - ingredient:
-            ingredientamount: 1
+            ingredientamount: 2
             ingredientname: bakpulver
             unit: tsk
         - ingredient:
-            ingredientamount: 2
+            ingredientamount: 4
             ingredientname: kryddmått salt
             unit: st
         - ingredient:
@@ -49,7 +49,7 @@ ingredients:
             ingredientname: fiskbuljong (2 dl kokande vatten med 1 tärning buljong)
             unit: dl
         - ingredient:
-            ingredientamount: 4
+            ingredientamount: 5
             ingredientname: ägg
             unit: st
         - ingredient:
