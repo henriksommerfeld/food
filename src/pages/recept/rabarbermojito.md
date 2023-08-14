@@ -17,7 +17,7 @@ ingredients:
             unit: st
             ingredientname: limefrukt
         - ingredient:
-            ingredientamount: 3
+            ingredientamount: 4
             unit: cl
             ingredientname: vit rom
         - ingredient:
