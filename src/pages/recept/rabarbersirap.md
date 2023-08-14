@@ -7,7 +7,7 @@ tools: ""
 hidden: false
 category: Tillbehör
 featuredimage: /uploads/img_1763.jpeg
-featuredimagetheme: 2
+featuredimagetheme: 1
 servings: 9
 servingslabel: portioner
 ingredients:
