@@ -8,7 +8,7 @@ category: Tillbehör
 featuredimage: /uploads/img_0958.jpeg
 featuredimagetheme: 2
 servings: 1
-servingslabel: portioner
+servingslabel: drink(ar)
 ingredients:
   - partingredients:
       partingredientslist:
