@@ -2,14 +2,14 @@
 templateKey: recept
 url: ""
 title: Rabarbersirap
-description: Gott i drinkar, på glassen m.m. Recept för 1 flaska på ca. 50 centiliter.
+description: Gott i drinkar, på glassen m.m. Recept för 1 flaska på ca. 0,5 liter.
 tools: ""
 hidden: false
 category: Tillbehör
 featuredimage: /uploads/img_1763.jpeg
 featuredimagetheme: 1
-servings: 50
-servingslabel: cl
+servings: 5
+servingslabel: dl
 ingredients:
   - partingredients:
       partingredientsname: Ingredienser
