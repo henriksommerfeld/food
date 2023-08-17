@@ -2,9 +2,9 @@
 templateKey: recept
 url: ""
 title: Rabarberchutney
-description: Mängderna är lite för ungefärliga, så väg gärna ingredienserna och
-  den färdiga chutneyn för att kunna uppdatera receptet. Senaste gjorde vi 8
-  satser.
+description: Recept för ca 1 burk á 250 g. Senaste 2 omgångarna gjorde vi med
+  1500g rabarber, 10g ingefära och 40g vitlök. Blev 6 burkar ena gången och 4,5
+  burkar andra gången.
 tools: Stor gryta (eller flera mindre) och glasburkar att förvara i när chutneyn
   är klar. Sylttratt underlättar.
 hidden: false
@@ -22,9 +22,9 @@ ingredients:
             unit: g
             ingredientname: rabarber
         - ingredient:
-            ingredientamount: 2
-            unit: st
-            ingredientname: vitlöksklyftor
+            ingredientamount: 10
+            unit: g
+            ingredientname: vitlök
         - ingredient:
             ingredientamount: 1
             unit: st
