@@ -85,7 +85,7 @@ function quantityForVolume(
     unit: QuantityUnit.milliliter,
   };
 
-  return volumeInBestUnit(calculatedIngredient);
+  return volumeInBestUnit(calculatedIngredient, ingredient.unit);
 }
 
 function quantityForWeight(
@@ -114,7 +114,13 @@ function weightInBestUnit(ingredient: Ingredient): Ingredient {
   return ingredient;
 }
 
-function volumeInBestUnit(ingredient: Ingredient): Ingredient {
+function volumeInBestUnit(
+  ingredient: Ingredient,
+  enteredUnit: QuantityUnit
+): Ingredient {
+  const allowSpoon = [QuantityUnit.teaspoon, QuantityUnit.tablespoon].includes(
+    enteredUnit
+  );
   if (ingredient.quantity >= 1000)
     return {
       quantity: ingredient.quantity / 1000,
@@ -129,17 +135,24 @@ function volumeInBestUnit(ingredient: Ingredient): Ingredient {
       name: ingredient.name,
     };
 
-  if (ingredient.quantity >= 15)
+  if (allowSpoon && ingredient.quantity >= 15)
     return {
       quantity: ingredient.quantity / 15,
       unit: QuantityUnit.tablespoon,
       name: ingredient.name,
     };
 
-  if (ingredient.quantity >= 5)
+  if (allowSpoon && ingredient.quantity >= 5)
     return {
       quantity: ingredient.quantity / 5,
       unit: QuantityUnit.teaspoon,
+      name: ingredient.name,
+    };
+
+  if (ingredient.quantity >= 10)
+    return {
+      quantity: ingredient.quantity / 10,
+      unit: QuantityUnit.centiliter,
       name: ingredient.name,
     };
 

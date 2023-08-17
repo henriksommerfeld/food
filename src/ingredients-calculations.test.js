@@ -144,6 +144,20 @@ describe('getQuantity', () => {
       };
       expect(getQuantity(ingredient, 4, 4)).toEqual(expected);
     });
+
+    it('ml => ml', () => {
+      const ingredient = {
+        name: 'bacardi',
+        quantity: 4,
+        unit: 'cl',
+      };
+      const expected = {
+        name: 'bacardi',
+        quantity: 4,
+        unit: 'cl',
+      };
+      expect(getQuantity(ingredient, 1, 1)).toEqual(expected);
+    });
   });
 });
 
