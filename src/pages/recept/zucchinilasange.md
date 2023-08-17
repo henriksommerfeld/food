@@ -1,12 +1,11 @@
 ---
 templateKey: recept
-url: ''
+url: ""
 title: Zucchinilasange
-description: >-
-  Den här lasagnen, med plattor av zucchini istället för pasta, är alldeles
-  underbar. En rätt som går hem hos hela familjen och även gäster som normalt
-  inte äter lågkolhydratkost. Smaklig måltid!
-tools: ''
+description: Den här lasagnen, med plattor av zucchini istället för pasta, är
+  alldeles underbar. En rätt som går hem hos hela familjen och även gäster som
+  normalt inte äter lågkolhydratkost. Smaklig måltid!
+tools: ""
 hidden: false
 category: Huvudrätt
 featuredimage: /uploads/zucchinilasange.jpg
@@ -42,7 +41,7 @@ ingredients:
             unit: dl
         - ingredient:
             ingredientamount: 200
-            ingredientname: 'Philadelphia vitlök & örter '
+            ingredientname: "Philadelphia vitlök & örter "
             unit: g
         - ingredient:
             ingredientamount: 1
@@ -76,24 +75,20 @@ ingredients:
 instructions:
   - partinstructions:
       partinstructionslist:
-        - instruction: 'Finhacka vitlöken, stek snabbt i rikligt med smör'
+        - instruction: Finhacka vitlöken, stek snabbt i rikligt med smör
         - instruction: Bryn köttfärsen i samma stekpanna. Smula sedan över buljongtärningen
         - instruction: Tillsätt krossade tomater och sambal oelek
         - instruction: Ställ in ugnen på 225 grader
         - instruction: Tillsätt Philadelphia vitlök & örter + crème fraiche. Rör om.
-        - instruction: >-
-            Smaka av med chilipulver, salt och peppar och eventuella andra
+        - instruction: Smaka av med chilipulver, salt och peppar och eventuella andra
             kryddor
         - instruction: Låt det puttra i ca. 10 minuter.
-        - instruction: >-
-            Skölj zucchinin och hyvla sedan skivor på längden, med hjälp av en
+        - instruction: Skölj zucchinin och hyvla sedan skivor på längden, med hjälp av en
             osthyvel.
-        - instruction: >-
-            Varva zucchini-skivorna med köttfärssåsen. Efter det sista lagret
+        - instruction: Varva zucchini-skivorna med köttfärssåsen. Efter det sista lagret
             zucchini, strö över den rivna osten. Toppa eventuellt med skivad röd
             paprika.
-        - instruction: >-
-            Grädda i mitten av ugnen i ca. 20 minuter (tills den har fått fin
+        - instruction: Grädda i mitten av ugnen i ca. 20 minuter (tills den har fått fin
             färg på ytan).
       partinstructionsname: Laga
 timepassive:
@@ -108,5 +103,5 @@ tags:
   - grönsaker
   - zucchini
   - kött
+  - lasange
 ---
-
