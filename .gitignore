@@ -1,16 +1,10 @@
-node_modules
-.cache/
-public/
-static/admin/*.bundle.*
 .DS_Store
-yarn-error.log
-.env.production
-.env.development
+node_modules
+/build
+/.svelte-kit
+/package
 .env
-tweets*.json
-cypress/screenshots
-cypress/videos
-static/uploads/twitter
-
-# Local Netlify folder
-.netlify
+.env.*
+!.env.example
+vite.config.js.timestamp-*
+vite.config.ts.timestamp-*

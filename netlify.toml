@@ -1,8 +1,0 @@
-[build]
-  publish = "public"
-  command = "npm run build"
-  functions = ""
-[build.environment]
-  NODE_ENV = "production"
-  NPM_FLAGS = "--legacy-peer-deps"
-
