@@ -1,13 +1,13 @@
 ---
 templateKey: recept
-url: ''
+url: ""
 title: Pulled älg
-description: 'Långkok '
+description: "Långkok "
 tools: Crock pot
 hidden: false
 category: Huvudrätt
 featuredimage: /uploads/img_1646.jpeg
-featuredimagetheme: 2
+featuredimagetheme: 1
 servings: 10
 servingslabel: portioner
 ingredients:
@@ -43,7 +43,7 @@ ingredients:
             unit: st
         - ingredient:
             ingredientamount: 0
-            ingredientname: 'Malen chipotle-chili, salt och peppar efter smak'
+            ingredientname: Malen chipotle-chili, salt och peppar efter smak
             unit: st
         - ingredient:
             ingredientamount: 1
@@ -58,42 +58,35 @@ ingredients:
             unit: st
         - ingredient:
             ingredientamount: 0
-            ingredientname: 'Valfria hackade grönsaker (ex. sojabönor, majs, gurka, tomater)'
+            ingredientname: Valfria hackade grönsaker (ex. sojabönor, majs, gurka, tomater)
             unit: st
         - ingredient:
             ingredientamount: 0
-            ingredientname: >-
-              Hemgjord guaccamole (stavmixa några avokados med valfria kryddor
+            ingredientname: Hemgjord guaccamole (stavmixa några avokados med valfria kryddor
               och vitlök)
             unit: st
         - ingredient:
             ingredientamount: 0
-            ingredientname: 'Smetana eller craime fraiche '
+            ingredientname: "Smetana eller craime fraiche "
             unit: st
       partingredientsname: Till servering
 instructions:
   - partinstructions:
       partinstructionslist:
-        - instruction: >-
-            Krossa chipotle-chilin med en mortel, tillsammans med salt och
+        - instruction: Krossa chipotle-chilin med en mortel, tillsammans med salt och
             peppar. Rulla sedan kött-biten i kryddorna så att det täcker båda
             sidor skapligt.
-        - instruction: >-
-            Skär löken i tjocka klyftor och hacka vitlöken. Sätt på crockpoten
+        - instruction: "Skär löken i tjocka klyftor och hacka vitlöken. Sätt på crockpoten
             på låg temperatur. Ha i smör/olja i botten av crockpoten och lägg
-            ned köttet. Lägg ned lök och vitlök runt köttet. 
-        - instruction: >-
-            Grovhacka tomaterna och lägg runt köttet i grytan. Häll på vattnet
+            ned köttet. Lägg ned lök och vitlök runt köttet. "
+        - instruction: Grovhacka tomaterna och lägg runt köttet i grytan. Häll på vattnet
             och sedan BBQ-såsen så att det täcker köttet. Avsluta med några
             kvistar dragon.
-        - instruction: >-
-            Sätt på locket och låt det puttra på låg temperatur i 7-9 timmar. Om
-            du är hemma, ös gärna såsen över köttet några gånger.
-        - instruction: >-
-            Plocka ut köttet och dra isär det till strimlor med två gafflar.
+        - instruction: Sätt på locket och låt det puttra på låg temperatur i 7-9 timmar.
+            Om du är hemma, ös gärna såsen över köttet några gånger.
+        - instruction: Plocka ut köttet och dra isär det till strimlor med två gafflar.
             Mixa sedan såsen som är kvar i crockpoten med en stavmixer.
-        - instruction: >-
-            Servera älgen i tortillabröd, med lite sås, hemgjord quaccamole,
+        - instruction: Servera älgen i tortillabröd, med lite sås, hemgjord quaccamole,
             smetana/craime fraiche, valfria grönsaker och syrad lök.
       partinstructionsname: Älgen
 timepassive:
@@ -109,4 +102,3 @@ tags:
   - crockpot
   - älg
 ---
-
