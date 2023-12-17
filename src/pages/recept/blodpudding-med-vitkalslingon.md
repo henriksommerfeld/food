@@ -32,7 +32,7 @@ instructions:
   - partinstructions:
       partinstructionsname: Vitkålslingon
       partinstructionslist:
-        - instruction: Riv vitkålen i tunna skivor
+        - instruction: Riv vitkålen i tunna skivor (enklast med osthyvel)
         - instruction: Blanda med lingonsylt
         - instruction: Låt stå i kylen under tillagningen av blodpuddingen
   - partinstructions:
