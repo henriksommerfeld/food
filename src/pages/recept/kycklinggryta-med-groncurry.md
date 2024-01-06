@@ -1,7 +1,7 @@
 ---
 templateKey: recept
 url: ""
-title: Grön kyckling-currygryta
+title: Grön curry-kycklinggryta
 description: Enkel och snabblagad thai-maträtt, supergott!
 tools: Wookpanna eller gjutjärnsgryta
 hidden: false
