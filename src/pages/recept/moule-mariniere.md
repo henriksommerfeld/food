@@ -82,4 +82,6 @@ tags:
   - Frankrike
   - lyx
   - fira
+  - skaldjur
+  - fisk
 ---
