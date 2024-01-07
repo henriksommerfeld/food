@@ -62,10 +62,10 @@ instructions:
         - instruction: Skär kycklingfiléerna i ca. 3 cm stora bitar. Stek dem en stund i
             raps- eller kokosolja. Krydda med vitlökspulver, salt och
             gröncurry-pasta. Rör runt.
-        - instruction: När kycklingen nästan är genomstekt, häll på grädden (OBS - om du
-            tänkt använda färska wook-grönsaker, stek på dem innan du har på
-            grädden), sedan smula ned buljongtärningen, i med sojan och
-            wook-grönsakerna. Låt puttra i ca. 15 minuter.
+        - instruction: När kycklingen nästan är genomstekt, häll på grädden och pressad
+            limesaft (OBS - om du tänkt använda färska wook-grönsaker, stek på
+            dem innan du har på grädden), sedan smula ned buljongtärningen, i
+            med sojan och wook-grönsakerna. Låt puttra i ca. 15 minuter.
         - instruction: "Koka nudlarna när det är 3-4 minuter kvar, i en separat kastrull
             med vatten och en nypa salt. "
         - instruction: När nudlarna är klara, sila av. Servera nudlarna direkt på talriken
