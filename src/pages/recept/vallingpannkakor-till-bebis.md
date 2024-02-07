@@ -7,7 +7,7 @@ description: "Perfekt om du har vällingpulver hemma som du vill bli av med,
   järnet. "
 hidden: false
 category: Huvudrätt
-featuredimage: /uploads/img_5045.jpg
+featuredimage: /uploads/img_4921.jpg
 featuredimagetheme: 2
 servings: 10
 servingslabel: små pannkakor
