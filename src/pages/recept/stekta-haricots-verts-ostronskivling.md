@@ -1,7 +1,7 @@
 ---
 templateKey: recept
 url: ""
-title: Berns legendariska haricot verts!
+title: Berns legendariska haricots verts!
 description: "Recept på Berns supersmarriga haricot verts! (Recept: Fredrik Krook)"
 hidden: false
 category: Tillbehör
