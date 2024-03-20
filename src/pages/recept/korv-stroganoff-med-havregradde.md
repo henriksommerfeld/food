@@ -64,7 +64,7 @@ ingredients:
         - ingredient:
             ingredientamount: 300
             unit: g
-            ingredientname: sugarsnaps
+            ingredientname: sockerärtor
         - ingredient:
             ingredientamount: 6
             unit: dl
@@ -77,7 +77,7 @@ instructions:
   - partinstructions:
       partinstructionslist:
         - instruction: "Tillbehör: Koka riset enligt anvisning på paketet. Koka upp lite
-            lättsaltat vatten i en kastrull till sugarsnapsen."
+            lättsaltat vatten i en kastrull till sockerärtorna."
         - instruction: "Stroganoff: Skala och finhacka lök och vitlök. Skala och skiva
             morötterna i tunna skivor. Skär korven i strimlor. "
         - instruction: Hetta upp lite olja i en stekpanna eller gryta. Bryn lök och
@@ -85,8 +85,8 @@ instructions:
             får lite färg. Tillsätt tomatpuré och havregrädde. Smaka av med salt
             och peppar och låt det småputtra i några minuter. Späd eventuellt
             med lite vatten.
-        - instruction: "Tillbehör: Förväll sugarsnapsen någon minut i det kokande vattnet.
-            Sila av vattnet och tillsätt en klick smör. "
+        - instruction: "Tillbehör: Förväll sockerärtorna någon minut i det kokande
+            vattnet. Sila av vattnet och tillsätt en klick smör. "
       partinstructionsname: Gör så här
 timepassive:
   dayspassive: 0
@@ -94,7 +94,7 @@ timepassive:
   minutespassive: 20
 timeactive:
   hoursactive: 0
-  minutesactive: 15
+  minutesactive: 30
 tags:
   - korv
   - Stroganoff
