@@ -1,6 +1,6 @@
-import adapter from '@sveltejs/adapter-static';
-import { vitePreprocess } from '@sveltejs/kit/vite';
-import { mdsvex } from 'mdsvex';
+import adapter from '@sveltejs/adapter-static'
+import { vitePreprocess } from '@sveltejs/kit/vite'
+import { mdsvex } from 'mdsvex'
 
 /** @type {import('@sveltejs/kit').Config} */
 const config = {
@@ -24,7 +24,13 @@ const config = {
       precompress: false,
       strict: true
     })
-  }
-};
+  },
 
-export default config;
+  onwarn: (warning, handler) => {
+    // supress a11y warnings in markdown files
+    if (warning.code.startsWith('a11y-') && warning.filename.endsWith('.md')) return
+    handler(warning)
+  }
+}
+
+export default config
