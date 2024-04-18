@@ -16,23 +16,24 @@
   <h2>{config.description}</h2>
 </header>
 
-<nav class="catogories">
-  <ol>
-    {#each CategoryLinks as category}
-      <li><a href={category.slug}>{category.title}</a></li>
-    {/each}
-  </ol>
-</nav>
+<!-- <nav class="categories"> -->
+<!--   <ol> -->
+<!--     {#each CategoryLinks as category} -->
+<!--       <li><a href={category.slug}>{category.title}</a></li> -->
+<!--     {/each} -->
+<!--   </ol> -->
+<!-- </nav> -->
 
 <section>
-  <ul class="posts">
-    {#each data.recept as recept}
-      <li class="post">
-        <a href={recept.slug} class="title">{recept.title}</a>
-        <p class="description">{recept.description}</p>
-      </li>
-    {/each}
-  </ul>
+  <!-- <ul class="posts"> -->
+  <!--   {#each data.recept as recept} -->
+  <!--     <li class="post"> -->
+  <!--       <a href={recept.slug} class="title">{recept.title}</a> -->
+  <!--       <p class="description">{recept.description}</p> -->
+  <!--     </li> -->
+  <!--   {/each} -->
+  <!-- </ul> -->
+  <a href="shakshuka" class="title">shakshuka</a>
 </section>
 
 <style>

@@ -4,13 +4,18 @@ import { error } from '@sveltejs/kit'
 export async function load({ params }) {
   try {
     const post = await import(`../../recept/${params.slug}.md`)
-    const meta = recipeFrontmatterSchema.parse(post.metadata)
-    // TODO: Maybe map in some way to make easier to render?
+    const meta = recipeFrontmatterSchema.safeParse(post.metadata)
+    if (!meta.success) {
+      console.log(`recept/${params.slug}.md has invalid frontmatter`)
+      console.dir(meta.error.errors, { depth: null })
+      throw error(500, `Invalid frontmatter for /${params.slug}`)
+    }
     return {
       content: post.default,
-      meta: meta
+      meta: meta.data,
+      slug: params.slug
     }
   } catch (e) {
-    error(404, `Could not find ${params.slug}`)
+    throw error(404, `Could not find ${params.slug}`)
   }
 }

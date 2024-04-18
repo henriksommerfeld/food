@@ -52,12 +52,12 @@ export interface InstructionsGroup {
 
 export const recipeFrontmatterSchema = z.object({
   hidden: z.boolean(),
-  url: z.string().optional(),
+  url: z.string().nullish(),
   templateKey: z.literal('recept'),
   title: z.string(),
-  description: z.string().default(''),
+  description: z.string().nullish(),
   category: z.enum(Categories),
-  tools: z.string().default(''),
+  tools: z.string().nullish(),
   featuredimage: z.string(),
   featuredimagetheme: z.literal(1).or(z.literal(2)),
   servings: z.number().min(1),
@@ -99,7 +99,7 @@ export const recipeFrontmatterSchema = z.object({
             ingredientList.push({
               name: y.ingredient.ingredientname,
               quantity: y.ingredient.ingredientamount,
-              unit: y.ingredient.unit as QuantityUnit
+              unit: y.ingredient.unit
             })
           }
         })
@@ -129,7 +129,7 @@ export const recipeFrontmatterSchema = z.object({
       const instructions: Instructions = { instructionsGroup: [] }
 
       data.forEach((x) => {
-        const instructionsList: string[] = []
+        const instructionsList = new Array<string>()
 
         x.partinstructions?.partinstructionslist?.forEach((y) => {
           instructionsList.push(y.instruction)
@@ -143,7 +143,10 @@ export const recipeFrontmatterSchema = z.object({
 
       return instructions
     }),
-  tags: z.array(z.string()).default(new Array<string>())
+  tags: z
+    .array(z.string())
+    .nullish()
+    .transform((x) => x ?? [])
 })
 
 export type RecipeFrontmatter = z.infer<typeof recipeFrontmatterSchema>

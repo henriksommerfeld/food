@@ -1,34 +1,32 @@
 <script lang="ts">
-  import { formatDate } from '$lib/utils'
+  import type { PageData } from './$types'
 
-  export let data
+  export let data: PageData
+  export const meta = data.meta
 </script>
 
 <svelte:head>
-  <title>{data.meta.title}</title>
+  <title>{meta.title}</title>
   <meta property="og:type" content="article" />
-  <meta property="og:title" content={data.meta.title} />
+  <meta property="og:title" content={meta.title} />
 </svelte:head>
 
-<article>
-  <hgroup>
-    <h1>{data.meta.title}</h1>
-  </hgroup>
+<div class="page">
+  <article>
+    <h1>{meta.title}</h1>
 
-  <!-- <div class="tags"> -->
-  <!--   {#each data.meta.categories as category} -->
-  <!--     <span class="surface-4">&num;{category}</span> -->
-  <!--   {/each} -->
-  <!-- </div> -->
+    <div class="tags">
+      {#if meta.tags.length > 0}
+        <ul>
+          {#each meta.tags as tag}
+            <li>&num;{tag}</li>
+          {/each}
+        </ul>
+      {/if}
+    </div>
 
-  <div class="prose">
-    <svelte:component this={data.content} />
-  </div>
-</article>
-
-<style>
-  article {
-    max-inline-size: var(--size-content-3);
-    margin-inline: auto;
-  }
-</style>
+    <div class="prose">
+      <svelte:component this={data.content} />
+    </div>
+  </article>
+</div>
