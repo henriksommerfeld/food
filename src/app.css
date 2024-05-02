@@ -99,6 +99,14 @@
   --pink700: #b83280;
   --pink800: #97266d;
   --pink900: #702459;
+
+  --content-max-width: 1200px;
+  --content-offset: -3rem;
+  --spacing-default: 1rem;
+  --spacing-double: 2rem;
+  --spacing-half: 0.5rem;
+  --spacing-x3: 3rem;
+  --spacing-section: 3rem;
 }
 
 /* Remove default padding */
