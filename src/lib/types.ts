@@ -50,7 +50,7 @@ export interface InstructionsGroup {
   instructions: string[]
 }
 
-export const recipeFrontmatterSchema = z.object({
+export const recipeSchema = z.object({
   hidden: z.boolean(),
   url: z.string().nullish(),
   templateKey: z.literal('recept'),
@@ -149,5 +149,6 @@ export const recipeFrontmatterSchema = z.object({
     .transform((x) => x ?? [])
 })
 
-export type RecipeFrontmatter = z.infer<typeof recipeFrontmatterSchema>
-export type Recipe = { slug: string }
+export const recipesSchema = z.array(recipeSchema)
+export type Recipe = z.infer<typeof recipeSchema>
+export type RecipeWithSlug = Recipe & { slug: string }

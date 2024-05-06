@@ -3,6 +3,8 @@
   import type { PageData } from './$types'
   import { formatDuration } from '$lib/time'
   import { servingsUnitFormatted } from '$lib/servings'
+  import Ingredients from '../ingredients.svelte'
+  import Instructions from '../instructions.svelte'
 
   export let data: PageData
   export const recipe = data.meta
@@ -64,6 +66,10 @@
             <p>{recipe.servings} {servingsUnitFormatted(recipe.servings, recipe.servingslabel)}</p>
           </div>
         </section>
+        <div class="columns">
+          <Ingredients {recipe} />
+          <div><Instructions instructions={recipe.instructions} /></div>
+        </div>
         <div class="tags">
           {#if recipe.tags.length > 0}
             <ul>
@@ -164,5 +170,10 @@
   }
   .cooking-time-and-servings img:not(:first-child) {
     margin-left: var(--spacing-default);
+  }
+  .columns {
+    display: grid;
+    grid-template-columns: 1fr minmax(0px, 2fr);
+    gap: 3rem;
   }
 </style>

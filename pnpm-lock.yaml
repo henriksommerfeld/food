@@ -30,7 +30,7 @@ devDependencies:
     specifier: ^8.10.0
     version: 8.10.0(eslint@8.57.0)
   eslint-plugin-svelte:
-    specifier: ^2.37.0
+    specifier: ^2.38.0
     version: 2.38.0(eslint@8.57.0)(svelte@4.2.15)
   mdsvex:
     specifier: ^0.11.0
@@ -45,7 +45,7 @@ devDependencies:
     specifier: ^4.2.15
     version: 4.2.15
   svelte-check:
-    specifier: ^3.6.9
+    specifier: ^3.7.0
     version: 3.7.0(postcss@8.4.38)(svelte@4.2.15)
   tslib:
     specifier: ^2.6.2
@@ -60,7 +60,7 @@ devDependencies:
     specifier: ^0.32.4
     version: 0.32.4
   zod:
-    specifier: ^3.22.5
+    specifier: ^3.23.5
     version: 3.23.5
 
 packages:

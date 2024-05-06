@@ -2,7 +2,7 @@
   import * as config from '$lib/config'
   import { CategoryLinks } from '$lib/constants.js'
 
-  export let data
+  let data
 </script>
 
 <svelte:head>

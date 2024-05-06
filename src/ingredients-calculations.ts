@@ -20,7 +20,7 @@ export function getQuantity(
 }
 
 export function formattedQuantity(ingredient: Ingredient): string | null {
-  if (!ingredient?.name) return null
+  if (!ingredient.name) return null
   if (ingredient.quantity === 0 || !ingredient.quantity) return `${ingredient.name}`
   if (ingredient.unit === QuantityUnit.gram)
     return `${Math.round(ingredient.quantity)} ${ingredient.unit} ${ingredient.name}`

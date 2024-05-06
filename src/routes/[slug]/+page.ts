@@ -1,10 +1,10 @@
-import { recipeFrontmatterSchema } from '$lib/types'
+import { recipeSchema } from '$lib/types'
 import { error } from '@sveltejs/kit'
 
 export async function load({ params }) {
   try {
     const post = await import(`../../recept/${params.slug}.md`)
-    const meta = recipeFrontmatterSchema.safeParse(post.metadata)
+    const meta = recipeSchema.safeParse(post.metadata)
     if (!meta.success) {
       console.log(`recept/${params.slug}.md has invalid frontmatter`)
       console.dir(meta.error.errors, { depth: null })
