@@ -5,6 +5,7 @@
   export let instruction: string
   const toggle = () => (isChecked = !isChecked)
   $: isChecked = false
+  // TODO: maybe replace without ts function transparentizeHex
   $: boxshadowColor = isChecked
     ? transparentizeHex(tailwindColors.teal500, 0.2)
     : transparentizeHex(tailwindColors.gray400, 0.3)

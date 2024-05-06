@@ -100,6 +100,20 @@
   --pink800: #97266d;
   --pink900: #702459;
 
+  --page-background: var(--gray100);
+  --header-background: var(--teal700);
+  --footer-background: var(--teal900);
+  --link-color: var(--teal600);
+  --link-visited: var(--teal600);
+  --link-focus: var(--teal700);
+  --post-date: var(--teal200);
+  --post-dateRoll: var(--gray700);
+  --button-background: var(--red600);
+  --button-hover: var(--red700);
+  --button-active: var(--red800);
+  --lighter-text-for-white-background: var(--gray700);
+  --selection-background: var(--teal700);
+
   --content-max-width: 1200px;
   --content-offset: -3rem;
   --spacing-default: 1rem;
@@ -146,37 +160,35 @@ select {
   font: inherit;
 }
 
-/* ::selection { */
-/*   background-color: ${colors.selectionBackground}; */
-/*   color: ${colors.white}; */
-/* } */
+::selection {
+  background-color: var(--selection-background);
+  color: var(--white);
+}
+
 img {
   pointer-events: none;
   margin-bottom: 0;
 }
-/* a { */
-/*   color: ${colors.link}; */
-/*   transition: color, text-shadow, background 150ms ease-out, outline 60ms; */
-/*   background: linear-gradient( */
-/*   to right, */
-/*   ${tailwindColors.teal700} 0%, */
-/*   ${tailwindColors.teal400} 50%, */
-/*   ${tailwindColors.teal700} 100% */
-/*   ); */
-/*   background-position-x: left; */
-/*   background-position-y: 97%; */
-/*   background-repeat: repeat; */
-/*   background-size: auto; */
-/*   background-size: 0px 2px; */
-/*   background-repeat: no-repeat; */
-/* } */
-/* a:visited { */
-/*   color: ${colors.linkVisited}; */
-/* } */
-/* a:focus, a:active, a:hover { */
-/*   color: ${colors.linkFocus}; */
-/*   background-size: 100% 2px; */
-/* } */
+a {
+  color: var(--link-color);
+  transition: color, text-shadow, background 150ms ease-out, outline 60ms;
+  background: linear-gradient(to right, var(--teal700) 0%, var(--teal400) 50%, var(--teal700) 100%);
+  background-position-x: left;
+  background-position-y: 97%;
+  background-repeat: repeat;
+  background-size: auto;
+  background-size: 0px 2px;
+  background-repeat: no-repeat;
+}
+a:visited {
+  color: var(--link-visited);
+}
+a:focus,
+a:active,
+a:hover {
+  color: var(--link-focus);
+  background-size: 100% 2px;
+}
 .screen-reader-text {
   display: none;
 }

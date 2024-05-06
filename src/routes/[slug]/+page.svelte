@@ -68,17 +68,21 @@
         </section>
         <div class="columns">
           <Ingredients {recipe} />
-          <div><Instructions instructions={recipe.instructions} /></div>
+          <div>
+            <Instructions instructions={recipe.instructions} />
+            <div class="featured-thumbnail">
+              <img src={recipe.featuredimage} alt="" />
+            </div>
+          </div>
         </div>
-        <div class="tags">
-          {#if recipe.tags.length > 0}
-            <ul>
-              {#each recipe.tags as tag}
-                <li>&num;{tag}</li>
-              {/each}
-            </ul>
-          {/if}
-        </div>
+        {#if recipe.tags.length > 0}
+          <div class="tags">
+            <span />
+            {#each recipe.tags as tag, index}
+              <a href="/">{tag}</a>{#if index + 1 < recipe.tags.length}, &nbsp{/if}
+            {/each}
+          </div>
+        {/if}
 
         <div class="prose">
           <svelte:component this={data.content} />
@@ -89,6 +93,24 @@
 </div>
 
 <style>
+  .tags {
+    margin-top: var(--spacing-double);
+  }
+  .tags span {
+    padding-right: 0.5em;
+    vertical-align: top;
+  }
+  .tags span::before {
+    content: url('/img/tag-grey500.svg');
+    width: 1rem;
+  }
+  .featured-thumbnail {
+    margin: 0;
+    padding: 4px;
+    box-shadow: rgba(34, 25, 25, 0.4) 0 1px 3px !important;
+    background-color: #fff;
+    margin-bottom: var(--spacing-section);
+  }
   .page {
     width: 100%;
     padding-bottom: 5rem;
