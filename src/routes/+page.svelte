@@ -1,8 +1,6 @@
 <script lang="ts">
   import * as config from '$lib/config'
-  import { CategoryLinks } from '$lib/constants.js'
-
-  let data
+  import { CategoryLinks } from '$lib/constants'
 </script>
 
 <svelte:head>
@@ -16,25 +14,13 @@
   <h2>{config.description}</h2>
 </header>
 
-<!-- <nav class="categories"> -->
-<!--   <ol> -->
-<!--     {#each CategoryLinks as category} -->
-<!--       <li><a href={category.slug}>{category.title}</a></li> -->
-<!--     {/each} -->
-<!--   </ol> -->
-<!-- </nav> -->
-
-<section>
-  <!-- <ul class="posts"> -->
-  <!--   {#each data.recept as recept} -->
-  <!--     <li class="post"> -->
-  <!--       <a href={recept.slug} class="title">{recept.title}</a> -->
-  <!--       <p class="description">{recept.description}</p> -->
-  <!--     </li> -->
-  <!--   {/each} -->
-  <!-- </ul> -->
-  <a href="shakshuka" class="title">shakshuka</a>
-</section>
+<nav class="categories">
+  <ol>
+    {#each CategoryLinks as category}
+      <li><a href={category.url}>{category.title}</a></li>
+    {/each}
+  </ol>
+</nav>
 
 <style>
   h2 {

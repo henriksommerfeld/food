@@ -50,7 +50,7 @@ export interface InstructionsGroup {
   instructions: string[]
 }
 
-export const recipeSchema = z.object({
+export const recipeFrontmatterSchema = z.object({
   hidden: z.boolean(),
   url: z.string().nullish(),
   templateKey: z.literal('recept'),
@@ -149,6 +149,31 @@ export const recipeSchema = z.object({
     .transform((x) => x ?? [])
 })
 
-export const recipesSchema = z.array(recipeSchema)
+export const markdownFileSchema = z.object({
+  metadata: z.any(),
+  default: z.any()
+})
+
+const imageSchema = z.object({
+  image: z.object({
+    sources: z.object({
+      avif: z.string().optional(),
+      webp: z.string().optional(),
+      jpeg: z.string().optional(),
+      png: z.string().optional()
+    }),
+    img: z.object({
+      src: z.string(),
+      w: z.number(),
+      h: z.number()
+    })
+  })
+})
+
+const slugSchema = z.object({ slug: z.string() })
+
+const contentSchema = z.object({ content: z.any() })
+
+export const recipeSchema = recipeFrontmatterSchema.merge(slugSchema.merge(contentSchema))
+export type RecepieFrontmatter = z.infer<typeof recipeFrontmatterSchema>
 export type Recipe = z.infer<typeof recipeSchema>
-export type RecipeWithSlug = Recipe & { slug: string }

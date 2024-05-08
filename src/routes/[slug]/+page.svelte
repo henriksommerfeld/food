@@ -7,7 +7,7 @@
   import Instructions from '../instructions.svelte'
 
   export let data: PageData
-  export const recipe = data.meta
+  export const recipe = data
 </script>
 
 <svelte:head>

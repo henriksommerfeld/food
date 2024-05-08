@@ -1,0 +1,36 @@
+import { markdownFileSchema, recipeSchema, type RecepieFrontmatter, type Recipe } from '$lib/types'
+
+const recipes = new Array<Recipe>()
+
+export async function getRecipes() {
+  if (recipes.length) return recipes
+
+  const paths = import.meta.glob('/src/recept/*.md', { eager: true })
+
+  for (const path in paths) {
+    const mardownFile = paths[path]
+    const fileSlug = path.split('/').at(-1)?.replace('.md', '')
+    const markdownResult = markdownFileSchema.safeParse(mardownFile)
+
+    if (markdownResult.success && fileSlug) {
+      const file = markdownResult.data
+      const fileMeta = file.metadata as RecepieFrontmatter
+      const metadata = fileMeta as Omit<RecepieFrontmatter, 'url'>
+      const slug = fileMeta.url || fileSlug
+
+      const apa = recipeSchema.safeParse({
+        ...metadata,
+        slug,
+        content: file.default
+      })
+      if (apa.success) {
+        recipes.push(apa.data)
+      } else {
+        console.dir(apa.error, { depth: 10 })
+        throw new Error(`Invalid recipe /${path}`, apa.error)
+      }
+    }
+  }
+
+  return recipes.toSorted((a, b) => b.title.localeCompare(a.title, 'sv-SE'))
+}
