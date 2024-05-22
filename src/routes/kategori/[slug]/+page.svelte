@@ -12,6 +12,9 @@
   })
   const getImage = (url: string) =>
     Object.entries(modules).filter((i) => i[0] === `/src${url}`)[0][1]
+  const getColor = (recept: PageData['recipes'][0]) => {
+    return recept.featuredimagetheme === 1 ? '#000000' : '#ffffff'
+  }
 </script>
 
 <svelte:head>
@@ -26,8 +29,8 @@
     {#each recipes as recept}
       <li>
         <a href="/{recept.slug}">
-          <Img src={getImage(recept.featuredimage)} alt={recept.title} />
-          <div class="title">{recept.title}</div>
+          <Img src={getImage(recept.featuredimage)} alt="" />
+          <div class="title" style="--color: {getColor(recept)}">{recept.title}</div>
         </a>
       </li>
     {/each}
@@ -48,7 +51,7 @@
   }
   menu {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(20em, 100%), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(15em, 100%), 1fr));
     justify-content: center;
     margin: 0;
     grid-gap: 0.5rem;
@@ -101,13 +104,13 @@
     position: absolute;
     width: 100%;
     padding: 1rem;
-    color: rgb(0, 0, 0);
+    color: black;
     background-color: rgba(255, 255, 255, 0.7);
 
     @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
       backdrop-filter: blur(5px);
       background-color: transparent;
-      color: rgb(255, 255, 255);
+      color: var(--color);
     }
   }
 </style>
