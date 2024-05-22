@@ -153,6 +153,14 @@ img {
   height: auto;
 }
 
+.prose img {
+  margin: 0;
+  padding: 4px;
+  box-shadow: rgba(34, 25, 25, 0.4) 0 1px 3px !important;
+  background-color: #fff;
+  margin-bottom: var(--spacing-section);
+}
+
 /* Inherit fonts for inputs and buttons */
 input,
 button,

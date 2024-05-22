@@ -73,6 +73,9 @@
             <div class="featured-thumbnail">
               <img src={recipe.featuredimage} alt="" />
             </div>
+            <div class="prose">
+              <svelte:component this={data.content} />
+            </div>
           </div>
         </div>
         {#if recipe.tags.length > 0}
@@ -83,10 +86,6 @@
             {/each}
           </div>
         {/if}
-
-        <div class="prose">
-          <svelte:component this={data.content} />
-        </div>
       </div>
     </article>
   </div>
@@ -106,7 +105,7 @@
   }
   .featured-thumbnail {
     margin: 0;
-    padding: 4px;
+    padding: 4px 4px 0 4px;
     box-shadow: rgba(34, 25, 25, 0.4) 0 1px 3px !important;
     background-color: #fff;
     margin-bottom: var(--spacing-section);

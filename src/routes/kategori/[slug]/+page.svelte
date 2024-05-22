@@ -1,27 +1,26 @@
 <script lang="ts">
   import Img from '@zerodevx/svelte-img'
   import type { PageData } from './$types'
+  import CategoryBanner from '../../category-banner.svelte'
 
   export let data: PageData
   const recipes = data.recipes
-  const modules = import.meta.glob('/static/uploads/*{.webp,.jpg,.jpeg,.png}', {
+  const modules = import.meta.glob('/src/uploads/*{.webp,.jpg,.jpeg,.png}', {
     import: 'default',
     eager: true,
     query: { w: 640, h: 640, fit: 'cover', as: 'run' }
   })
   const getImage = (url: string) =>
-    Object.entries(modules).filter((i) => i[0] === `/static${url}`)[0][1]
+    Object.entries(modules).filter((i) => i[0] === `/src${url}`)[0][1]
 </script>
 
 <svelte:head>
-  <title>{data.categoryTitle}</title>
+  <title>{data.category.title}</title>
   <meta property="og:type" content="article" />
-  <meta property="og:title" content={data.categoryTitle} />
+  <meta property="og:title" content={data.category.title} />
 </svelte:head>
 
-<header>
-  <h1>{data.categoryTitle}</h1>
-</header>
+<CategoryBanner category={data.category} recipeCount={recipes.length} />
 
 <nav>
   <ul class="posts">

@@ -18,16 +18,16 @@ export async function getRecipes() {
       const metadata = fileMeta as Omit<RecepieFrontmatter, 'url'>
       const slug = fileMeta.url || fileSlug
 
-      const apa = recipeSchema.safeParse({
+      const recipe = recipeSchema.safeParse({
         ...metadata,
         slug,
         content: file.default
       })
-      if (apa.success) {
-        recipes.push(apa.data)
+      if (recipe.success) {
+        recipes.push(recipe.data)
       } else {
-        console.dir(apa.error, { depth: 10 })
-        throw new Error(`Invalid recipe /${path}`, apa.error)
+        console.dir(recipe.error, { depth: 10 })
+        throw new Error(`Invalid recipe /${path}`, recipe.error)
       }
     }
   }

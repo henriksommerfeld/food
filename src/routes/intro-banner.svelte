@@ -1,9 +1,11 @@
 <script lang="ts">
+  import HomeLink from './home-link.svelte'
+
   export let backgroundImage: string
 </script>
 
 <div class="intro-banner" style="--image: url({backgroundImage})">
-  <a class="home-link" href="/" title="Till startsidan"> Till startsidan </a>
+  <HomeLink />
   <div class="intro-banner-dark-overlay">
     <div class="intro-banner-width-constrainer">
       <slot />
@@ -13,12 +15,6 @@
 </div>
 
 <style>
-  .home-link {
-    position: absolute;
-    width: 2rem;
-    top: 2rem;
-    left: 2rem;
-  }
   .intro-banner {
     background-size: cover;
     background-position: center;
