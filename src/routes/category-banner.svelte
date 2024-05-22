@@ -22,7 +22,7 @@
   const modules = import.meta.glob('/src/images/*{.webp,.jpg,.jpeg}', {
     import: 'default',
     eager: true,
-    query: { w: 4096, fit: 'cover', as: 'run' }
+    query: { w: 2048, fit: 'cover', as: 'run' }
   })
   const backgroundImage = imageSchema.parse(modules[category.imagePath])
   const webpUrl = `${backgroundImage.sources.webp[0].src}`
