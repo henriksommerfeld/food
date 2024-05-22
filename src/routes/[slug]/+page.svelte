@@ -26,7 +26,7 @@
 
     <article>
       <div class="article-styled">
-        {#if recipe.description && recipe.tools}
+        {#if recipe.description || recipe.tools}
           <div class="top-columns">
             {#if recipe.description}
               <p class="description">{recipe.description}</p>
@@ -43,27 +43,30 @@
         <section class="cooking-time-and-servings">
           <div>
             <img src="/img/clock.svg" alt="cooking time" />
-            <p>
+            <div>
               Tillagning: {formatDuration(
                 0,
                 recipe.timeactive.hoursactive,
                 recipe.timeactive.minutesactive
               )}
-            </p>
+            </div>
           </div>
           <div>
             <img src="/img/clock-wait.svg" alt="waiting time" />
-            <p>
+            <div>
               Väntetid: {formatDuration(
                 0,
                 recipe.timepassive.hourspassive,
                 recipe.timepassive.minutespassive
               )}
-            </p>
+            </div>
           </div>
           <div>
             <img src="/img/servings.svg" alt="servings" />
-            <p>{recipe.servings} {servingsUnitFormatted(recipe.servings, recipe.servingslabel)}</p>
+            <div>
+              {recipe.servings}
+              {servingsUnitFormatted(recipe.servings, recipe.servingslabel)}
+            </div>
           </div>
         </section>
         <div class="columns">
@@ -158,6 +161,7 @@
   }
   .description {
     margin-bottom: 3rem;
+    margin-top: 0;
     font-style: italic;
   }
   .tools-icon {

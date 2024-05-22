@@ -47,7 +47,7 @@
     padding-bottom: var(--content-gap-to-footer);
   }
   :global(menu picture img) {
-    margin-bottom: -4px;
+    margin-bottom: -5px;
   }
   menu {
     display: grid;

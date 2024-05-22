@@ -202,3 +202,8 @@ a:hover {
 .screen-reader-text {
   display: none;
 }
+
+h1,
+h2 {
+  margin-top: 0;
+}
