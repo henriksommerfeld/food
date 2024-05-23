@@ -1,14 +1,24 @@
 <script lang="ts">
-  import IntroBanner from '../intro-banner.svelte'
   import type { PageData } from './$types'
   import { formatDuration } from '$lib/time'
   import { servingsUnitFormatted } from '$lib/servings'
   import Ingredients from '../ingredients.svelte'
   import Instructions from '../instructions.svelte'
+  import Img from '@zerodevx/svelte-img'
+  import ImageBanner from '../image-banner.svelte'
 
   export let data: PageData
   export const recipe = data
   const title = `${recipe.title} | ${recipe.category}`
+  const images = import.meta.glob('/src/uploads/*{.webp,.jpg,.jpeg,.png}', {
+    import: 'default',
+    eager: true,
+    query: { w: 1400, fit: 'cover', as: 'run' }
+  })
+  const getImage = (url: string) =>
+    Object.entries(images).filter((i) => i[0] === `/src${url}`)[0][1]
+  const bannerImagePath = `/src${recipe.featuredimage}`
+  console.log(bannerImagePath)
 </script>
 
 <svelte:head>
@@ -19,11 +29,11 @@
 
 <div class="page">
   <div class="shared-intro-banner">
-    <IntroBanner backgroundImage={recipe.featuredimage}>
+    <ImageBanner imagePath={bannerImagePath}>
       <header>
         <h1>{recipe.title}</h1>
       </header>
-    </IntroBanner>
+    </ImageBanner>
 
     <article>
       <div class="article-styled">
@@ -75,7 +85,7 @@
           <div>
             <Instructions instructions={recipe.instructions} />
             <div class="featured-thumbnail">
-              <img src={recipe.featuredimage} alt="" />
+              <Img src={getImage(recipe.featuredimage)} alt="" />
             </div>
             <div class="prose">
               <svelte:component this={data.content} />

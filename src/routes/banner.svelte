@@ -1,13 +1,13 @@
 <script lang="ts">
   import HomeLink from './home-link.svelte'
 
-  export let backgroundImage: string
+  export let imagePath: string
 </script>
 
-<div class="intro-banner" style="--image: url({backgroundImage})">
+<div class="banner" style="--image: url({imagePath})">
   <HomeLink />
-  <div class="intro-banner-dark-overlay">
-    <div class="intro-banner-width-constrainer">
+  <div class="banner-dark-overlay">
+    <div class="banner-width-constrainer">
       <slot />
       <!-- searchbox -->
     </div>
@@ -15,7 +15,7 @@
 </div>
 
 <style>
-  .intro-banner {
+  .banner {
     background-size: cover;
     background-position: center;
     position: relative;
@@ -31,8 +31,7 @@
       padding-top: initial;
     }
   }
-
-  .intro-banner::before {
+  .banner::before {
     content: '';
     display: block;
     position: absolute;
@@ -49,7 +48,7 @@
     background-image: var(--image);
     opacity: 1;
   }
-  .intro-banner-width-constrainer {
+  .banner-width-constrainer {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -64,8 +63,7 @@
       justify-content: center;
     }
   }
-
-  .intro-banner-dark-overlay {
+  .banner-dark-overlay {
     display: flex;
     flex-direction: column;
     justify-content: stretch;
