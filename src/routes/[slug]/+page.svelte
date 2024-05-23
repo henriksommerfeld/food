@@ -13,7 +13,7 @@
   const images = import.meta.glob('/src/uploads/*{.webp,.jpg,.jpeg,.png}', {
     import: 'default',
     eager: true,
-    query: { w: 1400, fit: 'cover', as: 'run' }
+    query: { w: 800, fit: 'cover', as: 'run' }
   })
   const getImage = (url: string) =>
     Object.entries(images).filter((i) => i[0] === `/src${url}`)[0][1]
