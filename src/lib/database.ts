@@ -32,5 +32,6 @@ export async function getRecipes() {
     }
   }
 
-  return recipes.toSorted((a, b) => b.title.localeCompare(a.title, 'sv-SE'))
+  recipes.sort((a, b) => a.title.localeCompare(b.title, 'sv'))
+  return recipes
 }
