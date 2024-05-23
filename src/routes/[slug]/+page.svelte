@@ -8,12 +8,13 @@
 
   export let data: PageData
   export const recipe = data
+  const title = `${recipe.title} | ${recipe.category}`
 </script>
 
 <svelte:head>
-  <title>{recipe.title}</title>
+  <title>{title}</title>
   <meta property="og:type" content="article" />
-  <meta property="og:title" content={recipe.title} />
+  <meta property="og:title" content={title} />
 </svelte:head>
 
 <div class="page">
