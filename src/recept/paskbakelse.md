@@ -46,4 +46,4 @@ tags:
   - Rulltårta
 ---
 
-Se receptet [Liten rulltårta](/liten-rulltarta/) för att göra denna själv.
+Se receptet [Liten rulltårta](/liten-rulltarta) för att göra denna själv.

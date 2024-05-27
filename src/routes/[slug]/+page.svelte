@@ -40,7 +40,7 @@
   <meta property="og:title" content={title} />
 </svelte:head>
 
-<PageWrapper>
+<PageWrapper editLink={`/admin/#/collections/recept/entries/${recipe.slug}`}>
   <div class="page">
     <div class="shared-intro-banner">
       <ImageBanner {imagePath}>
@@ -108,7 +108,7 @@
                   alt=""
                 />
               </div>
-              <div class="prose">
+              <div class="prose" data-sveltekit-reload>
                 <svelte:component this={data.content} />
               </div>
             </div>

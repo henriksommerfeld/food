@@ -1,11 +1,11 @@
 <script lang="ts">
   import EditSvg from '/src/assets/edit-filled.svg'
 
-  export let editLink = '/admin'
+  export let editLink: string
 </script>
 
 <footer>
-  <a href={editLink} target="_blank" rel="noopener noreferrer" title="Redigera sidan">
+  <a href={editLink} target="_blank" rel="external noopener noreferrer" title="Redigera sidan">
     <img src={EditSvg} alt="Redigera sidan" />
     Redigera</a
   >
