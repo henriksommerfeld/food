@@ -1,17 +1,33 @@
 <script lang="ts">
-  import Img from '@zerodevx/svelte-img'
-  import type { PageData } from './$types'
   import CategoryBanner from '../../category-banner.svelte'
+  import Image from '../../image.svelte'
+  import type { PageData } from './$types'
+  import { pictureSchema, urlSchema } from '$lib/image'
 
   export let data: PageData
   const recipes = data.recipes
-  const modules = import.meta.glob('/src/uploads/*{.webp,.jpg,.jpeg,.png}', {
+  const lqipImages = import.meta.glob('/src/uploads/*{.webp,.jpg,.jpeg,.png,.heif}', {
     import: 'default',
     eager: true,
-    query: { w: 640, h: 480, fit: 'cover', as: 'run' }
+    query: '?w=128&h=96&format=webp&inline&as=url&quality=10'
   })
-  const getImage = (url: string) =>
-    Object.entries(modules).filter((i) => i[0] === `/src${url}`)[0][1]
+  const images = import.meta.glob('/src/uploads/*{.webp,.jpg,.jpeg,.png,.heif}', {
+    import: 'default',
+    eager: true,
+    query: '?w=640;800&h=480;600&fit-cover&format=webp&as=picture'
+  })
+  const getImage = (path: string) => {
+    const imagePath = `/src${path}`
+    const parsedImageData = pictureSchema.parse(images[imagePath])
+    const image = {
+      srcset: parsedImageData.sources.webp,
+      src: parsedImageData.img.src,
+      w: parsedImageData.img.w,
+      h: parsedImageData.img.h,
+      lqip: urlSchema.parse(lqipImages[imagePath])
+    }
+    return image
+  }
   const getColor = (recept: PageData['recipes'][0]) => {
     return recept.featuredimagetheme === 1 ? '#000000' : '#ffffff'
   }
@@ -27,9 +43,17 @@
   <CategoryBanner category={data.category} recipeCount={recipes.length} />
   <menu>
     {#each recipes as recept}
+      {@const image = getImage(recept.featuredimage)}
       <li>
         <a href="/{recept.slug}">
-          <Img src={getImage(recept.featuredimage)} alt="" />
+          <Image
+            src={image.src}
+            srcset={image.srcset}
+            width={image.w}
+            height={image.h}
+            lqip={image.lqip}
+            alt=""
+          />
           <div class="title" style="--color: {getColor(recept)}">{recept.title}</div>
         </a>
       </li>
@@ -46,7 +70,7 @@
     flex-direction: column;
     padding-bottom: var(--content-gap-to-footer);
   }
-  :global(menu picture img) {
+  :global(menu img) {
     margin-bottom: -5px;
   }
   menu {
@@ -89,10 +113,10 @@
     filter: brightness(1.1);
     box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 10px;
   }
-  :global(a picture img) {
+  :global(a img) {
     transition: all 150ms ease 0s;
   }
-  :global(a:hover picture img, a:focus picture img) {
+  :global(a:hover img, a:focus img) {
     transform: scale(1.05);
   }
   :global(a:hover .title, a:focus .title) {

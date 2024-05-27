@@ -1,24 +1,36 @@
 <script lang="ts">
-  import type { PageData } from './$types'
-  import { formatDuration } from '$lib/time'
-  import { servingsUnitFormatted } from '$lib/servings'
+  import Image from '../image.svelte'
+  import ImageBanner from '../image-banner.svelte'
   import Ingredients from '../ingredients.svelte'
   import Instructions from '../instructions.svelte'
-  import Img from '@zerodevx/svelte-img'
-  import ImageBanner from '../image-banner.svelte'
+  import type { PageData } from './$types'
+  import { formatDuration } from '$lib/time'
+  import { pictureSchema, urlSchema } from '$lib/image'
+  import { servingsUnitFormatted } from '$lib/servings'
 
   export let data: PageData
   export const recipe = data
+
   const title = `${recipe.title} | ${recipe.category}`
-  const images = import.meta.glob('/src/uploads/*{.webp,.jpg,.jpeg,.png}', {
+  const imagePath = `/src${recipe.featuredimage}`
+  const lqipImages = import.meta.glob('/src/uploads/*{.webp,.jpg,.jpeg,.png,.heif}', {
     import: 'default',
     eager: true,
-    query: { w: 800, fit: 'cover', as: 'run' }
+    query: '?w=200&format=webp&inline&as=url&quality=10'
   })
-  const getImage = (url: string) =>
-    Object.entries(images).filter((i) => i[0] === `/src${url}`)[0][1]
-  const bannerImagePath = `/src${recipe.featuredimage}`
-  console.log(bannerImagePath)
+  const images = import.meta.glob('/src/uploads/*{.webp,.jpg,.jpeg,.png,.heif}', {
+    import: 'default',
+    eager: true,
+    query: '?w=800;1500&format=webp&as=picture'
+  })
+  const parsedImageData = pictureSchema.parse(images[imagePath])
+  const image = {
+    srcset: parsedImageData.sources.webp,
+    src: parsedImageData.img.src,
+    w: parsedImageData.img.w,
+    h: parsedImageData.img.h,
+    lqip: urlSchema.parse(lqipImages[imagePath])
+  }
 </script>
 
 <svelte:head>
@@ -29,7 +41,7 @@
 
 <div class="page">
   <div class="shared-intro-banner">
-    <ImageBanner imagePath={bannerImagePath}>
+    <ImageBanner {imagePath}>
       <header>
         <h1>{recipe.title}</h1>
       </header>
@@ -85,7 +97,14 @@
           <div>
             <Instructions instructions={recipe.instructions} />
             <div class="featured-thumbnail">
-              <Img src={getImage(recipe.featuredimage)} alt="" />
+              <Image
+                src={image.src}
+                srcset={image.srcset}
+                width={image.w}
+                height={image.h}
+                lqip={image.lqip}
+                alt=""
+              />
             </div>
             <div class="prose">
               <svelte:component this={data.content} />

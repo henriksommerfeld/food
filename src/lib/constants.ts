@@ -116,7 +116,6 @@ export type NavLink = {
   url: string
   title: Category
   imagePath: string
-  thumbnail: string
   thumbTheme: Theme
 }
 
@@ -125,8 +124,7 @@ export const CategoryLinks: NavLink[] = [
     slug: '/frukost',
     url: '/kategori/frukost',
     title: 'Frukost',
-    imagePath: '/src/images/breakfast.jpg',
-    thumbnail: 'breakfast_1x1.jpg',
+    imagePath: '/src/uploads/breakfast.jpg',
     thumbTheme: Theme.dark
   }
   // {
@@ -134,7 +132,6 @@ export const CategoryLinks: NavLink[] = [
   //   url: '/kategori/forratt',
   //   title: 'Förrätt',
   //   imagePath: 'hidden/starter.jpg',
-  //   thumbnail: 'starter_1x1',
   //   thumbTheme: Theme.light
   // },
   // {
@@ -142,7 +139,6 @@ export const CategoryLinks: NavLink[] = [
   //   url: '/kategori/huvudratt',
   //   title: 'Huvudrätt',
   //   imagePath: 'hidden/main.jpg',
-  //   thumbnail: 'main_1x1',
   //   thumbTheme: Theme.dark
   // },
   // {
@@ -150,7 +146,6 @@ export const CategoryLinks: NavLink[] = [
   //   url: '/kategori/tillbehor',
   //   title: 'Tillbehör',
   //   imagePath: 'hidden/salad.jpg',
-  //   thumbnail: 'salad_1x1',
   //   thumbTheme: Theme.dark
   // },
   // {
@@ -158,7 +153,6 @@ export const CategoryLinks: NavLink[] = [
   //   url: '/kategori/efterratt',
   //   title: 'Efterrätt',
   //   imagePath: 'hidden/dessert.jpg',
-  //   thumbnail: 'dessert_1x1',
   //   thumbTheme: Theme.dark
   // },
   // {
@@ -166,7 +160,6 @@ export const CategoryLinks: NavLink[] = [
   //   url: '/kategori/bakning',
   //   title: 'Bakning',
   //   imagePath: 'hidden/baking.jpg',
-  //   thumbnail: 'baking_1x1',
   //   thumbTheme: Theme.light
   // }
 ]

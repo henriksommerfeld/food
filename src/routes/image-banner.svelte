@@ -4,28 +4,22 @@
   import Banner from './banner.svelte'
 
   export let imagePath: string
-  const imageSchema = z.object({
-    sources: z.object({
-      avif: z.array(z.object({ src: z.string(), w: z.number() })).length(1),
-      webp: z.array(z.object({ src: z.string(), w: z.number() })).length(1)
-    }),
-    img: z.object({
-      src: z.string(),
-      w: z.number(),
-      h: z.number(),
-      lqip: z.string()
-    })
-  })
 
-  const modules = import.meta.glob('/src/{images,uploads}/*{.webp,.jpg,.jpeg}', {
+  const lqipImages = import.meta.glob('/src/uploads/*{.webp,.jpg,.jpeg,.png,.heif}', {
     import: 'default',
     eager: true,
-    query: { w: 2048, fit: 'cover', as: 'run' }
+    query: '?w=16&format=webp&inline&fit=cover&blur=2&as=url&quality=1'
   })
-  const backgroundImage = imageSchema.parse(modules[imagePath])
-  const webpUrl = `${backgroundImage.sources.webp[0].src}`
-  const lqipUrl = `data:image/webp;base64,${backgroundImage.img.lqip}`
 
+  const images = import.meta.glob('/src/uploads/*{.webp,.jpg,.jpeg,.png,.heif}', {
+    import: 'default',
+    eager: true,
+    query: '?w=2500&format=webp&fit=cover&as=url'
+  })
+
+  const urlSchema = z.string()
+  const lqipUrl = lqipImages[imagePath] as string
+  const webpUrl = urlSchema.parse(images[imagePath])
   $: image = lqipUrl
 
   onMount(() => {
