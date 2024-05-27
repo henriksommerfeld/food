@@ -75,7 +75,7 @@
   }
   menu {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(15em, 100%), 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(25rem, 100%), 1fr));
     justify-content: center;
     margin: 0;
     grid-gap: 0.5rem;
