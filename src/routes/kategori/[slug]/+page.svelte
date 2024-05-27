@@ -98,6 +98,7 @@
   }
   li {
     list-style: none;
+    width: fit-content;
   }
   a {
     display: block;
