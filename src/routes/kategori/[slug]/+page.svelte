@@ -1,4 +1,5 @@
 <script lang="ts">
+  import PageWrapper from '../../page-wrapper.svelte'
   import CategoryBanner from '../../category-banner.svelte'
   import Image from '../../image.svelte'
   import type { PageData } from './$types'
@@ -39,27 +40,29 @@
   <meta property="og:title" content={data.category.title} />
 </svelte:head>
 
-<div class="page">
-  <CategoryBanner category={data.category} recipeCount={recipes.length} />
-  <menu>
-    {#each recipes as recept}
-      {@const image = getImage(recept.featuredimage)}
-      <li>
-        <a href="/{recept.slug}">
-          <Image
-            src={image.src}
-            srcset={image.srcset}
-            width={image.w}
-            height={image.h}
-            lqip={image.lqip}
-            alt=""
-          />
-          <div class="title" style="--color: {getColor(recept)}">{recept.title}</div>
-        </a>
-      </li>
-    {/each}
-  </menu>
-</div>
+<PageWrapper>
+  <div class="page">
+    <CategoryBanner category={data.category} recipeCount={recipes.length} />
+    <menu>
+      {#each recipes as recept}
+        {@const image = getImage(recept.featuredimage)}
+        <li>
+          <a href="/{recept.slug}">
+            <Image
+              src={image.src}
+              srcset={image.srcset}
+              width={image.w}
+              height={image.h}
+              lqip={image.lqip}
+              alt=""
+            />
+            <div class="title" style="--color: {getColor(recept)}">{recept.title}</div>
+          </a>
+        </li>
+      {/each}
+    </menu>
+  </div>
+</PageWrapper>
 
 <style>
   .page {

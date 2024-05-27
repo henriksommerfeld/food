@@ -2,6 +2,8 @@
   import * as config from '$lib/config'
   import { CategoryLinks, type NavLink } from '$lib/constants'
   import { pictureSchema, urlSchema } from '$lib/image'
+  import BannerHeader from './banner-header.svelte'
+  import ImageBanner from './image-banner.svelte'
   import Image from './image.svelte'
 
   const lqipImages = import.meta.glob('/src/uploads/*1x1.jpg', {
@@ -36,13 +38,13 @@
   <meta property="og:title" content={config.title} />
 </svelte:head>
 
-<header>
-  <h1>{config.title}</h1>
-  <h2>{config.description}</h2>
-</header>
-
 <div class="page">
-  <!-- Banner -->
+  <ImageBanner imagePath="/src/uploads/startpage-banner.jpg">
+    <BannerHeader>
+      <h1>{config.title}</h1>
+      <h2>{config.description} recept</h2>
+    </BannerHeader>
+  </ImageBanner>
   <section>
     <menu>
       {#each CategoryLinks as category}
