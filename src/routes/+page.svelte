@@ -1,10 +1,11 @@
 <script lang="ts">
   import * as config from '$lib/config'
+  import BannerHeader from './banner-header.svelte'
+  import Image from './image.svelte'
+  import ImageBanner from './image-banner.svelte'
+  import PageWrapper from './page-wrapper.svelte'
   import { CategoryLinks, type NavLink } from '$lib/constants'
   import { pictureSchema, urlSchema } from '$lib/image'
-  import BannerHeader from './banner-header.svelte'
-  import ImageBanner from './image-banner.svelte'
-  import Image from './image.svelte'
 
   const lqipImages = import.meta.glob('/src/uploads/*1x1.jpg', {
     import: 'default',
@@ -38,34 +39,36 @@
   <meta property="og:title" content={config.title} />
 </svelte:head>
 
-<div class="page">
-  <ImageBanner imagePath="/src/uploads/startpage-banner.jpg">
-    <BannerHeader>
-      <h1>{config.title}</h1>
-      <h2>{config.description} recept</h2>
-    </BannerHeader>
-  </ImageBanner>
-  <section>
-    <menu>
-      {#each CategoryLinks as category}
-        {@const image = getImage(category.imagePath1x1)}
-        <li>
-          <a href={category.url}>
-            <Image
-              src={image.src}
-              srcset={image.srcset}
-              width={image.w}
-              height={image.h}
-              lqip={image.lqip}
-              alt=""
-            />
-            <div class="title" style="--color: {getColor(category)}">{category.title}</div>
-          </a>
-        </li>
-      {/each}
-    </menu>
-  </section>
-</div>
+<PageWrapper>
+  <div class="page">
+    <ImageBanner imagePath="/src/uploads/startpage-banner.jpg">
+      <BannerHeader>
+        <h1>{config.title}</h1>
+        <h2>{config.description} recept</h2>
+      </BannerHeader>
+    </ImageBanner>
+    <section>
+      <menu>
+        {#each CategoryLinks as category}
+          {@const image = getImage(category.imagePath1x1)}
+          <li>
+            <a href={category.url}>
+              <Image
+                src={image.src}
+                srcset={image.srcset}
+                width={image.w}
+                height={image.h}
+                lqip={image.lqip}
+                alt=""
+              />
+              <div class="title" style="--color: {getColor(category)}">{category.title}</div>
+            </a>
+          </li>
+        {/each}
+      </menu>
+    </section>
+  </div>
+</PageWrapper>
 
 <style>
   .page {
