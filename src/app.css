@@ -122,7 +122,7 @@
   --spacing-x3: 3rem;
   --spacing-section: 3rem;
   --border-radius: 0.25rem;
-  --content-gap-to-footer: 5rem;
+  --content-gap-to-footer: 0;
 }
 
 /* Remove default padding */
