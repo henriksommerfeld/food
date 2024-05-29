@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg xmlns:dc="http://purl.org/dc/elements/1.1/" 
+   xmlns:cc="http://creativecommons.org/ns#" 
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" 
+   xmlns:svg="http://www.w3.org/2000/svg" 
+   xmlns="http://www.w3.org/2000/svg" 
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" 
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" inkscape:version="1.0beta1 (32d4812, 2019-09-19)" sodipodi:docname="home-icon.svg" id="svg21" version="1.1" viewBox="0 0 94.293465 100.99105" height="100.99105" width="94.293465">
+   <metadata id="metadata25">
+      <rdf:RDF>
+         <cc:Work rdf:about="">
+            <dc:format>image/svg+xml</dc:format>
+            <dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+            <dc:title>48. Home</dc:title>
+         </cc:Work>
+      </rdf:RDF>
+   </metadata>
+   <sodipodi:namedview borderlayer="false" inkscape:current-layer="svg21" inkscape:window-maximized="0" inkscape:window-y="23" inkscape:window-x="0" inkscape:cy="25.153715" inkscape:cx="23.523062" inkscape:zoom="3.2992755" fit-margin-bottom="0" fit-margin-right="0" fit-margin-left="0" fit-margin-top="0" inkscape:pagecheckerboard="true" showgrid="false" id="namedview23" inkscape:window-height="855" inkscape:window-width="1440" inkscape:pageshadow="2" inkscape:pageopacity="0" guidetolerance="10" gridtolerance="10" objecttolerance="10" borderopacity="1" inkscape:document-rotation="0" bordercolor="#38B2AC" pagecolor="#ffffff" />
+   <!-- Generator: Sketch 50 (54983) - http://www.bohemiancoding.com/sketch -->
+   <title id="title10">48. Home</title>
+   <desc id="desc12">Created with Sketch.</desc>
+   <defs id="defs14" />
+   <g transform="translate(-2.6066899,0.49105207)" stroke-linejoin="round" stroke-linecap="round" fill-rule="evenodd" fill="none" stroke-width="6" stroke="none" id="48.-Home">
+      <g id="g18" stroke-width="6" stroke="#FFFFFF" transform="translate(5,2)">
+         <path inkscape:connector-curvature="0" id="Layer-1" d="m 46.075708,0.55667278 c -0.749884,-0.74172375 -1.968371,-0.74273683 -2.719279,0 L 1.1957457,44.011582 c -1.92597243,1.985095 -1.25022223,3.594332 1.5188173,3.594332 h 7.752963 v 46.467117 c 0,1.06646 0.860299,1.926969 1.921532,1.926969 h 64.654021 c 1.055476,0 1.921532,-0.862734 1.921532,-1.926969 V 47.605914 h 7.752963 c 2.764792,0 3.502358,-1.662534 1.649626,-3.710915 L 75.429176,29.590725 V 6.7280067 h -13.4371 v 9.5718373 z" />
+         <polyline points="31 96 31 54 31 54 59 54 59 96" id="Layer-2" />
+      </g>
+   </g>
+   <path style="fill:#2C7A7B;stroke-width:6" d="m 14.950119,72.97832 c 0,-25.021956 0.03038,-24.189825 -0.899783,-24.642972 -0.187639,-0.09141 -2.279935,-0.209212 -4.6495474,-0.261778 L 5.0924031,47.977994 24.725028,27.741051 C 35.522974,16.610733 44.985622,6.8753286 45.753136,6.1068201 l 1.395481,-1.3972883 8.130453,8.0315692 c 5.679744,5.610666 8.26489,8.040687 8.576457,8.061818 0.744169,0.05047 1.188038,-0.01994 1.655508,-0.262596 0.889421,-0.461695 0.986014,-0.980385 0.986014,-5.294694 v -4.018687 h 4.581949 4.58195 v 10.506433 c 0,8.620067 0.0483,10.616734 0.269027,11.120773 0.147965,0.337886 3.230591,3.878979 6.850282,7.869093 l 6.581256,7.254753 -4.416121,0.09546 c -2.428869,0.0525 -4.569645,0.170302 -4.757285,0.261779 -0.930174,0.453473 -0.899783,-0.378874 -0.899783,24.64309 V 96.374834 H 71.36537 63.442416 V 76.045447 55.716057 L 62.885333,55.092574 62.32825,54.469089 H 47.405594 32.482937 l -0.557083,0.623485 -0.557083,0.623483 v 20.32939 20.329387 h -8.209326 -8.209326 z" id="path20" inkscape:connector-curvature="0" />
+</svg>

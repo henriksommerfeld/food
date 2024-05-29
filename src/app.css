@@ -114,6 +114,9 @@
   --lighter-text-for-white-background: var(--gray700);
   --selection-background: var(--teal700);
 
+  --font-heading: 'Domine', 'serif';
+  --font-body: 'Open Sans', 'sans-serif';
+
   --content-max-width: 1200px;
   --content-offset: -3rem;
   --spacing-default: 1rem;
@@ -139,6 +142,11 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
+  font-family: var(--font-body);
+  font-weight: 400;
+  word-wrap: break-word;
+  font-kerning: normal;
+  font-feature-settings: 'kern', 'liga', 'clig', 'calt';
   text-rendering: optimizeSpeed;
 }
 
@@ -206,4 +214,7 @@ a:hover {
 h1,
 h2 {
   margin-top: 0;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  text-rendering: optimizeLegibility;
 }
