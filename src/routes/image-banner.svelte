@@ -5,20 +5,20 @@
 
   export let imagePath: string
 
-  const lqipImages = import.meta.glob('/src/uploads/*{.webp,.jpg,.jpeg,.png,.heif}', {
+  const lqipImages = import.meta.glob('/src/routes/uploads/*{.webp,.jpg,.jpeg,.png,.heif}', {
     import: 'default',
     eager: true,
     query: '?w=16&format=webp&inline&fit=cover&blur=2&as=url&quality=1'
   })
 
-  const images = import.meta.glob('/src/uploads/*{.webp,.jpg,.jpeg,.png,.heif}', {
+  const images = import.meta.glob('/src/routes/uploads/*{.webp,.jpg,.jpeg,.png,.heif}', {
     import: 'default',
     eager: true,
     query: '?w=2500&format=webp&fit=cover&as=url'
   })
 
   const urlSchema = z.string()
-  const lqipUrl = lqipImages[imagePath] as string
+  const lqipUrl = urlSchema.parse(lqipImages[imagePath])
   const webpUrl = urlSchema.parse(images[imagePath])
   $: image = lqipUrl
 

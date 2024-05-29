@@ -7,12 +7,12 @@
   import { CategoryLinks, type NavLink } from '$lib/constants'
   import { pictureSchema, urlSchema } from '$lib/image'
 
-  const lqipImages = import.meta.glob('/src/uploads/*1x1.jpg', {
+  const lqipImages = import.meta.glob('/src/routes/uploads/*1x1.jpg', {
     import: 'default',
     eager: true,
     query: '?w=128&aspect=1:1&format=webp&inline&as=url&quality=10'
   })
-  const images = import.meta.glob('/src/uploads/*1x1.jpg', {
+  const images = import.meta.glob('/src/routes/uploads/*1x1.jpg', {
     import: 'default',
     eager: true,
     query: '?w=640;800&aspect=1:1&fit-cover&format=webp&as=picture'
@@ -41,7 +41,7 @@
 
 <PageWrapper>
   <div class="page">
-    <ImageBanner imagePath="/src/uploads/startpage-banner.jpg">
+    <ImageBanner imagePath="/src/routes/uploads/startpage-banner.jpg">
       <BannerHeader>
         <h1>{config.title}</h1>
         <h2>{config.description} recept</h2>

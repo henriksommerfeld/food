@@ -7,18 +7,19 @@
 
   export let data: PageData
   const recipes = data.recipes
-  const lqipImages = import.meta.glob('/src/uploads/*{.webp,.jpg,.jpeg,.png,.heif}', {
+  const lqipImages = import.meta.glob('/src/routes/uploads/*{.webp,.jpg,.jpeg,.png,.heif}', {
     import: 'default',
     eager: true,
     query: '?w=128&h=96&format=webp&inline&as=url&quality=10'
   })
-  const images = import.meta.glob('/src/uploads/*{.webp,.jpg,.jpeg,.png,.heif}', {
+  const images = import.meta.glob('/src/routes/uploads/*{.webp,.jpg,.jpeg,.png,.heif}', {
     import: 'default',
     eager: true,
     query: '?w=640;800&h=480;600&fit-cover&format=webp&as=picture'
   })
+  console.dir(images, { depth: null })
   const getImage = (path: string) => {
-    const imagePath = `/src${path}`
+    const imagePath = `/src/routes${path}`
     const parsedImageData = pictureSchema.parse(images[imagePath])
     const image = {
       srcset: parsedImageData.sources.webp,
