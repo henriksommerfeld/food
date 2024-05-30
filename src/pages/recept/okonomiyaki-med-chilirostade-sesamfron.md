@@ -8,25 +8,25 @@ hidden: false
 category: Huvudrätt
 featuredimage: /uploads/img_0802.jpeg
 featuredimagetheme: 2
-servings: 4
+servings: 6
 servingslabel: portioner
 ingredients:
   - partingredients:
       partingredientslist:
         - ingredient:
-            ingredientamount: 4
+            ingredientamount: 2
             ingredientname: ketchup
             unit: msk
         - ingredient:
-            ingredientamount: 3
+            ingredientamount: 1.5
             ingredientname: worcestersås
             unit: msk
         - ingredient:
-            ingredientamount: 2
+            ingredientamount: 1
             ingredientname: ostronsås
             unit: msk
         - ingredient:
-            ingredientamount: 1
+            ingredientamount: 0.5
             ingredientname: strösocker
             unit: msk
       partingredientsname: Okonomiyakisås
@@ -45,17 +45,17 @@ ingredients:
             ingredientname: kryddmått salt
             unit: st
         - ingredient:
-            ingredientamount: 2
-            ingredientname: fiskbuljong (2 dl kokande vatten med 1 tärning buljong)
+            ingredientamount: 5
+            ingredientname: fiskbuljong (½ tärning buljong per dl vatten)
             unit: dl
         - ingredient:
             ingredientamount: 5
             ingredientname: ägg
             unit: st
         - ingredient:
-            ingredientamount: 0.5
+            ingredientamount: 500
             ingredientname: spetskål eller vitkål (tunt skivad)
-            unit: st
+            unit: g
         - ingredient:
             ingredientamount: 16
             ingredientname: skivor salami
@@ -103,8 +103,8 @@ timepassive:
   hourspassive: 0
   minutespassive: 0
 timeactive:
-  hoursactive: 0
-  minutesactive: 30
+  hoursactive: 1
+  minutesactive: 0
 tags:
   - japanskt
   - ägg
