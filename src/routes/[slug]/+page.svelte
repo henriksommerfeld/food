@@ -13,13 +13,13 @@
   export const recipe = data
 
   const title = `${recipe.title} | ${recipe.category}`
-  const imagePath = `/src/routes${recipe.featuredimage}`
-  const lqipImages = import.meta.glob('/src/routes/uploads/*{.webp,.jpg,.jpeg,.png,.heif}', {
+  const imagePath = `/src${recipe.featuredimage}`
+  const lqipImages = import.meta.glob('/src/uploads/*{.webp,.jpg,.jpeg,.png,.heif}', {
     import: 'default',
     eager: true,
     query: '?w=200&format=webp&inline&as=url&quality=10'
   })
-  const images = import.meta.glob('/src/routes/uploads/*{.webp,.jpg,.jpeg,.png,.heif}', {
+  const images = import.meta.glob('/src/uploads/*{.webp,.jpg,.jpeg,.png,.heif}', {
     import: 'default',
     eager: true,
     query: '?w=800;1500&format=webp&as=picture'

@@ -3,8 +3,9 @@
   "version": "0.0.1",
   "private": false,
   "scripts": {
-    "dev": "vite dev",
-    "build": "vite build",
+    "copy-images": "cp -rf ./static/uploads ./src/",
+    "dev": "npm run copy-images && vite dev",
+    "build": "npm run copy-images && vite build",
     "preview": "vite preview",
     "test": "npm run test:integration && npm run test:unit",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",

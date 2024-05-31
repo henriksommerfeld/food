@@ -125,48 +125,48 @@ export const CategoryLinks: NavLink[] = [
     slug: '/frukost',
     url: '/kategori/frukost',
     title: 'Frukost',
-    imagePath: '/src/routes/uploads/breakfast.jpg',
-    imagePath1x1: '/src/routes/uploads/breakfast_1x1.jpg',
+    imagePath: '/src/uploads/breakfast.jpg',
+    imagePath1x1: '/src/uploads/breakfast_1x1.jpg',
     thumbTheme: Theme.dark
   },
   {
     slug: '/forratt',
     url: '/kategori/forratt',
     title: 'Förrätt',
-    imagePath: '/src/routes/uploads/starter.jpg',
-    imagePath1x1: '/src/routes/uploads/starter_1x1.jpg',
+    imagePath: '/src/uploads/starter.jpg',
+    imagePath1x1: '/src/uploads/starter_1x1.jpg',
     thumbTheme: Theme.light
   },
   {
     slug: '/huvudratt',
     url: '/kategori/huvudratt',
     title: 'Huvudrätt',
-    imagePath: '/src/routes/uploads/main.jpg',
-    imagePath1x1: '/src/routes/uploads/main_1x1.jpg',
+    imagePath: '/src/uploads/main.jpg',
+    imagePath1x1: '/src/uploads/main_1x1.jpg',
     thumbTheme: Theme.dark
   },
   {
     slug: '/tillbehor',
     url: '/kategori/tillbehor',
     title: 'Tillbehör',
-    imagePath: '/src/routes/uploads/salad.jpg',
-    imagePath1x1: '/src/routes/uploads/salad_1x1.jpg',
+    imagePath: '/src/uploads/salad.jpg',
+    imagePath1x1: '/src/uploads/salad_1x1.jpg',
     thumbTheme: Theme.dark
   },
   {
     slug: '/efterratt',
     url: '/kategori/efterratt',
     title: 'Efterrätt',
-    imagePath: '/src/routes/uploads/dessert.jpg',
-    imagePath1x1: '/src/routes/uploads/dessert_1x1.jpg',
+    imagePath: '/src/uploads/dessert.jpg',
+    imagePath1x1: '/src/uploads/dessert_1x1.jpg',
     thumbTheme: Theme.dark
   },
   {
     slug: '/bakning',
     url: '/kategori/bakning',
     title: 'Bakning',
-    imagePath: '/src/routes/uploads/baking.jpg',
-    imagePath1x1: '/src/routes/uploads/baking_1x1.jpg',
+    imagePath: '/src/uploads/baking.jpg',
+    imagePath1x1: '/src/uploads/baking_1x1.jpg',
     thumbTheme: Theme.light
   }
 ]
