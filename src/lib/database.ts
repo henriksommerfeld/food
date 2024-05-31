@@ -24,7 +24,9 @@ export async function getRecipes() {
         content: file.default
       })
       if (recipe.success) {
-        recipes.push(recipe.data)
+        if (!recipe.data.hidden) {
+          recipes.push(recipe.data)
+        }
       } else {
         console.dir(recipe.error, { depth: 10 })
         throw new Error(`Invalid recipe /${path}`, recipe.error)
