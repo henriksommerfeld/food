@@ -8,7 +8,7 @@
 </script>
 
 {#if instructionsCount > 0}
-  <section><h2>Gör så här</h2></section>
+  <section><h2>Gör så här</h2>
   {#each instructions.instructionsGroup as group}
     {#if showHeading}<h3>{group.name}</h3>{/if}
     <ol>
@@ -17,6 +17,7 @@
       {/each}
     </ol>
   {/each}
+  </section>
 {/if}
 
 <style>

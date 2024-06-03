@@ -100,13 +100,8 @@
     grid-template-columns: repeat(auto-fit, minmax(min(25rem, 100%), 1fr));
     justify-content: center;
     margin: 0;
-    grid-gap: 0.5rem;
-    padding: 0.5rem;
-
-    @media (min-width: 550px) {
-      grid-gap: 1rem;
-      padding: 1rem;
-    }
+    grid-gap: 1rem;
+    padding: 1rem;
 
     @media (min-width: 768px) {
       grid-gap: 2rem;

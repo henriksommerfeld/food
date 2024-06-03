@@ -26,12 +26,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding-top: 3rem;
     opacity: 0.99;
-
-    @media (min-width: 550px) {
-      padding-top: initial;
-    }
   }
   .banner::before {
     content: '';
@@ -46,7 +41,7 @@
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    z-index: -100;
+    z-index: -1;
     background-image: var(--image);
     opacity: 1;
   }

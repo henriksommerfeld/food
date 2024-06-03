@@ -43,89 +43,87 @@
 
 <PageWrapper editLink={`/admin/#/collections/recept/entries/${recipe.slug}`}>
   <div class="page">
-    <div class="shared-intro-banner">
-      <ImageBanner {imagePath}>
-        <header>
-          <h1>{recipe.title}</h1>
-        </header>
-        <Searchbox />
-      </ImageBanner>
+    <ImageBanner {imagePath}>
+      <header>
+        <h1>{recipe.title}</h1>
+      </header>
+      <Searchbox />
+    </ImageBanner>
 
-      <article>
-        <div class="article-styled">
-          {#if recipe.description || recipe.tools}
-            <div class="top-columns">
-              {#if recipe.description}
-                <p class="description">{recipe.description}</p>
-              {/if}
-              {#if recipe.tools}<section class="tools">
-                  <h2 class="tools-title">
-                    <img class="tools-icon" src="/img/tools.svg" alt="tools" />Redskap
-                  </h2>
-                  <p>{recipe.tools}</p>
-                </section>
-              {/if}
-            </div>
-          {/if}
-          <section class="cooking-time-and-servings">
+    <article>
+      <div class="article-styled">
+        {#if recipe.description || recipe.tools}
+          <div class="top-columns">
+            {#if recipe.description}
+              <p class="description">{recipe.description}</p>
+            {/if}
+            {#if recipe.tools}<section class="tools">
+                <h2 class="tools-title">
+                  <img class="tools-icon" src="/img/tools.svg" alt="tools" />Redskap
+                </h2>
+                <p>{recipe.tools}</p>
+              </section>
+            {/if}
+          </div>
+        {/if}
+        <section class="cooking-time-and-servings">
+          <div>
+            <img src="/img/clock.svg" alt="cooking time" />
             <div>
-              <img src="/img/clock.svg" alt="cooking time" />
-              <div>
-                Tillagning: {formatDuration(
-                  0,
-                  recipe.timeactive.hoursactive,
-                  recipe.timeactive.minutesactive
-                )}
-              </div>
-            </div>
-            <div>
-              <img src="/img/clock-wait.svg" alt="waiting time" />
-              <div>
-                Väntetid: {formatDuration(
-                  0,
-                  recipe.timepassive.hourspassive,
-                  recipe.timepassive.minutespassive
-                )}
-              </div>
-            </div>
-            <div>
-              <img src="/img/servings.svg" alt="servings" />
-              <div>
-                {recipe.servings}
-                {servingsUnitFormatted(recipe.servings, recipe.servingslabel)}
-              </div>
-            </div>
-          </section>
-          <div class="columns">
-            <Ingredients {recipe} />
-            <div>
-              <Instructions instructions={recipe.instructions} />
-              <div class="featured-thumbnail">
-                <Image
-                  src={image.src}
-                  srcset={image.srcset}
-                  width={image.w}
-                  height={image.h}
-                  lqip={image.lqip}
-                  alt=""
-                />
-              </div>
-              <div class="prose" data-sveltekit-reload>
-                <svelte:component this={data.content} />
-              </div>
+              Tillagning: {formatDuration(
+                0,
+                recipe.timeactive.hoursactive,
+                recipe.timeactive.minutesactive
+              )}
             </div>
           </div>
-          {#if recipe.tags.length > 0}
-            <div class="tags">
-              <span />
-              {#each recipe.tags as tag, index}
-                <a href="/">{tag}</a>{#if index + 1 < recipe.tags.length}, &nbsp{/if}
-              {/each}
+          <div>
+            <img src="/img/clock-wait.svg" alt="waiting time" />
+            <div>
+              Väntetid: {formatDuration(
+                0,
+                recipe.timepassive.hourspassive,
+                recipe.timepassive.minutespassive
+              )}
             </div>
-          {/if}
+          </div>
+          <div>
+            <img src="/img/servings.svg" alt="servings" />
+            <div>
+              {recipe.servings}
+              {servingsUnitFormatted(recipe.servings, recipe.servingslabel)}
+            </div>
+          </div>
+        </section>
+        <div class="columns">
+          <Ingredients {recipe} />
+          <div>
+            <Instructions instructions={recipe.instructions} />
+            <div class="featured-thumbnail">
+              <Image
+                src={image.src}
+                srcset={image.srcset}
+                width={image.w}
+                height={image.h}
+                lqip={image.lqip}
+                alt=""
+              />
+            </div>
+            <div class="prose" data-sveltekit-reload>
+              <svelte:component this={data.content} />
+            </div>
+          </div>
         </div>
-      </article>
-    </div>
+        {#if recipe.tags.length > 0}
+          <div class="tags">
+            <span />
+            {#each recipe.tags as tag, index}
+              <a href="/">{tag}</a>{#if index + 1 < recipe.tags.length}, &nbsp{/if}
+            {/each}
+          </div>
+        {/if}
+      </div>
+    </article>
   </div>
 </PageWrapper>
 
@@ -233,7 +231,10 @@
   }
   .columns {
     display: grid;
+
+    @media (min-width: 768px) {
     grid-template-columns: 1fr minmax(0px, 2fr);
     gap: 3rem;
+    }
   }
 </style>
