@@ -5,6 +5,7 @@
   import ImageBanner from './image-banner.svelte'
   import BannerHeader from './banner-header.svelte'
   import SearchForm from './search-form.svelte'
+  import CloseSvg from '/src/assets/close.svg'
 
   $: searchTerm = ''
   $: results = new Array<any>()
@@ -53,7 +54,7 @@
   <div class="page">
     <ImageBanner imagePath="/src/uploads/search-banner.jpg" renderHomeLink={false}>
       <button class="close" aria-label="Stäng sökresultatet" on:click={() => dialog.close()}
-        ><img src="/src/assets/close.svg" alt="Stäng sökresultatet" /></button
+        ><img src={CloseSvg} alt="Stäng sökresultatet" /></button
       >
       <BannerHeader>
         <h1>Recept med <span class="quote">{termForResults}</span></h1>
