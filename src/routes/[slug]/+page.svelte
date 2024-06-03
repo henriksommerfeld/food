@@ -8,6 +8,7 @@
   import { formatDuration } from '$lib/time'
   import { pictureSchema, urlSchema } from '$lib/image'
   import { servingsUnitFormatted } from '$lib/servings'
+  import Searchbox from '../searchbox.svelte'
 
   export let data: PageData
   export const recipe = data
@@ -47,6 +48,7 @@
         <header>
           <h1>{recipe.title}</h1>
         </header>
+        <Searchbox />
       </ImageBanner>
 
       <article>

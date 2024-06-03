@@ -2,14 +2,16 @@
   import HomeLink from './home-link.svelte'
 
   export let imagePath: string
+  export let renderHomeLink = true
 </script>
 
 <div class="banner" style="--image: url({imagePath})">
-  <HomeLink />
+  {#if renderHomeLink}
+    <HomeLink />
+  {/if}
   <div class="banner-dark-overlay">
     <div class="banner-width-constrainer">
       <slot />
-      <!-- searchbox -->
     </div>
   </div>
 </div>

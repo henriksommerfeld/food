@@ -27,6 +27,7 @@
     "eslint-config-prettier": "^8.10.0",
     "eslint-plugin-svelte": "^2.38.0",
     "mdsvex": "^0.11.0",
+    "minisearch": "^6.3.0",
     "prettier": "^2.8.8",
     "prettier-plugin-svelte": "^2.10.1",
     "svelte": "^4.2.15",

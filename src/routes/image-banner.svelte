@@ -4,6 +4,7 @@
   import Banner from './banner.svelte'
 
   export let imagePath: string
+  export let renderHomeLink = true
 
   const lqipImages = import.meta.glob('/src/uploads/*{.webp,.jpg,.jpeg,.png,.heif}', {
     import: 'default',
@@ -31,6 +32,6 @@
   })
 </script>
 
-<Banner imagePath={image}>
+<Banner imagePath={image} {renderHomeLink}>
   <slot />
 </Banner>

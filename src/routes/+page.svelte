@@ -6,6 +6,7 @@
   import PageWrapper from './page-wrapper.svelte'
   import { CategoryLinks, type NavLink } from '$lib/constants'
   import { pictureSchema, urlSchema } from '$lib/image'
+  import Searchbox from './searchbox.svelte'
 
   const lqipImages = import.meta.glob('/src/uploads/*1x1.jpg', {
     import: 'default',
@@ -46,6 +47,7 @@
         <h1>{config.title}</h1>
         <h2>{config.description} recept</h2>
       </BannerHeader>
+      <Searchbox />
     </ImageBanner>
     <section>
       <menu>
