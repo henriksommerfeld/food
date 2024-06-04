@@ -61,9 +61,6 @@
     flex-direction: column;
     padding-bottom: var(--content-gap-to-footer);
   }
-  :global(menu img) {
-    margin-bottom: -5px;
-  }
   menu {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(25rem, 100%), 1fr));

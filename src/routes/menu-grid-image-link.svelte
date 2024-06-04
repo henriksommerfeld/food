@@ -43,6 +43,9 @@
     filter: brightness(1.1);
     box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 10px;
   }
+  ::global(.keyboard-navigation a:focus) {
+    outline: var(--outline);
+  }
   :global(a img) {
     transition: all 150ms ease 0s;
     margin-bottom: -5px;

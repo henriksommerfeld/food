@@ -117,6 +117,8 @@
   --font-heading: 'Domine', 'serif';
   --font-body: 'Open Sans', 'sans-serif';
 
+  --outline: 3px solid var(--pink500);
+
   --content-max-width: 1200px;
   --content-offset: -3rem;
   --spacing-default: 1rem;
@@ -181,6 +183,11 @@ select {
 ::selection {
   background-color: var(--selection-background);
   color: var(--white);
+}
+
+.keyboard-navigation :focus {
+  outline: var(--outline);
+  outline-offset: 0;
 }
 
 img {

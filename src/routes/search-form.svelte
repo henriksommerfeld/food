@@ -59,9 +59,15 @@
       backdrop-filter: blur(10px);
     }
   }
-  .searchbox:focus-within {
-    outline: 2px solid var(--black);
-    outline-offset: -2px;
+  input:focus {
+    outline: none;
+  }
+  :global(.keyboard-navigation) .searchbox:focus-within {
+    outline: var(--outline);
+  }
+  button:focus {
+    outline-offset: 4px;
+    border-radius: 1px;
   }
   input {
     width: 100%;
@@ -81,12 +87,6 @@
     border: none;
     background-color: transparent;
     cursor: pointer;
-  }
-  button:focus {
-    outline: 2px solid var(--black);
-    outline-offset: 4px;
-    outline-style: solid;
-    border-radius: 1px;
   }
   img {
     margin: 0;
