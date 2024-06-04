@@ -31,23 +31,6 @@ export const urls = {
   siteBaseUrl: 'https://recept.netlify.com'
 }
 
-export const breakpoints = {
-  xs: '550px',
-  small: '768px',
-  medium: '1024px',
-  desktop: '1024px',
-  large: '1400px',
-  xl: '2048px'
-}
-
-export const masonryBreakpoints = {
-  default: 6,
-  2400: 4,
-  1600: 3,
-  1024: 2,
-  768: 1
-}
-
 export const colors = {
   white: tailwindColors.white,
   black: tailwindColors.black,
