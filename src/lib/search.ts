@@ -1,7 +1,26 @@
 import { getRecipes } from '$lib/database'
-import MiniSearch from 'minisearch'
+import MiniSearch, { type SearchResult } from 'minisearch'
 
-export const search = async (query: string) => {
+export type RecipeSearchResult = {
+  id: SearchResult['id']
+  terms: SearchResult['terms']
+  queryTerms: SearchResult['queryTerms']
+  score: SearchResult['score']
+  match: SearchResult['match']
+  title: string
+  slug: string
+  featuredimage: string
+  featuredimagetheme: string
+}
+
+let miniSearch: MiniSearch
+
+const ensureIndex = async () => {
+  if (miniSearch) return
+  miniSearch = new MiniSearch({
+    fields: ['title', 'tags', 'ingredients'],
+    storeFields: ['title', 'slug', 'featuredimage', 'featuredimagetheme']
+  })
   const allRecipes = await getRecipes()
   const searchableProps = allRecipes.map((file, index) => ({
     id: index,
@@ -12,10 +31,10 @@ export const search = async (query: string) => {
     featuredimage: file.featuredimage,
     featuredimagetheme: file.featuredimagetheme
   }))
-  const miniSearch = new MiniSearch({
-    fields: ['title', 'tags', 'ingredients'],
-    storeFields: ['title', 'slug', 'featuredimage', 'featuredimagetheme']
-  })
   miniSearch.addAll(searchableProps)
-  return miniSearch.search(query)
+}
+
+export const searchAgainstIndex = async (query: string) => {
+  await ensureIndex()
+  return miniSearch.search(query) as RecipeSearchResult[]
 }
