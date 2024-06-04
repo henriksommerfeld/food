@@ -3,7 +3,7 @@
   import CategoryBanner from '../../category-banner.svelte'
   import Image from '../../image.svelte'
   import type { PageData } from './$types'
-  import { pictureSchema, urlSchema } from '$lib/image'
+  import { getImage } from '$lib/image'
 
   export let data: PageData
   const recipes = data.recipes
@@ -17,18 +17,6 @@
     eager: true,
     query: '?w=640;800&h=480;600&fit-cover&format=webp&as=picture'
   })
-  const getImage = (path: string) => {
-    const imagePath = `/src${path}`
-    const parsedImageData = pictureSchema.parse(images[imagePath])
-    const image = {
-      srcset: parsedImageData.sources.webp,
-      src: parsedImageData.img.src,
-      w: parsedImageData.img.w,
-      h: parsedImageData.img.h,
-      lqip: urlSchema.parse(lqipImages[imagePath])
-    }
-    return image
-  }
   const getColor = (recept: PageData['recipes'][0]) => {
     return recept.featuredimagetheme === 1 ? '#000000' : '#ffffff'
   }
@@ -45,7 +33,7 @@
     <CategoryBanner category={data.category} recipeCount={recipes.length} />
     <menu>
       {#each recipes as recept}
-        {@const image = getImage(recept.featuredimage)}
+        {@const image = getImage(images, lqipImages, `/src${recept.featuredimage}`)}
         <li>
           <a href="/{recept.slug}">
             <Image

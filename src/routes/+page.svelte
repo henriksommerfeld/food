@@ -5,7 +5,7 @@
   import ImageBanner from './image-banner.svelte'
   import PageWrapper from './page-wrapper.svelte'
   import { CategoryLinks, type NavLink } from '$lib/constants'
-  import { pictureSchema, urlSchema } from '$lib/image'
+  import { getImage } from '$lib/image'
   import Searchbox from './searchbox.svelte'
 
   const lqipImages = import.meta.glob('/src/uploads/*1x1.jpg', {
@@ -18,17 +18,6 @@
     eager: true,
     query: '?w=640;800&aspect=1:1&fit-cover&format=webp&as=picture'
   })
-  const getImage = (path: string) => {
-    const parsedImageData = pictureSchema.parse(images[path])
-    const image = {
-      srcset: parsedImageData.sources.webp,
-      src: parsedImageData.img.src,
-      w: parsedImageData.img.w,
-      h: parsedImageData.img.h,
-      lqip: urlSchema.parse(lqipImages[path])
-    }
-    return image
-  }
   const getColor = (category: NavLink) => {
     return category.thumbTheme === 1 ? '#000000' : '#ffffff'
   }
@@ -52,7 +41,7 @@
     <section>
       <menu>
         {#each CategoryLinks as category}
-          {@const image = getImage(category.imagePath1x1)}
+          {@const image = getImage(images, lqipImages, category.imagePath1x1)}
           <li>
             <a href={category.url}>
               <Image

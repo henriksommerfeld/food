@@ -1,6 +1,6 @@
 <script lang="ts">
   import Image from './image.svelte'
-  import { pictureSchema, urlSchema } from '$lib/image'
+  import { getImage } from '$lib/image'
   import type { RecipeSearchResult } from '$lib/search'
   import ImageBanner from './image-banner.svelte'
   import BannerHeader from './banner-header.svelte'
@@ -24,20 +24,8 @@
     eager: true,
     query: '?w=640;800&h=480;600&fit-cover&format=webp&as=picture'
   })
-  const getImage = (path: string) => {
-    const imagePath = `/src${path}`
-    const parsedImageData = pictureSchema.parse(images[imagePath])
-    const image = {
-      srcset: parsedImageData.sources.webp,
-      src: parsedImageData.img.src,
-      w: parsedImageData.img.w,
-      h: parsedImageData.img.h,
-      lqip: urlSchema.parse(lqipImages[imagePath])
-    }
-    return image
-  }
-  const getColor = (recept: any) => {
-    return recept.featuredimagetheme === 1 ? '#000000' : '#ffffff'
+  const getColor = (result: RecipeSearchResult) => {
+    return result.featuredimagetheme === 1 ? '#000000' : '#ffffff'
   }
 </script>
 
@@ -55,7 +43,7 @@
     </ImageBanner>
     <menu data-sveltekit-reload>
       {#each results as result}
-        {@const image = getImage(result.featuredimage)}
+        {@const image = getImage(images, lqipImages, result.featuredimage)}
         <li>
           <a href={result.slug}>
             <Image
@@ -154,7 +142,6 @@
     max-width: none;
     max-height: none;
     border: none;
-    /* border-radius: var(--border-radius); */
   }
   dialog::backdrop {
     backdrop-filter: blur(10px);

@@ -10,7 +10,7 @@ export type RecipeSearchResult = {
   title: string
   slug: string
   featuredimage: string
-  featuredimagetheme: string
+  featuredimagetheme: number
 }
 
 let miniSearch: MiniSearch
