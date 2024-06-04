@@ -16,7 +16,7 @@ export async function getRecipes() {
       const file = markdownResult.data
       const fileMeta = file.metadata as RecepieFrontmatter
       const metadata = fileMeta as Omit<RecepieFrontmatter, 'url'>
-      const slug = (fileMeta.url || fileSlug).split('/').at(-1)
+      const slug = (fileMeta.url || fileSlug).replace(/\/$/, '').split('/').at(-1)
 
       const recipe = recipeSchema.safeParse({
         ...metadata,
