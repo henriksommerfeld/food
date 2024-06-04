@@ -42,4 +42,6 @@ export const getImage = (
   return image
 }
 
-export const getColor = (theme: Theme) => (theme === Theme.light ? 'white' : 'black')
+export type ImageType = ReturnType<typeof getImage>
+
+export const getColor = (theme: Theme) => (theme === Theme.light ? 'black' : 'white')

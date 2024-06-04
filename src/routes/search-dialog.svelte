@@ -1,11 +1,11 @@
 <script lang="ts">
-  import Image from './image.svelte'
   import { getColor, getImage } from '$lib/image'
   import type { RecipeSearchResult } from '$lib/search'
   import ImageBanner from './image-banner.svelte'
   import BannerHeader from './banner-header.svelte'
   import SearchForm from './search-form.svelte'
   import CloseSvg from '/src/assets/close.svg'
+  import MenuGridImageLink from './menu-grid-image-link.svelte'
 
   export let results = new Array<RecipeSearchResult>()
   export let searchTerm = ''
@@ -29,9 +29,9 @@
 <dialog bind:this={dialog} on:close={() => (searchTerm = '')}>
   <div class="page">
     <ImageBanner imagePath="/src/uploads/search-banner.jpg" renderHomeLink={false}>
-      <button class="close" aria-label="Stäng sökresultatet" on:click={() => dialog.close()}
-        ><img src={CloseSvg} alt="Stäng sökresultatet" /></button
-      >
+      <button class="close" aria-label="Stäng sökresultatet" on:click={() => dialog.close()}>
+        <img src={CloseSvg} alt="Stäng sökresultatet" />
+      </button>
       <BannerHeader>
         <h1>Recept med <span class="quote">{termForResults}</span></h1>
         <h2>{results.length} recept</h2>
@@ -40,22 +40,13 @@
     </ImageBanner>
     <menu data-sveltekit-reload>
       {#each results as result}
-        {@const image = getImage(images, lqipImages, result.featuredimage)}
-        <li>
-          <a href={result.slug}>
-            <Image
-              src={image.src}
-              srcset={image.srcset}
-              width={image.w}
-              height={image.h}
-              lqip={image.lqip}
-              alt=""
-            />
-            <div class="title" style="--color: {getColor(result.featuredimagetheme)}">
-              {result.title}
-            </div>
-          </a>
-        </li>
+        {@const image = getImage(images, lqipImages, `/src${result.featuredimage}`)}
+        <MenuGridImageLink
+          href={result.slug}
+          title={result.title}
+          titleColor={getColor(result.featuredimagetheme)}
+          {image}
+        />
       {/each}
     </menu>
   </div>
@@ -89,48 +80,6 @@
     @media (min-width: 1400px) {
       grid-gap: 3rem;
       padding: 3rem;
-    }
-  }
-  li {
-    list-style: none;
-    width: fit-content;
-  }
-  a {
-    display: block;
-    width: 100%;
-    position: relative;
-    transition: filter 150ms ease 0s, box-shadow 150ms ease 0s, font-size 150ms ease 0s;
-    box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 5px;
-    text-align: center;
-    overflow: hidden;
-  }
-  a:hover,
-  a:focus {
-    filter: brightness(1.1);
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 10px;
-  }
-  :global(a img) {
-    transition: all 150ms ease 0s;
-  }
-  :global(a:hover img, a:focus img) {
-    transform: scale(1.05);
-  }
-  :global(a:hover .title, a:focus .title) {
-    font-size: 1.1em;
-  }
-  .title {
-    transition: font-size 100ms ease 0s;
-    transform: translateY(-100%);
-    position: absolute;
-    width: 100%;
-    padding: 1rem;
-    color: black;
-    background-color: rgba(255, 255, 255, 0.7);
-
-    @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-      backdrop-filter: blur(5px);
-      background-color: transparent;
-      color: var(--color);
     }
   }
   dialog {

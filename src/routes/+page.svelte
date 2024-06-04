@@ -1,12 +1,12 @@
 <script lang="ts">
   import * as config from '$lib/config'
   import BannerHeader from './banner-header.svelte'
-  import Image from './image.svelte'
   import ImageBanner from './image-banner.svelte'
   import PageWrapper from './page-wrapper.svelte'
-  import { CategoryLinks, type NavLink } from '$lib/constants'
+  import { CategoryLinks } from '$lib/constants'
   import { getColor, getImage } from '$lib/image'
   import Searchbox from './searchbox.svelte'
+  import MenuGridImageLink from './menu-grid-image-link.svelte'
 
   const lqipImages = import.meta.glob('/src/uploads/*1x1.jpg', {
     import: 'default',
@@ -39,21 +39,12 @@
       <menu>
         {#each CategoryLinks as category}
           {@const image = getImage(images, lqipImages, category.imagePath1x1)}
-          <li>
-            <a href={category.url}>
-              <Image
-                src={image.src}
-                srcset={image.srcset}
-                width={image.w}
-                height={image.h}
-                lqip={image.lqip}
-                alt=""
-              />
-              <div class="title" style="--color: {getColor(category.thumbTheme)}">
-                {category.title}
-              </div>
-            </a>
-          </li>
+          <MenuGridImageLink
+            href={category.url}
+            title={category.title}
+            titleColor={getColor(category.thumbTheme)}
+            {image}
+          />
         {/each}
       </menu>
     </section>
@@ -68,9 +59,6 @@
     display: flex;
     flex-direction: column;
     padding-bottom: var(--content-gap-to-footer);
-  }
-  :global(menu img) {
-    margin-bottom: -5px;
   }
   section {
     display: flex;
@@ -108,49 +96,6 @@
     @media (min-width: 2048px) {
       grid-template-columns: repeat(6, auto);
       grid-gap: var(--spacing-x3);
-    }
-  }
-  li {
-    list-style: none;
-    margin: 0;
-    text-align: center;
-  }
-  a {
-    display: block;
-    width: 100%;
-    position: relative;
-    transition: filter 150ms ease 0s, box-shadow 150ms ease 0s, font-size 150ms ease 0s;
-    box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 5px;
-    text-align: center;
-    overflow: hidden;
-  }
-  a:hover,
-  a:focus {
-    filter: brightness(1.1);
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 10px;
-  }
-  :global(a img) {
-    transition: all 150ms ease 0s;
-  }
-  :global(a:hover img, a:focus img) {
-    transform: scale(1.05);
-  }
-  :global(a:hover .title, a:focus .title) {
-    font-size: 1.1em;
-  }
-  .title {
-    transition: font-size 100ms ease 0s;
-    transform: translateY(-100%);
-    position: absolute;
-    width: 100%;
-    padding: 1rem;
-    color: black;
-    background-color: rgba(255, 255, 255, 0.7);
-
-    @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-      backdrop-filter: blur(5px);
-      background-color: transparent;
-      color: var(--color);
     }
   }
 </style>

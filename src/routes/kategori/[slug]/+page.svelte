@@ -4,6 +4,8 @@
   import Image from '../../image.svelte'
   import type { PageData } from './$types'
   import { getColor, getImage } from '$lib/image'
+  import MenuGrid from '../../menu-grid.svelte'
+  import MenuGridImageLink from '../../menu-grid-image-link.svelte'
 
   export let data: PageData
   const recipes = data.recipes
@@ -28,26 +30,17 @@
 <PageWrapper>
   <div class="page">
     <CategoryBanner category={data.category} recipeCount={recipes.length} />
-    <menu>
+    <MenuGrid>
       {#each recipes as recept}
         {@const image = getImage(images, lqipImages, `/src${recept.featuredimage}`)}
-        <li>
-          <a href="/{recept.slug}">
-            <Image
-              src={image.src}
-              srcset={image.srcset}
-              width={image.w}
-              height={image.h}
-              lqip={image.lqip}
-              alt=""
-            />
-            <div class="title" style="--color: {getColor(recept.featuredimagetheme)}">
-              {recept.title}
-            </div>
-          </a>
-        </li>
+        <MenuGridImageLink
+          href="/{recept.slug}"
+          title={recept.title}
+          titleColor={getColor(recept.featuredimagetheme)}
+          {image}
+        />
       {/each}
-    </menu>
+    </MenuGrid>
   </div>
 </PageWrapper>
 
@@ -59,68 +52,5 @@
     display: flex;
     flex-direction: column;
     padding-bottom: var(--content-gap-to-footer);
-  }
-  :global(menu img) {
-    margin-bottom: -5px;
-  }
-  menu {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(25rem, 100%), 1fr));
-    justify-content: center;
-    margin: 0;
-    grid-gap: 1rem;
-    padding: 1rem;
-
-    @media (min-width: 768px) {
-      grid-gap: 2rem;
-      padding: 2rem;
-    }
-
-    @media (min-width: 1400px) {
-      grid-gap: 3rem;
-      padding: 3rem;
-    }
-  }
-  li {
-    list-style: none;
-    width: fit-content;
-  }
-  a {
-    display: block;
-    width: 100%;
-    position: relative;
-    transition: filter 150ms ease 0s, box-shadow 150ms ease 0s, font-size 150ms ease 0s;
-    box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 5px;
-    text-align: center;
-    overflow: hidden;
-  }
-  a:hover,
-  a:focus {
-    filter: brightness(1.1);
-    box-shadow: rgba(0, 0, 0, 0.4) 0px 4px 10px;
-  }
-  :global(a img) {
-    transition: all 150ms ease 0s;
-  }
-  :global(a:hover img, a:focus img) {
-    transform: scale(1.05);
-  }
-  :global(a:hover .title, a:focus .title) {
-    font-size: 1.1em;
-  }
-  .title {
-    transition: font-size 100ms ease 0s;
-    transform: translateY(-100%);
-    position: absolute;
-    width: 100%;
-    padding: 1rem;
-    color: black;
-    background-color: rgba(255, 255, 255, 0.7);
-
-    @supports (-webkit-backdrop-filter: none) or (backdrop-filter: none) {
-      backdrop-filter: blur(5px);
-      background-color: transparent;
-      color: var(--color);
-    }
   }
 </style>
