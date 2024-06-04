@@ -6,6 +6,7 @@
   import SearchForm from './search-form.svelte'
   import CloseSvg from '/src/assets/close.svg'
   import MenuGridImageLink from './menu-grid-image-link.svelte'
+  import BannerMainContainer from './banner-main-container.svelte'
 
   export let results = new Array<RecipeSearchResult>()
   export let searchTerm = ''
@@ -27,7 +28,7 @@
 </script>
 
 <dialog bind:this={dialog} on:close={() => (searchTerm = '')}>
-  <div class="page">
+  <BannerMainContainer>
     <ImageBanner imagePath="/src/uploads/search-banner.jpg" renderHomeLink={false}>
       <button class="close" aria-label="Stäng sökresultatet" on:click={() => dialog.close()}>
         <img src={CloseSvg} alt="Stäng sökresultatet" />
@@ -49,18 +50,10 @@
         />
       {/each}
     </menu>
-  </div>
+  </BannerMainContainer>
 </dialog>
 
 <style>
-  .page {
-    width: 100%;
-    height: 100%;
-    min-height: calc(100vh - 160px);
-    display: flex;
-    flex-direction: column;
-    padding-bottom: var(--content-gap-to-footer);
-  }
   menu {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(25rem, 100%), 1fr));

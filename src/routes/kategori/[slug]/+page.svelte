@@ -1,7 +1,7 @@
 <script lang="ts">
   import PageWrapper from '../../page-wrapper.svelte'
+  import BannerMainContainer from '../../banner-main-container.svelte'
   import CategoryBanner from '../../category-banner.svelte'
-  import Image from '../../image.svelte'
   import type { PageData } from './$types'
   import { getColor, getImage } from '$lib/image'
   import MenuGrid from '../../menu-grid.svelte'
@@ -28,7 +28,7 @@
 </svelte:head>
 
 <PageWrapper>
-  <div class="page">
+  <BannerMainContainer>
     <CategoryBanner category={data.category} recipeCount={recipes.length} />
     <MenuGrid>
       {#each recipes as recept}
@@ -41,16 +41,5 @@
         />
       {/each}
     </MenuGrid>
-  </div>
+  </BannerMainContainer>
 </PageWrapper>
-
-<style>
-  .page {
-    width: 100%;
-    height: 100%;
-    min-height: calc(100vh - 160px);
-    display: flex;
-    flex-direction: column;
-    padding-bottom: var(--content-gap-to-footer);
-  }
-</style>

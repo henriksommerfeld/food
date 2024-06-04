@@ -7,6 +7,7 @@
   import { getColor, getImage } from '$lib/image'
   import Searchbox from './searchbox.svelte'
   import MenuGridImageLink from './menu-grid-image-link.svelte'
+  import BannerMainContainer from './banner-main-container.svelte'
 
   const lqipImages = import.meta.glob('/src/uploads/*1x1.jpg', {
     import: 'default',
@@ -27,7 +28,7 @@
 </svelte:head>
 
 <PageWrapper>
-  <div class="page">
+  <BannerMainContainer>
     <ImageBanner imagePath="/src/uploads/startpage-banner.jpg">
       <BannerHeader>
         <h1>{config.title}</h1>
@@ -48,18 +49,10 @@
         {/each}
       </menu>
     </section>
-  </div>
+  </BannerMainContainer>
 </PageWrapper>
 
 <style>
-  .page {
-    width: 100%;
-    height: 100%;
-    min-height: calc(100vh - 160px);
-    display: flex;
-    flex-direction: column;
-    padding-bottom: var(--content-gap-to-footer);
-  }
   section {
     display: flex;
     justify-content: center;

@@ -71,8 +71,6 @@
   }
   input {
     width: 100%;
-    /* TODO: css var for z-index */
-    /* z-index: ${zIndexes.searchBox}; */
     z-index: 1;
     background-color: transparent;
     border: none;
