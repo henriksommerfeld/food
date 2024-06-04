@@ -5,7 +5,7 @@
   import ImageBanner from './image-banner.svelte'
   import PageWrapper from './page-wrapper.svelte'
   import { CategoryLinks, type NavLink } from '$lib/constants'
-  import { getImage } from '$lib/image'
+  import { getColor, getImage } from '$lib/image'
   import Searchbox from './searchbox.svelte'
 
   const lqipImages = import.meta.glob('/src/uploads/*1x1.jpg', {
@@ -18,9 +18,6 @@
     eager: true,
     query: '?w=640;800&aspect=1:1&fit-cover&format=webp&as=picture'
   })
-  const getColor = (category: NavLink) => {
-    return category.thumbTheme === 1 ? '#000000' : '#ffffff'
-  }
 </script>
 
 <svelte:head>
@@ -52,7 +49,9 @@
                 lqip={image.lqip}
                 alt=""
               />
-              <div class="title" style="--color: {getColor(category)}">{category.title}</div>
+              <div class="title" style="--color: {getColor(category.thumbTheme)}">
+                {category.title}
+              </div>
             </a>
           </li>
         {/each}

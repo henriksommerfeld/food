@@ -1,6 +1,6 @@
 <script lang="ts">
   import Image from './image.svelte'
-  import { getImage } from '$lib/image'
+  import { getColor, getImage } from '$lib/image'
   import type { RecipeSearchResult } from '$lib/search'
   import ImageBanner from './image-banner.svelte'
   import BannerHeader from './banner-header.svelte'
@@ -24,9 +24,6 @@
     eager: true,
     query: '?w=640;800&h=480;600&fit-cover&format=webp&as=picture'
   })
-  const getColor = (result: RecipeSearchResult) => {
-    return result.featuredimagetheme === 1 ? '#000000' : '#ffffff'
-  }
 </script>
 
 <dialog bind:this={dialog} on:close={() => (searchTerm = '')}>
@@ -54,7 +51,9 @@
               lqip={image.lqip}
               alt=""
             />
-            <div class="title" style="--color: {getColor(result)}">{result.title}</div>
+            <div class="title" style="--color: {getColor(result.featuredimagetheme)}">
+              {result.title}
+            </div>
           </a>
         </li>
       {/each}

@@ -3,7 +3,7 @@
   import CategoryBanner from '../../category-banner.svelte'
   import Image from '../../image.svelte'
   import type { PageData } from './$types'
-  import { getImage } from '$lib/image'
+  import { getColor, getImage } from '$lib/image'
 
   export let data: PageData
   const recipes = data.recipes
@@ -17,9 +17,6 @@
     eager: true,
     query: '?w=640;800&h=480;600&fit-cover&format=webp&as=picture'
   })
-  const getColor = (recept: PageData['recipes'][0]) => {
-    return recept.featuredimagetheme === 1 ? '#000000' : '#ffffff'
-  }
 </script>
 
 <svelte:head>
@@ -44,7 +41,9 @@
               lqip={image.lqip}
               alt=""
             />
-            <div class="title" style="--color: {getColor(recept)}">{recept.title}</div>
+            <div class="title" style="--color: {getColor(recept.featuredimagetheme)}">
+              {recept.title}
+            </div>
           </a>
         </li>
       {/each}
