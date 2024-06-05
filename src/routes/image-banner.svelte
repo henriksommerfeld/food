@@ -2,6 +2,7 @@
   import z from 'zod'
   import { onMount } from 'svelte'
   import Banner from './banner.svelte'
+  import { urlSchema } from '$lib/image'
 
   export let imagePath: string
   export let renderHomeLink = true
@@ -18,7 +19,6 @@
     query: '?w=2500&format=webp&fit=cover&as=url'
   })
 
-  const urlSchema = z.string()
   const lqipUrl = urlSchema.parse(lqipImages[imagePath])
   const webpUrl = urlSchema.parse(images[imagePath])
   $: image = lqipUrl
