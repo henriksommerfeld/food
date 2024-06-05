@@ -154,22 +154,6 @@ export const markdownFileSchema = z.object({
   default: z.any()
 })
 
-const imageSchema = z.object({
-  image: z.object({
-    sources: z.object({
-      avif: z.string().optional(),
-      webp: z.string().optional(),
-      jpeg: z.string().optional(),
-      png: z.string().optional()
-    }),
-    img: z.object({
-      src: z.string(),
-      w: z.number(),
-      h: z.number()
-    })
-  })
-})
-
 const slugSchema = z.object({ slug: z.string() })
 
 const contentSchema = z.object({ content: z.any() })

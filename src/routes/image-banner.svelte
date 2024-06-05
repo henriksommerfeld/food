@@ -1,5 +1,4 @@
 <script lang="ts">
-  import z from 'zod'
   import { onMount } from 'svelte'
   import Banner from './banner.svelte'
   import { urlSchema } from '$lib/image'

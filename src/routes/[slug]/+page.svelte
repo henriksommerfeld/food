@@ -233,8 +233,8 @@
     display: grid;
 
     @media (min-width: 768px) {
-    grid-template-columns: 1fr minmax(0px, 2fr);
-    gap: 3rem;
+      grid-template-columns: 1fr minmax(0px, 2fr);
+      gap: 3rem;
     }
   }
 </style>
