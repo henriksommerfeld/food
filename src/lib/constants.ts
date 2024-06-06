@@ -1,65 +1,4 @@
-import { tailwindColors } from './tailwind-colors'
 import type { Category } from './types'
-
-export const spacing = {
-  default: '1rem',
-  double: '2rem',
-  x3: '3rem',
-  half: '0.5rem',
-  introBannerExtra: '3rem',
-  postBannerExtra: '5rem',
-  notFoundBannerExtra: '5rem',
-  contentOffset: `-3rem`,
-  postHeadingOffset: `-1rem`,
-  postHeadingOffsetWithSearchbox: `-2rem`,
-  contentGapToFooter: '5rem',
-  section: '3rem'
-}
-
-export const zIndexes = {
-  searchBox: 1,
-  mobileMenu: 2,
-  headerNav: 3
-}
-
-export const layout = {
-  contentMaxWidth: 1200,
-  borderRadius: '0.25rem'
-}
-
-export const urls = {
-  siteBaseUrl: 'https://recept.netlify.com'
-}
-
-export const colors = {
-  white: tailwindColors.white,
-  black: tailwindColors.black,
-  pageBackground: tailwindColors.gray100,
-  headerBackground: tailwindColors.teal700,
-  footerBackground: tailwindColors.teal900,
-  link: tailwindColors.teal600,
-  linkVisited: tailwindColors.teal600,
-  linkFocus: tailwindColors.teal700,
-  postDate: tailwindColors.teal200,
-  postDateRoll: tailwindColors.gray700,
-  buttonBackground: tailwindColors.red600,
-  buttonHover: tailwindColors.red700,
-  buttonActive: tailwindColors.red800,
-  lighterTextForWhiteBackground: tailwindColors.gray700,
-  selectionBackground: tailwindColors.teal700
-}
-
-export const fonts = {
-  headingFamily: `'Domine', 'serif'`,
-  bodyFamily: `'Open Sans', 'sans-serif'`
-}
-
-export const links = {
-  tags: {
-    url: '/taggar',
-    title: 'Se alla taggar'
-  }
-}
 
 export enum Theme {
   light = 1,
@@ -70,29 +9,6 @@ export type CategoryBanner = {
   title: Category
   imageName: string
 }
-
-export const categoryBanners: CategoryBanner[] = [
-  {
-    title: 'Frukost',
-    imageName: 'breakfast-hero'
-  },
-  {
-    title: 'Förrätt',
-    imageName: 'dessert-hero'
-  },
-  {
-    title: 'Huvudrätt',
-    imageName: 'main-hero'
-  },
-  {
-    title: 'Efterrätt',
-    imageName: 'dessert-hero'
-  },
-  {
-    title: 'Bakning',
-    imageName: 'baking-hero'
-  }
-]
 
 export type NavLink = {
   slug: string
