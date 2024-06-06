@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { tailwindColors } from '$lib/tailwind-colors'
+  import { tailwindColors } from '$lib/colors'
   import { transparentizeHex } from '$lib/color-conversions'
 
   export let instruction: string

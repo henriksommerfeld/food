@@ -94,3 +94,21 @@ export const tailwindColors = {
   pink800: '#97266D',
   pink900: '#702459'
 }
+
+export const colors = {
+  white: tailwindColors.white,
+  black: tailwindColors.black,
+  pageBackground: tailwindColors.gray100,
+  headerBackground: tailwindColors.teal700,
+  footerBackground: tailwindColors.teal900,
+  link: tailwindColors.teal600,
+  linkVisited: tailwindColors.teal600,
+  linkFocus: tailwindColors.teal700,
+  postDate: tailwindColors.teal200,
+  postDateRoll: tailwindColors.gray700,
+  buttonBackground: tailwindColors.red600,
+  buttonHover: tailwindColors.red700,
+  buttonActive: tailwindColors.red800,
+  lighterTextForWhiteBackground: tailwindColors.gray700,
+  selectionBackground: tailwindColors.teal700
+}

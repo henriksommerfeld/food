@@ -1,13 +1,11 @@
 <script lang="ts">
   import SearchGreySvg from '/src/assets/search-grey100.svg'
   import SearchWhiteSvg from '/src/assets/search-white.svg'
-  import { colors } from '$lib/constants'
-  import { tailwindColors } from '$lib/tailwind-colors'
+  import { colors, tailwindColors } from '$lib/colors'
   import { transparentizeHex } from '$lib/color-conversions'
 
   export let onSubmit: () => Promise<void> | void
   export let searchTerm = ''
-  let searchInput: HTMLInputElement
   $: hasFocus = false
   $: borderColor = hasFocus ? colors.white : tailwindColors.gray100
   $: backgroundColor = transparentizeHex(colors.white, hasFocus ? 0.7 : 0.6)
@@ -26,7 +24,6 @@
       on:focus={() => (hasFocus = true)}
       on:blur={() => (hasFocus = false)}
       bind:value={searchTerm}
-      bind:this={searchInput}
     />
     <button type="submit">
       <img src={hasFocus ? SearchWhiteSvg : SearchGreySvg} alt="" aria-hidden />
