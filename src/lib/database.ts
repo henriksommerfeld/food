@@ -1,4 +1,5 @@
 import { markdownFileSchema, recipeSchema, type RecepieFrontmatter, type Recipe } from '$lib/types'
+import slugify from '@sindresorhus/slugify'
 
 const recipes = new Array<Recipe>()
 
@@ -36,4 +37,21 @@ export async function getRecipes() {
 
   recipes.sort((a, b) => a.title.localeCompare(b.title, 'sv'))
   return recipes
+}
+
+let sortedArray = new Array<{ count: number; name: string; slug: string }>()
+
+export async function getTags() {
+  if (sortedArray.length) return sortedArray
+  const recipes = await getRecipes()
+  const allTags = recipes.flatMap((recipe) => recipe.tags)
+  const tagCounts = allTags.reduce(
+    (tags, tag) => ({ ...tags, [tag]: (tags[tag] || 0) + 1 }),
+    {} as Record<string, number>
+  )
+  const sortedTagNames = Object.keys(tagCounts).toSorted()
+  sortedTagNames.forEach((name) => {
+    sortedArray.push({ count: tagCounts[name], name: name, slug: slugify(name) })
+  })
+  return sortedArray
 }
