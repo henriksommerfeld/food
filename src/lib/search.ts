@@ -7,6 +7,7 @@ export type RecipeSearchResult = {
   queryTerms: SearchResult['queryTerms']
   score: SearchResult['score']
   match: SearchResult['match']
+  // storeFields
   title: string
   slug: string
   featuredimage: string

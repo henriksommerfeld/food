@@ -1,5 +1,5 @@
 {
-  "name": "food-sveltekit",
+  "name": "food",
   "version": "0.0.1",
   "private": false,
   "scripts": {
@@ -7,14 +7,12 @@
     "dev": "npm run copy-images && vite dev",
     "build": "npm run copy-images && vite build",
     "preview": "vite preview",
-    "test": "npm run test:integration && npm run test:unit",
+    "test": "vitest",
+    "test:once": "vitest --run",
     "check": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json",
     "check:watch": "svelte-kit sync && svelte-check --tsconfig ./tsconfig.json --watch",
     "lint": "prettier --plugin-search-dir . --check . && eslint .",
-    "format": "prettier --plugin-search-dir . --write .",
-    "test:integration": "playwright test",
-    "test:unit": "vitest",
-    "cms": "npx decap-server"
+    "format": "prettier --plugin-search-dir . --write ."
   },
   "devDependencies": {
     "@sindresorhus/slugify": "^2.2.1",
