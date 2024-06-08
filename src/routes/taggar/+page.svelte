@@ -5,6 +5,7 @@
   import PageWrapper from '../page-wrapper.svelte'
   import Searchbox from '../searchbox.svelte'
   import TagBackground from '../tag-background.svelte'
+  import TagPageSection from '../tag-page-section.svelte'
   import type { PageData } from './$types'
   import TagSvg from '/src/assets/tag-grey500.svg'
 
@@ -25,7 +26,7 @@
         </BannerHeader>
         <Searchbox />
       </ImageBanner>
-      <section>
+      <TagPageSection>
         <menu>
           {#each tags as tag}
             <li>
@@ -34,29 +35,12 @@
             </li>
           {/each}
         </menu>
-      </section>
+      </TagPageSection>
     </BannerMainContainer>
   </TagBackground>
 </PageWrapper>
 
 <style>
-  section {
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    align-items: center;
-    flex-grow: 1;
-    padding: 2rem 1rem;
-    background: rgba(255, 255, 255, 0.7);
-    height: 100%;
-    width: 100%;
-    min-height: calc(-100px + 100vh);
-    @media (min-width: 768px) {
-      background: none;
-      height: auto;
-      min-height: initial;
-    }
-  }
   menu {
     font-size: 1.1em;
     border-radius: 0.25rem;

@@ -217,11 +217,3 @@ a:hover {
 .screen-reader-text {
   display: none;
 }
-
-h1,
-h2 {
-  margin-top: 0;
-  font-family: var(--font-heading);
-  font-weight: 700;
-  text-rendering: optimizeLegibility;
-}

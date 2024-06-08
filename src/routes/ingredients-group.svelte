@@ -12,15 +12,16 @@
   {#if showIngredientsHeading}
     <h4>{group.name}</h4>
   {/if}
-  <div>
+  <ul>
     {#each group.ingredients as ingredient}
       <Ingredient {ingredient} {defaultServings} {servings} />
     {/each}
-  </div>
+  </ul>
 {/if}
 
 <style>
-  div {
+  ul {
     margin-left: 0;
+    margin-bottom: 2rem;
   }
 </style>
