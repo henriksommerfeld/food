@@ -159,5 +159,5 @@ const slugSchema = z.object({ slug: z.string() })
 const contentSchema = z.object({ content: z.any() })
 
 export const recipeSchema = recipeFrontmatterSchema.merge(slugSchema.merge(contentSchema))
-export type RecepieFrontmatter = z.infer<typeof recipeFrontmatterSchema>
+export type RecipeFrontmatter = z.infer<typeof recipeFrontmatterSchema>
 export type Recipe = z.infer<typeof recipeSchema>
