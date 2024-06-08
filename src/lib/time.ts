@@ -1,6 +1,5 @@
 export function formatDuration(days: number, hours: number, minutes: number): string {
   const timeParts = [formatDays(days), formatHours(hours), formatMinutes(minutes)].filter((x) => x)
-
   return timeParts.join(', ')
 }
 
