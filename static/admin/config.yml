@@ -1,35 +1,29 @@
-local_backend: true
+# Sveltia CMS configuration
 
+# This is where we configure the CMS repo and its collections and fields
+# Sveltia CMS generally follows the Decap CMS configuration spec
+# Decap CMS docs: https://decapcms.org/docs/intro/
+# Sveltia CMS docs: https://github.com/sveltia/sveltia-cms#features
+
+# Enter your GitHub repo path and branch (defaults to master)
 backend:
-  name: git-gateway
-  branch: master
+  name: github
+  repo: henriksommerfeld/food
+  branch: food-sveltekit
 
-media_folder: static/uploads
-public_folder: /uploads
-display_url: https://recept.netlify.com
+# The folder used to store uploaded images
+media_folder: 'static/uploads'
 
-slug:
-  encoding: 'ascii'
-  clean_accents: true
-  sanitize_replacement: '-'
-
+# The CMS collections and their fields
 collections:
   - name: 'recept'
     label: 'Recept'
+    label_singular: 'Recept'
+    icon: 'menu_book'
     folder: 'src/recept'
     create: true
     slug: '{{slug}}'
     fields:
-      - { label: 'Template Key', name: 'templateKey', widget: 'hidden', default: 'recept' }
-      - {
-          label: 'Datum',
-          name: 'date',
-          widget: 'hidden',
-          dateFormat: 'YYYY-MM-DD',
-          timeFormat: 'HH:mm',
-          default: null
-        }
-      - { label: 'URL', name: 'url', widget: 'hidden', default: '' }
       - { label: 'Titel', name: 'title', widget: 'string' }
       - { label: 'Beskrivning', name: description, widget: string, required: false }
       - { label: 'Redskap', name: tools, widget: string, hint: '', required: false }
@@ -56,10 +50,10 @@ collections:
           hint: 'Det behövs en bild, men du kan välja en standardbild i biblioteket.'
         }
       - {
-          label: 'Tema för bildtext',
           name: 'featuredimagetheme',
+          label: 'Tema för bildtext',
           widget: 'select',
-          default: { label: 'Ljus', value: 1 },
+          default: 2,
           options: [{ label: 'Ljus', value: 1 }, { label: 'Mörk', value: 2 }],
           hint: 'Ange om den valda bilden är mörk eller ljus i nederkant.'
         }
@@ -158,7 +152,8 @@ collections:
                       label: 'Rubrik',
                       name: partinstructionsname,
                       widget: string,
-                      hint: 'Ex. "Sås". Kan lämnas tom om det bara finns ett moment.'
+                      hint: 'Ex. "Sås". Kan lämnas tom om det bara finns ett moment.',
+                      required: false
                     },
                     {
                       label: 'Instruktioner för delmoment',
