@@ -27,30 +27,18 @@
         <Searchbox />
       </ImageBanner>
       <TagPageSection>
-        <menu>
-          {#each tags as tag}
-            <li>
-              <img src={TagSvg} alt="tag icon" />
-              <a href="/taggar/{tag.slug}">{tag.name} ({tag.count})</a>
-            </li>
-          {/each}
-        </menu>
+        {#each tags as tag}
+          <li>
+            <img src={TagSvg} alt="tag icon" />
+            <a href="/taggar/{tag.slug}">{tag.name} ({tag.count})</a>
+          </li>
+        {/each}
       </TagPageSection>
     </BannerMainContainer>
   </TagBackground>
 </PageWrapper>
 
 <style>
-  menu {
-    font-size: 1.1em;
-    border-radius: 0.25rem;
-    max-width: 1200px;
-    @media (min-width: 768px) {
-      border: 1px solid rgb(226, 232, 240);
-      padding: 2rem;
-      background: rgba(255, 255, 255, 0.7);
-    }
-  }
   li {
     display: flex;
     align-items: center;
