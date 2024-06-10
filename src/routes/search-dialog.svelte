@@ -43,7 +43,7 @@
       {#each results as result}
         {@const image = getImage(images, lqipImages, `/src${result.featuredimage}`)}
         <MenuGridImageLink
-          href={result.slug}
+          href={`/${result.slug}`}
           title={result.title}
           titleColor={getColor(result.featuredimagetheme)}
           {image}
