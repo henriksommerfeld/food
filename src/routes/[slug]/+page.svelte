@@ -11,7 +11,7 @@
   import Searchbox from '../searchbox.svelte'
 
   export let data: PageData
-  export const recipe = data
+  export const { recipe, tags } = data
 
   const title = `${recipe.title} | ${recipe.category}`
   const imagePath = `/src${recipe.featuredimage}`
@@ -110,7 +110,7 @@
               />
             </div>
             <div class="prose" data-sveltekit-reload>
-              <svelte:component this={data.content} />
+              <svelte:component this={recipe.content} />
             </div>
           </div>
         </div>
@@ -118,7 +118,10 @@
           <div class="tags">
             <span />
             {#each recipe.tags as tag, index}
-              <a href="/">{tag}</a>{#if index + 1 < recipe.tags.length}, &nbsp{/if}
+              {@const slug = tags.find((t) => t.name === tag)?.slug}
+              {#if slug}
+                <a href={`/taggar/${slug}`}>{tag}</a>{#if index + 1 < recipe.tags.length}, &nbsp{/if}
+              {/if}
             {/each}
           </div>
         {/if}
