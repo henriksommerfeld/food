@@ -1,5 +1,7 @@
 # Recipe Collection
 
+This repo has been abandoned for an implementation in Sveltekit: https://github.com/henriksommerfeld/food-sveltekit
+
 ## Installation
 
 `npm ci --legacy-peer-deps`
